@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "watch": "nodemon ./app.js",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "db:reset": "node bin/resetdb.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,6 +16,7 @@
     "morgan": "~1.9.1",
     "path": "^0.12.7",
     "pg": "^8.5.1",
+    "pg-native": "^3.0.0",
     "socket.io": "^4.0.0"
   },
   "devDependencies": {

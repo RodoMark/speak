@@ -6,5 +6,5 @@ CREATE TABLE rooms(
     room_description VARCHAR(255) NOT NULL,
     start_time timestamp NOT NULL DEFAULT now(),
     end_time timestamp NOT NULL DEFAULT now(),
-    link VARCHAR(255) NOT NULL
+    link text
 );
