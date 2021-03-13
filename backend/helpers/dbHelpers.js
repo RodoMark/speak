@@ -30,6 +30,16 @@ module.exports = (db) => {
           .catch(err => err);
   }
 
+  const addRoom = (teacherId, roomName, startTime, endTime, link) => {
+    const query = {
+        text: `INSERT INTO rooms (teacher_id, room_name, start_time, end_time, link) VALUES ($1, $2, $3, $4, $5) RETURNING *` ,
+        values: [teacherId, roomName, startTime, endTime, link]
+    }
+    return db.query(query)
+        .then(result => result.rows[0])
+        .catch(err => err);
+}
+
   // const getAttendeePosts = () => {
   //     const query = {
   //         text: `SELECT attendee.id as attendee_id, first_name, last_name, email, posts.id as post_id, title, content
@@ -46,6 +56,7 @@ module.exports = (db) => {
       getTeachers,
       getTeachersByEmail,
       addTeacher,
+      addRoom,
       // getAttendeePosts
   };
 };
