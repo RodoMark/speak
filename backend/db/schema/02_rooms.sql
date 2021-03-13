@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS rooms CASCADE;
+CREATE TABLE rooms(
+    id SERIAL PRIMARY KEY NOT NULL,
+    room_name VARCHAR(255) NOT NULL,
+    start_time TIMESTAMPA
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
