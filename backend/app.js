@@ -1,4 +1,5 @@
-const db = require('./db/index.js')
+const db = require('./db/index.js');
+const dbHelpers = require('./helpers/dbHelpers')(db);
 
 var express = require('express');
 var path = require('path');
