@@ -4,7 +4,7 @@ CREATE TABLE rooms(
     teacher_id INT REFERENCES teachers(id),
     room_name VARCHAR(255) NOT NULL,
     room_description VARCHAR(255) NOT NULL,
-    start_time timestamp NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
-    end_time timestamp NOT NULL DEFAULT (now() AT TIME ZONE 'UTC'),
+    start_time timestamp NOT NULL DEFAULT now(),
+    end_time timestamp NOT NULL DEFAULT now(),
     link VARCHAR(255) NOT NULL
 );
