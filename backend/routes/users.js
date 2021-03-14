@@ -59,7 +59,7 @@ module.exports = function (router, database) {
 
   // Fetches user information
   router.get('/me', (req, res) => {
-    const userId = req.session.userId;
+    const userId = 1;
     if (!userId) {
       res.json({ answer: 42 });
       return;
@@ -68,13 +68,15 @@ module.exports = function (router, database) {
     database
       .getUserWithId(userId)
       .then((user) => {
+        console.log(user);
         if (!user) {
-          res.send({ error: 'no user with that id' });
+          res.json({ error: 'no user with that id' });
           return;
         }
-        res.send({ user: { name: user.name, email: user.email, id: userId } });
+
+        res.json(user);
       })
-      .catch((error) => res.send(error));
+      .catch((error) => res.json(error));
   });
 
   return router;

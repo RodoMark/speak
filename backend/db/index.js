@@ -1,11 +1,12 @@
 const pg = require('pg');
+const { Pool } = require('pg');
 require('dotenv').config();
 const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?sslmode=disable`;
-const db = new pg.Client({
+const db = new pg.Pool({
   connectionString: connectionString || process.env.DATABASE_URL,
 });
 db.query(`SELECT * FROM teachers WHERE id = 1;`)
-  .then((user) => console.log(user))
+  .then((user) => console.log(user.rows))
   .catch((err) => console.log(err));
 console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
