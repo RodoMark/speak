@@ -4,6 +4,9 @@ const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PAS
 const db = new pg.Client({
   connectionString: connectionString || process.env.DATABASE_URL,
 });
+db.query(`SELECT * FROM teachers WHERE id = 1;`)
+  .then((user) => console.log(user))
+  .catch((err) => console.log(err));
 console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
 // helper function for adding use to database
@@ -15,7 +18,7 @@ const addUser = function (user) {
     user.password,
   ];
   const queryString = `
-  INSERT INTO users(first_name, last_name, email, password)
+  INSERT INTO teachers(first_name, last_name, email, user_password)
   VALUES($1, $2, $3)
   RETURNING *;
   `;
@@ -39,7 +42,7 @@ const userExists = function (email) {
   const queryValues = [email];
   const queryString = `
   SELECT email
-  FROM users
+  FROM teachers
   WHERE email = $1;
   `;
   return db
@@ -57,7 +60,7 @@ const getUserWithId = function (id) {
   const queryValues = [id];
   const queryString = `
   SELECT *
-  FROM users
+  FROM teachers
   WHERE id = $1;
   `;
   return db.query(queryString, queryValues).then((res) => {
@@ -68,15 +71,18 @@ exports.getUserWithId = getUserWithId;
 
 //Helper function for retrieving user with email
 const getUserWithEmail = function (email) {
+  console.log(email);
+
   const queryValues = [email];
   const queryString = `
   SELECT *
-  FROM users
+  FROM teachers
   WHERE email = $1;
   `;
   return db
     .query(queryString, queryValues)
     .then((user) => {
+      console.log(user.rows[0]);
       return user.rows[0];
     })
     .catch(() => null);

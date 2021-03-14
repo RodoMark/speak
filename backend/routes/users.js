@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 module.exports = function (router, database) {
   //Post route for user registration
   router.post('/', (req, res) => {
-    req.body.password = bcrypt.hashSync(req.body.password, 12);
+    // req.body.password = bcrypt.hashSync(req.body.password, 12);
     database
       .userExists(req.body.email)
       .then((boo) => {
@@ -17,7 +17,7 @@ module.exports = function (router, database) {
             return;
           }
           req.session.userId = user.id;
-          res.send();
+          res.json(user);
         });
       })
       .catch((e) => res.send(e));
@@ -26,7 +26,8 @@ module.exports = function (router, database) {
   //Helper function for correct password check
   const login = function (email, password) {
     return database.getUserWithEmail(email).then((user) => {
-      if (bcrypt.compareSync(password, user.password)) {
+      // if (bcrypt.compareSync(password, user.password))
+      if (password === user.user_password) {
         return user;
       }
       return null;
@@ -44,7 +45,8 @@ module.exports = function (router, database) {
           return;
         }
         req.session.userId = user.id;
-        res.send({ user: { name: user.name, email: user.email, id: user.id } });
+        console.log(`returned user: ${user}`);
+        res.json({ user: { name: user.name, email: user.email, id: user.id } });
       })
       .catch((error) => res.send(error));
   });
@@ -59,7 +61,7 @@ module.exports = function (router, database) {
   router.get('/me', (req, res) => {
     const userId = req.session.userId;
     if (!userId) {
-      res.send();
+      res.json({ answer: 42 });
       return;
     }
 
