@@ -3,7 +3,7 @@ const userRoutes = require('./routes/users');
 const db = require('./db/index.js');
 
 // Web server config
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Separated Routes for each Resource
-// Note: we have teach and api
+// Note: we have teachers and api
 const userRouter = express.Router();
 userRoutes(userRouter, db);
 app.use('/teachers', userRouter);
@@ -77,8 +77,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'front-end/build', 'index.html'));
   });
 }
-server.listen(process.env.PORT || 8000, () =>
-  console.log('server is running on port 8000')
+server.listen(process.env.PORT || 8080, () =>
+  console.log(`server is running on port ${PORT}`)
 );
 
 module.exports = app;
