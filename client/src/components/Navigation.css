@@ -1,0 +1,133 @@
+/* Hamburger menu functionality */
+
+.juno-logo {
+  position: absolute;
+  display: flex;
+  width: auto;
+  max-height: 100%;
+  left: 1em;
+}
+
+@media (max-width: 648px) {
+  .juno-logo {
+    display: none;
+  }
+}
+
+.burger-nav {
+  position: absolute;
+  opacity: 100%;
+  top: 1rem;
+  right: 1rem;
+  width: 30%;
+  z-index: 4;
+}
+
+@media (min-width: 956px) {
+  .burger-nav {
+    display: none;
+  }
+}
+
+.burger-nav a {
+  text-decoration: none;
+  color: var(--white-main);
+}
+
+.burger-nav ul {
+  flex-direction: column;
+}
+
+.burger-nav li {
+  height: 1.5rem;
+  background: var(--purple-light);
+  color: var(--white-main) !important;
+}
+
+.burger-nav li:hover {
+  background: var(--red-main);
+  transition: background 0.35s;
+}
+
+#toggle-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1em;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 41px;
+  height: 25px;
+}
+
+#toggle-button .bar {
+  height: 4px;
+  width: 100%;
+  background-color: var(--red-main);
+  border-radius: 10px;
+}
+
+@media (max-width: 956px) {
+  #toggle-button {
+    display: flex;
+  }
+}
+
+#close-nav-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 12;
+  background: var(--purple-dark);
+}
+
+@media (min-width: 956px) {
+  #close-nav-btn {
+    display: none;
+  }
+}
+
+/* Navbar functionality */
+
+#navbar {
+  position: fixed;
+  display: flex;
+  background: var(--white-main);
+  opacity: 98%;
+  height: 70px;
+  justify-content: flex-end;
+  top: 0;
+  width: 100%;
+  z-index: 8;
+}
+
+@media (max-width: 956px) {
+  .bar-nav {
+    display: none;
+  }
+}
+
+.bar-nav a:link {
+  color: var(--purple-dark);
+  text-decoration: none;
+}
+
+#navbar ul {
+  display: flex;
+  padding: 0;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0.5em;
+}
+
+.bar-nav li:hover {
+  background: var(--red-main);
+  transition: background 0.35s;
+}
+
+.burger .burger-nav ul {
+  display: flex;
+  flex-direction: column;
+}
