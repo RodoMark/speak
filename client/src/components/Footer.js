@@ -1,7 +1,9 @@
+import './styles/Footer.css'
+
 const Footer = () => {
   return(
     <footer>
-      <h2>Footer</h2>
+      <h6>Made in 2021 by Thomas Yi, Eduardo Vásquez, Alon Rodovinsky</h6>
     </footer>
   ) 
 };

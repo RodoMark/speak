@@ -9,5 +9,5 @@ export default {
 }
 
 export const footer = () => <Footer primary>Button</Footer>;
-footer.storyName = 'I am the footer';
+footer.storyName = 'Bottom of page';
 
