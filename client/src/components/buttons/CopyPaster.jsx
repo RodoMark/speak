@@ -2,7 +2,7 @@
 import Confirmation from "components/overlays/confirmation.jsx";
 import Await from "components/overlays/await.jsx";
 
-const BCopyPaster = () => {
+const CopyPaster = () => {
 
 /// confirm / reject / leave-close_room /
 
@@ -22,4 +22,4 @@ const BCopyPaster = () => {
 
 };
 
-export default Button;
+export default CopyPaster;
