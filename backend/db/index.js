@@ -6,7 +6,7 @@ const db = new pg.Pool({
   connectionString: connectionString || process.env.DATABASE_URL,
 });
 db.query(`SELECT * FROM teachers WHERE id = 1;`)
-  .then((user) => console.log(user.rows))
+  .then((user) => console.log(`this is from db index.js`, user.rows))
   .catch((err) => console.log(err));
 console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
