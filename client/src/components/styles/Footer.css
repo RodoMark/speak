@@ -1,6 +1,6 @@
 footer {
   background: #dfdddd;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 0px;
 }
 /*# sourceMappingURL=Footer.css.map */
