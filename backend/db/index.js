@@ -12,6 +12,7 @@ console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
 // helper function for adding use to database
 const addUser = function (user) {
+  console.log(user.firstName);
   const queryValues = [
     user.firstName,
     user.lastName,
@@ -20,7 +21,7 @@ const addUser = function (user) {
   ];
   const queryString = `
   INSERT INTO teachers(first_name, last_name, email, user_password)
-  VALUES($1, $2, $3)
+  VALUES($1, $2, $3, $4)
   RETURNING *;
   `;
   return db
