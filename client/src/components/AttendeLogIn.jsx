@@ -8,6 +8,10 @@ const AttendeeLogIn = (props) => {
   };
 
   return (
+    
+    <h1>You have been invited to n_room</h1>
+
+
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId='formBasicEmail'>
         <Form.Label>NickName</Form.Label>
