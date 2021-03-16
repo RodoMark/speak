@@ -1,5 +1,6 @@
 // routes
 const userRoutes = require('./routes/users');
+const apiRoutes = require('./routes/api');
 const db = require('./db/index.js');
 
 // Web server config
@@ -31,15 +32,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Separated Routes for each Resource
-// Note: we have teachers and api
+// teachers routes
 const userRouter = express.Router();
 userRoutes(userRouter, db);
 app.use('/teachers', userRouter);
 
-const roomRoutes = require("./routes/rooms");
-const roomsRouter = express.Router();
-roomRoutes(roomsRouter, db);
-app.use("/rooms", roomsRouter);
+//api routes for rooms, attendees, and messages
+const apiRouter = express.Router();
+apiRoutes(apiRouter, db);
+app.use('/api', apiRouter);
 
 // setup socket.io
 const server = http.createServer(app);
@@ -52,7 +53,7 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   const request = socket.request;
-  console.log('new client connected', socket.id, request.headers);
+  console.log('new client connected', socket.id, request.session);
   socket.emit('me', socket.id);
 
   socket.on('disconnect', () => {
