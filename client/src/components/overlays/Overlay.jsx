@@ -40,17 +40,9 @@ const types = {
 }   
 
 const Overlay = (props) => {
-
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	const contents = switch(props.type) {
-		case "calling":
-
-	}
-	
- 
-
-
-
+	const Display = types[props.type]
+	return <Display />
 }
 
 
