@@ -4,6 +4,8 @@ import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
 import Login from './Login';
+import Room from './Room';
+import AttendeLogIn from './AttendeLogIn';
 const Navigation = () => {
   return (
     <Router>
@@ -48,6 +50,9 @@ const Navigation = () => {
         </Route>
         <Route exact path='/Register' component={Register} />
         <Route exact path='/Login' component={Login} />
+        <Route path='/room/:id' component={Room} />
+        <Route path='/Login/room/:id/' component={AttendeLogIn} />
+
       </Switch>
     </Router>
   );
