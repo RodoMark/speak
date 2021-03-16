@@ -9,13 +9,13 @@ export default {
   component: Button,
 }
 
-export const base = () => <Button confirm>Button</Button>;
+export const base = () => <Button>Button</Button>;
 base.storyName = 'Base';
 
 export const confirm = () => <Button confirm>Confirm</Button>;
 confirm.storyName = 'Confirm';
 
-export const danger = () => <Button confirm>Danger</Button>;
+export const danger = () => <Button danger>Danger</Button>;
 danger.storyName = 'Danger';
 
 export const clickable = () =>  <Button onClick={action("button-clicked")}>Clickable</Button>;

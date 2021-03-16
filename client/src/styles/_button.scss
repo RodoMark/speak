@@ -1,11 +1,50 @@
 @import "./variables";
 
-button {
-  background: $mainGrey;
-  .button--confirm {
-    background: $mainGreen;
-  }
-  .button--danger {
-    background: $mainRed;
-  }
+.button {
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 2rem;
+  line-height: 1.2rem;
+  margin-right: 1rem;
+  width: 8rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $mainBlack;
+  color: $mainBlack;
+  background-color: transparent;
+}
+
+.button--danger {
+  color: $mainRed;
+  border-color: $mainRed;
+  background-color: transparent;
+}
+
+.button--confirm {
+  color: $mainGreen;
+  border-color: $mainGreen;
+  background-color: transparent;
+}
+
+.button--danger:hover {
+  color: $mainWhite;
+  background-color: $mainRed;
+}
+
+.button--confirm:hover {
+  color: $mainWhite;
+  background-color: $mainGreen;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:disabled {
+  border-style: solid;
+  border-color: $mainWhite;
+  color: $mainWhite;
+  background-color: transparent;
+  opacity: 0.7;
 }
