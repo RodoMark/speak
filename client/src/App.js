@@ -9,7 +9,6 @@ function App() {
   return (
     <div className='App'>
       <Navigation />
-      <Camera title='video title' />
       <Footer />
     </div>
   );

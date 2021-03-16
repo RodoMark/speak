@@ -13,6 +13,7 @@
     "babel-loader": "^8.2.2",
     "bootstrap": "^4.6.0",
     "classnames": "^2.2.6",
+    "material-ui": "^0.20.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
