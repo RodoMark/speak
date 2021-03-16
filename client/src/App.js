@@ -1,19 +1,14 @@
 import './App.scss';
 import Navigation from './components/Navigation';
-import Button from './components/buttons/Button';
-import Camera from './components/Camera';
+import Camera1 from './components/Camera1';
 import Footer from './components/Footer';
-
 
 function App() {
   return (
     <div className='App'>
       <Navigation />
       <h1>PARLAR</h1>
-      <Button confirm>BUTTON</Button>
-      <Camera title='video title' />
-      <Button danger></Button>
-      <Button call confirm></Button>
+      <Camera1 title='video title' />
       <Footer />
     </div>
   );
