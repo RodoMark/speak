@@ -92,6 +92,9 @@ const getUserWithEmail = function (email) {
 exports.getUserWithEmail = getUserWithEmail;
 
 const getRooms = function (id) {
+  if (!id) {
+    throw new Error('User not logged in!');
+  }
   const queryValues = [id];
   const queryString = `SELECT * FROM rooms WHERE teacher_id = $1`;
   return db
@@ -105,6 +108,9 @@ const getRooms = function (id) {
 exports.getRooms = getRooms;
 
 const addRooms = function (id, data) {
+  if (!id) {
+    throw new Error('User not logged in!');
+  }
   const queryValues = [
     id,
     data.roomName,
@@ -112,7 +118,7 @@ const addRooms = function (id, data) {
     data.startTime,
     data.link,
   ];
-  const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, start_time, link) VALUE ($1, $2, $3, $4, $5)`;
+  const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, start_time, link) VALUE ($1, $2, $3, $4, $5) RETURNING *;`;
   return db
     .query(queryString, queryValues)
     .then((res) => {
@@ -123,11 +129,11 @@ const addRooms = function (id, data) {
 };
 exports.addRooms = addRooms;
 
-const deleteRoom = function (options) {
-  if (!options.userId) {
+const deleteRoom = function (id) {
+  if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [options.userId];
+  const queryValues = [id];
   const queryString = `DELETE FROM rooms WHERE id = $1`;
   return db
     .query(queryString, queryValues)
@@ -137,3 +143,31 @@ const deleteRoom = function (options) {
     .catch(() => null);
 };
 exports.deleteRoom = deleteRoom;
+
+const getAttendees = function (id) {
+  if (!id) {
+    throw new Error('User not logged in!');
+  }
+  const queryValues = [id];
+  const queryString = `
+  SELECT * FROM attendees JOIN rooms
+  ON rooms.id = attendees.room_id
+  WHERE teacher_id = $1`;
+  return db
+    .query(queryString, queryValues)
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    })
+    .catch(() => null);
+};
+exports.getAttendees = getAttendees;
+
+const addAttendees = function (id, data) {
+  if (!id) {
+    throw new Error('User not logged in!');
+  }
+  const queryValues = [data.roomId, data.attendeeName, data.feedback];
+  const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUE ($1, $2, $3)`;
+};
+exports.addAttendees = addAttendees;

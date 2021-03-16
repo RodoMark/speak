@@ -34,9 +34,9 @@ router.get('/rooms', function (req, res) {
   // DELETE rooms route to delete room
   router.delete('/rooms', function (req, res) {
     const userId = req.seesion.userId;
-    const user = req.body;
+
     database
-      .deleteRoom({...req.body, userId})
+      .deleteRoom(userId)
       .then((data) => {
         if (!data) {
           res.send({ error: 'error' });
@@ -47,5 +47,32 @@ router.get('/rooms', function (req, res) {
       .catch((e) => res.json(e));
   });
 }
+// GET attendees route
+router.get('/attendees', function (req, res) {
+  const userId = req.seesion.userId;
+  database.getAttendees(userId).then(data => {
+    if (!data) {
+         res.send({ error: 'error' });
+          return;
+    }
+    res.json(data);
+  }).catch(e=> res.json(e))
+})
+
+// POST attendees route
+router.post('/attendees', function (req, res) {
+    const userId = req.seesion.userId;
+    const user = req.body;
+    database
+      .addAttendees(userId, user)
+      .then((data) => {
+        if (!data) {
+          res.send({ error: 'error' });
+          return;
+        }
+        res.json(data);
+      })
+      .catch((e) => res.json(e));
+  });
 
 
