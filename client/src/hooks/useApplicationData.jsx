@@ -53,7 +53,7 @@ export default function useApplicationData() {
 //             .then(()=> {
 //               setState(prev => ({...prev, appointments}))
 //             })
-  }
+  
     
 
 // ///cancel interview function ///called inside the DEL function on appointment.js element
