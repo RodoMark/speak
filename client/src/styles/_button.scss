@@ -43,8 +43,8 @@
 
 .button:disabled {
   border-style: solid;
-  border-color: $mainGrey;
-  color: $mainGrey;
+  color: $mainBlack;
+  border-color: $mainBlack;
   background-color: transparent;
-  opacity: 0.7;
+  opacity: 0.3;
 }
