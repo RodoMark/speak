@@ -55,7 +55,7 @@ module.exports = function (router, database) {
   //Post route for user logout
   router.post('/logout', (req, res) => {
     req.session = null;
-    res.send();
+    res.json({ session: null });
   });
 
   // Fetches user information
