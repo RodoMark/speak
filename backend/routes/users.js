@@ -21,7 +21,7 @@ module.exports = function (router, database) {
           res.json(user);
         });
       })
-      .catch((e) => res.send(e));
+      .catch((e) => res.json(e));
   });
 
   //Helper function for correct password check

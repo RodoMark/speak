@@ -90,3 +90,50 @@ const getUserWithEmail = function (email) {
     .catch(() => null);
 };
 exports.getUserWithEmail = getUserWithEmail;
+
+const getRooms = function (id) {
+  const queryValues = [id];
+  const queryString = `SELECT * FROM rooms WHERE teacher_id = $1`;
+  return db
+    .query(queryString, queryValues)
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    })
+    .catch(() => null);
+};
+exports.getRooms = getRooms;
+
+const addRooms = function (id, data) {
+  const queryValues = [
+    id,
+    data.roomName,
+    data.roomDescription,
+    data.startTime,
+    data.link,
+  ];
+  const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, start_time, link) VALUE ($1, $2, $3, $4, $5)`;
+  return db
+    .query(queryString, queryValues)
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    })
+    .catch(() => null);
+};
+exports.addRooms = addRooms;
+
+const deleteRoom = function (options) {
+  if (!options.userId) {
+    throw new Error('User not logged in!');
+  }
+  const queryValues = [options.userId];
+  const queryString = `DELETE FROM rooms WHERE id = $1`;
+  return db
+    .query(queryString, queryValues)
+    .then(() => {
+      return;
+    })
+    .catch(() => null);
+};
+exports.deleteRoom = deleteRoom;
