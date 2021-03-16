@@ -1,4 +1,4 @@
-import VideoFeed from "components/RoomList/VideoFeed.jsx"
+import VideoFeed from "./VideoFeed.jsx"
 
 
 
