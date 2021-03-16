@@ -15,7 +15,7 @@
   background-color: transparent;
 }
 
-.button--danger {
+.button--reject {
   color: $mainWhite;
   border-color: $mainRed;
   background-color: $mainRed;
@@ -27,7 +27,7 @@
   background-color: $mainGreen;
 }
 
-.button--danger:hover {
+.button--reject:hover {
   color: $mainWhite;
   background-color: $mainRed;
 }
