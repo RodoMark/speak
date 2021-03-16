@@ -1,20 +1,18 @@
-const { router } = require("../app");
-
-module.exports = funciton(router, database){
+module.exports = function (router, database) {
   // GET rooms route to get room associated with the teacher
-router.get('/rooms', function (req, res) {
-  const userId = req.seesion.userId;
-  database
-    .getRooms(userId)
-    .then((data) => {
-      if (!user) {
-        res.send({ error: 'error' });
-        return;
-      }
-      res.json(data);
-    })
-    .catch((e) => res.json(e));
-});
+  router.get('/rooms', function (req, res) {
+    const userId = req.seesion.userId;
+    database
+      .getRooms(userId)
+      .then((data) => {
+        if (!user) {
+          res.send({ error: 'error' });
+          return;
+        }
+        res.json(data);
+      })
+      .catch((e) => res.json(e));
+  });
   // POST rooms route to add room to the teacher
   router.post('/rooms', function (req, res) {
     const userId = req.seesion.userId;
@@ -46,21 +44,24 @@ router.get('/rooms', function (req, res) {
       })
       .catch((e) => res.json(e));
   });
-}
-// GET attendees route
-router.get('/attendees', function (req, res) {
-  const userId = req.seesion.userId;
-  database.getAttendees(userId).then(data => {
-    if (!data) {
-         res.send({ error: 'error' });
-          return;
-    }
-    res.json(data);
-  }).catch(e=> res.json(e))
-})
 
-// POST attendees route
-router.post('/attendees', function (req, res) {
+  // GET attendees route
+  router.get('/attendees', function (req, res) {
+    const userId = req.seesion.userId;
+    database
+      .getAttendees(userId)
+      .then((data) => {
+        if (!data) {
+          res.send({ error: 'error' });
+          return;
+        }
+        res.json(data);
+      })
+      .catch((e) => res.json(e));
+  });
+
+  // POST attendees route
+  router.post('/attendees', function (req, res) {
     const userId = req.seesion.userId;
     const user = req.body;
     database
@@ -75,4 +76,34 @@ router.post('/attendees', function (req, res) {
       .catch((e) => res.json(e));
   });
 
+  // GET messages route
+  router.get('/messages', function (req, res) {
+    const userId = req.seesion.userId;
+    database
+      .getMessages(userId)
+      .then((data) => {
+        if (!data) {
+          res.send({ error: 'error' });
+          return;
+        }
+        res.json(data);
+      })
+      .catch((e) => res.json(e));
+  });
 
+  // POST messages route
+  router.post('/messages', function (req, res) {
+    const userId = req.seesion.userId;
+    const data = req.body;
+    database
+      .addMessages(userId, data)
+      .then((data) => {
+        if (!data) {
+          res.send({ error: 'error' });
+          return;
+        }
+        res.json(data);
+      })
+      .catch((e) => res.json(e));
+  });
+};
