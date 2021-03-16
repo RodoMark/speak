@@ -15,6 +15,13 @@
   background-color: transparent;
 }
 
+.button--call {
+  padding: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
 .button--reject {
   color: $mainWhite;
   border-color: $mainRed;
