@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Register from './Register';
 import Login from './Login';
 import Room from './Room';
+import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 const Navigation = () => {
   return (
@@ -48,10 +49,12 @@ const Navigation = () => {
         <Route exact path='/Profile'>
           <Profile id={1} />
         </Route>
+
         <Route exact path='/Register' component={Register} />
         <Route exact path='/Login' component={Login} />
-        <Route path='/room/:id' component={Room} />
-        <Route path='/Login/room/:id/' component={AttendeLogIn} />
+        <Route path='/Room/:id' component={Room} />
+        <Route path='/Login/:id/' component={AttendeLogIn}/>
+        <Route path='/New/' component={CreateRoom}/>
 
       </Switch>
     </Router>
