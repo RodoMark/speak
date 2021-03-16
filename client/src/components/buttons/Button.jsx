@@ -4,10 +4,12 @@ import classNames from 'classnames';
 
 /// confirm / reject / leave-close_room /
 export default function Button(props) {
-  let buttonClass = classNames('button', {
-    'button--confirm': props.confirm,
-    'button--danger': props.danger,
-  });
+
+  let buttonClass = classNames("button", {
+     "button--confirm": props.confirm,
+     "button--reject": props.reject,
+     "button--call": props.call
+  })
 
   return (
     <button
