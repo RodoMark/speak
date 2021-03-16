@@ -1,11 +1,8 @@
-export default Dropdown(props){
+export default function Dropdown(props){
 
 	return(
 		<div>
-			<p>default value</p>
-				<ul>
-					listName on props
-				</ul>
+			<p>list of attendants</p>
 		</div>
 	)
 }

@@ -1,5 +1,5 @@
-import Confirmation from "components/overlays/confirmation.jsx";
-import Await from "components/overlays/await.jsx";
+import Confirmation from "./confirmation.jsx";
+import Await from "./await.jsx";
 
 const Overlay = () => {
 
@@ -8,11 +8,11 @@ const Overlay = () => {
 
 
   return (
-
+  	<>
   	<h2>This is an Overlay</h2>
   	<button>Confirm</button>>;
   	<button>Cancel</button>>;
-
+		</>
   )
 
 };
