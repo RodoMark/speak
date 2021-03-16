@@ -10,6 +10,7 @@ function App() {
     <div className='App'>
       <Navigation />
       <h1>PARLAR</h1>
+      <Button confirm>BUTTON</Button>
       <Camera title='video title' />
       <Button danger></Button>
       <Button call confirm></Button>
