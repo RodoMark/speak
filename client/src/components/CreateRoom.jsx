@@ -1,6 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import { react,useState } from 'react';
 import Button from '../components/buttons/Button';
+import { useRef } from 'react';
 import Axios from "axios";
 
 const CreateRoom = (props) => {
@@ -11,6 +12,12 @@ const CreateRoom = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     Axios.post("/rooms/new", roomInfo)
+      .then((res) => {
+        console.log(res);
+        // props.setAuth(true);
+        // history.push('/');
+      })
+      .catch((err) => console.log(err));
 
     // .
   };
