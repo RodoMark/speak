@@ -1,12 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
 
 const Login = (props) => {
   const email = useRef();
   const password = useRef();
-
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -16,7 +17,11 @@ const Login = (props) => {
 
     axios
       .post('/teachers/login', data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        props.setAuth(true);
+        history.push('/');
+      })
       .catch((err) => console.log(err));
   };
   return (
