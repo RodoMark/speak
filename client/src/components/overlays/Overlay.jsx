@@ -1,41 +1,12 @@
 // import Confirmation from "components/overlays/confirmation.jsx";
 // import Await from "components/overlays/await.jsx";
 import Button from "../buttons/Button"
+import Calling from "../Calling"
+import Connecting from "../Connecting"
+import Receiving from "../Receiving"
+import Error from "../Error"
 
 
-
-
-const Receiving = (props) => (
-	<div className="overlay">
-			
-			<form>
-				<Button call confirm></Button>
-			</form>
-			<form>
-				<Button call reject></Button>
-			</form>
-			<h2>Receiving Call</h2>
-		</div>
-) 
-
-const Calling = (props) => (
-	<div className="overlay">
-			<form>
-				<Button call></Button>
-			</form><br />
-			<h2>Calling...</h2>
-		</div>
-) 
-
-const Connecting = (props) => (
-	<div className="overlay">
-			<h2>Connecting...</h2>
-		</div>
-) 
-
-const Error = () => (
-<div className="overlay"><h2>Error</h2></div>
-)
 	
 		
 const types = {
