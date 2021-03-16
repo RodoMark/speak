@@ -9,9 +9,6 @@ export default {
   component: Overlay,
 }
 
-export const base = () => <Overlay text="Overlay"></Overlay>;
-base.storyName = 'Base';
-
 export const calling = () => <Overlay type="calling"></Overlay>;
 calling.storyName = 'Calling';
 
@@ -20,3 +17,7 @@ receiving.storyName = 'Receiving';
 
 export const connecting = () => <Overlay type="connecting"></Overlay>;
 connecting.storyName = 'Connecting';
+
+export const error = () => <Overlay></Overlay>;
+error.storyName = 'Error';
+

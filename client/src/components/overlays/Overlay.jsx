@@ -7,13 +7,14 @@ import Button from "../buttons/Button"
 
 const Receiving = (props) => (
 	<div className="overlay">
-			<h2>Receiving Call</h2><br />
+			
 			<form>
 				<Button call confirm></Button>
 			</form>
 			<form>
 				<Button call reject></Button>
 			</form>
+			<h2>Receiving Call</h2>
 		</div>
 ) 
 
@@ -22,7 +23,7 @@ const Calling = (props) => (
 			<form>
 				<Button call></Button>
 			</form><br />
-			<h2>Calling</h2>
+			<h2>Calling...</h2>
 		</div>
 ) 
 
@@ -31,6 +32,10 @@ const Connecting = (props) => (
 			<h2>Connecting...</h2>
 		</div>
 ) 
+
+const Error = () => (
+<div className="overlay">Error</div>
+)
 	
 		
 const types = {
@@ -41,7 +46,7 @@ const types = {
 
 const Overlay = (props) => {
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	const Display = types[props.type]
+	const Display = types[props.type] || Error
 	return <Display />
 }
 
