@@ -10,7 +10,6 @@ const CopyPaster = (props) => {
   return (
 
   	<button>
-      // {props.Url}
       URL to Room
     </button>
 

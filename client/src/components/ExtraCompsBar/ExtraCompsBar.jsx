@@ -12,7 +12,7 @@ const Overlay = () => {
   	<>
   	<CopyPaster/>
   	
-  	<button>LeaveRoom/closeRoom</button>>
+  	<button>LeaveRoom/closeRoom</button>
   	</>
   )
 
