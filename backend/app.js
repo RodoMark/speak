@@ -36,6 +36,11 @@ const userRouter = express.Router();
 userRoutes(userRouter, db);
 app.use('/teachers', userRouter);
 
+const roomRoutes = require("./routes/rooms");
+const roomsRouter = express.Router();
+roomRoutes(roomsRouter, db);
+app.use("/rooms", roomsRouter);
+
 // setup socket.io
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
