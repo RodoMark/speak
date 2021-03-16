@@ -21,7 +21,7 @@ danger.storyName = 'Danger';
 export const clickable = () =>  <Button onClick={action("button-clicked")}>Clickable</Button>;
 clickable.storyName = 'Clickable';
 
-export const disabled= () =>  <Button onClick={action("button-clicked")}>Disabled</Button>;
+export const disabled= () =>  <Button disabled onClick={action("button-clicked")}>Disabled</Button>;
 disabled.storyName = 'Disabled';
 
 

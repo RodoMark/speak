@@ -16,15 +16,15 @@
 }
 
 .button--danger {
-  color: $mainRed;
+  color: $mainWhite;
   border-color: $mainRed;
-  background-color: transparent;
+  background-color: $mainRed;
 }
 
 .button--confirm {
-  color: $mainGreen;
+  color: $mainWhite;
   border-color: $mainGreen;
-  background-color: transparent;
+  background-color: $mainGreen;
 }
 
 .button--danger:hover {
@@ -43,8 +43,8 @@
 
 .button:disabled {
   border-style: solid;
-  border-color: $mainWhite;
-  color: $mainWhite;
+  border-color: $mainGrey;
+  color: $mainGrey;
   background-color: transparent;
   opacity: 0.7;
 }
