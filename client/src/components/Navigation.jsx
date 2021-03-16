@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { useState } from 'react';
 import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
 import Login from './Login';
+import Logout from './Logout';
+import Auth from './Auth';
 const Navigation = () => {
+  const [auth, setAuth] = useState(true);
   return (
     <Router>
       <Navbar bg='light' expand='lg'>
@@ -26,16 +30,7 @@ const Navigation = () => {
                 Profile
               </Link>
             </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/Register'>
-                Sign Up
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/Login'>
-                Login
-              </Link>
-            </NavItem>
+            <Auth auth={auth} setAuth={setAuth} />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -46,8 +41,15 @@ const Navigation = () => {
         <Route exact path='/Profile'>
           <Profile id={1} />
         </Route>
-        <Route exact path='/Register' component={Register} />
-        <Route exact path='/Login' component={Login} />
+        <Route exact path='/Register'>
+          <Register setAuth={setAuth} />
+        </Route>
+        <Route exact path='/Login' component={Login}>
+          <Login setAuth={setAuth} />
+        </Route>
+        <Route exact path='/Logout' component={Logout}>
+          <Logout setAuth={setAuth} />
+        </Route>
       </Switch>
     </Router>
   );

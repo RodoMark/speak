@@ -21,7 +21,7 @@ module.exports = function (router, database) {
           res.json(user);
         });
       })
-      .catch((e) => res.send(e));
+      .catch((e) => res.json(e));
   });
 
   //Helper function for correct password check
@@ -55,7 +55,7 @@ module.exports = function (router, database) {
   //Post route for user logout
   router.post('/logout', (req, res) => {
     req.session = null;
-    res.send();
+    res.json({ session: null });
   });
 
   // Fetches user information

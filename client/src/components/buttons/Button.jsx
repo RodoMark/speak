@@ -1,11 +1,10 @@
-
 // import Confirmation from "components/overlays/confirmation.jsx";
 // import Await from "components/overlays/await.jsx";
-import classNames from 'classnames'
-
+import classNames from 'classnames';
 
 /// confirm / reject / leave-close_room /
 export default function Button(props) {
+
   let buttonClass = classNames("button", {
      "button--confirm": props.confirm,
      "button--reject": props.reject,
@@ -13,13 +12,13 @@ export default function Button(props) {
   })
 
   return (
-     <button
-       className={buttonClass}
-       onClick={props.onClick}
-       disabled={props.disabled}
-       alttext={props.altText}
-     >
-       {props.children}
-     </button>
- );
+    <button
+      className={buttonClass}
+      onClick={props.onClick}
+      disabled={props.disabled}
+      alttext={props.altText}
+    >
+      {props.children}
+    </button>
+  );
 }
