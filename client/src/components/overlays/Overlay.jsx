@@ -34,7 +34,7 @@ const Connecting = (props) => (
 ) 
 
 const Error = () => (
-<div className="overlay">Error</div>
+<div className="overlay"><h2>Error</h2></div>
 )
 	
 		
