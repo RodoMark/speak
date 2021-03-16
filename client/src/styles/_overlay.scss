@@ -1,5 +1,7 @@
 .overlay {
   display: flex;
+  background: $mainWhite;
+  padding: 1em 2em;
   justify-content: center;
   form {
     display: flex;

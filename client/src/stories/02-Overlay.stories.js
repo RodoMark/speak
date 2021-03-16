@@ -9,13 +9,13 @@ export default {
   component: Overlay,
 }
 
-export const calling = () => <Overlay type="calling"></Overlay>;
+export const calling = () => <Overlay onClick={action("button-clicked")} type="calling"></Overlay>;
 calling.storyName = 'Calling';
 
-export const receiving = () => <Overlay type="receiving"></Overlay>;
+export const receiving = () => <Overlay onClick={action("button-clicked")} type="receiving"></Overlay>;
 receiving.storyName = 'Receiving';
 
-export const connecting = () => <Overlay type="connecting"></Overlay>;
+export const connecting = () => <Overlay onClick={action("button-clicked")} type="connecting"></Overlay>;
 connecting.storyName = 'Connecting';
 
 export const error = () => <Overlay></Overlay>;
