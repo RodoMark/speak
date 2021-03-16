@@ -2,19 +2,12 @@
 // import Await from "components/overlays/await.jsx";
 import Button from "../buttons/Button"
 
-const types = [
-	"calling",
-	"receiving",
-	"connecting",
-]
 
-const Overlay = (props) => {
 
-	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	
-  return (
-		<div className="overlay">
-			<h2>{props.text}</h2><br />
+
+const Receiving = (props) => (
+	<div className="overlay">
+			<h2>Receiving Call</h2><br />
 			<form>
 				<Button call confirm></Button>
 			</form>
@@ -22,7 +15,41 @@ const Overlay = (props) => {
 				<Button call reject></Button>
 			</form>
 		</div>
-  )
+) 
+
+const Calling = (props) => (
+	<div className="overlay">
+			<form>
+				<Button call></Button>
+			</form><br />
+			<h2>Calling</h2>
+		</div>
+) 
+
+const Connecting = (props) => (
+	<div className="overlay">
+			<h2>Connecting...</h2>
+		</div>
+) 
+	
+		
+const types = {
+	calling: Calling,
+	receiving: Receiving,
+	connecting: Connecting,
+}   
+
+const Overlay = (props) => {
+
+	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
+	const contents = switch(props.type) {
+		case "calling":
+
+	}
+	
+ 
+
+
 
 }
 
