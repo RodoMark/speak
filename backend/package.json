@@ -5,7 +5,8 @@
   "scripts": {
     "watch": "nodemon ./app.js",
     "start": "node ./bin/www",
-    "db:reset": "node bin/resetdb.js"
+    "db:reset": "node bin/resetdb.js",
+    "sass": "node-sass -w scss/ -o public/styles/ --recursive"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
