@@ -5,9 +5,6 @@ import Calling from "../Calling"
 import Connecting from "../Connecting"
 import Receiving from "../Receiving"
 import Error from "../Error"
-
-
-	
 		
 const types = {
 	calling: Calling,
