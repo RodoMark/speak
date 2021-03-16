@@ -1,0 +1,11 @@
+@import "./variables";
+
+button {
+  background: $mainGrey;
+  .button--confirm {
+    background: $mainGreen;
+  }
+  .button--danger {
+    background: $mainRed;
+  }
+}
