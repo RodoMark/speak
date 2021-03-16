@@ -1,1 +1,8 @@
-/* No CSS *//*# sourceMappingURL=Button.css.map */
+button .button--confirm {
+  background: #aaf531;
+}
+
+button .button--danger {
+  background: #f5633f;
+}
+/*# sourceMappingURL=Button.css.map */
