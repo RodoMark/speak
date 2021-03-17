@@ -17,7 +17,9 @@ function App() {
   return (
     <div className='App'>
       <Navigation />
-      <Overlay type={overlayState} />
+      <Overlay 
+        type={overlayState} 
+        transitionOverlay={transitionOverlay}/>
       <h1>PARLAR</h1>
       <Camera1 title='video title' />
       <Footer />
