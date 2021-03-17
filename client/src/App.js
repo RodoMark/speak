@@ -2,24 +2,35 @@ import React, { useState } from 'react'
 
 import './App.scss';
 import Navigation from './components/Navigation';
-import Overlay, { overlayModes } from './components/overlays/Overlay'
-import Camera1 from './components/Camera1';
+import Overlay from './components/Overlays/Overlay';
 import Footer from './components/Footer';
 
+import Receiving from './components/Overlays/Receiving'
+import Confirming from './components/Overlays/Confirming'
+// import Chat from './components/Chat/Chat';
+import Stage from './components/Stage/Stage';
+
+import useCameraData from "./hooks/useCameraData"
+
 function App() {
-  const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
+  const {
+    io,
+    message,
+    handle,
+  } = useCameraData();
 
-  const transitionOverlay = (newType) => {
-    setOverlayState(newType)  
-  }
-
+  const { receivingCall, answerCall, callCancelled } = useCameraData()
+  console.log(receivingCall)
+  const [endingCall, setEndingCall] = useState(false)
   
   return (
     <div className='App'>
       <Navigation />
-      <Overlay type={overlayState} />
-      <h1>PARLAR</h1>
-      <Camera1 title='video title' />
+      { receivingCall && <Receiving />}
+      { endingCall && <Confirming />}
+        <Overlay />
+          <h1>PARLAR</h1>
+        
       <Footer />
     </div>
   );

@@ -1,13 +1,12 @@
-import VideoFeed from "components/RoomList/VideoFeed.jsx"
+import Video from "../Video";
+import CameraContextProvider from "../../context/CameraContext";
 
-
-
-export default function Stage(props){
-
-	return (
-		<div>
-				<VideoFeed/>
-				<VideoFeed/>
-		</div>
-	)
+export default function Stage(props) {
+  return (
+    <div>
+      <CameraContextProvider>
+        <Video togleCamera = {props.togleCamera}/>
+      </CameraContextProvider>
+    </div>
+  );
 }

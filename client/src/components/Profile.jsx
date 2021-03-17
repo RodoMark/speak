@@ -8,9 +8,10 @@ const Profile = (props) => {
   useEffect(() => {
     Promise.all([axios.get('./teachers/me')]).then((res) => {
       console.log(res[0].data);
+      console.log(user);
       setUser(res[0].data);
     });
-  }, []);
+  }, [user]);
   return <h2>This is profile page </h2>;
 };
 

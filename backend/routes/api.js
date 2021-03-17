@@ -1,7 +1,7 @@
 module.exports = function (router, database) {
   // GET rooms route to get room associated with the teacher
   router.get('/rooms', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
     database
       .getRooms(userId)
       .then((data) => {
@@ -15,7 +15,9 @@ module.exports = function (router, database) {
   });
   // POST rooms route to add room to the teacher
   router.post('/rooms', function (req, res) {
-    const userId = req.seesion.userId;
+    console.log("REq.Session ====>" ,req.session)
+    const userId = req.session.userId;
+
     const user = req.body;
     database
       .addRooms(userId, user)
@@ -31,7 +33,7 @@ module.exports = function (router, database) {
 
   // DELETE rooms route to delete room
   router.delete('/rooms', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
 
     database
       .deleteRoom(userId)
@@ -47,7 +49,7 @@ module.exports = function (router, database) {
 
   // GET attendees route
   router.get('/attendees', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
     database
       .getAttendees(userId)
       .then((data) => {
@@ -62,7 +64,7 @@ module.exports = function (router, database) {
 
   // POST attendees route
   router.post('/attendees', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
     const user = req.body;
     database
       .addAttendees(userId, user)
@@ -78,7 +80,7 @@ module.exports = function (router, database) {
 
   // GET messages route
   router.get('/messages', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
     database
       .getMessages(userId)
       .then((data) => {
@@ -93,7 +95,7 @@ module.exports = function (router, database) {
 
   // POST messages route
   router.post('/messages', function (req, res) {
-    const userId = req.seesion.userId;
+    const userId = req.session.userId;
     const data = req.body;
     database
       .addMessages(userId, data)
