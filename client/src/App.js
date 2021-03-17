@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import './App.scss';
 import Navigation from './components/Navigation';
@@ -17,7 +17,7 @@ function App() {
     handle,
   } = useCameraData();
 
-  const { endingCallConfirm, endingCall, receivingCall, answerCall, callCancelled } = useCameraData()
+  const { endingCall, receivingCall } = useCameraData()
   
   
   return (

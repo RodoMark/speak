@@ -9,13 +9,19 @@ const OverlayContext = React.createContext(null)
 
 export const OverlayContextProvider = () => {
   const {
-    cancelCall,
+    endingCallConfirm,
     answerCall,
-    
+    cancelCall,
   } = useCameraData()
 
   const overlayData = {
-
+    onConfirm: answerCall,
+    onReject: cancelCall,
+    onLeave: cancelCall,
+    onCancel: () =>  {
+      setEndingCall(false);
+      setReceivingCall(false);
+    },
   }
  
 
