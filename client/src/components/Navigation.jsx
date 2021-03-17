@@ -7,6 +7,8 @@ import Login from './Login';
 import Room from './Room';
 import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
+
+
 const Navigation = () => {
   return (
     <Router>
@@ -51,9 +53,12 @@ const Navigation = () => {
         </Route>
 
         <Route exact path='/Register' component={Register} />
-        <Route exact path='/Login' component={Login} />
-        <Route path='/Room/:id' component={Room} />
+        <Route exact path='/Login' component={() => <Login>} />
+
+        
+        <Route path='/Room/:id/' component={Room}/>
         <Route path='/Login/:id/' component={AttendeLogIn}/>
+        
         <Route path='/New/' component={CreateRoom}/>
 
       </Switch>

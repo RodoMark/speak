@@ -6,15 +6,17 @@ import Chat from "./Chat.jsx"
 import ExtraCompsBar from "../components/ExtraCompsBar/ExtraCompsBar.jsx"
 
 
-export default function Room(props){
+const  Room = (props) => {
 
 	return (
 		<>
-		<div>Room</div>
-		<Dropdown/>
-		<Chat/>
-		<ExtraCompsBar/>
+			<div>Room</div>
+			<Dropdown/>
+			
+			<ExtraCompsBar/>
 		</>
 		
 	)
 }
+
+export default Room;

@@ -56,7 +56,7 @@ function App() {
         onEnd={callEnded}
         onCancel={callCancelled}
       />
-      <h1>PARLAR</h1>
+      <h1>Parlar</h1>
       <Camera1 
         title='video title' 
         stream={stream}
