@@ -1,23 +1,37 @@
+import { CameraContext } from '../context/CameraContext';
+import { useContext, useRef, useEffect, useState } from 'react';
+
 const Video = (props) => {
+  const myVideo = useRef();
+  const [stream, setStream] = useState();
+  const { callAccepted, callEnded, userVideo } = useContext(CameraContext);
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        setStream(stream);
+        myVideo.current.srcObject = stream;
+      });
+  }, []);
   return (
     <>
       <div className='video-container'>
         <div id='myVideo' className='video'>
-          {props.stream && (
+          {stream && (
             <video
               playsInline
               muted
-              ref={props.myVideo}
+              ref={myVideo}
               autoPlay
               style={{ width: '300px' }}
             />
           )}
         </div>
         <div id='otherVideo' className='video'>
-          {props.callAccepted && !props.callEnded ? (
+          {callAccepted && !callEnded ? (
             <video
               playsInline
-              ref={props.userVideo}
+              ref={userVideo}
               autoPlay
               style={{ width: '300px' }}
             />

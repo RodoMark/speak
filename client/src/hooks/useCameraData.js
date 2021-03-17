@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 
 const socket = io.connect();
 export default function useCameraData() {
+  const io = socket;
   const [me, setMe] = useState('');
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -13,16 +14,18 @@ export default function useCameraData() {
   const [idToCall, setIdToCall] = useState('');
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
-  const myVideo = useRef();
+  // const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const message = useRef();
+  const handle = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        myVideo.current.srcObject = stream;
+        // myVideo.current.srcObject = stream;
       });
 
     socket.on('me', (id) => {
@@ -85,6 +88,9 @@ export default function useCameraData() {
     setCallEnded(true);
     connectionRef.current.destroy();
   };
+  const cancelCall = () => {
+    setCallEnded(true);
+  };
 
   const callCancelled = () => {
     setCallEnded(true);
@@ -92,7 +98,7 @@ export default function useCameraData() {
 
   return {
     stream,
-    myVideo,
+    // myVideo,
     callAccepted,
     callEnded,
     callCancelled,
@@ -106,5 +112,9 @@ export default function useCameraData() {
     callUser,
     receivingCall,
     answerCall,
+    cancelCall,
+    io,
+    message,
+    handle,
   };
 }
