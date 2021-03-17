@@ -6,7 +6,7 @@ import Overlay from './components/Overlays/Overlay';
 import Camera1 from './components/Camera1';
 import Footer from './components/Footer';
 
-import useCameraData from './hooks/useCameraData';
+
 import { OverlayContextProvider } from './hooks/useOverlayContext'
 
 function App() {
@@ -16,23 +16,7 @@ function App() {
  
   
 
-  const {
-    stream,
-    myVideo,
-    callAccepted,
-    callEnded,
-    callCancelled,
-    userVideo,
-    name,
-    me,
-    idToCall,
-    setName,
-    setIdToCall,
-    leaveCall,
-    callUser,
-    receivingCall,
-    answerCall,
-  } = useCameraData();
+  
 
   
   return (

@@ -1,3 +1,7 @@
+import React, { useState } from 'react'
+
+import useCameraData from '../hooks/useCameraData';
+
 const overlayModes = {
   HIDDEN: "HIDDEN",
   CALLING: "CALLING",
@@ -11,7 +15,34 @@ const overlayModes = {
 
 
 
-const data = {
+const OverlayContext = React.createContext(null)
+
+export const OverlayContextProvider = ({ children }) => {
+  const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
+
+  const transitionOverlay = (newType) => {
+    setOverlayState(newType)  
+  }
+
+  const {
+    stream,
+    myVideo,
+    callAccepted,
+    callEnded,
+    callCancelled,
+    userVideo,
+    name,
+    me,
+    idToCall,
+    setName,
+    setIdToCall,
+    leaveCall,
+    callUser,
+    receivingCall,
+    answerCall,
+  } = useCameraData();
+
+  const data = {
     overlayState, 
     overlayModes,
     transitionOverlay,
@@ -23,21 +54,13 @@ const data = {
 
 
 
-import React, { useContext } from 'react'
-
-export const OverlayContext = React.createContext(data)
-
-export const OverlayContextProvider = ({ children }) => {
-  const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
-
-  const transitionOverlay = (newType) => {
-    setOverlayState(newType)  
-  }
-
   return (
-    <OverlayContext.Provider>
+    <OverlayContext.Provider value={data}>
       {children}
     </OverlayContext.Provider>
   )
 }
 
+export {
+  OverlayContext
+}
