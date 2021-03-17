@@ -18,15 +18,15 @@ function App() {
     handle,
   } = useCameraData();
 
-  const { receivingCall, answerCall, callCancelled } = useCameraData()
+  const { endingCallConfirm, receivingCall, answerCall, callCancelled } = useCameraData()
   console.log(receivingCall)
-  const [endingCall, setEndingCall] = useState(false)
+  
   
   return (
     <div className='App'>
       <Navigation />
       { receivingCall && <Receiving />}
-      { endingCall && <Confirming />}
+      { endingCallConfirm && <Confirming />}
         <Overlay />
           <h1>PARLAR</h1>
       <Camera1

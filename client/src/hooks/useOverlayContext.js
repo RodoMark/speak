@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
+import useCameraData from './useCameraData'
 
-const overlayModes = {
-  HIDDEN: "HIDDEN",
-  CALLING: "CALLING",
-  RECEIVING: "RECEIVING",
-  CONNECTING: "CONNECTING",
-  ERROR: "ERROR",
-  CONFIRMING: "CONFIRMING",
-}
+
 
 const OverlayContext = React.createContext(null)
 
-export const OverlayContextProvider = ({ children }) => {
-  const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
 
-  const transitionOverlay = (newType) => {
-    setOverlayState(newType)  
+
+export const OverlayContextProvider = () => {
+  const {
+    cancelCall,
+    answerCall,
+    
+  } = useCameraData()
+
+  const overlayData = {
+
   }
+ 
 
   return (
-    <OverlayContext.Provider>
+    <OverlayContext.Provider values={{overlayData}}>
       {children}
     </OverlayContext.Provider>
   )
