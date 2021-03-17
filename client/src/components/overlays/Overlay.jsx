@@ -6,8 +6,6 @@ import Connecting from "./Connecting"
 import Receiving from "./Receiving"
 import Error from "./Error"
 
-
-		
 export const overlayModes = {
 	HIDDEN: "HIDDEN",
 	CALLING: "CALLING",
@@ -16,34 +14,36 @@ export const overlayModes = {
 	ERROR: "ERROR"
 }
 
-function confirm() {
-	transition(CONNECTING)
-	props.bookInterview(props.id, interview)
-		.then(() => transition(HIDDEN))
-		.catch((error) => transition (ERROR, true))
-}
 
-
-const { mode, transition, back } = useVisualMode(
-	props.type ? HIDDEN : ERROR
-);
 
 const Overlay = (props) => {
 	return(
 		<article>
-			{mode === overlayModes.HIDDEN && 
-				<div></div>
+			{props.type === overlayModes.HIDDEN && 
+				null
 			}
 	
-			{mode === overlayModes.CALLING && 
+			{props.type === overlayModes.CALLING && 
 				<Calling 
-					onClose={() => transition(HIDDEN)}
+					onClose={() => {}}
 				/>
 			}
 	
-			{mode === overlayModes.RECEIVING && 
+			{props.type === overlayModes.RECEIVING && 
 				<Receiving 
-					onConfirm={() => transition(CONNECTING)}
+					onConfirm={() => {}}
+				/>
+			}
+
+			{props.type === overlayModes.CONNECTING && 
+				<Connecting 
+					onConfirm={() => {}}
+				/>
+			}
+
+			{props.type === overlayModes.ERROR && 
+				<Error 
+					onConfirm={() => {}}
 				/>
 			}
 		</article>	
