@@ -92,11 +92,16 @@ export default function useCameraData() {
     setCallEnded(true);
   };
 
+  const callCancelled = () => {
+    setCallEnded(true);
+  };
+
   return {
     stream,
     // myVideo,
     callAccepted,
     callEnded,
+    callCancelled,
     userVideo,
     name,
     me,
