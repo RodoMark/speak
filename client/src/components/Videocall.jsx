@@ -4,8 +4,23 @@ import TextField from '@material-ui/core/TextField';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CameraContext } from '../context/CameraContext';
+import { useContext } from 'react';
 
 const Videocall = (props) => {
+  const {
+    name,
+    setName,
+    me,
+    idToCall,
+    setIdToCall,
+    callAccepted,
+    callEnded,
+    leaveCall,
+    callUser,
+    receivingCall,
+    answerCall,
+  } = useContext(CameraContext);
   return (
     <>
       <div className='myId'>
@@ -13,11 +28,11 @@ const Videocall = (props) => {
           id='filled-basic'
           label='Name'
           variant='filled'
-          value={props.name}
-          onChange={(e) => props.setName(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           style={{ marginBottom: '20px' }}
         />
-        <CopyToClipboard text={props.me} style={{ marginBottom: '2rem' }}>
+        <CopyToClipboard text={me} style={{ marginBottom: '2rem' }}>
           <Button
             variant='contained'
             color='primary'
@@ -30,39 +45,34 @@ const Videocall = (props) => {
           id='filled-basic'
           label='ID to call'
           variant='filled'
-          value={props.idToCall}
-          onChange={(e) => props.setIdToCall(e.target.value)}
+          value={idToCall}
+          onChange={(e) => setIdToCall(e.target.value)}
         />
         <div className='call-button'>
-          {props.callAccepted && !props.callEnded ? (
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={props.leaveCall}
-            >
+          {callAccepted && !callEnded ? (
+            <Button variant='contained' color='secondary' onClick={leaveCall}>
               End Call
             </Button>
           ) : (
             <IconButton
               color='primary'
               aria-label='call'
-              onClick={() => props.callUser(props.idToCall)}
+              onClick={() => callUser(props.idToCall)}
             >
               <PhoneIcon fontSize='large' />
             </IconButton>
           )}
-          {props.idToCall}
+          {idToCall}
         </div>
       </div>
       <div>
-        {props.receivingCall && !props.callAccepted ? (
+        {receivingCall && !callAccepted ? (
           <div className='caller'>
-            <h1>{props.name} is calling...</h1>
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={props.answerCall}
-            >
+            <h1>{name} is calling...</h1>
+            <Button variant='contained' color='primary' onClick={answerCall}>
+              Answer
+            </Button>
+            <Button variant='contained' color='secondary' onClick={answerCall}>
               Answer
             </Button>
           </div>

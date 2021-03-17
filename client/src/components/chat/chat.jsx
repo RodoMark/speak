@@ -1,15 +1,11 @@
-import ChatInput from "components/Chat/ChatInput.jsx"
+import ChatInput from './ChatInput';
+import Message from './Message';
 
-export default Chat(props){
-
-	return	(
-
-		<ChatInput/>
-		
-		<div>Chat Display</div>
-		<p>flow of messages</p>
-
-		<Message></Message>
-	)
-	
+export default function Chat(props) {
+  return (
+    <>
+      <Message />
+      <ChatInput />
+    </>
+  );
 }
