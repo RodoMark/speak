@@ -1,14 +1,14 @@
 // import Confirmation from "components/overlays/confirmation.jsx";
 // import Await from "components/overlays/await.jsx";
 import Button from "../buttons/Button"
-import Calling from "../Calling"
-import Connecting from "../Connecting"
-import Receiving from "../Receiving"
-import Error from "../Error"
+import Calling from "./Calling"
+import Connecting from "./Connecting"
+import Receiving from "./Receiving"
+import Error from "./Error"
 
-import { useVisualMode } from "hooks/useVisualMode"
+
 		
-const modes = {
+export const overlayModes = {
 	HIDDEN: "HIDDEN",
 	CALLING: "CALLING",
 	RECEIVING: "RECEIVING",
@@ -29,26 +29,28 @@ const { mode, transition, back } = useVisualMode(
 );
 
 const Overlay = (props) => {
-	{mode === modes.HIDDEN && 
-		<div></div>
-	}
-
-	{mode === modes.CALLING && 
-		<Calling 
-			onClose={() => transition(HIDDEN)}
-		/>
-	}
-
-	{mode === modes.RECEIVING && 
-		<Receiving 
-			onConfirm={() => transition(CONNECTING)}
-		/>
-	}
-
-	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	const Display = types[props.type] || Error
-	return <Display />
+	return(
+		<article>
+			{mode === overlayModes.HIDDEN && 
+				<div></div>
+			}
+	
+			{mode === overlayModes.CALLING && 
+				<Calling 
+					onClose={() => transition(HIDDEN)}
+				/>
+			}
+	
+			{mode === overlayModes.RECEIVING && 
+				<Receiving 
+					onConfirm={() => transition(CONNECTING)}
+				/>
+			}
+		</article>	
+	)
 }
 
 
 export default Overlay;
+
+
