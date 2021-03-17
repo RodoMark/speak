@@ -9,26 +9,8 @@ const Camera1 = (props) => {
       <h1 style={{ textAlign: 'center', color: '#fff' }}>{props.title}</h1>
       <div className='container'>
         <CameraContextProvider>
-          <Video
-          // myVideo={props.myVideo}
-          // stream={props.stream}
-          // callAccepted={props.callAccepted}
-          // callEnded={props.callEnded}
-          // userVideo={props.userVideo}
-          />
-          <Videocall
-          // name={props.name}
-          // setName={props.setName}
-          // me={props.me}
-          // idToCall={props.idToCall}
-          // setIdToCall={props.setIdToCall}
-          // callAccepted={props.callAccepted}
-          // callEnded={props.callEnded}
-          // leaveCall={props.leaveCall}
-          // callUser={props.callUser}
-          // receivingCall={props.receivingCall}
-          // answerCall={props.answerCall}
-          />
+          <Video />
+          <Videocall />
         </CameraContextProvider>
       </div>
     </>
