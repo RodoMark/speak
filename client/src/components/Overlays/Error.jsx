@@ -1,4 +1,4 @@
-import React from 'react'
+import Overlay from '../Overlays/Overlay'
 
 export default function Receiving(props) {
   return (

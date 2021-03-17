@@ -1,6 +1,5 @@
-import React from 'react'
-
 import Button from '../buttons/Button'
+import Overlay from '../Overlays/Overlay'
 
 export default function Receiving(props) {
   return (

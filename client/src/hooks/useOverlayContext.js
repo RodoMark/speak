@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
 
-
-
-console.log(useCameraData)
-
 const overlayModes = {
   HIDDEN: "HIDDEN",
   CALLING: "CALLING",
@@ -22,22 +18,8 @@ export const OverlayContextProvider = ({ children }) => {
     setOverlayState(newType)  
   }
 
-  
-
-  const layout = {
-    overlayState, 
-    overlayModes,
-    transitionOverlay,
-    receivingCall,
-    callAccepted,
-    callEnded,
-    callCancelled
-  }
-
-  const data = { cam, layout }
-
   return (
-    <OverlayContext.Provider value={data}>
+    <OverlayContext.Provider>
       {children}
     </OverlayContext.Provider>
   )

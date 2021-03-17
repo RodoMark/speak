@@ -60,6 +60,7 @@ export default function useCameraData() {
     socket.on('callAccepted', (signal) => {
       setCallAccepted(true);
       peer.signal(signal);
+      setReceivingCall(false);
     });
 
     connectionRef.current = peer;
@@ -90,6 +91,7 @@ export default function useCameraData() {
 
   const callCancelled = () => {
     setCallEnded(true);
+    setReceivingCall(false);
   };
 
   return {
