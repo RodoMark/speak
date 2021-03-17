@@ -14,9 +14,7 @@ function App() {
 
 
  
-  const transitionOverlay = (newType) => {
-    setOverlayState(newType)  
-  }
+  
 
   const {
     stream,
@@ -41,9 +39,7 @@ function App() {
     <div className='App'>
       <Navigation />
       <OverlayContextProvider 
-        value={ 
-          
-        }
+        value={data}
       >
         <Overlay 
           mode={overlayState} 
