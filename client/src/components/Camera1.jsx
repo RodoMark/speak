@@ -1,7 +1,6 @@
 // video component handles the camera streams, while videocall hanles calls
 import Video from './Video';
 import Videocall from './Videocall';
-import userCameraData from '../hooks/useCameraData';
 const Camera1 = (props) => {
   const {
     stream,
@@ -18,7 +17,8 @@ const Camera1 = (props) => {
     callUser,
     receivingCall,
     answerCall,
-  } = userCameraData();
+  } = props
+
   return (
     <>
       <h1 style={{ textAlign: 'center', color: '#fff' }}>{props.title}</h1>
