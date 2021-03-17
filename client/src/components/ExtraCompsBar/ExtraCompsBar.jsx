@@ -1,6 +1,6 @@
 
-import CopyPaster from "components/buttons/CopyPaster.jsx";
-import Button from "components/buttons/Button.jsx";
+import CopyPaster from "../../components/buttons/CopyPaster.jsx";
+import Button from "../../components/buttons/Button.jsx";
 
 const Overlay = () => {
 
@@ -9,11 +9,11 @@ const Overlay = () => {
 
 
   return (
-
+  	<>
   	<CopyPaster/>
   	
-  	<button>LeaveRoom/closeRoom</button>>;
-
+  	<button>LeaveRoom/closeRoom</button>
+  	</>
   )
 
 };
