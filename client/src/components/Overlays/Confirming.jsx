@@ -1,12 +1,12 @@
-import React from 'react'
-
 import Button from '../buttons/Button'
+import Overlay from '../Overlays/Overlay'
 
 export default function Receiving(props) {
   return (
-    <div className="overlay">
-			
-			<h2>Are you sure?</h2>
-		</div>
+    <Overlay className="overlay">
+			<h2>Are you sure?</h2><br />
+      <Button call confirm></Button>
+			<Button call reject></Button>
+		</Overlay>
   )
 }

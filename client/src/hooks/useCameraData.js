@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
+
+
 
 const socket = io.connect();
 export default function useCameraData() {
@@ -9,9 +11,9 @@ export default function useCameraData() {
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
   const [caller, setCaller] = useState('');
+  const [idToCall, setIdToCall] = useState('');
   const [callerSignal, setCallerSignal] = useState();
   const [callAccepted, setCallAccepted] = useState(false);
-  const [idToCall, setIdToCall] = useState('');
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
   // const myVideo = useRef();
@@ -61,6 +63,7 @@ export default function useCameraData() {
     socket.on('callAccepted', (signal) => {
       setCallAccepted(true);
       peer.signal(signal);
+      setReceivingCall(false);
     });
 
     connectionRef.current = peer;
@@ -94,6 +97,7 @@ export default function useCameraData() {
 
   const callCancelled = () => {
     setCallEnded(true);
+    setReceivingCall(false);
   };
 
   return {
