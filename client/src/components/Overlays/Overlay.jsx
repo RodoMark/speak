@@ -3,6 +3,7 @@
 import Calling from "./Calling"
 import Connecting from "./Connecting"
 import Receiving from "./Receiving"
+import Confirming from "./Confirming"
 import Error from "./Error"
 
 const Overlay = (props) => {
@@ -34,9 +35,13 @@ const Overlay = (props) => {
 				/>
 			}
 
+			{mode === overlayModes.CONFIRMING && 
+				<Confirming 
+				/>
+			}
+
 			{mode === overlayModes.ERROR && 
 				<Error 
-					onClose={transitionOverlay(overlayModes.HIDDEN)}
 				/>
 			}
 		</article>	

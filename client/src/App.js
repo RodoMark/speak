@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 import './App.scss';
 import Navigation from './components/Navigation';
@@ -7,6 +7,7 @@ import Camera1 from './components/Camera1';
 import Footer from './components/Footer';
 
 import useCameraData from './hooks/useCameraData';
+import { OverlayContextProvider } from './hooks/useOverlayContext'
 
 function App() {
   const overlayModes = {
@@ -19,6 +20,7 @@ function App() {
   }
 
   const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
+
 
  
   const transitionOverlay = (newType) => {
