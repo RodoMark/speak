@@ -1,22 +1,12 @@
 // import Confirmation from "components/overlays/confirmation.jsx";
 // import Await from "components/overlays/await.jsx";
-import Button from "../buttons/Button"
 import Calling from "./Calling"
 import Connecting from "./Connecting"
 import Receiving from "./Receiving"
 import Error from "./Error"
 
-export const overlayModes = {
-	HIDDEN: "HIDDEN",
-	CALLING: "CALLING",
-	RECEIVING: "RECEIVING",
-	CONNECTING: "CONNECTING",
-	ERROR: "ERROR",
-	CONNECTING: "CONFIRMING",
-}
-
 const Overlay = (props) => {
-	const { transitionOverlay, mode, onReceive, onConfirm, onEnd, onCancel } = props
+	const { mode, transitionOverlay, onReceive, onConfirm, onEnd, onCancel, overlayModes } = props
 
 	return(
 		<article>
@@ -26,14 +16,16 @@ const Overlay = (props) => {
 	
 			{mode === overlayModes.CALLING && 
 				<Calling
+					overlayModes={overlayModes}
+					transitionOverlay={transitionOverlay}
 					onCancel={onCancel}
 				/>
 			}
 	
 			{mode === overlayModes.RECEIVING && 
 				<Receiving 
-					onConfirm={transitionOverlay(overlayModes.CONNECTING)}
-					onCancel={transitionOverlay(overlayModes.HIDDEN)}
+					onConfirm={onConfirm}
+					onCancel={onCancel}
 				/>
 			}
 

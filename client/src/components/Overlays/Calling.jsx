@@ -5,7 +5,10 @@ export default function Calling(props) {
     <div className="overlay">
       <Button 
         call 
-        onClick={props.onCancel}
+        onClick={() => {
+          props.onCancel();
+          props.transitionOverlay(props.overlayModes.HIDDEN);
+        }}
       />
     <br />
     <h2>Calling attendee...</h2>
