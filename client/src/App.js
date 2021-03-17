@@ -10,16 +10,7 @@ import useCameraData from './hooks/useCameraData';
 import { OverlayContextProvider } from './hooks/useOverlayContext'
 
 function App() {
-  const overlayModes = {
-    HIDDEN: "HIDDEN",
-    CALLING: "CALLING",
-    RECEIVING: "RECEIVING",
-    CONNECTING: "CONNECTING",
-    ERROR: "ERROR",
-    CONFIRMING: "CONFIRMING",
-  }
-
-  const [overlayState, setOverlayState] = useState(overlayModes.HIDDEN)
+  
 
 
  
@@ -49,16 +40,11 @@ function App() {
   return (
     <div className='App'>
       <Navigation />
-      <OverlayContextProvider value = { type: {
-        overlayState, 
-        overlayModes,
-        transitionOverlay,
-        receivingCall,
-        callAccepted,
-        callEnded,
-        callCancelled
-      }
-      }>
+      <OverlayContextProvider 
+        value={ 
+          
+        }
+      >
         <Overlay 
           mode={overlayState} 
           overlayModes={overlayModes}
