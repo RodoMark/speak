@@ -86,11 +86,16 @@ export default function useCameraData() {
     connectionRef.current.destroy();
   };
 
+  const callCancelled = () => {
+    setCallEnded(true);
+  };
+
   return {
     stream,
     myVideo,
     callAccepted,
     callEnded,
+    callCancelled,
     userVideo,
     name,
     me,

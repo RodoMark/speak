@@ -1,14 +1,14 @@
-import React from 'react'
-
 import Button from '../buttons/Button'
 
 export default function Calling(props) {
   return (
     <div className="overlay">
-    <form>
-      <Button call></Button>
-    </form><br />
-    <h2>Calling...</h2>
+      <Button 
+        call 
+        onClick={props.onCancel}
+      />
+    <br />
+    <h2>Calling attendee...</h2>
   </div>
   )
 }

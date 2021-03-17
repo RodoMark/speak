@@ -16,33 +16,33 @@ export const overlayModes = {
 }
 
 const Overlay = (props) => {
-	const { transitionOverlay, type, onReceive, onConfirm, onEnd } = props
+	const { transitionOverlay, mode, onReceive, onConfirm, onEnd, onCancel } = props
 
 	return(
 		<article>
-			{type === overlayModes.HIDDEN && 
+			{mode === overlayModes.HIDDEN && 
 				null
 			}
 	
-			{type === overlayModes.CALLING && 
+			{mode === overlayModes.CALLING && 
 				<Calling
-					onCancel={transitionOverlay(overlayModes.HIDDEN)}
+					onCancel={onCancel}
 				/>
 			}
 	
-			{type === overlayModes.RECEIVING && 
+			{mode === overlayModes.RECEIVING && 
 				<Receiving 
 					onConfirm={transitionOverlay(overlayModes.CONNECTING)}
-					onReject={transitionOverlay(overlayModes.HIDDEN)}
+					onCancel={transitionOverlay(overlayModes.HIDDEN)}
 				/>
 			}
 
-			{type === overlayModes.CONNECTING && 
+			{mode === overlayModes.CONNECTING && 
 				<Connecting 
 				/>
 			}
 
-			{type === overlayModes.ERROR && 
+			{mode === overlayModes.ERROR && 
 				<Error 
 					onClose={transitionOverlay(overlayModes.HIDDEN)}
 				/>

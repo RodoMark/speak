@@ -20,6 +20,7 @@ function App() {
     myVideo,
     callAccepted,
     callEnded,
+    callCancelled,
     userVideo,
     name,
     me,
@@ -37,11 +38,12 @@ function App() {
     <div className='App'>
       <Navigation />
       <Overlay 
-        type={overlayState} 
+        mode={overlayState} 
         transitionOverlay={transitionOverlay}
         onReceive={receivingCall}
         onConfirm={callAccepted}
         onEnd={callEnded}
+        onCancel={callCancelled}
       />
       <h1>PARLAR</h1>
       <Camera1 
