@@ -20,12 +20,11 @@ export const OverlayContextProvider = ({ children }) => {
     setOverlayState(newType)  
   }
 
-  const {
+  const data = {
     stream,
     myVideo,
     callAccepted,
     callEnded,
-    callCancelled,
     userVideo,
     name,
     me,
@@ -36,9 +35,9 @@ export const OverlayContextProvider = ({ children }) => {
     callUser,
     receivingCall,
     answerCall,
-  } = useCameraData();
-
-  const data = {
+    io,
+    message,
+    handle,
     overlayState, 
     overlayModes,
     transitionOverlay,
@@ -46,8 +45,7 @@ export const OverlayContextProvider = ({ children }) => {
     callAccepted,
     callEnded,
     callCancelled
-  }
-
+  } = userCameraData();
 
 
   return (

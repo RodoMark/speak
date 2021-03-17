@@ -1,13 +1,20 @@
 import Button from '../buttons/Button'
 
+
 export default function Calling(props) {
+
+  const overlayData = useContext(CameraContext)
+  
+  const cameraData = useContext(camData)
+  console.log("CAM DATA", cameraData)
+
   return (
     <div className="overlay">
       <Button 
         call 
         onClick={() => {
-          props.onCancel();
-          props.transitionOverlay(props.overlayModes.HIDDEN);
+          cameraData.onCancel();
+          cameraData.transitionOverlay(props.overlayModes.HIDDEN);
         }}
       />
     <br />

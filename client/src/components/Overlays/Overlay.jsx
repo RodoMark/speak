@@ -10,15 +10,7 @@ import Confirming from "./Confirming"
 import Error from "./Error"
 
 const Overlay = (props) => {
-	const { 
-		mode, 
-		transitionOverlay, 
-		onReceive, 
-		onConfirm, 
-		onEnd, 
-		onCancel, 
-		overlayModes 
-	} = useContext(OverlayContext)
+	
 
 	return(
 		<article>

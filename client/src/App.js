@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 
 import './App.scss';
 import Navigation from './components/Navigation';
@@ -9,24 +9,16 @@ import Footer from './components/Footer';
 
 import { OverlayContextProvider } from './hooks/useOverlayContext'
 
+
 function App() {
-  
-
-
- 
-  
-
-  
-
   
   return (
     <div className='App'>
       <Navigation />
-      <OverlayContextProvider >
-      <Overlay />
-          <h1>PARLAR</h1>
-      <Camera1 />
+      <OverlayContextProvider>
+        <Overlay />
       </OverlayContextProvider>
+          <h1>PARLAR</h1>
       <Footer />
     </div>
   );
