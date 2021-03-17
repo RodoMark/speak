@@ -3,7 +3,6 @@ import React from 'react'
 import './App.scss';
 import Navigation from './components/Navigation';
 import Overlay from './components/Overlays/Overlay';
-import Camera1 from './components/Camera1';
 import Footer from './components/Footer';
 
 

@@ -9,10 +9,10 @@ import ExtraCompsBar from "components/ExtraCompsBar/ExtraCompsBar.jsx"
 export default function Room(props){
 
 	return (
-		<Stage/>
-		<OverlayIndex/>
-		<Dropdown/>
-		<Chat/>
-		<ExtraCompsBar/>
+		<>
+			<Dropdown/>
+			<Chat/>
+			<ExtraCompsBar/>
+		</>
 	)
 }
