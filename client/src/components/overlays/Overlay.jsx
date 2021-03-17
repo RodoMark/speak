@@ -43,7 +43,7 @@ const Overlay = (props) => {
 
 			{props.type === overlayModes.ERROR && 
 				<Error 
-					onConfirm={() => {}}
+					onClose={() => {}}
 				/>
 			}
 		</article>	
