@@ -12,7 +12,7 @@ import useCameraData from "./hooks/useCameraData"
 // import { OverlayContextProvider } from './hooks/useOverlayContext'
 
 function App() {
-  const { receivingCall } = useCameraData()
+  const { receivingCall, answerCall, callCancelled } = useCameraData()
   const [endingCall, setEndingCall] = useState(false)
   
   return (
