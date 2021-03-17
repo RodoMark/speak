@@ -9,13 +9,14 @@ const CreateRoom = (props) => {
 
   const [roomInfo, setRoomInfo] = useState({title: ""})
 
+  // const roomInfo =useRef("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    Axios.post("/rooms/new", roomInfo)
+    Axios.post("api/rooms", roomInfo)
       .then((res) => {
         console.log(res);
-        // props.setAuth(true);
-        // history.push('/');
+        
       })
       .catch((err) => console.log(err));
 
@@ -30,7 +31,7 @@ const CreateRoom = (props) => {
       </Form.Group>
 
       <Button variant='primary' type='submit' call confirm >
-        Create
+        +
       </Button>
     </Form>
   );
