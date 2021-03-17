@@ -11,10 +11,6 @@ const overlayModes = {
   CONFIRMING: "CONFIRMING",
 }
 
-
-
-
-
 const OverlayContext = React.createContext(null)
 
 export const OverlayContextProvider = ({ children }) => {
