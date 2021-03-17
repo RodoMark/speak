@@ -1,28 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
+
+
 const socket = io.connect();
 export default function useCameraData() {
+  const io = socket;
   const [me, setMe] = useState('');
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
   const [caller, setCaller] = useState('');
+  const [idToCall, setIdToCall] = useState('');
   const [callerSignal, setCallerSignal] = useState();
   const [callAccepted, setCallAccepted] = useState(false);
-  const [idToCall, setIdToCall] = useState('');
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
-  const myVideo = useRef();
+  // const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const message = useRef();
+  const handle = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        myVideo.current.srcObject = stream;
+        // myVideo.current.srcObject = stream;
       });
 
     socket.on('me', (id) => {
@@ -58,6 +63,7 @@ export default function useCameraData() {
     socket.on('callAccepted', (signal) => {
       setCallAccepted(true);
       peer.signal(signal);
+      setReceivingCall(false);
     });
 
     connectionRef.current = peer;
@@ -85,14 +91,18 @@ export default function useCameraData() {
     setCallEnded(true);
     connectionRef.current.destroy();
   };
+  const cancelCall = () => {
+    setCallEnded(true);
+  };
 
   const callCancelled = () => {
     setCallEnded(true);
+    setReceivingCall(false);
   };
 
   return {
     stream,
-    myVideo,
+    // myVideo,
     callAccepted,
     callEnded,
     callCancelled,
@@ -106,5 +116,9 @@ export default function useCameraData() {
     callUser,
     receivingCall,
     answerCall,
+    cancelCall,
+    io,
+    message,
+    handle,
   };
 }

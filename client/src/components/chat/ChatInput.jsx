@@ -1,43 +1,39 @@
-import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useRef } from 'react'; 
-import Message from "./Message.jsx"
+import axios from 'axios';
 
-
-export default function ChatInput(props){
-
-  const firstName = useRef();
-  const lastName = useRef();
-  const email = useRef();
-  const password = useRef();
-
+export default function ChatInput(props) {
+  const { message, handle, io } = props;
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      firstName: firstName.current.value,
-      lastName: lastName.current.value,
-      email: email.current.value,
-      password: password.current.value,
+      message: message.current.value,
+      handle: handle.current.value,
     };
-
-    // axios
-    //   .post('/teachers/', data)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    io.emit('chat', data);
+    axios
+      .post('/api/message', data)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
-	
-	return (
-		<Form onSubmit={handleSubmit}>
+  return (
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId='formBasicEmail'>
         <Form.Label>MessageContent</Form.Label>
-        <Form.Control type='text' placeholder='Aa' />
+        <Form.Control
+          ref={message}
+          type='text'
+          placeholder='Enter your message'
+        />
+        <Form.Control
+          ref={handle}
+          type='text'
+          placeholder='Enter your message'
+        />
       </Form.Group>
-
       <Button variant='primary' type='submit'>
         Send
       </Button>
     </Form>
-	)
-
+  );
 }

@@ -1,10 +1,9 @@
-
-
-import React from 'react'
-
+import Overlay from '../Overlays/Overlay'
 
 export default function Receiving(props) {
   return (
-    <div className="overlay"><h2>ERROR</h2></div>
+    <Overlay className="overlay">
+      <h2>ERROR</h2>
+    </Overlay>
   )
 }
