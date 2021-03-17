@@ -1,15 +1,21 @@
-import ChatInput from "components/Chat/ChatInput.jsx"
+import React from "react"; 
 
-export default Chat(props){
+import { BrowserRouter as router, Route } from 'react-router-dom';
+
+import ChatInput from "./ChatInput.jsx"
+
+
+
+export default function Chat(props){
 
 	return	(
 
-		<ChatInput/>
-		
-		<div>Chat Display</div>
-		<p>flow of messages</p>
-
-		<Message></Message>
+		<div>
+			<div>Chat Display</div>
+			<p>flow of messages</p>
+			<ChatInput/>		
+			
+		</div>
 	)
 	
 }
