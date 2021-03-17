@@ -11,17 +11,24 @@ export const OverlayContextProvider = () => {
   const {
     endingCallConfirm,
     answerCall,
+    rejectCall,
     cancelCall,
+    leaveCall,
   } = useCameraData()
 
   const overlayData = {
-    onConfirm: answerCall,
-    onReject: cancelCall,
-    onLeave: cancelCall,
-    onCancel: () =>  {
+    onAnswer: answerCall,
+    onReject: rejectCall,
+    //destroy the room
+    onCloseLobby: leaveCall,
+    //leave the call
+    onLeaveLobby: cancelCall,
+    //cancel request to leave/destroy room
+    onCancel: () => {
       setEndingCall(false);
       setReceivingCall(false);
     },
+    onConfirm: endingCallConfirm,
   }
  
 

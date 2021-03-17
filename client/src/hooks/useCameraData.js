@@ -102,6 +102,10 @@ export default function useCameraData() {
     setEndingCall(false);
   };
 
+  const rejectCall = () => {
+    setReceivingCall(false);
+  };
+
   const endingCallConfirm = () => {
     setEndingCall(true)
   }
@@ -122,6 +126,7 @@ export default function useCameraData() {
     receivingCall,
     answerCall,
     cancelCall,
+    rejectCall,
     io,
     message,
     handle,
