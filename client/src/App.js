@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import Camera1 from './components/Camera1';
 import Receiving from './components/Overlays/Receiving'
 import Confirming from './components/Overlays/Confirming'
-import Chat from './components/chat/Chat';
+import Chat from './components/Chat/Chat';
 
 import useCameraData from "./hooks/useCameraData"
 
