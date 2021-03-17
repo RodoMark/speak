@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-const OverlayContext = React.createContext(null)
+export const OverlayContext = React.createContext(null)
 
 export const OverlayContextProvider = ({ children }) => {
   return (
@@ -9,3 +9,4 @@ export const OverlayContextProvider = ({ children }) => {
     </OverlayContext.Provider>
   )
 }
+
