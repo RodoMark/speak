@@ -7,7 +7,7 @@ import Axios from "axios";
 const CreateRoom = (props) => {
 
 
-  const [roomInfo, setRoomInfo] = useState({title: "", description:""})
+  const [roomInfo, setRoomInfo] = useState({title: ""})
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,10 +27,6 @@ const CreateRoom = (props) => {
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control type='text' placeholder='Room Title' value={roomInfo.title} onChange = {(e) => setRoomInfo({...roomInfo, title:e.target.value})}/>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <Form.Control type='text' placeholder='Description' value={roomInfo.description} onChange = {(e) => setRoomInfo({...roomInfo, description:e.target.value})}/>
       </Form.Group>
 
       <Button variant='primary' type='submit' call confirm >
