@@ -38,7 +38,11 @@ function App() {
       <Navigation />
       <Overlay 
         type={overlayState} 
-        transitionOverlay={transitionOverlay}/>
+        transitionOverlay={transitionOverlay}
+        onReceive={receivingCall}
+        onConfirm={callAccepted}
+        onEnd={callEnded}
+      />
       <h1>PARLAR</h1>
       <Camera1 
         title='video title' 

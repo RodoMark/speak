@@ -6,8 +6,6 @@ import Connecting from "./Connecting"
 import Receiving from "./Receiving"
 import Error from "./Error"
 
-import useCameraData from '../../hooks/useCameraData'
-
 export const overlayModes = {
 	HIDDEN: "HIDDEN",
 	CALLING: "CALLING",
@@ -18,8 +16,7 @@ export const overlayModes = {
 }
 
 const Overlay = (props) => {
-	const { transitionOverlay, type } = props
-	const { receivingCall, myVideo } = useCameraData()
+	const { transitionOverlay, type, onReceive, onConfirm, onEnd } = props
 
 	return(
 		<article>
