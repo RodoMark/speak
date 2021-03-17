@@ -7,6 +7,10 @@ import Register from './Register';
 import Login from './Login';
 import Logout from './Logout';
 import Auth from './Auth';
+import Room from './Room';
+import CreateRoom from './CreateRoom';
+import AttendeLogIn from './AttendeLogIn';
+
 const Navigation = () => {
   const [auth, setAuth] = useState(true);
   return (
@@ -50,6 +54,10 @@ const Navigation = () => {
         <Route exact path='/Logout' component={Logout}>
           <Logout setAuth={setAuth} />
         </Route>
+        <Route path='/Room/:id/' component={Room}/>
+        <Route path='/Login/:id/' component={AttendeLogIn}/>
+        <Route path='/New/' component={CreateRoom}/>
+
       </Switch>
     </Router>
   );
