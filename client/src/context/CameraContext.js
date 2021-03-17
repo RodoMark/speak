@@ -44,7 +44,7 @@ const CameraContextProvider = (props) => {
     handle,
   };
   return (
-    <CameraContext.Provider value={{ data }}>
+    <CameraContext.Provider value={data}>
       {props.children}
     </CameraContext.Provider>
   );

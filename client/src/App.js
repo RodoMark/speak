@@ -2,7 +2,7 @@ import './App.scss';
 import Navigation from './components/Navigation';
 import Camera1 from './components/Camera1';
 import Footer from './components/Footer';
-import userCameraData from './hooks/useCameraData';
+import useCameraData from './hooks/useCameraData';
 import Chat from './components/chat/Chat';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
     io,
     message,
     handle,
-  } = userCameraData();
+  } = useCameraData();
 
   return (
     <div className='App'>

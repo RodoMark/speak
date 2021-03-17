@@ -53,7 +53,7 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   const request = socket.request;
-  console.log('new client connected', socket.id, request.session);
+  console.log('new client connected', socket.id);
   socket.emit('me', socket.id);
 
   socket.on('disconnect', () => {

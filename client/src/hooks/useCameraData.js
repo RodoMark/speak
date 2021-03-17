@@ -34,6 +34,7 @@ export default function useCameraData() {
     });
 
     socket.on('callUser', (data) => {
+      console.log(data);
       setReceivingCall(true);
       setCaller(data.from);
       setName(data.name);
@@ -73,10 +74,13 @@ export default function useCameraData() {
       trickle: false,
       stream: stream,
     });
+    console.log(peer);
     peer.on('signal', (data) => {
+      console.log(`inside peer.on signal`);
       socket.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
+      console.log(stream);
       userVideo.current.srcObject = stream;
     });
 
