@@ -3,13 +3,12 @@ import Button from '../buttons/Button'
 
 export default function Calling(props) {
 
-  const overlayData = useContext(CameraContext)
+  const overlayData = useContext(OverlayContext)
   
   const cameraData = useContext(camData)
-  console.log("CAM DATA", cameraData)
 
   return (
-    <div className="overlay">
+    <Overlay>
       <Button 
         call 
         onClick={() => {
@@ -19,6 +18,6 @@ export default function Calling(props) {
       />
     <br />
     <h2>Calling attendee...</h2>
-  </div>
+  </Overlay>
   )
 }

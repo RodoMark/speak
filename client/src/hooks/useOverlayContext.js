@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
-import useCameraData from '../hooks/useCameraData';
+
+
+console.log(useCameraData)
 
 const overlayModes = {
   HIDDEN: "HIDDEN",
@@ -20,25 +22,7 @@ export const OverlayContextProvider = ({ children }) => {
     setOverlayState(newType)  
   }
 
-  const cam = {
-    stream,
-    myVideo,
-    callAccepted,
-    callEnded,
-    userVideo,
-    name,
-    me,
-    idToCall,
-    setName,
-    setIdToCall,
-    leaveCall,
-    callUser,
-    receivingCall,
-    answerCall,
-    io,
-    message,
-    handle,
-  } = userCameraData();
+  
 
   const layout = {
     overlayState, 

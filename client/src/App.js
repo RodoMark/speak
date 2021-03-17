@@ -5,9 +5,7 @@ import Navigation from './components/Navigation';
 import Overlay from './components/Overlays/Overlay';
 import Footer from './components/Footer';
 
-
 import { OverlayContextProvider } from './hooks/useOverlayContext'
-
 
 function App() {
   

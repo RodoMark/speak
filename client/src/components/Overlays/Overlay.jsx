@@ -13,38 +13,9 @@ const Overlay = (props) => {
 	
 
 	return(
-		<article>
-			{mode === overlayModes.HIDDEN && 
-				null
-			}
-	
-			{mode === overlayModes.CALLING && 
-				<Calling
-				/>
-			}
-	
-			{mode === overlayModes.RECEIVING && 
-				<Receiving 
-					onConfirm={onConfirm}
-					onCancel={onCancel}
-				/>
-			}
-
-			{mode === overlayModes.CONNECTING && 
-				<Connecting 
-				/>
-			}
-
-			{mode === overlayModes.CONFIRMING && 
-				<Confirming 
-				/>
-			}
-
-			{mode === overlayModes.ERROR && 
-				<Error 
-				/>
-			}
-		</article>	
+		<article className="overlay">
+			{props.children}
+		</article>
 	)
 }
 
