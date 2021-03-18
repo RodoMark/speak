@@ -53,7 +53,7 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   const request = socket.request;
-  console.log('new client connected', socket.id, request.session);
+  console.log('new client connected', socket.id);
   socket.emit('me', socket.id);
 
   socket.on('disconnect', () => {
@@ -75,11 +75,7 @@ io.on('connection', (socket) => {
   socket.on('register', (data) => {
     console.log('register button heared from the back end', data);
   });
-
-  
 });
-
-
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'front-end/build')));

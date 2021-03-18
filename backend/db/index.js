@@ -91,6 +91,7 @@ const getUserWithEmail = function (email) {
 };
 exports.getUserWithEmail = getUserWithEmail;
 
+// Get all rooms made by User[:id]
 const getRooms = function (id) {
   if (!id) {
     throw new Error('User not logged in!');
