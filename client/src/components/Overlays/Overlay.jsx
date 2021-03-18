@@ -6,20 +6,18 @@ import Confirming from './Confirming'
 import Receiving from './Receiving'
 
 
-const Overlay = (props) => {
+const Overlay = ({ receivingCall, setReceivingCall, endingCall, setEndingCall }) => {
 
-	const [receivingCall, setReceivingCall] =  useState(false)
-	const [endingCall, setEndingCall] =  useState(false)
-	console.log(receivingCall, endingCall)
+	
 
 	return(
 			<article className="overlay">
-      { receivingCall && 
+      { propreceivingCall && 
 			<Receiving 
-				setReceivingCall={setReceivingCall}/>}
+				propsetReceivingCall={setReceivingCall}/>}
       { endingCall && 
 			<Confirming
-				setEndingCall={setEndingCall}
+				propsetEndingCall={setEndingCall}
 			/>}
 		</article>
 		
