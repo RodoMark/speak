@@ -6,7 +6,6 @@ export const CameraContext = createContext();
 const CameraContextProvider = (props) => {
   const {
     stream,
-    // myVideo,
     callAccepted,
     callEnded,
     userVideo,
@@ -26,7 +25,6 @@ const CameraContextProvider = (props) => {
 
   const data = {
     stream,
-    // myVideo,
     callAccepted,
     callEnded,
     userVideo,

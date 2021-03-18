@@ -16,7 +16,6 @@ export default function useCameraData() {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
-  // const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
   const message = useRef();
@@ -27,7 +26,6 @@ export default function useCameraData() {
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        // myVideo.current.srcObject = stream;
       });
 
     socket.on('me', (id) => {

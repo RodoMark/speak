@@ -15,16 +15,10 @@ module.exports = function (router, database) {
   });
   // POST rooms route to add room to the teacher
   router.post('/rooms', function (req, res) {
-<<<<<<< HEAD
-    // console.log("Req.Session ====>" ,req.session)
     const userId = req.session.userId;
-
-=======
-    const userId = req.session.userId;
->>>>>>> f793f8a (fix calling)
     const user = req.body;
 
-    console.log("User from API/Rooms ===> ", user)
+    console.log('User from API/Rooms ===> ', user);
     database
       .addRooms(userId, user)
       .then((data) => {
