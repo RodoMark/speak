@@ -2,7 +2,7 @@ import React from "react";
 
 import { BrowserRouter as router, Route } from 'react-router-dom';
 
-import ChatInput from "./ChatInput.jsx"
+import ChatInput from "./Chat/ChatInput.jsx"
 
 
 

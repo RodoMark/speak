@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 
 import './App.scss';
 import Navigation from './components/Navigation';
-import Overlay from './components/Overlays/Overlay'
+import Overlay from './components/Overlays/Overlay';
 import Footer from './components/Footer';
-import Camera1 from './components/Camera1';
-import ExtraCompsBar from './components/ExtraCompsBar'
+
 import Receiving from './components/Overlays/Receiving'
 import Confirming from './components/Overlays/Confirming'
+// import Chat from './components/Chat/Chat';
+import Stage from './components/Stage/Stage';
 
 import useCameraData from "./hooks/useCameraData"
-import OverlayContextProvider from './context/useOverlayContext';
 
 function App() {
   const {
@@ -19,24 +19,18 @@ function App() {
     handle,
   } = useCameraData();
 
-  const [receivingCall, setReceivingCall] =  useState(false)
-	const [endingCall, setEndingCall] =  useState(false)
+  const { receivingCall, answerCall, callCancelled } = useCameraData()
+  console.log(receivingCall)
+  const [endingCall, setEndingCall] = useState(false)
   
   return (
     <div className='App'>
       <Navigation />
-      <Overlay 
-        receivingCall={receivingCall}
-        setReceivingCall={setReceivingCall}
-        endingCall={endingCall}
-        setEndingCall={setEndingCall}
-      />
+      { receivingCall && <Receiving />}
+      { endingCall && <Confirming />}
+        <Overlay />
           <h1>PARLAR</h1>
-      <Camera1
-      />
-      <ExtraCompsBar 
-        endingCall={endingCall}
-        setEndingCall={setEndingCall}/>
+        
       <Footer />
     </div>
   );
