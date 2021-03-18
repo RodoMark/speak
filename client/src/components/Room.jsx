@@ -36,7 +36,8 @@ const  Room = (props) => {
 					setEndingCall={setEndingCall}
 				/>}
 			<Dropdown/>
-			<ExtraCompsBar 
+			<ExtraCompsBar
+				
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
 		</>

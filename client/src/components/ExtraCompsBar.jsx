@@ -15,7 +15,7 @@ const location = useLocation()
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 	
   return (
-  	<div>
+  	<div className="extra-comps-bar">
   	<CopyToClipboard 
 			text={window.location.href} 
 			style={{ marginBottom: '2rem' }}
@@ -27,13 +27,10 @@ const location = useLocation()
 		</CopyToClipboard>
   	
   	<Button
-			id="button--leave" 
 			call 
 			reject
 			onClick={()=> {setEndingCall(true)}}
-		>
-
-		</Button>
+		/>
   	</div>
   )
 
