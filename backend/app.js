@@ -55,9 +55,9 @@ io.on('connection', (socket) => {
   const request = socket.request;
   console.log('new client connected', socket.id);
   socket.emit('me', socket.id);
-
-  socket.on('disconnect', () => {
-    socket.broadcast.emit('callEnded');
+  socket.on('chat', (data) => {
+    console.log(data);
+    io.sockets.emit('chat', data);
   });
 
   socket.on('callUser', (data) => {
@@ -67,13 +67,14 @@ io.on('connection', (socket) => {
       name: data.name,
     });
   });
-
   socket.on('answerCall', (data) => {
     io.to(data.to).emit('callAccepted', data.signal);
   });
-
   socket.on('register', (data) => {
     console.log('register button heared from the back end', data);
+  });
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('callEnded');
   });
 });
 

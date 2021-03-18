@@ -1,18 +1,20 @@
 // import all mayor components
-import Stage from "components/Stage/Stage.jsx"
-import OverlayIndex from "components/Overlayx/OverlayIndex.jsx"
-import Dropdown from "components/Dropdown/Dropdown.jsx"
-import Chat from "components/Chat/Chat.jsx"
-import ExtraCompsBar from "components/ExtraCompsBar/ExtraCompsBar.jsx"
-
-
-export default function Room(props){
-
-	return (
-		<Stage/>
-		<OverlayIndex/>
-		<Dropdown/>
-		<Chat/>
-		<ExtraCompsBar/>
-	)
-}
+import Stage from '../components/Stage/Stage.jsx';
+// import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
+import Dropdown from './Dropdown/Dropdown.jsx';
+import ExtraCompsBar from './ExtraCompsBar/ExtraCompsBar';
+import { useContext, useRef, useEffect, useState } from 'react';
+import MessageChat from './Message/MessageChat';
+const Room = (props) => {
+  const [togleCamera, setTogleCamera] = useState(true);
+  return (
+    <>
+      <div>Room</div>
+      <Stage togleCamera={togleCamera} />
+      <Dropdown />
+      <MessageChat />
+      <ExtraCompsBar />
+    </>
+  );
+};
+export default Room;

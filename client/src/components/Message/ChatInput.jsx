@@ -3,18 +3,17 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 export default function ChatInput(props) {
-  const { message, handle, io } = props;
+  const { io, message } = props;
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      message: message.current.value,
-      handle: handle.current.value,
+      msg: message.current.value,
     };
     io.emit('chat', data);
-    axios
-      .post('/api/message', data)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+    // axios
+    //   .post('/api/message', data)
+    //   .then((res) => console.log(res))
+    //   .catch((e) => console.log(e));
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -22,11 +21,6 @@ export default function ChatInput(props) {
         <Form.Label>MessageContent</Form.Label>
         <Form.Control
           ref={message}
-          type='text'
-          placeholder='Enter your message'
-        />
-        <Form.Control
-          ref={handle}
           type='text'
           placeholder='Enter your message'
         />

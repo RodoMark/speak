@@ -1,21 +1,10 @@
-
-import CopyPaster from "components/buttons/CopyPaster.jsx";
-import Button from "components/buttons/Button.jsx";
-
-const Overlay = () => {
-
-	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	
-
-
+import Button from '../../components/Buttons/Button.jsx';
+const ExtraCompsBar = () => {
+  ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
   return (
-
-  	<CopyPaster/>
-  	
-  	<button>LeaveRoom/closeRoom</button>>;
-
-  )
-
+    <>
+      <button>LeaveRoom/closeRoom</button>
+    </>
+  );
 };
-
-export default Overlay;
+export default ExtraCompsBar;
