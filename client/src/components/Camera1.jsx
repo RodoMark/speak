@@ -1,8 +1,6 @@
-// video component handles the camera streams, while videocall hanles calls
 import Video from './Video';
 import Videocall from './Videocall';
 import CameraContextProvider from '../context/CameraContext';
-
 const Camera1 = (props) => {
   return (
     <>

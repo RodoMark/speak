@@ -109,24 +109,28 @@ const getRooms = function (id) {
 exports.getRooms = getRooms;
 
 const addRooms = function (id, data) {
+  console.log("Data from index.addRooms", data)
   if (!id) {
     throw new Error('User not logged in!');
   }
+
+  
+
   const queryValues = [
     id,
-    data.roomName,
-    data.roomDescription,
-    data.startTime,
-    data.link,
+    data.title,
+    data.description,
+    data.link
   ];
-  const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, start_time, link) VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+
+  const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, link) VALUES ($1, $2, $3, $4) RETURNING *;`;
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
+      // console.log(res.rows[0]);
       return res.rows[0];
     })
-    .catch(() => null);
+    .catch((err) => console.log("CATCHED ERR +++>" ,err));
 };
 exports.addRooms = addRooms;
 

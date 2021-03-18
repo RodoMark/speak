@@ -1,4 +1,4 @@
-import RoomListItem from "components/RoomList/RoomListItem.jsx"
+import RoomListItem from "./RoomListItem.jsx"
 
 
 

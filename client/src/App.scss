@@ -1,16 +1,26 @@
+
+
+
 @import "./styles/variables";
 @import "./styles/button";
 @import "./styles/footer";
 @import "./styles/overlay";
 
+/*font-family: 'Comfortaa', cursive;*/
+/*font-family: 'Montserrat Alternates', sans-serif;*/
 
 .App {
   text-align: center;
+  font-family: 'Comfortaa', cursive;
+
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  font-family: 'Comfortaa', cursive;
+
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,6 +42,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.logo{
+  
 }
 
 @keyframes App-logo-spin {

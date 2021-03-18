@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import axios from 'axios';
-
 const AttendeeLogIn = (props) => {
   const roomId = useParams();
   console.log(roomId);
@@ -21,7 +20,6 @@ const AttendeeLogIn = (props) => {
     const params = `${roomId.id}&${userName.current.value}`;
     history.push(`/Room/${params}`);
   };
-
   return (
     <>
       <h1>You have been invited to n_room</h1>
@@ -30,7 +28,6 @@ const AttendeeLogIn = (props) => {
           <Form.Label>NickName</Form.Label>
           <Form.Control ref={userName} type='text' placeholder='Nickname' />
         </Form.Group>
-
         <Button variant='primary' type='submit'>
           Enter
         </Button>
@@ -38,5 +35,4 @@ const AttendeeLogIn = (props) => {
     </>
   );
 };
-
 export default AttendeeLogIn;

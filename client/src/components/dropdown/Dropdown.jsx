@@ -1,7 +1,7 @@
 export default function Dropdown(props) {
   return (
     <div>
-      <ul>listName on props</ul>
+      <p>list of attendants</p>
     </div>
   );
 }
