@@ -6,11 +6,15 @@ import ExtraCompsBar from './ExtraCompsBar/ExtraCompsBar';
 import { useContext, useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MessageChat from './Message/MessageChat';
+import useCameraData from '../hooks/useCameraData';
+
 const Room = (props) => {
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
-  const attendeeName = params.id.split('&')[1];
-  const roomId = params.id.split('&')[0];
+  const { io } = useCameraData();
+  const attendeeName = params.title.split('&')[1];
+  const roomId = params.title.split('&')[0];
+  const attendeeId = params.title.split('&')[2];
   return (
     <>
       <div>Room</div>
@@ -20,7 +24,12 @@ const Room = (props) => {
         roomId={roomId}
       />
       <Dropdown attendeeName={attendeeName} roomId={roomId} />
-      <MessageChat attendeeName={attendeeName} roomId={roomId} />
+      <MessageChat
+        attendeeId={attendeeId}
+        attendeeName={attendeeName}
+        roomId={roomId}
+        io={io}
+      />
       <ExtraCompsBar />
     </>
   );
