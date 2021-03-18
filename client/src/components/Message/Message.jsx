@@ -1,14 +1,14 @@
-// import Button from '@material-ui/core/Button';
-// import TextField from '@material-ui/core/TextField';
+import { useState } from 'react';
 
 export default function Message(props) {
-  return (
-    <>
-      <div id='chat'>
-        <div id='chat-window'>
-          <div id='output'></div>
-        </div>
-      </div>
-    </>
-  );
+  const { io } = props;
+  const [msg, setMsg] = useState();
+  io.off('chat');
+  io.on('chat', (data) => {
+    console.log(data);
+    const message = data.message;
+    const attendeeName = data.attendeeName;
+    setMsg((prev) => (prev += `${attendeeName}: ${message},`));
+  });
+  return <>{msg ? msg.split(',').map((msg) => msg && <h4>{msg}</h4>) : null}</>;
 }
