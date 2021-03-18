@@ -4,6 +4,7 @@ import './App.scss';
 import Navigation from './components/Navigation';
 import Overlay from './components/Overlays/Overlay';
 import Footer from './components/Footer';
+<<<<<<< HEAD
 
 import Receiving from './components/Overlays/Receiving'
 import Confirming from './components/Overlays/Confirming'
@@ -11,6 +12,10 @@ import Confirming from './components/Overlays/Confirming'
 import Stage from './components/Stage/Stage';
 
 import useCameraData from "./hooks/useCameraData"
+=======
+import useCameraData from './hooks/useCameraData';
+import Chat from './components/chat/Chat';
+>>>>>>> f793f8a (fix calling)
 
 function App() {
   const {
