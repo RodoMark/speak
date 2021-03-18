@@ -4,8 +4,6 @@ import Overlay from '../Overlays/Overlay'
 
 export default function Calling(props) {
 
-  
-
   return (
     <Overlay>
       <Button 
