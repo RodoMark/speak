@@ -17,7 +17,7 @@ const Navigation = () => {
     <Router>
       <Navbar bg='light' expand='lg'>
         <Navbar.Brand>
-          <Link className='nav-link' to='/'>
+          <Link className='nav-link logo' to='/'>
             Parlar
           </Link>
         </Navbar.Brand>
@@ -54,8 +54,8 @@ const Navigation = () => {
         <Route exact path='/Logout' component={Logout}>
           <Logout setAuth={setAuth} />
         </Route>
-        <Route path='/Room/:id/' component={Room}/>
-        <Route path='/Login/:id/' component={AttendeLogIn}/>
+        <Route path='/Room/:title/' component={Room}/>
+        <Route path='/Login/:title/' component={AttendeLogIn}/>
         <Route path='/New/' component={CreateRoom}/>
 
       </Switch>
