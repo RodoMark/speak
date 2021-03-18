@@ -9,7 +9,7 @@ import Receiving from './components/Overlays/Receiving'
 import Confirming from './components/Overlays/Confirming'
 
 import useCameraData from "./hooks/useCameraData"
-import { OverlayContextProvider } from './hooks/useOverlayContext';
+import { OverlayContextProvider } from './context/useOverlayContext';
 
 function App() {
   const {

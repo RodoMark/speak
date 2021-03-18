@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useCameraData from './useCameraData'
+import useCameraData from '../hooks/useCameraData'
 
 
 
