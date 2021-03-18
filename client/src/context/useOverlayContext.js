@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react'
 import useCameraData from '../hooks/useCameraData'
 
-export const OverlayContext = createContext(null)
+export const OverlayContext = createContext()
 
-export const OverlayContextProvider = (props) => {
+const OverlayContextProvider = (props) => {
 
   const { endingCall, setEndingCall, receivingCall, setReceivingCall } = useCameraData();
   const data = { endingCall, setEndingCall, receivingCall, setReceivingCall };

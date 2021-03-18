@@ -130,7 +130,10 @@ export default function useCameraData() {
     io,
     message,
     handle,
+    endingCallConfirm,
     endingCall,
-    endingCallConfirm
+    receivingCall,
+    setEndingCall,
+    setReceivingCall
   };
 }
