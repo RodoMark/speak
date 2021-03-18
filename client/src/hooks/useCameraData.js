@@ -16,18 +16,14 @@ export default function useCameraData() {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
-  // const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-  const message = useRef();
-  const handle = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        // myVideo.current.srcObject = stream;
       });
 
     socket.on('me', (id) => {
@@ -36,6 +32,7 @@ export default function useCameraData() {
     });
 
     socket.on('callUser', (data) => {
+      console.log(data);
       setReceivingCall(true);
       setCaller(data.from);
       setName(data.name);
@@ -76,10 +73,13 @@ export default function useCameraData() {
       trickle: false,
       stream: stream,
     });
+    console.log(peer);
     peer.on('signal', (data) => {
+      console.log(`inside peer.on signal`);
       socket.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
+      console.log(stream);
       userVideo.current.srcObject = stream;
     });
 
@@ -118,7 +118,5 @@ export default function useCameraData() {
     answerCall,
     cancelCall,
     io,
-    message,
-    handle,
   };
 }

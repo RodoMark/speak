@@ -21,6 +21,7 @@ const Videocall = (props) => {
     receivingCall,
     answerCall,
   } = useContext(CameraContext);
+  console.log(me);
   return (
     <>
       <div className='myId'>
@@ -57,7 +58,7 @@ const Videocall = (props) => {
             <IconButton
               color='primary'
               aria-label='call'
-              onClick={() => callUser(props.idToCall)}
+              onClick={() => callUser(idToCall)}
             >
               <PhoneIcon fontSize='large' />
             </IconButton>

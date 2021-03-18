@@ -15,10 +15,10 @@ module.exports = function (router, database) {
   });
   // POST rooms route to add room to the teacher
   router.post('/rooms', function (req, res) {
-    console.log("REq.Session ====>" ,req.session)
     const userId = req.session.userId;
-
     const user = req.body;
+
+    console.log('User from API/Rooms ===> ', user);
     database
       .addRooms(userId, user)
       .then((data) => {
@@ -27,6 +27,7 @@ module.exports = function (router, database) {
           return;
         }
         res.json(data);
+        // console.log(res.json(data))
       })
       .catch((e) => res.json(e));
   });
@@ -50,8 +51,10 @@ module.exports = function (router, database) {
   // GET attendees route
   router.get('/attendees', function (req, res) {
     const userId = req.session.userId;
+    const info = req.params;
+    console.log(`this is inside get /attendees`, info);
     database
-      .getAttendees(userId)
+      .getAttendees(userId, info)
       .then((data) => {
         if (!data) {
           res.send({ error: 'error' });
@@ -66,6 +69,7 @@ module.exports = function (router, database) {
   router.post('/attendees', function (req, res) {
     const userId = req.session.userId;
     const user = req.body;
+    console.log(`this is inside post /attendees`, user);
     database
       .addAttendees(userId, user)
       .then((data) => {
