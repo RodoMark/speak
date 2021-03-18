@@ -1,18 +1,21 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useRef } from 'react';
 
 export default function ChatInput(props) {
-  const { message, handle, io } = props;
+  const { io, attendeeId, attendeeName } = props;
+  const message = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       message: message.current.value,
-      handle: handle.current.value,
+      attendeeName,
+      attendeeId,
     };
     io.emit('chat', data);
     axios
-      .post('/api/message', data)
+      .post('/api/messages', data)
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
   };
@@ -22,11 +25,6 @@ export default function ChatInput(props) {
         <Form.Label>MessageContent</Form.Label>
         <Form.Control
           ref={message}
-          type='text'
-          placeholder='Enter your message'
-        />
-        <Form.Control
-          ref={handle}
           type='text'
           placeholder='Enter your message'
         />
