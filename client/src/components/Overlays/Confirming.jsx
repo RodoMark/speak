@@ -4,8 +4,11 @@ import Button from '../buttons/Button'
 import Overlay from '../Overlays/Overlay'
 import OverlayContext from '../../context/useOverlayContext'
 
+
+
 export default function Receiving(props) {
-  const { onLeaveLobby, onCancel } = useContext(OverlayContext)
+
+  const { receivingCall, setReceivingCall } = useContext(OverlayContext)
 
   return (
     <Overlay className="overlay">
@@ -13,12 +16,12 @@ export default function Receiving(props) {
       <Button 
         call 
         confirm
-        onClick={onLeaveLobby}
+        onClick={()=> setReceivingCall(false)}
       />
 			<Button 
         call 
         reject
-        onClick={onCancel}
+        onClick={()=> setReceivingCall(false)}
       />
 		</Overlay>  
   )
