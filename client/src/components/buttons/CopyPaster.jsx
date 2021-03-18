@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+
+import Button from "../buttons/Button"
 
 export default function CopyPaster() {
 
@@ -12,23 +14,35 @@ export default function CopyPaster() {
     setCopySuccess('Copied!');
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCopySuccess('');
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div>
+    <section id="copypaster">
       {
        /* Logical shortcut for only displaying the 
           button if the copy command exists */
        document.queryCommandSupported('copy') &&
-        <div>
-          <button onClick={copyToClipboard}>Copy</button> 
-          {copySuccess}
-        </div>
+        <>
+        <Button 
+          button 
+          id="copy-button"
+          onClick={copyToClipboard}
+        >Copy
+        </Button>
+        <div>{copySuccess}</div>
+        </>
       }
       <form>
         <textarea
           ref={textAreaRef}
-          value='Some text to copy'
+          value='www.parlar.io'
         />
       </form>
-    </div>
+    </section>
   );
 }
