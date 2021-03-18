@@ -15,7 +15,7 @@ const Navigation = () => {
   const [auth, setAuth] = useState(true);
   return (
     <Router>
-      <Navbar bg='light' expand='lg'>
+      <Navbar className="color-nav" bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
             Parlar
