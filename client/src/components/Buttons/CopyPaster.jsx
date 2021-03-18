@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-import Button from "../buttons/Button"
+import Button from "./Button"
 
 export default function CopyPaster() {
 

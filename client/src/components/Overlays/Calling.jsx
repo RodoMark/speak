@@ -1,4 +1,4 @@
-import Button from '../buttons/Button'
+import Button from '../Buttons/Button'
 import Overlay from '../Overlays/Overlay'
 
 

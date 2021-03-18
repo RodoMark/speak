@@ -1,6 +1,6 @@
 
-import CopyPaster from "./buttons/CopyPaster.jsx";
-import Button from "./buttons/Button.jsx";
+import CopyPaster from "./Buttons/CopyPaster.jsx";
+import Button from "./Buttons/Button.jsx";
 
 const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
 
