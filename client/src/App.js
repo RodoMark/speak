@@ -27,12 +27,12 @@ function App() {
       <Navigation />
       { receivingCall && <Receiving />}
       { endingCall && <Confirming />}
-        <Overlay />
+      <Overlay />
           <h1>PARLAR</h1>
-        
       <Footer />
     </div>
   );
 }
 
 export default App;
+
