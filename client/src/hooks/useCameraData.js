@@ -16,11 +16,13 @@ export default function useCameraData() {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
+  const [endingCall, setEndingCall] = useState(false)
   // const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
   const message = useRef();
   const handle = useRef();
+  
 
   useEffect(() => {
     navigator.mediaDevices
@@ -40,6 +42,7 @@ export default function useCameraData() {
       setCaller(data.from);
       setName(data.name);
       setCallerSignal(data.signal);
+      setEndingCall(false);
     });
   }, []);
 
@@ -64,6 +67,7 @@ export default function useCameraData() {
       setCallAccepted(true);
       peer.signal(signal);
       setReceivingCall(false);
+      setEndingCall(false);
     });
 
     connectionRef.current = peer;
@@ -90,22 +94,27 @@ export default function useCameraData() {
   const leaveCall = () => {
     setCallEnded(true);
     connectionRef.current.destroy();
+    setEndingCall(false);
   };
   const cancelCall = () => {
     setCallEnded(true);
+    setReceivingCall(false);
+    setEndingCall(false);
   };
 
-  const callCancelled = () => {
-    setCallEnded(true);
+  const rejectCall = () => {
     setReceivingCall(false);
   };
+
+  const endingCallConfirm = () => {
+    setEndingCall(true)
+  }
 
   return {
     stream,
     // myVideo,
     callAccepted,
     callEnded,
-    callCancelled,
     userVideo,
     name,
     me,
@@ -117,8 +126,14 @@ export default function useCameraData() {
     receivingCall,
     answerCall,
     cancelCall,
+    rejectCall,
     io,
     message,
     handle,
+    endingCallConfirm,
+    endingCall,
+    receivingCall,
+    setEndingCall,
+    setReceivingCall
   };
 }
