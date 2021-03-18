@@ -1,8 +1,8 @@
 
-import CopyPaster from "../../components/buttons/CopyPaster.jsx";
-import Button from "../../components/buttons/Button.jsx";
+import CopyPaster from "../../components/Buttons/CopyPaster.jsx";
+import Button from "../../components/Buttons/Button.jsx";
 
-const Overlay = () => {
+const ExtraCompsBar = () => {
 
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 	
@@ -18,4 +18,4 @@ const Overlay = () => {
 
 };
 
-export default Overlay;
+export default ExtraCompsBar;
