@@ -7,8 +7,8 @@ module.exports = function (router, database) {
     console.log(req.body.email);
     database
       .userExists(req.body.email)
-      .then((boo) => {
-        if (!boo) {
+      .then((user) => {
+        if (!user) {
           res.send({ error: 'error' });
           return;
         }
