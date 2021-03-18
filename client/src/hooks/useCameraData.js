@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
-
-
 
 const socket = io.connect();
 export default function useCameraData() {

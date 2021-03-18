@@ -2,7 +2,7 @@ import ChatInput from './ChatInput';
 import Message from './Message';
 
 export default function MessageChat(props) {
-  const { attendeeName, roomId, io, attendeeId } = props;
+  const { attendeeName, io, attendeeId } = props;
   return (
     <>
       <Message io={io} />

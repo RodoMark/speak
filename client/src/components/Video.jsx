@@ -10,9 +10,9 @@ const Video = (props) => {
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        myVideo.current.srcObject = props.togleCamera ?  stream : null;
+        myVideo.current.srcObject = props.togleCamera ? stream : null;
       });
-  }, [  ]);
+  }, [stream, props.togleCamera]);
   return (
     <>
       <div className='video-container'>
