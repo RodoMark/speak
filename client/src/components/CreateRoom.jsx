@@ -6,7 +6,6 @@ import Axios from "axios";
 import { useParams, useHistory } from 'react-router-dom';
 
 
-
 const CreateRoom = (props) => {
 
   const techerId = Axios.get();
@@ -15,9 +14,7 @@ const CreateRoom = (props) => {
   const [title, setTitle] = useState(" ")
 
   const [description, setDescription] = useState(" ")
-  // const [link, setLink] = useState()
 
-  // const roomInfo = useRef("");
   const history = useHistory();
 
   const handleSubmit = (event) => {
@@ -25,6 +22,10 @@ const CreateRoom = (props) => {
     event.preventDefault();
 
     console.log('Title and description', title, description)
+
+    const generateRandomID = function () {
+      return (+new Date()).toString(36).slice(-6);
+    };
 
     const link = `http://localhost:3000/Login/${title}`;
     ///

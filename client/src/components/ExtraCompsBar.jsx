@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 
 import Button from "./Buttons/Button.jsx";
@@ -8,6 +9,7 @@ const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
 
 const [copyText, setCopyText] = useState('Copy');
 
+const location = useLocation()
 
 
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
@@ -15,7 +17,7 @@ const [copyText, setCopyText] = useState('Copy');
   return (
   	<div>
   	<CopyToClipboard 
-			text="www.parlar.io" 
+			text={window.location.href} 
 			style={{ marginBottom: '2rem' }}
 			// onClick={setCopyText('Copied')}
 		>
