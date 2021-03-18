@@ -54,10 +54,9 @@ const Navigation = () => {
         <Route exact path='/Logout' component={Logout}>
           <Logout setAuth={setAuth} />
         </Route>
-        <Route path='/Room/:title/' component={Room}/>
-        <Route path='/Login/:title/' component={AttendeLogIn}/>
-        <Route path='/New/' component={CreateRoom}/>
-
+        <Route path='/Room/:title/' component={Room} />
+        <Route path='/Login/:title/' component={AttendeLogIn} />
+        <Route path='/New/' component={CreateRoom} />
       </Switch>
     </Router>
   );

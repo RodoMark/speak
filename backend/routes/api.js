@@ -51,8 +51,10 @@ module.exports = function (router, database) {
   // GET attendees route
   router.get('/attendees', function (req, res) {
     const userId = req.session.userId;
+    const info = req.params;
+    console.log(`this is inside get /attendees`, info);
     database
-      .getAttendees(userId)
+      .getAttendees(userId, info)
       .then((data) => {
         if (!data) {
           res.send({ error: 'error' });
@@ -67,6 +69,7 @@ module.exports = function (router, database) {
   router.post('/attendees', function (req, res) {
     const userId = req.session.userId;
     const user = req.body;
+    console.log(`this is inside post /attendees`, user);
     database
       .addAttendees(userId, user)
       .then((data) => {

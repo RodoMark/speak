@@ -7,16 +7,22 @@ const AttendeeLogIn = (props) => {
   const roomId = useParams();
   console.log(roomId);
   const userName = useRef();
-  const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState('none');
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { roomId, userName, feedback };
+    const data = {
+      roomId: roomId.title,
+      userName: userName.current.value,
+      feedback,
+    };
+
     axios.post('/api/attendees', data).then((res) => {
-      console.log(res);
+      console.log(res.data);
+      const attendeeId = res.data.id;
+      const params = `${roomId.title}&${userName.current.value}&${attendeeId}`;
+      history.push(`/Room/${params}`);
     });
-    const params = `${roomId}${userName}`;
-    history.push(`/Room/${params}`);
   };
   return (
     <>

@@ -109,19 +109,12 @@ const getRooms = function (id) {
 exports.getRooms = getRooms;
 
 const addRooms = function (id, data) {
-  console.log("Data from index.addRooms", data)
+  console.log('Data from index.addRooms', data);
   if (!id) {
     throw new Error('User not logged in!');
   }
 
-  
-
-  const queryValues = [
-    id,
-    data.title,
-    data.description,
-    data.link
-  ];
+  const queryValues = [id, data.title, data.description, data.link];
 
   const queryString = `INSERT INTO rooms (teacher_id, room_name, room_description, link) VALUES ($1, $2, $3, $4) RETURNING *;`;
   return db
@@ -130,7 +123,7 @@ const addRooms = function (id, data) {
       // console.log(res.rows[0]);
       return res.rows[0];
     })
-    .catch((err) => console.log("CATCHED ERR +++>" ,err));
+    .catch((err) => console.log('CATCHED ERR +++>', err));
 };
 exports.addRooms = addRooms;
 
@@ -149,15 +142,17 @@ const deleteRoom = function (id) {
 };
 exports.deleteRoom = deleteRoom;
 
-const getAttendees = function (id) {
+const getAttendees = function (id, info) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [id];
+  console.log(`this is inside index getAttendes`, info);
+  const attendeeName = info.info.split('&')[0];
+  const roomId = info.info.split('&')[1];
+  const queryValues = [attendeeName, roomId];
   const queryString = `
-  SELECT * FROM attendees JOIN rooms
-  ON rooms.id = attendees.room_id
-  WHERE teacher_id = $1`;
+  SELECT * FROM attendees
+  WHERE attendee_name = $1 AND room_id = $2 `;
   return db
     .query(queryString, queryValues)
     .then((res) => {
@@ -172,15 +167,16 @@ const addAttendees = function (id, data) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [data.roomId, data.attendeeName, data.feedback];
-  const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3)`;
+  console.log(`this is inside index addAttendees`, data);
+  const queryValues = [data.roomId, data.userName, data.feedback];
+  const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3) RETURNING *;`;
   return db
     .query(queryString, queryValues)
     .then((res) => {
       console.log(res.rows[0]);
       return res.rows[0];
     })
-    .catch(() => null);
+    .catch((err) => console.log(`catch in add attendee`, err));
 };
 exports.addAttendees = addAttendees;
 
@@ -210,8 +206,8 @@ const addMessages = function (id, data) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [data.attendeeId, data.timeStamp, data.messageContent];
-  const queryString = `INSERT INTO messages (attendee_id, time_stamp, message_content) VALUES ($1, $2, $3)`;
+  const queryValues = [data.attendeeId, data.message];
+  const queryString = `INSERT INTO messages (attendee_id, message_content) VALUES ($1, $2) RETURNING *;`;
 
   return db
     .query(queryString, queryValues)
