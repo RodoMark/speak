@@ -12,12 +12,12 @@ const Overlay = ({ receivingCall, setReceivingCall, endingCall, setEndingCall })
 
 	return(
 			<article className="overlay">
-      { propreceivingCall && 
+      { receivingCall && 
 			<Receiving 
-				propsetReceivingCall={setReceivingCall}/>}
+				setReceivingCall={setReceivingCall}/>}
       { endingCall && 
 			<Confirming
-				propsetEndingCall={setEndingCall}
+				setEndingCall={setEndingCall}
 			/>}
 		</article>
 		
