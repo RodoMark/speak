@@ -3,14 +3,18 @@ import Stage from "../components/Stage/Stage.jsx"
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
 import Dropdown from "../components/Dropdown/Dropdown"
 import Button from "./Buttons/Button.jsx"
+import Overlay from './Overlays/Overlay';
 import ExtraCompsBar from "../components/ExtraCompsBar"
+import useCameraData from "../hooks/useCameraData"
+import Receiving from "../components/Overlays/Receiving"
+import Confirming from "../components/Overlays/Confirming"
 import Axios from "axios";
 import { useContext, useRef, useEffect, useState } from 'react';
 
 
-
 const  Room = (props) => {
-
+	const [endingCall, setEndingCall] = useState(false)
+	const { receivingCall, answerCall, callCancelled } = useCameraData()
 	const [togleCamera, setTogleCamera] = useState(true)
 
 
@@ -21,9 +25,13 @@ const  Room = (props) => {
 			<div>Room</div>
 
 			<Stage togleCamera={togleCamera}/>
+			{ receivingCall && <Receiving />}
+      { endingCall && <Confirming />}
+      <Overlay />
 			<Dropdown/>
-			
-			<ExtraCompsBar/>
+			<ExtraCompsBar 
+        endingCall={endingCall}
+        setEndingCall={setEndingCall}/>
 		</>
 		
 	)
