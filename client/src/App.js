@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import './App.scss';
 import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-
 import Stage from './components/Stage/Stage';
 import Footer from './components/Footer';
 

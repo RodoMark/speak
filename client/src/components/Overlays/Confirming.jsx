@@ -1,12 +1,20 @@
 import Button from '../Buttons/Button'
-import Overlay from '../Overlays/Overlay'
 
-export default function Receiving(props) {
+export default function Confirming(props) {
+  const { endingCall, setEndingCall} = props
+
   return (
-    <Overlay className="overlay">
+    <div className="overlay">
 			<h2>Are you sure?</h2><br />
-      <Button call confirm></Button>
-			<Button call reject></Button>
-		</Overlay>
+      <Button 
+        call 
+        confirm
+        onClick={() => setEndingCall(false)}
+        />
+			<Button 
+        call 
+        reject
+        onClick={() => setEndingCall(false)} />
+		</div>
   )
 }

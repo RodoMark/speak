@@ -14,20 +14,27 @@ import { useContext, useRef, useEffect, useState } from 'react';
 
 const  Room = (props) => {
 	const [endingCall, setEndingCall] = useState(false)
-	const { receivingCall, answerCall, callCancelled } = useCameraData()
+	const [receivingCall, setReceivingCall] = useState(false)
+
+	const { answerCall, callCancelled } = useCameraData()
+	
 	const [togleCamera, setTogleCamera] = useState(true)
-
-
-
 
 	return (
 		<>
 			<div>Room</div>
 
 			<Stage togleCamera={togleCamera}/>
-			{ receivingCall && <Receiving />}
-      { endingCall && <Confirming />}
-      <Overlay />
+			{ receivingCall && 
+				<Receiving 
+					receivingCall={receivingCall}
+					setReceivingCall={setReceivingCall}
+				/>}
+      { endingCall && 
+				<Confirming 
+					endingCall={endingCall}
+					setEndingCall={setEndingCall}
+				/>}
 			<Dropdown/>
 			<ExtraCompsBar 
         endingCall={endingCall}

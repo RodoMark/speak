@@ -1,11 +1,9 @@
 import Button from '../Buttons/Button'
-import Overlay from '../Overlays/Overlay'
-
 
 export default function Calling(props) {
 
   return (
-    <Overlay>
+    <div>
       <Button 
         call 
         onClick={() => {
@@ -13,6 +11,6 @@ export default function Calling(props) {
       />
     <br />
     <h2>Calling attendee...</h2>
-  </Overlay>
+  </div>
   )
 }

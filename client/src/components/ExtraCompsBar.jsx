@@ -30,7 +30,7 @@ const location = useLocation()
 			id="button--leave" 
 			call 
 			reject
-			onClick={()=> setEndingCall(true)}
+			onClick={()=> {setEndingCall(true)}}
 		>
 
 		</Button>
