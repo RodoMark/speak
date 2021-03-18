@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { react,useState } from 'react';
-import Button from '../components/buttons/Button';
+import Button from '../components/Buttons/Button';
 import { useRef } from 'react';
 import Axios from "axios";
 
