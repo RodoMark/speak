@@ -1,20 +1,34 @@
+import React, { useRef, useState } from 'react';
 
-// import Confirmation from "components/overlays/confirmation.jsx";
-// import Await from "components/overlays/await.jsx";
+export default function CopyPaster() {
 
-const CopyPaster = (props) => {
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = useRef(null);
 
-/// confirm / reject / leave-close_room /
-
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
 
   return (
-
-  	<button>
-      URL to Room
-    </button>
-
-  )
-
-};
-
-export default CopyPaster;
+    <div>
+      {
+       /* Logical shortcut for only displaying the 
+          button if the copy command exists */
+       document.queryCommandSupported('copy') &&
+        <div>
+          <button onClick={copyToClipboard}>Copy</button> 
+          {copySuccess}
+        </div>
+      }
+      <form>
+        <textarea
+          ref={textAreaRef}
+          value='Some text to copy'
+        />
+      </form>
+    </div>
+  );
+}
