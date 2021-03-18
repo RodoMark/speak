@@ -8,9 +8,10 @@ const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
 	
   return (
   	<div>
-  	<CopyPaster/>
+  	<CopyPaster id="copypaster"/>
   	
-  	<Button 
+  	<Button
+			id="button--leave" 
 			call 
 			reject
 			onClick={()=> setEndingCall(true)}

@@ -24,8 +24,6 @@ export default function CopyPaster() {
   return (
     <section id="copypaster">
       {
-       /* Logical shortcut for only displaying the 
-          button if the copy command exists */
        document.queryCommandSupported('copy') &&
         <>
         <Button 
