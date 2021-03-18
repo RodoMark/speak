@@ -1,12 +1,13 @@
 import ChatInput from './ChatInput';
 import Message from './Message';
 import useCameraData from '../../hooks/useCameraData';
-export default function MessageChat() {
-  const { io, message } = useCameraData();
+export default function MessageChat(props) {
+  const { attendeeName, roomId } = props;
+  const { io } = useCameraData();
   return (
     <>
       <Message io={io} />
-      <ChatInput io={io} message={message} />
+      <ChatInput io={io} attendeeName={attendeeName} roomId={roomId} />
     </>
   );
 }

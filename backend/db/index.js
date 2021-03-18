@@ -145,15 +145,17 @@ const deleteRoom = function (id) {
 };
 exports.deleteRoom = deleteRoom;
 
-const getAttendees = function (id) {
+const getAttendees = function (id, info) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [id];
+  console.log(`this is inside index getAttendes`, info);
+  const attendeeName = info.info.split('&')[0];
+  const roomId = info.info.split('&')[1];
+  const queryValues = [attendeeName, roomId];
   const queryString = `
-  SELECT * FROM attendees JOIN rooms
-  ON rooms.id = attendees.room_id
-  WHERE teacher_id = $1`;
+  SELECT * FROM attendees
+  WHERE attendee_name = $1 AND room_id = $2 `;
   return db
     .query(queryString, queryValues)
     .then((res) => {
@@ -168,6 +170,7 @@ const addAttendees = function (id, data) {
   if (!id) {
     throw new Error('User not logged in!');
   }
+  console.log(`this is inside index addAttendees`, data);
   const queryValues = [data.roomId, data.attendeeName, data.feedback];
   const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3)`;
   return db

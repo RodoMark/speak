@@ -16,8 +16,6 @@ export default function useCameraData() {
   const [name, setName] = useState('');
   const userVideo = useRef();
   const connectionRef = useRef();
-  const message = useRef();
-  const handle = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
@@ -116,7 +114,5 @@ export default function useCameraData() {
     answerCall,
     cancelCall,
     io,
-    message,
-    handle,
   };
 }
