@@ -9,6 +9,8 @@ const OverlayContext = React.createContext(null)
 
 export const OverlayContextProvider = () => {
   const {
+    setEndingCall,
+    setReceivingCall,
     endingCallConfirm,
     answerCall,
     rejectCall,
@@ -33,12 +35,9 @@ export const OverlayContextProvider = () => {
  
 
   return (
-    <OverlayContext.Provider values={{overlayData}}>
-      {children}
+    <OverlayContext.Provider value={{overlayData}}>
     </OverlayContext.Provider>
   )
 }
 
-export {
-  OverlayContext
-}
+export default OverlayContext

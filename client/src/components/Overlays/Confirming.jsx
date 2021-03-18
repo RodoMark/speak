@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 import Button from '../buttons/Button'
 import Overlay from '../Overlays/Overlay'
 import OverlayContext from '../../context/useOverlayContext'
