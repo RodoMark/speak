@@ -11,7 +11,6 @@ const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
 const [copyText, setCopyText] = useState('Copy');
 const { auth, setAuth } = useContext(AuthContext);
 
-
 const location = useLocation()
 
 
@@ -19,6 +18,7 @@ const location = useLocation()
 	
   return (
   	<div className="extra-comps-bar">
+			<p>Auth is {auth ? "True" : "False"}</p>
   	{auth &&
 			<CopyToClipboard 
 				text={window.location.href} 

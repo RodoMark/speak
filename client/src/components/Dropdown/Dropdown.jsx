@@ -4,8 +4,8 @@ import Button from '../Buttons/Button'
 import { AuthContext } from '../../context/AuthContext.js';
 
 export default function Dropdown(props) {
-  const {auth, setAuth} = useContext(AuthContext);
-
+  const { auth, setAuth } = useContext(AuthContext);
+  
   return (
     <div>
     {auth && 
