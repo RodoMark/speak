@@ -4,7 +4,6 @@ module.exports = function (router, database) {
   //Post route for user registration
   router.post('/', (req, res) => {
     // req.body.password = bcrypt.hashSync(req.body.password, 12);
-    console.log(req.body.email);
     database
       .userExists(req.body.email)
       .then((user) => {
@@ -46,7 +45,6 @@ module.exports = function (router, database) {
           return;
         }
         req.session.userId = user.id;
-        console.log(`returned user: ${user}`);
         res.json({ user: { name: user.name, email: user.email, id: user.id } });
       })
       .catch((error) => res.send(error));

@@ -9,7 +9,6 @@ const Logout = (props) => {
     axios
       .post('/teachers/logout')
       .then((res) => {
-        console.log(res);
         props.setAuth(false);
         history.push('/');
       })

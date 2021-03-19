@@ -17,8 +17,6 @@ module.exports = function (router, database) {
   router.post('/rooms', function (req, res) {
     const userId = req.session.userId;
     const user = req.body;
-
-    console.log('User from API/Rooms ===> ', user);
     database
       .addRooms(userId, user)
       .then((data) => {
@@ -27,7 +25,6 @@ module.exports = function (router, database) {
           return;
         }
         res.json(data);
-        // console.log(res.json(data))
       })
       .catch((e) => res.json(e));
   });
@@ -67,7 +64,6 @@ module.exports = function (router, database) {
   router.post('/attendees', function (req, res) {
     const userId = req.session.userId;
     const user = req.body;
-    console.log(`this is inside post /attendees`, user);
     database
       .addAttendees(userId, user)
       .then((data) => {

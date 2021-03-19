@@ -16,7 +16,7 @@ const history = useHistory()
         confirm
         onClick={() => {
           setEndingCall(false)
-          callCancelled()
+          callEnded()
           history.push('/')
         }
       }

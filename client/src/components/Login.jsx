@@ -18,7 +18,6 @@ const Login = (props) => {
     axios
       .post('/teachers/login', data)
       .then((res) => {
-        console.log(res);
         props.setAuth(true);
         history.push('/');
       })

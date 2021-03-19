@@ -7,8 +7,6 @@ const Profile = (props) => {
   const [user, setUser] = useState('');
   useEffect(() => {
     Promise.all([axios.get('./teachers/me')]).then((res) => {
-      console.log(res[0].data);
-      console.log(user);
       setUser(res[0].data);
     });
   }, [user]);
