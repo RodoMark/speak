@@ -42,12 +42,6 @@ const Room = (props) => {
 					setEndingCall={setEndingCall}
 				/>
 			} 
-			{ receivingCall &&
-				<Receiving 
-					receivingCall={receivingCall}
-					setReceivingCall={setReceivingCall}
-				/>
-			} 
       <Dropdown
         attendeeName={attendeeName}
         roomId={roomId}

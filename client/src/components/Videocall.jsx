@@ -9,6 +9,7 @@ import { useContext } from 'react';
 
 const Videocall = (props) => {
   const {
+    io,
     name,
     setName,
     me,
@@ -21,7 +22,13 @@ const Videocall = (props) => {
     receivingCall,
     answerCall,
   } = useContext(CameraContext);
-  
+
+  const [callUser, setCallUser] = useState(false)
+
+  io.on('callUser', () => {
+    setCallUser(true)
+  })
+
   console.log(me);
   return (
     <>
@@ -44,18 +51,10 @@ const Videocall = (props) => {
         </div>
       </div>
       <div>
-        {receivingCall && !callAccepted ? (
-          <div className='caller'>
-            <h1>{name} is calling...</h1>
-            <Button variant='contained' color='primary' onClick={answerCall}>
-              Answer
-            </Button>
-            <Button variant='contained' color='secondary' onClick={answerCall}>
-              Answer
-            </Button>
-          </div>
-        ) : null}
-
+        { callUser && 
+          <Calling 
+          />
+        }
       </div>
     </>
   );
