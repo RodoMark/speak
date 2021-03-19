@@ -34,7 +34,9 @@ const location = useLocation()
 					reject
 					onClick={()=> {
 						setHangUp(false)
-						setEndingCall(true)}}
+						setEndingCall(true)
+						}
+					}
 					>Leave
 				</Button> }
 			

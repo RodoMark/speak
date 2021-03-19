@@ -1,7 +1,12 @@
 import Button from '../Buttons/Button'
+import { useHistory } from 'react-router-dom'
 
-export default function Confirming(props) {
-  const { endingCall, setEndingCall} = props
+
+
+export default function Confirming({ endingCall, setEndingCall, callCancelled}) {
+   
+const history = useHistory()
+
 
   return (
     <div className="overlay">
@@ -9,7 +14,12 @@ export default function Confirming(props) {
       <Button 
         call 
         confirm
-        onClick={() => setEndingCall(false)}
+        onClick={() => {
+          setEndingCall(false)
+          callCancelled()
+          history.push('/')
+        }
+      }
         />
 			<Button 
         call 

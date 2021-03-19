@@ -111,11 +111,11 @@ export default function useCameraData() {
     idToCall,
     setName,
     setIdToCall,
-    leaveCall,
     callUser,
     receivingCall,
     answerCall,
     cancelCall,
+    leaveCall,
     io,
   };
 }

@@ -1,3 +1,5 @@
+import { useState, useRef } from 'react';
+
 // import all mayor components
 import Stage from './Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
@@ -7,16 +9,15 @@ import Receiving from "./Overlays/Receiving";
 import Confirming from "./Overlays/Confirming";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
-import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Room = (props) => {
-	
-
 	const [endingCall, setEndingCall] = useState(false)
+
 	const [receivingCall, setReceivingCall] = useState(false)
 
-	const { answerCall, callCancelled, callAccepted, setCallAccepted, io } = useCameraData()
+	const { answerCall, callCancelled, leaveCall, callAccepted, setCallAccepted, io } = useCameraData()
+
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
@@ -42,6 +43,7 @@ const Room = (props) => {
 				<Confirming 
 					endingCall={endingCall}
 					setEndingCall={setEndingCall}
+          callCancelled={callCancelled}
 				/>
 			}
       <MessageChat
