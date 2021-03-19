@@ -12,7 +12,7 @@ const Video = (props) => {
         setStream(stream);
         myVideo.current.srcObject = props.togleCamera ? stream : null;
       });
-  }, [stream, props.togleCamera]);
+  }, []);
   return (
     <>
       <div className='video-container'>

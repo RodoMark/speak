@@ -51,10 +51,8 @@ module.exports = function (router, database) {
   // GET attendees route
   router.get('/attendees', function (req, res) {
     const userId = req.session.userId;
-    const info = req.params;
-    console.log(`this is inside get /attendees`, info);
     database
-      .getAttendees(userId, info)
+      .getAttendees(userId)
       .then((data) => {
         if (!data) {
           res.send({ error: 'error' });

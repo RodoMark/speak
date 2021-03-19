@@ -2,10 +2,9 @@ import { useState } from 'react';
 
 export default function Message(props) {
   const { io } = props;
-  const [msg, setMsg] = useState();
+  const [msg, setMsg] = useState('.');
   io.off('chat');
   io.on('chat', (data) => {
-    console.log(data);
     const message = data.message;
     const attendeeName = data.attendeeName;
     setMsg((prev) => (prev += `${attendeeName}: ${message},`));
