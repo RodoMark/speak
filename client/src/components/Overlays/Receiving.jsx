@@ -2,7 +2,10 @@ import Button from '../Buttons/Button'
 
 export default function Receiving(props) {
 	
-	const { answerCall, setCallAccepted, setReceivingCall} = props
+	const { 
+		answerCall, 
+		setCallAccepted, 
+		setReceivingCall} = props
 
   return (
     <div className="overlay">

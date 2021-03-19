@@ -17,8 +17,6 @@ module.exports = function (router, database) {
   router.post('/rooms', function (req, res) {
     const userId = req.session.userId;
     const user = req.body;
-
-    console.log('User from API/Rooms ===> ', user);
     database
       .addRooms(userId, user)
       .then((data) => {

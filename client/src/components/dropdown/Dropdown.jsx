@@ -17,31 +17,31 @@ export default function Dropdowns(props) {
     });
   }, [attendeeName, roomId]);
 
-  const callUser = (id) => {
-    const peer = new Peer({
-      initiator: true,
-      trickle: false,
-      stream: stream,
-    });
-    peer.on('signal', (data) => {
-      socket.emit('callUser', {
-        userToCall: id,
-        signalData: data,
-        from: me,
-        name: name,
-      });
-    });
-    peer.on('stream', (stream) => {
-      userVideo.current.srcObject = stream;
-    });
-    socket.on('callAccepted', (signal) => {
-      setCallAccepted(true);
-      peer.signal(signal);
-      setReceivingCall(false);
-    });
+  // const callUser = (id) => {
+  //   const peer = new Peer({
+  //     initiator: true,
+  //     trickle: false,
+  //     stream: stream,
+  //   });
+  //   peer.on('signal', (data) => {
+  //     socket.emit('callUser', {
+  //       userToCall: id,
+  //       signalData: data,
+  //       from: me,
+  //       name: name,
+  //     });
+  //   });
+  //   peer.on('stream', (stream) => {
+  //     userVideo.current.srcObject = stream;
+  //   });
+  //   socket.on('callAccepted', (signal) => {
+  //     setCallAccepted(true);
+  //     peer.signal(signal);
+  //     setReceivingCall(false);
+  //   });
 
-    connectionRef.current = peer;
-  };
+  //   connectionRef.current = peer;
+  // };
 
   return (
     <>

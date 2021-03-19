@@ -30,7 +30,7 @@ export default function useCameraData() {
     });
 
     socket.on('callUser', (data) => {
-      console.log(data);
+      console.log("DATA FROM FRONT END====>", data);
       setReceivingCall(true);
       setCaller(data.from);
       setName(data.name);
@@ -45,6 +45,7 @@ export default function useCameraData() {
       stream: stream,
     });
     peer.on('signal', (data) => {
+      console.log("callUser data inside peer.on---->", data, "id:", id, "me:", me, "name:", name)
       socket.emit('callUser', {
         userToCall: id,
         signalData: data,

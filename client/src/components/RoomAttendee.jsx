@@ -16,7 +16,14 @@ const Room = (props) => {
 
 	const [receivingCall, setReceivingCall] = useState(false)
 
-	const { answerCall, callCancelled, leaveCall, callAccepted, setCallAccepted, io } = useCameraData()
+	const { 
+    answerCall, 
+    callCancelled, 
+    leaveCall, 
+    callAccepted, 
+    setCallAccepted, 
+    io 
+  } = useCameraData()
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();

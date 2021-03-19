@@ -61,6 +61,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('callUser', (data) => {
+    console.log("DATA from inside socket.on.callUser--->", data)
     io.to(data.userToCall).emit('callUser', {
       signal: data.signalData,
       from: data.from,
