@@ -28,13 +28,9 @@ export default function Dropdowns(props) {
             list.map((obj) => (
               <Dropdown.Item key={obj.id} href='#'>
                 {obj.attendee_name.split('&')[0]}
-                <IconButton
-                  color='primary'
-                  aria-label='call'
-                  onClick={() => callUser(obj.attendee_name.split('&')[1])}
-                >
-                  <PhoneIcon fontSize='large' />
-                </IconButton>
+                <Videocall 
+                  idToCall={obj.attendee_name.split('&')[1]}
+                />
               </Dropdown.Item>
             ))}
         </Dropdown.Menu>
