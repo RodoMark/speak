@@ -31,13 +31,13 @@ const Room = (props) => {
         attendeeName={attendeeName}
         roomId={roomId}
       />
-			{ receivingCall && 
+			{ receivingCall && !callAccepted ?
 				<Receiving
           callAccepted={callAccepted}
           setCallAccepted={setCallAccepted} 
 					receivingCall={receivingCall}
 					setReceivingCall={setReceivingCall}
-				/>
+				/> : null
 			}
       { endingCall && 
 				<Confirming 

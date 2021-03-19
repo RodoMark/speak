@@ -25,6 +25,12 @@ const Room = (props) => {
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
   const socketId = params.title.split('&')[3];
+
+	io.on('callAccepted', (data) => {
+			setCalling(false);
+		}
+	)
+
   return (
 		<AuthContextProvider>
 			<>
