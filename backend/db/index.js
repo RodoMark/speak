@@ -142,22 +142,18 @@ const deleteRoom = function (id) {
 };
 exports.deleteRoom = deleteRoom;
 
-const getAttendees = function (id, info) {
+const getAttendees = function (id) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  console.log(`this is inside index getAttendes`, info);
-  const attendeeName = info.info.split('&')[0];
-  const roomId = info.info.split('&')[1];
-  const queryValues = [attendeeName, roomId];
-  const queryString = `
-  SELECT * FROM attendees
-  WHERE attendee_name = $1 AND room_id = $2 `;
   return db
-    .query(queryString, queryValues)
+    .query(
+      `
+  SELECT * FROM attendees`
+    )
     .then((res) => {
-      console.log(res.rows[0]);
-      return res.rows[0];
+      console.log(res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };
