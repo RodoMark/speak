@@ -11,10 +11,11 @@ import useCameraData from '../hooks/useCameraData';
 const Room = (props) => {
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
-  const { io } = useCameraData();
+  const { io, callUser } = useCameraData();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
+  const socketId = params.title.split('&')[3];
   return (
     <>
       <div>Room</div>
@@ -24,7 +25,12 @@ const Room = (props) => {
         setTogleCamera={setTogleCamera}
         roomId={roomId}
       />
-      <Dropdown attendeeName={attendeeName} roomId={roomId} />
+      <Dropdown
+        attendeeName={attendeeName}
+        roomId={roomId}
+        socketId={socketId}
+        callUser={callUser}
+      />
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}

@@ -3,21 +3,24 @@ import Button from 'react-bootstrap/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
+import useCameraData from '../hooks/useCameraData';
 const AttendeeLogIn = (props) => {
+  const { me } = useCameraData();
   const roomId = useParams();
   const userName = useRef();
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const full = `${userName.current.value}&${me}`;
     const data = {
       roomId: roomId.title,
-      userName: userName.current.value,
+      userName: full,
       feedback: 'none',
     };
 
     axios.post('/api/attendees', data).then((res) => {
       const attendeeId = res.data.id;
-      const params = `${roomId.title}&${userName.current.value}&${attendeeId}`;
+      const params = `${roomId.title}&${userName.current.value}&${attendeeId}&${me}`;
       history.push(`/Room/${params}`);
     });
   };
