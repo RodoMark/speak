@@ -102,6 +102,7 @@ export default function useCameraData() {
     stream,
     // myVideo,
     callAccepted,
+    setCallAccepted,
     callEnded,
     callCancelled,
     userVideo,

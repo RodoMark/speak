@@ -8,9 +8,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBar = ({ callAccepted, setCallAccepted, setEndingCall }) => {
 
-
+const [leaveRoom, setLeaveRoom] = useState(true)
 const [hangUp, setHangUp] = useState(false)
-const [leaveRoom, setLeaveRoom] = useState(false)
 
 const location = useLocation()
 
@@ -18,24 +17,30 @@ const location = useLocation()
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 	
   return (
-  	<div className="extra-comps-bar"> 	
-  	{ callAccepted && !hangUp ?
-		<Button
-			reject
-			onClick={()=>{
-				setHangUp(true)
-				setCallAccepted(false)
-				}
-			}
-		>HangUp
-		</Button> : null
-		} 
+  	<div key={callAccepted} className="extra-comps-bar"> 	
+  
+			{ callAccepted && !hangUp ?
+				<Button
+					reject
+					onClick={()=>{
+						setHangUp(true)		
+						setCallAccepted(false)
+						}
+					}
+				>HangUp
+				</Button> :
 
-		<Button
-			reject
-			onClick={()=> {setEndingCall(true)}}
-		>{hangUp ? "Leave" : "HangUp"}</Button>
-  	</div>
+				<Button
+					reject
+					onClick={()=> {
+						setHangUp(false)
+						setEndingCall(true)}}
+					>Leave
+				</Button> }
+			
+		</div>
+
+		
   )
 
 };

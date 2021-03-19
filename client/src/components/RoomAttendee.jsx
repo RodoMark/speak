@@ -1,16 +1,14 @@
 // import all mayor components
 import Stage from './Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
-import Dropdown from "./Dropdown/Dropdown";
 import ExtraCompsBarAttendee from "./ExtraCompsBarAttendee";
 import useCameraData from "../hooks/useCameraData";
 import Receiving from "./Overlays/Receiving";
 import Confirming from "./Overlays/Confirming";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
-import { useContext, useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AuthContextProvider from '../context/AuthContext'
 
 const Room = (props) => {
 	
@@ -54,7 +52,7 @@ const Room = (props) => {
       />
       <ExtraCompsBarAttendee
         callAccepted={callAccepted}
-        setCallAccepte={setCallAccepted}
+        setCallAccepted={setCallAccepted}
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
