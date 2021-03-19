@@ -21,10 +21,11 @@ const Room = (props) => {
 	const { answerCall, callCancelled } = useCameraData()
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
-  const { io } = useCameraData();
+  const { io, callUser } = useCameraData();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
+  const socketId = params.title.split('&')[3];
   return (
 		<AuthContextProvider>
 			<>
@@ -32,26 +33,15 @@ const Room = (props) => {
       <Stage
         togleCamera={togleCamera}
         attendeeName={attendeeName}
+        setTogleCamera={setTogleCamera}
         roomId={roomId}
       />
-			{ receivingCall && 
-				<Receiving 
-					receivingCall={receivingCall}
-					setReceivingCall={setReceivingCall}
-				/>
-			}
-      { endingCall && 
-				<Confirming 
-					endingCall={endingCall}
-					setEndingCall={setEndingCall}
-				/>
-			}
-				<Dropdown 
-					receivingCall={receivingCall}
-					setReceivingCall={setReceivingCall}
-					attendeeName={attendeeName} 
-					roomId={roomId} 
-				/>	
+      <Dropdown
+        attendeeName={attendeeName}
+        roomId={roomId}
+        socketId={socketId}
+        callUser={callUser}
+      />
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}

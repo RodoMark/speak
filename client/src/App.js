@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-
 import './App.scss';
 import Navigation from './components/Navigation';
-import Stage from './components/Stage/Stage';
 import Footer from './components/Footer';
 
 import AuthContextProvider from './context/AuthContext'
@@ -19,6 +16,5 @@ function App() {
     </AuthContextProvider>
   );
 }
-
 export default App;
 
