@@ -36,6 +36,18 @@ const Room = (props) => {
         setTogleCamera={setTogleCamera}
         roomId={roomId}
       />
+			{ endingCall &&
+				<Confirming 
+					endingCall={endingCall}
+					setEndingCall={setEndingCall}
+				/>
+			} 
+			{ receivingCall &&
+				<Receiving 
+					receivingCall={receivingCall}
+					setReceivingCall={setReceivingCall}
+				/>
+			} 
       <Dropdown
         attendeeName={attendeeName}
         roomId={roomId}

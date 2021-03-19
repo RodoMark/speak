@@ -21,34 +21,11 @@ const Videocall = (props) => {
     receivingCall,
     answerCall,
   } = useContext(CameraContext);
+  
   console.log(me);
   return (
     <>
       <div className='myId'>
-        <TextField
-          id='filled-basic'
-          label='Name'
-          variant='filled'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ marginBottom: '20px' }}
-        />
-        <CopyToClipboard text={me} style={{ marginBottom: '2rem' }}>
-          <Button
-            variant='contained'
-            color='primary'
-            startIcon={<AssignmentIcon fontSize='large' />}
-          >
-            Copy ID
-          </Button>
-        </CopyToClipboard>
-        <TextField
-          id='filled-basic'
-          label='ID to call'
-          variant='filled'
-          value={idToCall}
-          onChange={(e) => setIdToCall(e.target.value)}
-        />
         <div className='call-button'>
           {callAccepted && !callEnded ? (
             <Button variant='contained' color='secondary' onClick={leaveCall}>
@@ -78,6 +55,7 @@ const Videocall = (props) => {
             </Button>
           </div>
         ) : null}
+
       </div>
     </>
   );
