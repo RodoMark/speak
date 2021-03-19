@@ -15,11 +15,13 @@ import CameraContextProvider from '../context/CameraContext'
 const Room = (props) => {
 	
 
-	const [endingCall, setEndingCall] = useState(false)
-	const [receivingCall, setReceivingCall] = useState(false)
-	const [calling, setCalling] = useState(false)
-
-	const { 
+	const {
+		endingCall, 
+		setEndingCall,
+		receivingCall,
+		setReceivingCall,
+		calling,
+		setCalling,
 		callerSignal,
 		setCallerSignal,
 		answerCall, 
@@ -28,7 +30,8 @@ const Room = (props) => {
 		callUser, 
 		callEnded, 
 		callAccepted
-	 } = useCameraData()
+	} = useContext(CameraContext)
+
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();

@@ -13,7 +13,7 @@ import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 
 const Navigation = () => {
-  const [auth, setAuth] = useState(true);
+  
   return (
     <Router>
       <Navbar className="color-nav" bg='light' expand='lg'>

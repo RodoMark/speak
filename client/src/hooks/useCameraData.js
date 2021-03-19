@@ -5,15 +5,6 @@ import io from 'socket.io-client';
 const socket = io.connect();
 export default function useCameraData() {
   const io = socket;
-  const [me, setMe] = useState();
-  const [stream, setStream] = useState();
-  const [receivingCall, setReceivingCall] = useState(false);
-  const [caller, setCaller] = useState('');
-  const [idToCall, setIdToCall] = useState('');
-  const [callerSignal, setCallerSignal] = useState();
-  const [callAccepted, setCallAccepted] = useState(false);
-  const [callEnded, setCallEnded] = useState(false);
-  const [name, setName] = useState('');
   const userVideo = useRef();
   const connectionRef = useRef();
 
