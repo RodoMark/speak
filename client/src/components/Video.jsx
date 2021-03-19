@@ -3,8 +3,12 @@ import { useContext, useRef, useEffect, useState } from 'react';
 
 const Video = (props) => {
   const myVideo = useRef();
+  // const userVideo = userRef();
+
   const [stream, setStream] = useState();
+
   const { callAccepted, callEnded, userVideo } = useContext(CameraContext);
+
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })

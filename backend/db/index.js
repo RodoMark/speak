@@ -160,9 +160,9 @@ const getAttendees = function (id) {
 exports.getAttendees = getAttendees;
 
 const addAttendees = function (id, data) {
-  if (!id) {
-    throw new Error('User not logged in!');
-  }
+  // if (!id) {
+  //   throw new Error('User not logged in!');
+  // }
   console.log(`this is inside index addAttendees`, data);
   const queryValues = [data.roomId, data.userName, data.feedback];
   const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3) RETURNING *;`;

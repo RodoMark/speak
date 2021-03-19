@@ -6,10 +6,13 @@ import { AuthContext } from '../context/AuthContext'
 import Button from "./Buttons/Button.jsx";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
+const ExtraCompsBar = ({ callAccepted, setCallAccepted, endingCall, setEndingCall }) => {
 
 const [copyText, setCopyText] = useState('Copy');
 const { auth, setAuth } = useContext(AuthContext);
+
+const [leaveRoom, setLeaveRoom] = useState(true)
+const [hangUp, setHangUp] = useState(false)
 
 const location = useLocation()
 
@@ -17,7 +20,7 @@ const location = useLocation()
 	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 	
   return (
-  	<div className="extra-comps-bar">
+		<div key={callAccepted} className="extra-comps-bar">
 			<p>Auth is {auth ? "True" : "False"}</p>
   	{auth &&
 			<CopyToClipboard 
@@ -30,12 +33,27 @@ const location = useLocation()
 				</Button>
 			</CopyToClipboard>
 		}
-  	
-  	<Button
-			call 
-			reject
-			onClick={()=> {setEndingCall(true)}}
-		/>
+		
+			{ callAccepted && !hangUp ?
+				<Button
+					reject
+					onClick={()=>{
+						setHangUp(true)		
+						setCallAccepted(false)
+						}
+					}
+				>HangUp
+				</Button> :
+
+				<Button
+					reject
+					onClick={()=> {
+						setHangUp(false)
+						setEndingCall(true)
+						}
+					}
+					>Close Room
+				</Button> }
   	</div>
   )
 

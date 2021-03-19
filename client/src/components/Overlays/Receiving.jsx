@@ -2,7 +2,7 @@ import Button from '../Buttons/Button'
 
 export default function Receiving(props) {
 	
-	const { setCallAccepted, setReceivingCall} = props
+	const { answerCall, setCallAccepted, setReceivingCall} = props
 
   return (
     <div className="overlay">
@@ -11,6 +11,7 @@ export default function Receiving(props) {
 					confirm
 					onClick={
 						()=>{
+							answerCall()
 							setCallAccepted(true)
 							setReceivingCall(false)
 						}

@@ -33,6 +33,7 @@ const Room = (props) => {
       />
 			{ receivingCall && !callAccepted ?
 				<Receiving
+          answerCall={answerCall}
           callAccepted={callAccepted}
           setCallAccepted={setCallAccepted} 
 					receivingCall={receivingCall}

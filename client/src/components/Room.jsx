@@ -5,6 +5,7 @@ import Dropdown from "../components/Dropdown/Dropdown";
 import ExtraCompsBar from "../components/ExtraCompsBar";
 import useCameraData from "../hooks/useCameraData";
 import Confirming from "../components/Overlays/Confirming";
+import Calling from "../components/Overlays/Calling";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
 import { useContext, useRef, useEffect, useState } from 'react';
@@ -18,7 +19,15 @@ const Room = (props) => {
 	const [receivingCall, setReceivingCall] = useState(false)
 	const [calling, setCalling] = useState(false)
 
-	const { answerCall, callCancelled, io, callUser } = useCameraData()
+	const { 
+		answerCall, 
+		callCancelled, 
+		io, 
+		callUser, 
+		callEnded, 
+		callAccepted
+	 } = useCameraData()
+	 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
