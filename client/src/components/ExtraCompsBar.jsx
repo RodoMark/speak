@@ -8,6 +8,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 const ExtraCompsBar = ({ endingCall, setEndingCall }) => {
 
 const [copyText, setCopyText] = useState('Copy');
+const [userStatus, setUserStatus] = useState(false);
 
 const location = useLocation()
 
@@ -16,7 +17,8 @@ const location = useLocation()
 	
   return (
   	<div className="extra-comps-bar">
-  	<CopyToClipboard 
+  	{ userStatus && 
+		<CopyToClipboard 
 			text={window.location.href} 
 			style={{ marginBottom: '2rem' }}
 			// onClick={setCopyText('Copied')}
@@ -24,7 +26,7 @@ const location = useLocation()
 			<Button confirm>
 				{copyText}
 			</Button>
-		</CopyToClipboard>
+		</CopyToClipboard> } 
   	
   	<Button
 			call 

@@ -8,7 +8,9 @@ export default function Button(props) {
   let buttonClass = classNames("button", {
      "button--confirm": props.confirm,
      "button--reject": props.reject,
-     "button--call": props.call
+     "button--call": props.call,
+     "button--invite": props.invite,
+     "button--send": props.send
   })
 
   return (
