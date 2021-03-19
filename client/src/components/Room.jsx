@@ -20,6 +20,8 @@ const Room = (props) => {
 	const [calling, setCalling] = useState(false)
 
 	const { 
+		callerSignal,
+		setCallerSignal,
 		answerCall, 
 		callCancelled, 
 		io, 

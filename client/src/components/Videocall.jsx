@@ -22,7 +22,7 @@ const Videocall = (props) => {
     answerCall,
   } = useContext(CameraContext);
 
-  const { idToCall, callUser } = props
+  const { idToCall } = props
 
   const [callingUser, setCallingUser] = useState(false)
   const [callAccepted, setCallAccepted] = useState(false)

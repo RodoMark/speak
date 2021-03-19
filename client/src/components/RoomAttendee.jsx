@@ -38,7 +38,7 @@ const Room = (props) => {
         attendeeName={attendeeName}
         roomId={roomId}
       />
-			{ receivingCall && !callAccepted ?
+			{ true && true ?
 				<Receiving
           answerCall={answerCall}
           callAccepted={callAccepted}

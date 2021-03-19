@@ -3,14 +3,14 @@ import { useContext, useRef, useEffect, useState } from 'react';
 
 const Video = (props) => {
   const myVideo = useRef();
-  // const userVideo = userRef();
+  const userVideo = useRef();
 
   const [stream, setStream] = useState();
 
   const { 
     callAccepted,
     callEnded, 
-    userVideo 
+    // userVideo 
   } = useContext(CameraContext);
 
   useEffect(() => {

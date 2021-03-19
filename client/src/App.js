@@ -2,18 +2,18 @@ import './App.scss';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
-import AuthContextProvider from './context/AuthContext'
+import CameraContextProvider from './context/CameraContext'
 
 function App() {
   // const { io, message, handle } = useCameraData(); 
   return (
-    <AuthContextProvider>
+    <CameraContextProvider>
       <div className='App'>
         <Navigation />
         <h1>PARLAR</h1>
         <Footer />
     </div>
-    </AuthContextProvider>
+    </CameraContextProvider>
   );
 }
 export default App;
