@@ -18,15 +18,13 @@ const Room = (props) => {
 	const [endingCall, setEndingCall] = useState(false)
 	const [receivingCall, setReceivingCall] = useState(false)
 
-	const { answerCall, callCancelled } = useCameraData()
+	const { answerCall, callCancelled, callAccepted, setCallAccepted, io } = useCameraData()
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
-  const { io } = useCameraData();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
   return (
-		<AuthContextProvider>
 			<>
       <div>Room</div>
       <Stage
@@ -35,7 +33,9 @@ const Room = (props) => {
         roomId={roomId}
       />
 			{ receivingCall && 
-				<Receiving 
+				<Receiving
+          callAccepted={callAccepted}
+          setCallAccepted={setCallAccepted} 
 					receivingCall={receivingCall}
 					setReceivingCall={setReceivingCall}
 				/>
@@ -53,10 +53,11 @@ const Room = (props) => {
         io={io}
       />
       <ExtraCompsBarAttendee
+        callAccepted={callAccepted}
+        setCallAccepte={setCallAccepted}
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
-		</AuthContextProvider>
 			
     
   );

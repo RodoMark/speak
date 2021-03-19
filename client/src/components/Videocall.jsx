@@ -24,6 +24,7 @@ const Videocall = (props) => {
   } = useContext(CameraContext);
 
   const [callUser, setCallUser] = useState(false)
+  const [callAccepted, setCallAccepted] = useState(false)
 
   io.on('callUser', () => {
     setCallUser(true)
