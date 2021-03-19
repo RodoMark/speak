@@ -1,87 +1,71 @@
+import { useState, useRef } from 'react';
+
 // import all mayor components
-import Stage from '../components/Stage/Stage.jsx';
+import Stage from './Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
-import Dropdown from "../components/Dropdown/Dropdown";
-import ExtraCompsBar from "../components/ExtraCompsBar";
+import ExtraCompsBarAttendee from "./ExtraCompsBarAttendee";
 import useCameraData from "../hooks/useCameraData";
-import Confirming from "../components/Overlays/Confirming";
-import Calling from "../components/Overlays/Calling";
+import Receiving from "./Overlays/Receiving";
+import Confirming from "./Overlays/Confirming";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
-import { useContext, useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CameraContextProvider from '../context/CameraContext'
 
 const Room = (props) => {
-	
-
 	const [endingCall, setEndingCall] = useState(false)
+
 	const [receivingCall, setReceivingCall] = useState(false)
-	const [calling, setCalling] = useState(false)
 
 	const { 
-		callerSignal,
-		setCallerSignal,
-		answerCall, 
-		callCancelled, 
-		io, 
-		callUser, 
-		callEnded, 
-		callAccepted
-	 } = useCameraData()
+    answerCall, 
+    callCancelled, 
+    leaveCall, 
+    callAccepted, 
+    setCallAccepted, 
+    io 
+  } = useCameraData()
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
-  const socketId = params.title.split('&')[3];
-
-	io.on('callAccepted', (data) => {
-			setCalling(false);
-		}
-	)
-
   return (
-		<CameraContextProvider>
 			<>
       <div>Room</div>
       <Stage
         togleCamera={togleCamera}
         attendeeName={attendeeName}
-        setTogleCamera={setTogleCamera}
         roomId={roomId}
       />
-			{ calling &&
-				<Calling 
-					calling={calling}
-					setCalling={setCalling}
-				/>
-			} 
-			{ endingCall &&
+			{ true && true ?
+				<Receiving
+          answerCall={answerCall}
+          callAccepted={callAccepted}
+          setCallAccepted={setCallAccepted} 
+					receivingCall={receivingCall}
+					setReceivingCall={setReceivingCall}
+				/> : null
+			}
+      { endingCall && 
 				<Confirming 
 					endingCall={endingCall}
 					setEndingCall={setEndingCall}
+          callCancelled={callCancelled}
 				/>
-			} 
-      <Dropdown
-        attendeeName={attendeeName}
-        roomId={roomId}
-        socketId={socketId}
-        callUser={callUser}
-      />
+			}
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
         io={io}
       />
-      <ExtraCompsBar
-				
+      <ExtraCompsBarAttendee
+        callAccepted={callAccepted}
+        setCallAccepted={setCallAccepted}
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
-		</CameraContextProvider>
 			
     
   );

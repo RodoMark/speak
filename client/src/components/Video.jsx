@@ -3,16 +3,26 @@ import { useContext, useRef, useEffect, useState } from 'react';
 
 const Video = (props) => {
   const myVideo = useRef();
+  const userVideo = useRef();
+
   const [stream, setStream] = useState();
-  const { callAccepted, callEnded, userVideo } = useContext(CameraContext);
+
+  const { 
+    callAccepted,
+    callEnded, 
+    // userVideo 
+  } = useContext(CameraContext);
+
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
-        myVideo.current.srcObject = props.togleCamera ? stream : null;
+        myVideo.current.srcObject = stream
+        // props.togleCamera ?  stream : null;
       });
   }, []);
+
   return (
     <>
       <div className='video-container'>

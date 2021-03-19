@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import userCameraData from '../hooks/useCameraData';
+import useCameraData from '../hooks/useCameraData';
 
 export const CameraContext = createContext();
 
@@ -21,7 +21,7 @@ const CameraContextProvider = (props) => {
     io,
     message,
     handle,
-  } = userCameraData();
+  } = useCameraData();
 
   const data = {
     stream,

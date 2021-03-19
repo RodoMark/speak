@@ -1,18 +1,18 @@
-import Button from '../buttons/Button'
-import Overlay from '../Overlays/Overlay'
+import Button from '../Buttons/Button'
 
-
-export default function Calling(props) {
+export default function Calling({ attendeeName, setCalling }) {
 
   return (
-    <Overlay>
-      <Button 
+    <div>
+      <Button id="cancel-call"
         call 
         onClick={() => {
-        }}
+          setCalling(false);
+        }
+      }
       />
     <br />
-    <h2>Calling attendee...</h2>
-  </Overlay>
+    <h2>Calling {attendeeName}...</h2>
+  </div>
   )
 }

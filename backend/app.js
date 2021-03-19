@@ -56,7 +56,6 @@ io.on('connection', (socket) => {
   console.log('new client connected', socket.id);
   socket.emit('me', socket.id);
   socket.on('chat', (data) => {
-    console.log(data);
     io.sockets.emit('chat', data);
   });
 

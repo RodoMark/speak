@@ -22,7 +22,6 @@ const Register = (props) => {
     axios
       .post('/teachers/', data)
       .then((res) => {
-        console.log(res);
         props.setAuth(true);
         history.push('/');
       })

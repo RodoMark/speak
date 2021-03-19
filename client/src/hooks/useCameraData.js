@@ -25,16 +25,14 @@ export default function useCameraData() {
       });
 
     socket.on('me', (id) => {
-      console.log(id);
       setMe(id);
     });
 
     socket.on('callUser', (data) => {
-      console.log(data);
-      setReceivingCall(true);
       setCaller(data.from);
       setName(data.name);
       setCallerSignal(data.signal);
+      setReceivingCall(true);
     });
   }, []);
 
@@ -49,10 +47,15 @@ export default function useCameraData() {
         userToCall: id,
         signalData: data,
         from: me,
-        name: name,
+        name: "Teacher",
       });
     });
     peer.on('stream', (stream) => {
+      // if ('srcObject' in video) {
+      //   video.srcObject = stream
+      // } else {
+      //   video.src = window.URL.createObjectURL(stream) // for older browsers
+      // }
       userVideo.current.srcObject = stream;
     });
     socket.on('callAccepted', (signal) => {
@@ -71,17 +74,15 @@ export default function useCameraData() {
       trickle: false,
       stream: stream,
     });
-    console.log(peer);
+    console.log("PEER", peer);
     peer.on('signal', (data) => {
-      console.log(`inside peer.on signal`);
       socket.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
-      console.log(stream);
       userVideo.current.srcObject = stream;
     });
-
-    peer.signal(callerSignal);
+    callerSignal && peer.signal(callerSignal);
+    
     connectionRef.current = peer;
   };
 
@@ -102,19 +103,22 @@ export default function useCameraData() {
     stream,
     // myVideo,
     callAccepted,
+    callerSignal,
+    setCallerSignal,
+    setCallAccepted,
     callEnded,
     callCancelled,
     userVideo,
     name,
+    setName,
     me,
     idToCall,
-    setName,
     setIdToCall,
-    leaveCall,
     callUser,
     receivingCall,
     answerCall,
     cancelCall,
+    leaveCall,
     io,
   };
 }

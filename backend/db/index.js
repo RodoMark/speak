@@ -12,7 +12,6 @@ console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
 // helper function for adding use to database
 const addUser = function (user) {
-  console.log(user.firstName);
   const queryValues = [
     user.firstName,
     user.lastName,
@@ -73,7 +72,6 @@ exports.getUserWithId = getUserWithId;
 
 //Helper function for retrieving user with email
 const getUserWithEmail = function (email) {
-  console.log(email);
 
   const queryValues = [email];
   const queryString = `
@@ -84,7 +82,6 @@ const getUserWithEmail = function (email) {
   return db
     .query(queryString, queryValues)
     .then((user) => {
-      console.log(user.rows[0]);
       return user.rows[0];
     })
     .catch(() => null);
@@ -101,7 +98,6 @@ const getRooms = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(() => null);
@@ -109,7 +105,6 @@ const getRooms = function (id) {
 exports.getRooms = getRooms;
 
 const addRooms = function (id, data) {
-  console.log('Data from index.addRooms', data);
   if (!id) {
     throw new Error('User not logged in!');
   }
@@ -120,7 +115,6 @@ const addRooms = function (id, data) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      // console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => console.log('CATCHED ERR +++>', err));
@@ -152,7 +146,6 @@ const getAttendees = function (id) {
   SELECT * FROM attendees`
     )
     .then((res) => {
-      console.log(res.rows);
       return res.rows;
     })
     .catch(() => null);
@@ -160,16 +153,14 @@ const getAttendees = function (id) {
 exports.getAttendees = getAttendees;
 
 const addAttendees = function (id, data) {
-  if (!id) {
-    throw new Error('User not logged in!');
-  }
-  console.log(`this is inside index addAttendees`, data);
+  // if (!id) {
+  //   throw new Error('User not logged in!');
+  // }
   const queryValues = [data.roomId, data.userName, data.feedback];
   const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3) RETURNING *;`;
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => console.log(`catch in add attendee`, err));
@@ -191,7 +182,6 @@ const getMessages = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(() => null);
@@ -208,7 +198,6 @@ const addMessages = function (id, data) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(() => null);
