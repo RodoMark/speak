@@ -77,8 +77,6 @@ export default function useCameraData() {
       socket.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
-      console.log("STEAM", stream);
-      console.log("USER VIDEO=>", userVideo)
       userVideo.current.srcObject = stream;
     });
 

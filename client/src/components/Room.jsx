@@ -10,7 +10,7 @@ import MessageChat from './Message/MessageChat';
 import Axios from "axios";
 import { useContext, useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AuthContextProvider from '../context/AuthContext'
+import CameraContextProvider from '../context/CameraContext'
 
 const Room = (props) => {
 	
@@ -27,7 +27,7 @@ const Room = (props) => {
 		callEnded, 
 		callAccepted
 	 } = useCameraData()
-	 
+
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
@@ -41,7 +41,7 @@ const Room = (props) => {
 	)
 
   return (
-		<AuthContextProvider>
+		<CameraContextProvider>
 			<>
       <div>Room</div>
       <Stage
@@ -79,7 +79,7 @@ const Room = (props) => {
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
-		</AuthContextProvider>
+		</CameraContextProvider>
 			
     
   );

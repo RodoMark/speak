@@ -22,9 +22,9 @@ const Videocall = (props) => {
     answerCall,
   } = useContext(CameraContext);
 
-  const { idToCall } = props
+  const { idToCall, callUser } = props
 
-  const [callUser, setCallUser] = useState(false)
+  const [callingUser, setCallingUser] = useState(false)
   const [callAccepted, setCallAccepted] = useState(false)
 
   io.on('callUser', () => {
@@ -53,7 +53,7 @@ const Videocall = (props) => {
         </div>
       </div>
       <div>
-        { callUser && 
+        { callingUser && 
           <Calling 
           />
         }

@@ -3,7 +3,7 @@ import { useContext, useRef, useEffect, useState } from 'react';
 
 const Video = (props) => {
   const myVideo = useRef();
-  // const userVideo = userRef();
+  const userVideo = userRef();
 
   const [stream, setStream] = useState();
 
@@ -18,6 +18,29 @@ const Video = (props) => {
         // props.togleCamera ?  stream : null;
       });
   }, []);
+
+  
+
+  const answerCall = () => {
+    setCallAccepted(true);
+    const peer = new Peer({
+      initiator: false,
+      trickle: false,
+      stream: stream,
+    });
+    console.log(peer);
+    peer.on('signal', (data) => {
+      console.log(`inside peer.on signal`);
+      socket.emit('answerCall', { signal: data, to: caller });
+    });
+    peer.on('stream', (stream) => {
+      userVideo.current.srcObject = stream;
+    });
+
+    peer.signal(callerSignal);
+    connectionRef.current = peer;
+  };
+
   return (
     <>
       <div className='video-container'>
