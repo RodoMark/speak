@@ -1,16 +1,18 @@
 import Button from '../Buttons/Button'
 
-export default function Calling(props) {
+export default function Calling({ attendeeName, setCalling }) {
 
   return (
     <div>
-      <Button 
+      <Button id="cancel-call"
         call 
         onClick={() => {
-        }}
+          setCalling(false);
+        }
+      }
       />
     <br />
-    <h2>Calling attendee...</h2>
+    <h2>Calling {attendeeName}...</h2>
   </div>
   )
 }

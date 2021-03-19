@@ -4,7 +4,6 @@ import Stage from '../components/Stage/Stage.jsx';
 import Dropdown from "../components/Dropdown/Dropdown";
 import ExtraCompsBar from "../components/ExtraCompsBar";
 import useCameraData from "../hooks/useCameraData";
-import Receiving from "../components/Overlays/Receiving";
 import Confirming from "../components/Overlays/Confirming";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
@@ -17,11 +16,11 @@ const Room = (props) => {
 
 	const [endingCall, setEndingCall] = useState(false)
 	const [receivingCall, setReceivingCall] = useState(false)
+	const [calling, setCalling] = useState(false)
 
-	const { answerCall, callCancelled } = useCameraData()
+	const { answerCall, callCancelled, io, callUser } = useCameraData()
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
-  const { io, callUser } = useCameraData();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
@@ -36,6 +35,12 @@ const Room = (props) => {
         setTogleCamera={setTogleCamera}
         roomId={roomId}
       />
+			{ calling &&
+				<Calling 
+					calling={calling}
+					setCalling={setCalling}
+				/>
+			} 
 			{ endingCall &&
 				<Confirming 
 					endingCall={endingCall}
