@@ -1,10 +1,9 @@
 import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
+import useCameraData from '../hooks/useCameraData';
 
 const Video = () => {
-  const { MyVideo, UserVideo, callAccepted, callEnded, me } = useContext(
-    CameraContext
-  );
+  const { MyVideo, UserVideo, callAccepted, callEnded, me } = useCameraData();
   console.log(MyVideo, UserVideo, callAccepted, callEnded, me);
 
   return (

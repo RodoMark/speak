@@ -2,10 +2,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import { useRef, useContext } from 'react';
+import useCameraData from '../hooks/useCameraData';
 import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 const AttendeeLogIn = (props) => {
-  const { me, socket } = useContext(CameraContext);
+  const { me, socket } = useCameraData();
   console.log(me);
   const roomId = useParams();
   const userName = useRef();

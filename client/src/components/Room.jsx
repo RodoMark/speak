@@ -7,11 +7,15 @@ import MessageChat from './Message/MessageChat';
 import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
+import useCameraData from '../hooks/useCameraData';
 
 const Room = () => {
-  const { socket, callCancelled, receivingCall, setReceivingCall } = useContext(
-    CameraContext
-  );
+  const {
+    socket,
+    callCancelled,
+    receivingCall,
+    setReceivingCall,
+  } = useCameraData();
   console.log(socket);
   const [leaveRoom, setLeaveRoom] = useState(false);
   const params = useParams();

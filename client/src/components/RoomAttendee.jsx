@@ -6,6 +6,7 @@ import Confirming from './Overlays/Confirming';
 import MessageChat from './Message/MessageChat';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
+import useCameraData from '../hooks/useCameraData';
 
 const Room = (props) => {
   const [endingCall, setEndingCall] = useState(false);
@@ -19,7 +20,7 @@ const Room = (props) => {
     setCallAccepted,
     socket,
     me,
-  } = useContext(CameraContext);
+  } = useCameraData();
 
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
