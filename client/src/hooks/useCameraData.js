@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
-const socket = io.connect();
 export default function useCameraData() {
-  const io = socket;
   const [me, setMe] = useState();
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -14,21 +12,27 @@ export default function useCameraData() {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
+  const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const socket = useRef();
 
   useEffect(() => {
+    socket.current = io.connect();
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setStream(stream);
+        if (myVideo.current) {
+          myVideo.current.srcObject = stream;
+        }
       });
 
-    socket.on('me', (id) => {
+    socket.current.on('me', (id) => {
       setMe(id);
     });
 
-    socket.on('callUser', (data) => {
+    socket.current.on('hey', (data) => {
       setCaller(data.from);
       setName(data.name);
       setCallerSignal(data.signal);
@@ -43,22 +47,19 @@ export default function useCameraData() {
       stream: stream,
     });
     peer.on('signal', (data) => {
-      socket.emit('callUser', {
+      socket.current.emit('callUser', {
         userToCall: id,
         signalData: data,
         from: me,
-        name: "Teacher",
+        name: 'Teacher',
       });
     });
     peer.on('stream', (stream) => {
-      // if ('srcObject' in video) {
-      //   video.srcObject = stream
-      // } else {
-      //   video.src = window.URL.createObjectURL(stream) // for older browsers
-      // }
-      userVideo.current.srcObject = stream;
+      if (userVideo.current) {
+        userVideo.current.srcObject = stream;
+      }
     });
-    socket.on('callAccepted', (signal) => {
+    socket.current.on('callAccepted', (signal) => {
       setCallAccepted(true);
       peer.signal(signal);
       setReceivingCall(false);
@@ -74,15 +75,14 @@ export default function useCameraData() {
       trickle: false,
       stream: stream,
     });
-    console.log("PEER", peer);
     peer.on('signal', (data) => {
-      socket.emit('answerCall', { signal: data, to: caller });
+      socket.current.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
       userVideo.current.srcObject = stream;
     });
     callerSignal && peer.signal(callerSignal);
-    
+
     connectionRef.current = peer;
   };
 
@@ -99,9 +99,27 @@ export default function useCameraData() {
     setReceivingCall(false);
   };
 
+  let MyVideo;
+  if (stream) {
+    MyVideo = (
+      <video
+        playsInline
+        muted
+        ref={myVideo}
+        autoPlay
+        style={{ width: '300px' }}
+      />
+    );
+  }
+
+  let UserVideo;
+  if (callAccepted) {
+    UserVideo = (
+      <video playsInline ref={userVideo} autoPlay style={{ width: '300px' }} />
+    );
+  }
   return {
     stream,
-    // myVideo,
     callAccepted,
     callerSignal,
     setCallerSignal,
@@ -119,6 +137,7 @@ export default function useCameraData() {
     answerCall,
     cancelCall,
     leaveCall,
-    io,
+    MyVideo,
+    UserVideo,
   };
 }

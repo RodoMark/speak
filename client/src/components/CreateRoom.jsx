@@ -15,7 +15,8 @@ const CreateRoom = (props) => {
     const roomInfo = { title, description, link };
     Axios.post('api/rooms', roomInfo)
       .then((res) => {
-        history.push(`/Room/${roomInfo.title}`);
+        const roomId = res.data.id;
+        history.push(`/Teacher/Room/${roomId}`);
       })
       .catch((err) => console.log(err));
   };

@@ -22,8 +22,9 @@ const Register = (props) => {
     axios
       .post('/teachers/', data)
       .then((res) => {
+        const teacherId = res.data.id;
         props.setAuth(true);
-        history.push('/');
+        history.push(`/New/${teacherId}`);
       })
       .catch((err) => console.log(err));
   };

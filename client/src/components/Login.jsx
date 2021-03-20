@@ -18,8 +18,9 @@ const Login = (props) => {
     axios
       .post('/teachers/login', data)
       .then((res) => {
+        const teacherId = res.data.id;
         props.setAuth(true);
-        history.push('/');
+        history.push(`/New/${teacherId}`);
       })
       .catch((err) => console.log(err));
   };

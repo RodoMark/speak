@@ -16,7 +16,7 @@ const Navigation = () => {
   const [auth, setAuth] = useState(true);
   return (
     <Router>
-      <Navbar className="color-nav" bg='light' expand='lg'>
+      <Navbar className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
             Parlar
@@ -55,11 +55,10 @@ const Navigation = () => {
         <Route exact path='/Logout' component={Logout}>
           <Logout setAuth={setAuth} />
         </Route>
-        <Route path='/Teacher/Room/:title/' component={Room}/>
-        <Route path='/Room/:title/' component={RoomAttendee}/>
-        <Route path='/Login/:title/' component={AttendeLogIn}/>
-        <Route path='/New/' component={CreateRoom}/>
-
+        <Route path='/Teacher/Room/:title/' component={Room} />
+        <Route path='/Room/:title/' component={RoomAttendee} />
+        <Route path='/Login/:title/' component={AttendeLogIn} />
+        <Route path='/New/:teacherId' component={CreateRoom} />
       </Switch>
     </Router>
   );
