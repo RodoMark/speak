@@ -29,10 +29,6 @@ const Videocall = (props) => {
   const [callAccepted, setCallAccepted] = stateCallAccepted
   const [name, setName] = stateName
   const [receivingCall, setReceivingCall] = stateReceivingCall
-  
-  io.on('callUser', () => {
-    setCallingUser(true)
-  })
 
   console.log(me);
   return (
