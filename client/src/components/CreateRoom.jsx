@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Button from '../components/Buttons/Button';
+import Button from './Buttons/Button';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -15,7 +15,8 @@ const CreateRoom = (props) => {
     const roomInfo = { title, description, link };
     Axios.post('api/rooms', roomInfo)
       .then((res) => {
-        history.push(`/Room/${roomInfo.title}`);
+        const roomId = res.data.id;
+        history.push(`/Teacher/Room/${roomId}`);
       })
       .catch((err) => console.log(err));
   };

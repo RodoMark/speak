@@ -1,51 +1,28 @@
-import { useContext, useRef, useEffect, useState } from 'react';
 import { CameraContext } from '../context/CameraContext';
+import { useContext, useEffect } from 'react';
 
-const Video = (props) => {
-  const myVideo = useRef();
-  const userVideo = useRef();
-
-  const { stateStream,
+const Video = () => {
+  const {
+    MyVideo,
+    UserVideo,
     stateCallAccepted,
-    stateCallEnded, } = useContext(CameraContext)
-
-  const [stream, setStream] = stateStream;
+    stateCallEnded,
+    stateMe,
+  } = useContext(CameraContext);
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [callEnded, setCallEnded] = stateCallEnded;
-
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        setStream(stream);
-        myVideo.current.srcObject = stream
-        // props.togleCamera ?  stream : null;
-      });
-  }, []);
+  const [me, setMe] = stateMe;
+  // debugger;
+  console.log(MyVideo, me);
 
   return (
     <>
       <div className='video-container'>
-        <div id='myVideo' className='video'>
-          {stream && (
-            <video
-              playsInline
-              muted
-              ref={myVideo}
-              autoPlay
-              style={{ width: '300px' }}
-            />
-          )}
+        <div id={me} className='video'>
+          {MyVideo}
         </div>
         <div id='otherVideo' className='video'>
-          {callAccepted && !callEnded ? (
-            <video
-              playsInline
-              ref={userVideo}
-              autoPlay
-              style={{ width: '300px' }}
-            />
-          ) : null}
+          {callAccepted && !callEnded ? UserVideo : null}
         </div>
       </div>
     </>

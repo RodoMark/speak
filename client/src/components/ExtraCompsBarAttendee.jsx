@@ -1,52 +1,40 @@
-import { useState, useContext } from 'react'
-import { useLocation } from 'react-router-dom'
-import { CameraContext } from '../context/CameraContext'
+import { useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { CameraContext } from '../context/CameraContext';
 
-
-import Button from "./Buttons/Button.jsx";
+import Button from './Buttons/Button.jsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBarAttendee = (props) => {
+  const { stateCallAccepted, stateEndingCall } = useContext(CameraContext);
 
-	const { stateCallAccepted, stateEndingCall } = useContext(CameraContext)
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
 
-	const [callAccepted, setCallAccepted] = stateCallAccepted
+  const [endingCall, setEndingCall] = stateEndingCall;
 
-	const [endingCall, setEndingCall] = stateEndingCall
+  const [hangUp, setHangUp] = useState(false);
 
-	const [hangUp, setHangUp] = useState(false)
+  ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 
-const location = useLocation()
-
-
-	///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
-	
   return (
-  	<div key={callAccepted} className="extra-comps-bar"> 	
-  
-			{ !hangUp ?
-				<Button
-					reject
-					onClick={()=>{
-						setHangUp(true)		
-						setCallAccepted(false)
-						}
-					}
-				>HangUp
-				</Button> :
-
-				<Button
-					reject
-					onClick={()=> setEndingCall(true)
-					}
-					>Leave
-				</Button> }
-			
-		</div>
-
-		
-  )
-
+    <div key={callAccepted} className='extra-comps-bar'>
+      {!hangUp ? (
+        <Button
+          reject
+          onClick={() => {
+            setHangUp(true);
+            setCallAccepted(false);
+          }}
+        >
+          HangUp
+        </Button>
+      ) : (
+        <Button reject onClick={() => setEndingCall(true)}>
+          Leave
+        </Button>
+      )}
+    </div>
+  );
 };
 
 export default ExtraCompsBarAttendee;

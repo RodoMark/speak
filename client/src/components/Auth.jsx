@@ -1,11 +1,10 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 import { NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { CameraContext } from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext';
 
-const Auth = (props) => {
-
+const Auth = () => {
   const { stateAuth } = useContext(CameraContext);
 
   const [auth, setAuth] = stateAuth;

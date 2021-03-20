@@ -1,34 +1,17 @@
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
+import Calling from './Overlays/Calling';
 
 const Videocall = (props) => {
-  const {
-    io,
-    me,
-    leaveCall,
-    callUser,
-    answerCall,
-    
-    stateIdToCall,
-    stateCallAccepted,
-    stateCallEnded,
-    stateName,
-    stateReceivingCall,
-  } = useContext(CameraContext);
-
-  const { idToCall } = props
-
-  const [callEnded, setCallEnded] = stateCallEnded
-  const [callingUser, setCallingUser] = stateCallingUser
-  const [callAccepted, setCallAccepted] = stateCallAccepted
-
-  console.log(me);
+  const { stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(
+    CameraContext
+  );
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [callEnded, setCallEnded] = stateCallEnded;
+  const { idToCall } = props;
   return (
     <>
       <div className='myId'>
@@ -48,12 +31,6 @@ const Videocall = (props) => {
           )}
           {idToCall}
         </div>
-      </div>
-      <div>
-        { callingUser && 
-          <Calling 
-          />
-        }
       </div>
     </>
   );

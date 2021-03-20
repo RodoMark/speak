@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 export default function Message(props) {
-  const { io } = props;
+  const { socket } = props;
   const [msg, setMsg] = useState('.');
-  io.off('chat');
-  io.on('chat', (data) => {
+  socket.off('chat');
+  socket.on('chat', (data) => {
     const message = data.message;
     const attendeeName = data.attendeeName;
     setMsg((prev) => (prev += `${attendeeName}: ${message},`));

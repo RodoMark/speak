@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { CameraContext } from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext';
 
 const Login = (props) => {
-  const { stateAuth } = useContext(CameraContext)
-  const [auth, setAuth] = stateAuth
+  const { stateAuth } = useContext(CameraContext);
+  const [auth, setAuth] = stateAuth;
 
   const email = useRef();
   const password = useRef();
@@ -24,8 +24,10 @@ const Login = (props) => {
     axios
       .post('/teachers/login', data)
       .then((res) => {
-        setAuth(true);
-        history.push('/');
+        if (res.data.user.email) {
+          setAuth(true);
+          history.push('/');
+        }
       })
       .catch((err) => console.log(err));
   };

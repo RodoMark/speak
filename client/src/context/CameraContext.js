@@ -17,22 +17,27 @@ const CameraContextProvider = (props) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
+
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+
   const io = socket;
+
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        setStream(stream);
+      .then((cameraData) => {
+        setStream(cameraData);
         if (myVideo.current) {
-          myVideo.current.srcObject = stream;
+          myVideo.current.srcObject = cameraData;
         }
       });
+
     socket.on('me', (id) => {
       setMe(id);
     });
+
     socket.on('hey', (data) => {
       console.log(`set caller signal`);
       setCaller(data.from);
@@ -67,8 +72,10 @@ const CameraContextProvider = (props) => {
       peer.signal(signal);
       setReceivingCall(false);
     });
+
     connectionRef.current = peer;
   };
+
   const answerCall = () => {
     console.log(`answerCall clicked`);
     setCallAccepted(true);
@@ -84,8 +91,10 @@ const CameraContextProvider = (props) => {
       userVideo.current.srcObject = stream;
     });
     callerSignal && peer.signal(callerSignal);
+
     connectionRef.current = peer;
   };
+
   const leaveCall = () => {
     setCallEnded(true);
     connectionRef.current.destroy();
