@@ -1,9 +1,10 @@
+import { useContext } from 'react'
+import { CameraContext } from '../../context/CameraContext'
+
 import Button from '../Buttons/Button'
 import { useHistory } from 'react-router-dom'
 
-
-
-export default function Confirming({ endingCall, setEndingCall, callCancelled}) {
+export default function ConfirmingTeacher({ endingCall, setEndingCall, callCancelled}) {
    
 const history = useHistory()
 

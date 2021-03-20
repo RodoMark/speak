@@ -7,6 +7,7 @@ const CameraContextProvider = (props) => {
 
   const [auth, setAuth] = useState(true);
   const [endingCall, setEndingCall] = useState(false)
+  const [error, setError] = useState(false)
   const [me, setMe] = useState();
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -67,8 +68,9 @@ const CameraContextProvider = (props) => {
     stateIdToCall: [idToCall, setIdToCall],
     stateMe: [me, setMe],
     stateName: [name, setName],
-    stateSteam: [stream, setStream],
+    stateStream: [stream, setStream],
     stateReceivingCall: [receivingCall, setReceivingCall],
+    stateError: [error, setError],
   }
 
   return (

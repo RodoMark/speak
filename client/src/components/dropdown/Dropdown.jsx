@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import Videocall from '../Videocall'
 import axios from 'axios';
 import PhoneIcon from '@material-ui/icons/Phone';
 import IconButton from '@material-ui/core/IconButton';
 
+import { CameraContext } from '../../context/CameraContext'
+
 export default function Dropdowns(props) {
   const [list, setList] = useState([]);
   const { attendeeName, roomId } = props;
+
+  const { callUser } = useContext(CameraContext)
 
   useEffect(() => {
     axios.get('/api/attendees').then((res) => {

@@ -10,26 +10,23 @@ import { useContext } from 'react';
 const Videocall = (props) => {
   const {
     io,
-    name,
-    setName,
     me,
-    setIdToCall,
-    callAccepted,
-    callEnded,
     leaveCall,
     callUser,
-    receivingCall,
     answerCall,
+    
+    stateIdToCall,
+    stateCallAccepted,
+    stateCallEnded,
+    stateName,
+    stateReceivingCall,
   } = useContext(CameraContext);
 
   const { idToCall } = props
 
-  const [callingUser, setCallingUser] = useState(false)
-  const [callAccepted, setCallAccepted] = useState(false)
-
-  io.on('callUser', () => {
-    setCallUser(true)
-  })
+  const [callEnded, setCallEnded] = stateCallEnded
+  const [callingUser, setCallingUser] = stateCallingUser
+  const [callAccepted, setCallAccepted] = stateCallAccepted
 
   console.log(me);
   return (
