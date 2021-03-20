@@ -9,12 +9,13 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 const ExtraCompsBarAttendee = (props) => {
 
 	const {
-		callAccepted, 
-		setCallAccepted,
-		setEndingCall
+		stateCallAccepted, 
+		stateEndingCall
 	} = useContext(CameraContext)
 
-const [hangUp, setHangUp] = useState(false)
+	const [callAccepted, setCallAccepted] = stateCallAccepted
+	const [endingCall, setEndingCall] = stateEndingCall
+	const [hangUp, setHangUp] = useState(false)
 
 const location = useLocation()
 
