@@ -1,12 +1,18 @@
 import { useState, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
+import { CameraContext } from '../context/CameraContext'
 
 
 import Button from "./Buttons/Button.jsx";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const ExtraCompsBar = ({ callAccepted, setCallAccepted, endingCall, setEndingCall }) => {
+const ExtraCompsBar = () => {
+
+const { stateCallAccepted, stateEndingCall } = useContext(CameraContext)
+
+const [callAccepted, setCallAccepted] = stateCallAccepted
+
+const [endingCall, setEndingCall] = stateEndingCall
 
 const [copyText, setCopyText] = useState('Copy');
 
