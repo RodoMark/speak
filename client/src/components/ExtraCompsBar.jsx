@@ -9,9 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 const ExtraCompsBar = ({ callAccepted, setCallAccepted, endingCall, setEndingCall }) => {
 
 const [copyText, setCopyText] = useState('Copy');
-const { auth, setAuth } = useContext(AuthContext);
 
-const [leaveRoom, setLeaveRoom] = useState(true)
 const [hangUp, setHangUp] = useState(false)
 
 const location = useLocation()
@@ -21,8 +19,7 @@ const location = useLocation()
 	
   return (
 		<div key={callAccepted} className="extra-comps-bar">
-			<p>Auth is {auth ? "True" : "False"}</p>
-  	{auth &&
+  	
 			<CopyToClipboard 
 				text={window.location.href} 
 				style={{ marginBottom: '2rem' }}
@@ -32,7 +29,7 @@ const location = useLocation()
 					{copyText}
 				</Button>
 			</CopyToClipboard>
-		}
+		
 		
 			{ callAccepted && !hangUp ?
 				<Button

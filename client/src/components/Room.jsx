@@ -13,25 +13,20 @@ import Axios from "axios";
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext'
 
+
+
 const Room = (props) => {
 	
 
 	const {
-		endingCall, 
-		setEndingCall,
-		receivingCall,
-		setReceivingCall,
+		stateEndingCall, 
 		calling,
 		setCalling,
-		callerSignal,
-		setCallerSignal,
-		answerCall, 
-		callCancelled, 
 		io, 
 		callUser, 
-		callEnded, 
-		callAccepted
 	} = useContext(CameraContext)
+
+	const [endingCall, setEndingCall] = stateEndingCall
 
 
   const [togleCamera, setTogleCamera] = useState(true);

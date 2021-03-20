@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+import { CameraContext } from '../context/CameraContext'
 
 // import all mayor components
 import Stage from './Stage/Stage.jsx';
@@ -11,19 +12,24 @@ import MessageChat from './Message/MessageChat';
 import Axios from "axios";
 import { useParams } from 'react-router-dom';
 
+
+
 const RoomAttendee = (props) => {
-	const [endingCall, setEndingCall] = useState(false)
-
-	const [receivingCall, setReceivingCall] = useState(false)
-
 	const { 
     answerCall, 
     callCancelled, 
     leaveCall, 
-    callAccepted, 
-    setCallAccepted, 
-    io 
-  } = useCameraData()
+    stateCallAccepted,
+    stateReceivingCall,
+    stateEndingCall,
+    io,
+  } = useContext(CameraContext)
+
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+
+  const [endingCall, setEndingCall] = stateEndingCall;
+
+  const [receivingCall, setReceivingCall] = stateReceivingCall;
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
@@ -44,9 +50,6 @@ const RoomAttendee = (props) => {
 			}
       { endingCall && 
 				<Confirming 
-					endingCall={endingCall}
-					setEndingCall={setEndingCall}
-          callCancelled={callCancelled}
 				/>
 			}
       <MessageChat
@@ -56,10 +59,7 @@ const RoomAttendee = (props) => {
         io={io}
       />
       <ExtraCompsBarAttendee
-        callAccepted={callAccepted}
-        setCallAccepted={setCallAccepted}
-        endingCall={endingCall}
-        setEndingCall={setEndingCall}/>
+        />
     	</>
 			
     
