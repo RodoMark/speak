@@ -1,5 +1,5 @@
 import { CameraContext } from '../context/CameraContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 const Video = () => {
   const {
@@ -12,12 +12,13 @@ const Video = () => {
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [callEnded, setCallEnded] = stateCallEnded;
   const [me, setMe] = stateMe;
+  // debugger;
   console.log(MyVideo, me);
 
   return (
     <>
       <div className='video-container'>
-        <div id='myVideo' className='video'>
+        <div id={me} className='video'>
           {MyVideo}
         </div>
         <div id='otherVideo' className='video'>

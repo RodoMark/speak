@@ -28,10 +28,10 @@ const CameraContextProvider = (props) => {
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        setStream(stream);
+      .then((cameraData) => {
+        setStream(cameraData);
         if (myVideo.current) {
-          myVideo.current.srcObject = stream;
+          myVideo.current.srcObject = cameraData;
         }
       });
 
