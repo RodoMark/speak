@@ -32,6 +32,7 @@ export default function useCameraData() {
     });
 
     socket.on('hey', (data) => {
+      console.log(`set caller signal`);
       setCaller(data.from);
       setName(data.name);
       setCallerSignal(data.signal);
@@ -40,6 +41,7 @@ export default function useCameraData() {
   }, []);
 
   const callUser = (id) => {
+    console.log(`call user clicked`);
     const peer = new Peer({
       initiator: true,
       trickle: false,
@@ -59,6 +61,7 @@ export default function useCameraData() {
       }
     });
     socket.on('callAccepted', (signal) => {
+      console.log(`heard call accepted`);
       setCallAccepted(true);
       peer.signal(signal);
       setReceivingCall(false);
@@ -68,6 +71,7 @@ export default function useCameraData() {
   };
 
   const answerCall = () => {
+    console.log(`answerCall clicked`);
     setCallAccepted(true);
     const peer = new Peer({
       initiator: false,
@@ -133,6 +137,7 @@ export default function useCameraData() {
     setIdToCall,
     callUser,
     receivingCall,
+    setReceivingCall,
     answerCall,
     cancelCall,
     leaveCall,

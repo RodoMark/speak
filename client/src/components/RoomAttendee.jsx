@@ -18,16 +18,19 @@ const Room = (props) => {
     callAccepted,
     setCallAccepted,
     socket,
+    me,
   } = useContext(CameraContext);
 
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
+
+  console.log(me, attendeeId, attendeeName);
   return (
     <>
       <div>Room</div>
-      <Stage attendeeName={attendeeName} roomId={roomId} />
+      <Stage />
       {true && true ? (
         <Receiving
           answerCall={answerCall}

@@ -65,10 +65,12 @@ io.on('connection', (socket) => {
   });
 
   socket.on('attendeejoin', (data) => {
+    console.log(`new student join in`);
     io.sockets.emit('refresh', data);
   });
 
   socket.on('callUser', (data) => {
+    console.log(`call user heard from backend, emit to hey with caller signal`);
     io.to(data.userToCall).emit('hey', {
       signal: data.signalData,
       from: data.from,
@@ -76,6 +78,7 @@ io.on('connection', (socket) => {
     });
   });
   socket.on('answerCall', (data) => {
+    console.log(`answercall heard emit peers data signal`);
     io.to(data.to).emit('callAccepted', data.signal);
   });
   socket.on('register', (data) => {

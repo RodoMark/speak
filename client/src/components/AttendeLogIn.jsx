@@ -6,6 +6,7 @@ import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 const AttendeeLogIn = (props) => {
   const { me, socket } = useContext(CameraContext);
+  console.log(me);
   const roomId = useParams();
   const userName = useRef();
   const history = useHistory();
