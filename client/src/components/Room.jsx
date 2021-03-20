@@ -1,6 +1,6 @@
 import Stage from '../components/Stage/Stage.jsx';
 import Dropdown from './Dropdown/Dropdown';
-import ExtraCompsBar from '../components/ExtraCompsBar';
+// import ExtraCompsBar from '../components/ExtraCompsBar';
 import Confirming from '../components/Overlays/Confirming';
 import Calling from '../components/Overlays/Calling';
 import MessageChat from './Message/MessageChat';
@@ -9,9 +9,10 @@ import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
 
 const Room = () => {
-  const { io, callCancelled, receivingCall, setReceivingCall } = useContext(
+  const { socket, callCancelled, receivingCall, setReceivingCall } = useContext(
     CameraContext
   );
+  console.log(socket);
   const [leaveRoom, setLeaveRoom] = useState(false);
   const params = useParams();
   const roomId = params.title.split('&')[0];
@@ -26,9 +27,8 @@ const Room = () => {
           setEndingCall={setReceivingCall}
         />
       )}
-      <Dropdown socket={io} roomId={roomId} />
-      <MessageChat />
-      <ExtraCompsBar setLeaveRoom={setLeaveRoom} />
+      <Dropdown socket={socket} roomId={roomId} />
+      <MessageChat socket={socket} />
     </>
   );
 };

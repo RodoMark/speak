@@ -5,7 +5,7 @@ import { useRef, useContext } from 'react';
 import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 const AttendeeLogIn = (props) => {
-  const { me, io } = useContext(CameraContext);
+  const { me, socket } = useContext(CameraContext);
   const roomId = useParams();
   const userName = useRef();
   const history = useHistory();
@@ -19,7 +19,7 @@ const AttendeeLogIn = (props) => {
     };
 
     axios.post('/api/attendees', data).then((res) => {
-      io.emit('attendeejoin', { status: true });
+      socket.emit('attendeejoin', { status: true });
       const attendeeId = res.data.id;
       const params = `${roomId.title}&${userName.current.value}&${attendeeId}&${me}`;
       history.push(`/Room/${params}`);

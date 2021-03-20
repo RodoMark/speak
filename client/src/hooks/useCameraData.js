@@ -3,6 +3,7 @@ import Peer from 'simple-peer';
 import io from 'socket.io-client';
 
 export default function useCameraData() {
+  const socket = io.connect();
   const [me, setMe] = useState();
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -15,10 +16,8 @@ export default function useCameraData() {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-  const socket = useRef();
 
   useEffect(() => {
-    socket.current = io.connect();
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
@@ -28,11 +27,11 @@ export default function useCameraData() {
         }
       });
 
-    socket.current.on('me', (id) => {
+    socket.on('me', (id) => {
       setMe(id);
     });
 
-    socket.current.on('hey', (data) => {
+    socket.on('hey', (data) => {
       setCaller(data.from);
       setName(data.name);
       setCallerSignal(data.signal);
@@ -47,7 +46,7 @@ export default function useCameraData() {
       stream: stream,
     });
     peer.on('signal', (data) => {
-      socket.current.emit('callUser', {
+      socket.emit('callUser', {
         userToCall: id,
         signalData: data,
         from: me,
@@ -59,7 +58,7 @@ export default function useCameraData() {
         userVideo.current.srcObject = stream;
       }
     });
-    socket.current.on('callAccepted', (signal) => {
+    socket.on('callAccepted', (signal) => {
       setCallAccepted(true);
       peer.signal(signal);
       setReceivingCall(false);
@@ -76,7 +75,7 @@ export default function useCameraData() {
       stream: stream,
     });
     peer.on('signal', (data) => {
-      socket.current.emit('answerCall', { signal: data, to: caller });
+      socket.emit('answerCall', { signal: data, to: caller });
     });
     peer.on('stream', (stream) => {
       userVideo.current.srcObject = stream;
@@ -139,5 +138,6 @@ export default function useCameraData() {
     leaveCall,
     MyVideo,
     UserVideo,
+    socket,
   };
 }

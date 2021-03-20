@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import Stage from './Stage/Stage.jsx';
 import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
-import useCameraData from '../hooks/useCameraData';
 import Receiving from './Overlays/Receiving';
 import Confirming from './Overlays/Confirming';
 import MessageChat from './Message/MessageChat';
@@ -18,7 +17,7 @@ const Room = (props) => {
     callCancelled,
     callAccepted,
     setCallAccepted,
-    io,
+    socket,
   } = useContext(CameraContext);
 
   const params = useParams();
@@ -49,14 +48,14 @@ const Room = (props) => {
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
-        io={io}
+        socket={socket}
       />
-      <ExtraCompsBarAttendee
+      {/* <ExtraCompsBarAttendee
         callAccepted={callAccepted}
         setCallAccepted={setCallAccepted}
         endingCall={endingCall}
         setEndingCall={setEndingCall}
-      />
+      /> */}
     </>
   );
 };
