@@ -9,9 +9,12 @@ import Button from '../Buttons/Button'
 export default function Confirming() {
   
 const { 
-  setEndingCall, 
+  stateSetEndingCall, 
   callCancelled 
 } = useContext(CameraContext)
+
+const [endingCall, setEndingCall] = stateSetEndingCall
+
 const history = useHistory()
 
   return (

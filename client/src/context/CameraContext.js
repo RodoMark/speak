@@ -44,17 +44,17 @@ const CameraContextProvider = (props) => {
     callUser,
 
     //state
-    auth, setAuth,
-    callAccepted, setCallAccepted,
-    callEnded, setCallEnded,
-    caller, setCaller,
-    callerSignal, setCallerSignal,
-    endingCall, setEndingCall,
-    idToCall, setIdToCall,
-    me, setMe,
-    name, setName,
-    stream, setStream,
-    receivingCall, setReceivingCall,
+    stateAuth: [auth, setAuth],
+    stateCallAccepted: [callAccepted, setCallAccepted],
+    stateCallEnded: [callEnded, setCallEnded],
+    stateCaller: [caller, setCaller],
+    stateCallerSignal: [callerSignal, setCallerSignal],
+    stateEnding: [endingCall, setEndingCall],
+    stateIdToCall: [idToCall, setIdToCall],
+    stateMe: [me, setMe],
+    stateName: [name, setName],
+    stateSteam: [stream, setStream],
+    stateReceivingCall: [receivingCall, setReceivingCall],
   }
 
   return (

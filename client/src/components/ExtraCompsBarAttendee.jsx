@@ -38,7 +38,6 @@ const location = useLocation()
 				<Button
 					reject
 					onClick={()=> {
-						setHangUp(false)
 						setEndingCall(true)
 						}
 					}

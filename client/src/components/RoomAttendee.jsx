@@ -66,4 +66,4 @@ const RoomAttendee = (props) => {
   );
 };
 
-export default Room;
+export default RoomAttendee;
