@@ -62,8 +62,6 @@ const Room = (props) => {
 			} 
 			{ endingCall &&
 				<Confirming 
-					endingCall={endingCall}
-					setEndingCall={setEndingCall}
 				/>
 			} 
       <Dropdown
