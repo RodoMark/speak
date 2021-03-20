@@ -10,16 +10,13 @@ import Login from './Login';
 import Logout from './Logout';
 import Auth from './Auth';
 import Room from './Room';
-import RoomAttendee from './RoomAttendee';
 import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 
 const Navigation = () => {
+  const { stateAuth } = useContext(CameraContext);
+  const [auth, setAuth] = stateAuth;
 
-  const {
-    auth, setAuth
-  } = useContext(CameraContext)
-  
   return (
     <Router>
       <Navbar className='color-nav' bg='light' expand='lg'>
@@ -62,7 +59,6 @@ const Navigation = () => {
           <Logout setAuth={setAuth} />
         </Route>
         <Route path='/Teacher/Room/:title/' component={Room} />
-        <Route path='/Room/:title/' component={RoomAttendee} />
         <Route path='/Login/:title/' component={AttendeLogIn} />
         <Route path='/New/:teacherId' component={CreateRoom} />
       </Switch>

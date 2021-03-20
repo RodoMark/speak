@@ -24,8 +24,10 @@ const Login = (props) => {
     axios
       .post('/teachers/login', data)
       .then((res) => {
-        setAuth(true);
-        history.push('/');
+        if (res.data.user.email) {
+          setAuth(true);
+          history.push('/');
+        }
       })
       .catch((err) => console.log(err));
   };
