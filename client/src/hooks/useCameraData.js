@@ -1,9 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
+import { CameraContext } from '../context/CameraContext'
+
+
 
 const socket = io.connect();
 export default function useCameraData() {
+  const [auth, setAuth] = useState(true);
+  const [endingCall, setEndingCall] = useState(false)
+  const [me, setMe] = useState();
+  const [stream, setStream] = useState();
+  const [receivingCall, setReceivingCall] = useState(false);
+  const [caller, setCaller] = useState('');
+  const [idToCall, setIdToCall] = useState('');
+  const [callerSignal, setCallerSignal] = useState();
+  const [callAccepted, setCallAccepted] = useState(false);
+  const [callEnded, setCallEnded] = useState(false);
+  const [name, setName] = useState('');
+
   const io = socket;
   const userVideo = useRef();
   const connectionRef = useRef();
@@ -91,25 +106,28 @@ export default function useCameraData() {
   };
 
   return {
+    //variables
     stream,
-    // myVideo,
-    callAccepted,
-    callerSignal,
-    setCallerSignal,
-    setCallAccepted,
-    callEnded,
+    io,
+
+    //functions,
     callCancelled,
-    userVideo,
-    name,
-    setName,
-    me,
-    idToCall,
-    setIdToCall,
     callUser,
-    receivingCall,
     answerCall,
     cancelCall,
     leaveCall,
-    io,
+
+    //state
+    auth, setAuth,
+    callAccepted, setCallAccepted,
+    callEnded, setCallEnded,
+    caller, setCaller,
+    callerSignal, setCallerSignal,
+    endingCall, setEndingCall,
+    idToCall, setIdToCall,
+    me, setMe,
+    name, setName,
+    stream, setStream,
+    receivingCall, setReceivingCall,
   };
 }

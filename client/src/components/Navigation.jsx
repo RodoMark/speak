@@ -1,6 +1,8 @@
+import { useState, useContext } from 'react';
+import { CameraContext } from '../context/CameraContext';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { useState } from 'react';
 import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
@@ -13,6 +15,10 @@ import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 
 const Navigation = () => {
+
+  const {
+    auth, setAuth
+  } = useContext(CameraContext)
   
   return (
     <Router>

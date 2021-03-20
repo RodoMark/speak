@@ -1,16 +1,17 @@
+import { useContext, useRef, useEffect, useState } from 'react';
+
+
 // import all mayor components
 import Stage from '../components/Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
 import Dropdown from "../components/Dropdown/Dropdown";
 import ExtraCompsBar from "../components/ExtraCompsBar";
-import useCameraData from "../hooks/useCameraData";
 import Confirming from "../components/Overlays/Confirming";
 import Calling from "../components/Overlays/Calling";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
-import { useContext, useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CameraContextProvider from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext'
 
 const Room = (props) => {
 	
@@ -46,7 +47,6 @@ const Room = (props) => {
 	)
 
   return (
-		<CameraContextProvider>
 			<>
       <div>Room</div>
       <Stage
@@ -84,7 +84,6 @@ const Room = (props) => {
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
-		</CameraContextProvider>
 			
     
   );

@@ -1,30 +1,61 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import useCameraData from '../hooks/useCameraData';
 
 export const CameraContext = createContext();
 
 const CameraContextProvider = (props) => {
-  const [auth, setAuth] = useState(true);
-  const [endingCall, setEndingCall] = useState(false)
-  const [me, setMe] = useState();
-  const [stream, setStream] = useState();
-  const [receivingCall, setReceivingCall] = useState(false);
-  const [caller, setCaller] = useState('');
-  const [idToCall, setIdToCall] = useState('');
-  const [callerSignal, setCallerSignal] = useState();
-  const [callAccepted, setCallAccepted] = useState(false);
-  const [callEnded, setCallEnded] = useState(false);
-  const [name, setName] = useState('');
-
+  
   const {
+    //variables
     io,
     userVideo,
+
+    //functions
     answerCall,
     leaveCall,
     cancelCall,
     callCancelled,
     callUser,
+
+    //state
+    auth, setAuth,
+    callAccepted, setCallAccepted,
+    callEnded, setCallEnded,
+    caller, setCaller,
+    callerSignal, setCallerSignal,
+    endingCall, setEndingCall,
+    idToCall, setIdToCall,
+    me, setMe,
+    name, setName,
+    stream, setStream,
+    receivingCall, setReceivingCall,
   } = useCameraData();
+
+  const data = {
+    //variables
+    io,
+    userVideo,
+
+    //functions
+    answerCall,
+    leaveCall,
+    cancelCall,
+    callCancelled,
+    callUser,
+
+    //state
+    auth, setAuth,
+    callAccepted, setCallAccepted,
+    callEnded, setCallEnded,
+    caller, setCaller,
+    callerSignal, setCallerSignal,
+    endingCall, setEndingCall,
+    idToCall, setIdToCall,
+    me, setMe,
+    name, setName,
+    stream, setStream,
+    receivingCall, setReceivingCall,
+  }
 
   return (
     <CameraContext.Provider value={data}>
