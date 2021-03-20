@@ -6,6 +6,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
+import Calling from './Overlays/Calling';
 
 const Videocall = (props) => {
   const {
@@ -14,7 +15,7 @@ const Videocall = (props) => {
     leaveCall,
     callUser,
     answerCall,
-    
+    stateCallingUser,
     stateIdToCall,
     stateCallAccepted,
     stateCallEnded,
@@ -22,11 +23,11 @@ const Videocall = (props) => {
     stateReceivingCall,
   } = useContext(CameraContext);
 
-  const { idToCall } = props
+  const { idToCall } = props;
 
-  const [callEnded, setCallEnded] = stateCallEnded
-  const [callingUser, setCallingUser] = stateCallingUser
-  const [callAccepted, setCallAccepted] = stateCallAccepted
+  const [callEnded, setCallEnded] = stateCallEnded;
+  const [callingUser, setCallingUser] = stateCallingUser;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
 
   console.log(me);
   return (
@@ -49,12 +50,7 @@ const Videocall = (props) => {
           {idToCall}
         </div>
       </div>
-      <div>
-        { callingUser && 
-          <Calling 
-          />
-        }
-      </div>
+      <div>{callingUser && <Calling />}</div>
     </>
   );
 };
