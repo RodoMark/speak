@@ -72,7 +72,6 @@ exports.getUserWithId = getUserWithId;
 
 //Helper function for retrieving user with email
 const getUserWithEmail = function (email) {
-
   const queryValues = [email];
   const queryString = `
   SELECT *
@@ -189,8 +188,16 @@ const getMessages = function (id) {
 exports.getMessages = getMessages;
 
 const addMessages = function (id, data) {
-  if (!id) {
-    throw new Error('User not logged in!');
+  if (id && !data.attendeeId) {
+    const queryValues = [`T${id}`, data.message];
+    const queryString = `INSERT INTO messages (attendee_id, message_content) VALUES ($1, $2) RETURNING *;`;
+
+    return db
+      .query(queryString, queryValues)
+      .then((res) => {
+        return res.rows[0];
+      })
+      .catch(() => null);
   }
   const queryValues = [data.attendeeId, data.message];
   const queryString = `INSERT INTO messages (attendee_id, message_content) VALUES ($1, $2) RETURNING *;`;

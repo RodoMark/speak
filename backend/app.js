@@ -54,7 +54,7 @@ const io = require('socket.io')(server, {
 const users = {};
 io.on('connection', (socket) => {
   if (!users[socket.id]) {
-    suers[socket.id] = socket.id;
+    users[socket.id] = socket.id;
   }
   const request = socket.request;
   console.log('new client connected', socket.id);
