@@ -1,8 +1,9 @@
 import { useContext } from 'react'
+import { CameraContext } from '../../context/CameraContext'
+
 import { useHistory } from 'react-router-dom'
 
 import Button from '../Buttons/Button'
-import { CameraContext } from '../../context/CameraContext'
 
 
 export default function Confirming() {

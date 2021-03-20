@@ -11,7 +11,7 @@ import MessageChat from './Message/MessageChat';
 import Axios from "axios";
 import { useParams } from 'react-router-dom';
 
-const Room = (props) => {
+const RoomAttendee = (props) => {
 	const [endingCall, setEndingCall] = useState(false)
 
 	const [receivingCall, setReceivingCall] = useState(false)
@@ -38,13 +38,8 @@ const Room = (props) => {
         attendeeName={attendeeName}
         roomId={roomId}
       />
-			{ true && true ?
+			{ receivingCall && !callAccepted ?
 				<Receiving
-          answerCall={answerCall}
-          callAccepted={callAccepted}
-          setCallAccepted={setCallAccepted} 
-					receivingCall={receivingCall}
-					setReceivingCall={setReceivingCall}
 				/> : null
 			}
       { endingCall && 

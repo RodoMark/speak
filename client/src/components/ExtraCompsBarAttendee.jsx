@@ -1,14 +1,19 @@
 import { useState, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
+import { CameraContext } from '../context/CameraContext'
 
 
 import Button from "./Buttons/Button.jsx";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const ExtraCompsBar = ({ callAccepted, setCallAccepted, setEndingCall }) => {
+const ExtraCompsBarAttendee = (props) => {
 
-const [leaveRoom, setLeaveRoom] = useState(true)
+	const {
+		callAccepted, 
+		setCallAccepted,
+		setEndingCall
+	} = useContext(CameraContext)
+
 const [hangUp, setHangUp] = useState(false)
 
 const location = useLocation()
@@ -19,7 +24,7 @@ const location = useLocation()
   return (
   	<div key={callAccepted} className="extra-comps-bar"> 	
   
-			{ callAccepted && !hangUp ?
+			{ !hangUp ?
 				<Button
 					reject
 					onClick={()=>{
@@ -47,4 +52,4 @@ const location = useLocation()
 
 };
 
-export default ExtraCompsBar;
+export default ExtraCompsBarAttendee;
