@@ -15,11 +15,9 @@ import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 
 const Navigation = () => {
+  const { stateAuth } = useContext(CameraContext);
+  const [auth, setAuth] = stateAuth;
 
-  const {
-    auth, setAuth
-  } = useContext(CameraContext)
-  
   return (
     <Router>
       <Navbar className='color-nav' bg='light' expand='lg'>

@@ -39,12 +39,6 @@ const RoomAttendee = () => {
         roomId={roomId}
         socket={io}
       />
-      {/* <ExtraCompsBarAttendee
-        callAccepted={callAccepted}
-        setCallAccepted={setCallAccepted}
-        endingCall={endingCall}
-        setEndingCall={setEndingCall}
-      /> */}
     </>
   );
 };

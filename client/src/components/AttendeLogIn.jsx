@@ -23,6 +23,7 @@ const AttendeeLogIn = (props) => {
       io.emit('attendeejoin', { status: true });
       const attendeeId = res.data.id;
       const params = `${roomId.title}&${userName.current.value}&${attendeeId}&${me}`;
+      console.log(params);
       history.push(`/Room/${params}`);
     });
   };

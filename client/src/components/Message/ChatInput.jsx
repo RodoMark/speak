@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 
 export default function ChatInput(props) {
-  const { socket, attendeeId, attendeeName } = props;
+  let { socket, attendeeId, attendeeName } = props;
   const message = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();

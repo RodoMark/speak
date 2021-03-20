@@ -24,15 +24,16 @@ const CameraContextProvider = (props) => {
   const connectionRef = useRef();
 
   const io = socket;
-
+  let MyVideo;
+  let UserVideo;
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
-      .then((stream) => {
-        setStream(stream);
+      .then((cameraData) => {
         if (myVideo.current) {
-          myVideo.current.srcObject = stream;
+          myVideo.current.srcObject = cameraData;
         }
+        setStream(cameraData);
       });
 
     socket.on('me', (id) => {
@@ -110,8 +111,8 @@ const CameraContextProvider = (props) => {
     setReceivingCall(false);
   };
 
-  let MyVideo;
   if (stream) {
+    console.log(myVideo);
     MyVideo = (
       <video
         playsInline
@@ -123,7 +124,6 @@ const CameraContextProvider = (props) => {
     );
   }
 
-  let UserVideo;
   if (callAccepted) {
     UserVideo = (
       <video playsInline ref={userVideo} autoPlay style={{ width: '300px' }} />
