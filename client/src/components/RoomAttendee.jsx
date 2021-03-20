@@ -5,7 +5,6 @@ import { CameraContext } from '../context/CameraContext'
 import Stage from './Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
 import ExtraCompsBarAttendee from "./ExtraCompsBarAttendee";
-import useCameraData from "../hooks/useCameraData";
 import Receiving from "./Overlays/Receiving";
 import Confirming from "./Overlays/Confirming";
 import MessageChat from './Message/MessageChat';

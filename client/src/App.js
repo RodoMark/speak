@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import CameraContextProvider from './context/CameraContext'
 
 function App() {
-  // const { io, message, handle } = useCameraData(); 
   return (
     
       <div className='App'>
