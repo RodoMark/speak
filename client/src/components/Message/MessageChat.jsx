@@ -6,7 +6,11 @@ export default function MessageChat(props) {
   return (
     <>
       <Message socket={socket} />
-      <ChatInput socket={socket} attendeeName attendeeId={attendeeId} />
+      <ChatInput
+        socket={socket}
+        attendeeName={attendeeName}
+        attendeeId={attendeeId}
+      />
     </>
   );
 }

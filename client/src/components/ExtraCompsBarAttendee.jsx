@@ -1,12 +1,26 @@
-import { useState } from 'react';
-import Button from './Buttons/Button.jsx';
+import { useState, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { CameraContext } from '../context/CameraContext';
 
-const ExtraCompsBar = ({ callAccepted, setCallAccepted, setEndingCall }) => {
+import Button from './Buttons/Button.jsx';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+const ExtraCompsBarAttendee = (props) => {
+  const { stateCallAccepted, stateEndingCall } = useContext(CameraContext);
+
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+
+  const [endingCall, setEndingCall] = stateEndingCall;
+
   const [hangUp, setHangUp] = useState(false);
+
+  const location = useLocation();
+
+  ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 
   return (
     <div key={callAccepted} className='extra-comps-bar'>
-      {callAccepted && !hangUp ? (
+      {!hangUp ? (
         <Button
           reject
           onClick={() => {
@@ -17,13 +31,7 @@ const ExtraCompsBar = ({ callAccepted, setCallAccepted, setEndingCall }) => {
           HangUp
         </Button>
       ) : (
-        <Button
-          reject
-          onClick={() => {
-            setHangUp(false);
-            setEndingCall(true);
-          }}
-        >
+        <Button reject onClick={() => setEndingCall(true)}>
           Leave
         </Button>
       )}
@@ -31,4 +39,4 @@ const ExtraCompsBar = ({ callAccepted, setCallAccepted, setEndingCall }) => {
   );
 };
 
-export default ExtraCompsBar;
+export default ExtraCompsBarAttendee;

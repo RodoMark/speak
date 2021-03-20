@@ -6,22 +6,21 @@ import Confirming from './Overlays/Confirming';
 import MessageChat from './Message/MessageChat';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
-import useCameraData from '../hooks/useCameraData';
 
-const Room = (props) => {
+const Room = () => {
   const [endingCall, setEndingCall] = useState(false);
 
   const {
-    receivingCall,
-    setReceivingCall,
+    stateReceivingCall,
     answerCall,
+    stateCallAccepted,
+    io,
     callCancelled,
-    callAccepted,
-    setCallAccepted,
-    socket,
-    me,
-  } = useCameraData();
-
+    stateMe,
+  } = useContext(CameraContext);
+  const [receivingCall, setReceivingCall] = stateReceivingCall;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [me, setMe] = stateMe;
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
@@ -32,27 +31,13 @@ const Room = (props) => {
     <>
       <div>Room</div>
       <Stage />
-      {true && true ? (
-        <Receiving
-          answerCall={answerCall}
-          callAccepted={callAccepted}
-          setCallAccepted={setCallAccepted}
-          receivingCall={receivingCall}
-          setReceivingCall={setReceivingCall}
-        />
-      ) : null}
-      {endingCall && (
-        <Confirming
-          endingCall={endingCall}
-          setEndingCall={setEndingCall}
-          callCancelled={callCancelled}
-        />
-      )}
+      {receivingCall ? <Receiving /> : null}
+      {endingCall && <Confirming />}
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
-        socket={socket}
+        socket={io}
       />
       {/* <ExtraCompsBarAttendee
         callAccepted={callAccepted}

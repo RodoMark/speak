@@ -1,8 +1,15 @@
+import { useContext } from 'react';
 import { NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Auth = (props) => {
-  return !props.auth ? (
+import { CameraContext } from '../context/CameraContext';
+
+const Auth = () => {
+  const { stateAuth } = useContext(CameraContext);
+
+  const [auth, setAuth] = stateAuth;
+
+  return !auth ? (
     <>
       <NavItem>
         <Link className='nav-link' to='/Register'>

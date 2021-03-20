@@ -13,8 +13,8 @@ export default function ChatInput(props) {
     }
     const data = {
       message: message.current.value,
-      attendeeName,
-      attendeeId,
+      attendeeName: attendeeName,
+      attendeeId: attendeeId,
     };
     socket.emit('chat', data);
     axios

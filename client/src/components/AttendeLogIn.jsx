@@ -2,12 +2,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useParams, useHistory } from 'react-router-dom';
 import { useRef, useContext } from 'react';
-import useCameraData from '../hooks/useCameraData';
 import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 const AttendeeLogIn = (props) => {
-  const { me, socket } = useCameraData();
-  console.log(me);
+  const { io, stateMe } = useContext(CameraContext);
+  const [me, setMe] = stateMe;
   const roomId = useParams();
   const userName = useRef();
   const history = useHistory();
@@ -21,7 +20,7 @@ const AttendeeLogIn = (props) => {
     };
 
     axios.post('/api/attendees', data).then((res) => {
-      socket.emit('attendeejoin', { status: true });
+      io.emit('attendeejoin', { status: true });
       const attendeeId = res.data.id;
       const params = `${roomId.title}&${userName.current.value}&${attendeeId}&${me}`;
       history.push(`/Room/${params}`);

@@ -3,10 +3,13 @@ import IconButton from '@material-ui/core/IconButton';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
-import useCameraData from '../hooks/useCameraData';
 
 const Videocall = (props) => {
-  const { callAccepted, callEnded, leaveCall, callUser } = useCameraData();
+  const { stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(
+    CameraContext
+  );
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [callEnded, setCallEnded] = stateCallEnded;
   const { idToCall } = props;
   return (
     <>

@@ -1,10 +1,18 @@
+import { useContext } from 'react';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
 
+import { CameraContext } from '../context/CameraContext';
+
 const Register = (props) => {
+  const { stateAuth } = useContext(CameraContext);
+
+  const [auth, setAuth] = stateAuth;
+
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
@@ -22,9 +30,8 @@ const Register = (props) => {
     axios
       .post('/teachers/', data)
       .then((res) => {
-        const teacherId = res.data.id;
-        props.setAuth(true);
-        history.push(`/New/${teacherId}`);
+        setAuth(true);
+        history.push('/');
       })
       .catch((err) => console.log(err));
   };
