@@ -16,8 +16,6 @@ import { CameraContext } from '../context/CameraContext'
 
 
 const Room = (props) => {
-	
-
 	const {
 		stateEndingCall, 
 		calling,
@@ -27,7 +25,6 @@ const Room = (props) => {
 	} = useContext(CameraContext)
 
 	const [endingCall, setEndingCall] = stateEndingCall
-
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();

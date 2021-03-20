@@ -8,9 +8,13 @@ export default function Receiving(props) {
 	
 	const {
 		answerCall,
-		setCallAccepted,
-		setReceivingCall,
+		stateCallAccepted,
+		stateReceivingCall,
 	} = useContext(CameraContext)
+
+	const [callAccepted, setCallAccepted] = stateCallAccepted;
+
+	const [receivingCall, setReceivingCall] = stateReceivingCall
 				
 
   return (
