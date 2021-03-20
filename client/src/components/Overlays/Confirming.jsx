@@ -1,41 +1,21 @@
-import { useContext } from 'react'
-import { CameraContext } from '../../context/CameraContext'
-
-import { useHistory } from 'react-router-dom'
-
-import Button from '../Buttons/Button'
-
-
-export default function Confirming() {
-  
-const { 
-  stateEndingCall, 
-  callCancelled 
-} = useContext(CameraContext)
-
-console.log(stateEndingCall)
-
-const [endingCall, setEndingCall] = stateEndingCall
-
-const history = useHistory()
-
+import Button from '../Buttons/Button';
+import { useHistory } from 'react-router-dom';
+export default function Confirming({ setEndingCall, callCancelled }) {
+  const history = useHistory();
   return (
-    <div className="overlay">
-			<h2>Are you sure?</h2><br />
-      <Button 
-        call 
+    <div className='overlay'>
+      <h2>Are you sure?</h2>
+      <br />
+      <Button
+        call
         confirm
         onClick={() => {
-          setEndingCall(false)
-          callCancelled()
-          history.push('/')
-        }
-      }
-        />
-			<Button 
-        call 
-        reject
-        onClick={() => setEndingCall(false)} />
-		</div>
-  )
+          setEndingCall(false);
+          callCancelled();
+          history.push('/New');
+        }}
+      />
+      <Button call reject onClick={() => setEndingCall(false)} />
+    </div>
+  );
 }

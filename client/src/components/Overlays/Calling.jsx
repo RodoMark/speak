@@ -1,24 +1,17 @@
-import { useContext } from 'react'
-import Button from '../Buttons/Button'
+import Button from '../Buttons/Button';
 
-import { CameraContext } from '../../context/CameraContext'
-
-export default function Calling({ attendeeName }) {
-
-  const { stateCalling } = useContext(CameraContext)
-  const [calling, setCalling ] = stateCalling
-
+export default function Calling({ setReceivingCall }) {
   return (
     <div>
-      <Button id="cancel-call"
-        call 
+      <Button
+        id='cancel-call'
+        call
         onClick={() => {
-          setCalling(false);
-        }
-      }
+          setReceivingCall(false);
+        }}
       />
-    <br />
-    <h2>Calling {attendeeName}...</h2>
-  </div>
-  )
+      <br />
+      <h2>Calling...</h2>
+    </div>
+  );
 }

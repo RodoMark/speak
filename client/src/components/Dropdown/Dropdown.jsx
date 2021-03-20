@@ -1,19 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import Videocall from '../Videocall';
 import axios from 'axios';
-import PhoneIcon from '@material-ui/icons/Phone';
-import IconButton from '@material-ui/core/IconButton';
+
 export default function Dropdowns(props) {
   const [list, setList] = useState([]);
-  const { attendeeName, roomId, callUser } = props;
-  useEffect(() => {
+  const { socket, roomId } = props;
+
+  socket.on('refresh', (data) => {
     axios.get('/api/attendees').then((res) => {
-      const nameList = res.data.filter((obj) => {
-        return obj.room_id === Number(roomId);
-      });
+      const nameList = res.data.filter((obj) => obj.room_id === Number(roomId));
       setList(nameList);
     });
-  }, [attendeeName, roomId]);
+  });
   return (
     <>
       <Dropdown>
@@ -23,15 +22,9 @@ export default function Dropdowns(props) {
         <Dropdown.Menu>
           {list &&
             list.map((obj) => (
-              <Dropdown.Item key={obj.id} href='#'>
+              <Dropdown.Item key={obj.id}>
                 {obj.attendee_name.split('&')[0]}
-                <IconButton
-                  color='primary'
-                  aria-label='call'
-                  onClick={() => callUser(obj.attendee_name.split('&')[1])}
-                >
-                  <PhoneIcon fontSize='large' />
-                </IconButton>
+                <Videocall idToCall={obj.attendee_name.split('&')[1]} />
               </Dropdown.Item>
             ))}
         </Dropdown.Menu>

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "watch": "nodemon ./app.js",
+    "dev": "nodemon ./app.js",
     "start": "node ./bin/www",
     "db:reset": "node bin/resetdb.js",
     "sass": "node-sass -w scss/ -o public/styles/ --recursive"

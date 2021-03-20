@@ -1,68 +1,51 @@
-import { useState, useRef, useContext } from 'react';
-import { CameraContext } from '../context/CameraContext'
-
-// import all mayor components
+import { useState, useContext } from 'react';
 import Stage from './Stage/Stage.jsx';
-// import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
-import ExtraCompsBarAttendee from "./ExtraCompsBarAttendee";
-import useCameraData from "../hooks/useCameraData";
-import Receiving from "./Overlays/Receiving";
-import Confirming from "./Overlays/Confirming";
+import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
+import Receiving from './Overlays/Receiving';
+import Confirming from './Overlays/Confirming';
 import MessageChat from './Message/MessageChat';
-import Axios from "axios";
 import { useParams } from 'react-router-dom';
+import { CameraContext } from '../context/CameraContext';
 
+const RoomAttendee = () => {
+  const [endingCall, setEndingCall] = useState(false);
 
-
-const RoomAttendee = (props) => {
-	const { 
-    answerCall, 
-    callCancelled, 
-    leaveCall, 
-    stateCallAccepted,
+  const {
     stateReceivingCall,
-    stateEndingCall,
+    answerCall,
+    stateCallAccepted,
     io,
-  } = useContext(CameraContext)
-
-  const [callAccepted, setCallAccepted] = stateCallAccepted;
-
-  const [endingCall, setEndingCall] = stateEndingCall;
-
+    callCancelled,
+    stateMe,
+  } = useContext(CameraContext);
   const [receivingCall, setReceivingCall] = stateReceivingCall;
-
-  const [togleCamera, setTogleCamera] = useState(true);
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [me, setMe] = stateMe;
   const params = useParams();
   const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
   const attendeeId = params.title.split('&')[2];
+
+  console.log(me, attendeeId, attendeeName);
   return (
-			<>
+    <>
       <div>Room</div>
-      <Stage
-        togleCamera={togleCamera}
-        attendeeName={attendeeName}
-        roomId={roomId}
-      />
-			{ receivingCall && !callAccepted ?
-				<Receiving
-				/> : null
-			}
-      { endingCall && 
-				<Confirming 
-				/>
-			}
+      <Stage />
+      {receivingCall ? <Receiving /> : null}
+      {endingCall && <Confirming />}
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
-        io={io}
+        socket={io}
       />
-      <ExtraCompsBarAttendee
-        />
-    	</>
-			
-    
+      {/* <ExtraCompsBarAttendee
+        callAccepted={callAccepted}
+        setCallAccepted={setCallAccepted}
+        endingCall={endingCall}
+        setEndingCall={setEndingCall}
+      /> */}
+    </>
   );
 };
 

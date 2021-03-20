@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
 
-import { CameraContext } from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext';
 
 const Register = (props) => {
   const { stateAuth } = useContext(CameraContext);

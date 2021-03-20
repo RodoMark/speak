@@ -4,16 +4,19 @@ import axios from 'axios';
 import { useRef } from 'react';
 
 export default function ChatInput(props) {
-  const { io, attendeeId, attendeeName } = props;
+  const { socket, attendeeId, attendeeName } = props;
   const message = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!attendeeName) {
+      attendeeName = 'teacher';
+    }
     const data = {
       message: message.current.value,
-      attendeeName,
-      attendeeId,
+      attendeeName: attendeeName,
+      attendeeId: attendeeId,
     };
-    io.emit('chat', data);
+    socket.emit('chat', data);
     axios
       .post('/api/messages', data)
       .then((res) => console.log(res))

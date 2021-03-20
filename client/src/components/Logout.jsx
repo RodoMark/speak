@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
-import { CameraContext } from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext';
 
 const Logout = (props) => {
   const { stateAuth } = useContext(CameraContext);
