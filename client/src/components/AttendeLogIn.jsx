@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useParams, useHistory, useContext } from 'react-router-dom';
-import { useRef } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import { useRef, useContext } from 'react';
 import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 const AttendeeLogIn = (props) => {

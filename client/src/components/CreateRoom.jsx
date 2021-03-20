@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Button from '../components/Buttons/Button';
+import Button from './Buttons/Button';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
