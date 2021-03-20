@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import Button from '../Buttons/Button'
 
-export default function Calling({ attendeeName, setCalling }) {
+export default function Calling({ attendeeName }) {
+
+  const { setCalling } = useContext
 
   return (
     <div>

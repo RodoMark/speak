@@ -57,8 +57,7 @@ const Room = (props) => {
       />
 			{ calling &&
 				<Calling 
-					calling={calling}
-					setCalling={setCalling}
+				attendeeName={attendeeName}
 				/>
 			} 
 			{ endingCall &&
