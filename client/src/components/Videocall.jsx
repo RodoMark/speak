@@ -27,8 +27,6 @@ const Videocall = (props) => {
   const [callEnded, setCallEnded] = stateCallEnded
   const [callingUser, setCallingUser] = stateCallingUser
   const [callAccepted, setCallAccepted] = stateCallAccepted
-  const [name, setName] = stateName
-  const [receivingCall, setReceivingCall] = stateReceivingCall
 
   console.log(me);
   return (
