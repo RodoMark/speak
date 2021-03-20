@@ -1,17 +1,17 @@
-import { CameraContext } from '../context/CameraContext';
 import { useContext, useRef, useEffect, useState } from 'react';
+import { CameraContext } from '../context/CameraContext';
 
 const Video = (props) => {
   const myVideo = useRef();
   const userVideo = useRef();
 
-  const [stream, setStream] = useState();
+  const { stateStream,
+    stateCallAccepted,
+    stateCallEnded, } = useContext(CameraContext)
 
-  const { 
-    callAccepted,
-    callEnded, 
-    // userVideo 
-  } = useContext(CameraContext);
+  const [stream, setStream] = stateStream;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [callEnded, setCallEnded] = stateCallEnded;
 
   useEffect(() => {
     navigator.mediaDevices
