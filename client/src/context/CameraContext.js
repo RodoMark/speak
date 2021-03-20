@@ -29,10 +29,10 @@ const CameraContextProvider = (props) => {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((cameraData) => {
+        setStream(cameraData);
         if (myVideo.current) {
           myVideo.current.srcObject = cameraData;
         }
-        setStream(cameraData);
       });
 
     socket.on('me', (id) => {

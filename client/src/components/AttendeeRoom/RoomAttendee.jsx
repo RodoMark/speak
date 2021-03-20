@@ -1,15 +1,14 @@
 import { useState, useContext } from 'react';
-import Stage from './Stage/Stage.jsx';
-import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
-import Receiving from './Overlays/Receiving';
-import Confirming from './Overlays/Confirming';
-import MessageChat from './Message/MessageChat';
-import { useParams } from 'react-router-dom';
-import { CameraContext } from '../context/CameraContext';
+import Stage from '../Stage/Stage.jsx';
+import ExtraCompsBarAttendee from '../ExtraCompsBarAttendee';
+import Receiving from '../Overlays/Receiving';
+import Confirming from '../Overlays/Confirming';
+import MessageChat from '../Message/MessageChat';
+import { CameraContext } from '../../context/CameraContext';
 
-const RoomAttendee = () => {
+const RoomAttendee = (props) => {
   const [endingCall, setEndingCall] = useState(false);
-
+  const { attendeeId, attendeeName, roomId } = props;
   const {
     stateReceivingCall,
     answerCall,
@@ -21,16 +20,11 @@ const RoomAttendee = () => {
   const [receivingCall, setReceivingCall] = stateReceivingCall;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [me, setMe] = stateMe;
-  const params = useParams();
-  const attendeeName = params.title.split('&')[1];
-  const roomId = params.title.split('&')[0];
-  const attendeeId = params.title.split('&')[2];
 
   console.log(me, attendeeId, attendeeName);
   return (
     <>
       <div>Room</div>
-      <Stage />
       {receivingCall ? <Receiving /> : null}
       {endingCall && <Confirming />}
       <MessageChat
