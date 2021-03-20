@@ -6,6 +6,7 @@ import CameraContextProvider from './context/CameraContext';
 
 function App() {
   return (
+<<<<<<< HEAD
     <div className='App'>
       <CameraContextProvider>
         <Navigation />
@@ -13,6 +14,17 @@ function App() {
         <Footer />
       </CameraContextProvider>
     </div>
+=======
+    
+      <div className='App'>
+        <CameraContextProvider>
+        <Navigation />
+        <h1>PARLAR</h1>
+        <Footer />
+        </CameraContextProvider>
+    </div>
+    
+>>>>>>> devbranch
   );
 }
 export default App;

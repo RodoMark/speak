@@ -16,8 +16,6 @@ const ExtraCompsBar = () => {
 
   const [hangUp, setHangUp] = useState(false);
 
-  const location = useLocation();
-
   ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 
   return (

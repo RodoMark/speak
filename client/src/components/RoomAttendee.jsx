@@ -7,7 +7,7 @@ import MessageChat from './Message/MessageChat';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
 
-const Room = () => {
+const RoomAttendee = () => {
   const [endingCall, setEndingCall] = useState(false);
 
   const {
@@ -49,4 +49,4 @@ const Room = () => {
   );
 };
 
-export default Room;
+export default RoomAttendee;
