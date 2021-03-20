@@ -7,18 +7,6 @@ import { CameraContext } from '../context/CameraContext'
 
 const socket = io.connect();
 export default function useCameraData() {
-  const [auth, setAuth] = useState(true);
-  const [endingCall, setEndingCall] = useState(false)
-  const [me, setMe] = useState();
-  const [stream, setStream] = useState();
-  const [receivingCall, setReceivingCall] = useState(false);
-  const [caller, setCaller] = useState('');
-  const [idToCall, setIdToCall] = useState('');
-  const [callerSignal, setCallerSignal] = useState();
-  const [callAccepted, setCallAccepted] = useState(false);
-  const [callEnded, setCallEnded] = useState(false);
-  const [name, setName] = useState('');
-
   const io = socket;
   const userVideo = useRef();
   const connectionRef = useRef();
