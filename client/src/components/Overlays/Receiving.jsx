@@ -1,11 +1,17 @@
+import { useContext } from 'react'
+import { CameraContext } from '../../context/CameraContext'
+
 import Button from '../Buttons/Button'
+
 
 export default function Receiving(props) {
 	
-	const { 
-		answerCall, 
-		setCallAccepted, 
-		setReceivingCall} = props
+	const {
+		answerCall,
+		setCallAccepted,
+		setReceivingCall,
+	} = useContext(CameraContext)
+				
 
   return (
     <div className="overlay">

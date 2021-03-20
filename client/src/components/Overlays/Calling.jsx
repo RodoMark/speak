@@ -1,6 +1,12 @@
+import { useContext } from 'react'
 import Button from '../Buttons/Button'
 
-export default function Calling({ attendeeName, setCalling }) {
+import { CameraContext } from '../../context/CameraContext'
+
+export default function Calling({ attendeeName }) {
+
+  const { stateCalling } = useContext(CameraContext)
+  const [calling, setCalling ] = stateCalling
 
   return (
     <div>

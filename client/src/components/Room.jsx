@@ -1,34 +1,33 @@
+import { useContext, useRef, useEffect, useState } from 'react';
+
+
 // import all mayor components
 import Stage from '../components/Stage/Stage.jsx';
 // import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
 import Dropdown from "../components/Dropdown/Dropdown";
 import ExtraCompsBar from "../components/ExtraCompsBar";
-import useCameraData from "../hooks/useCameraData";
 import Confirming from "../components/Overlays/Confirming";
 import Calling from "../components/Overlays/Calling";
 import MessageChat from './Message/MessageChat';
 import Axios from "axios";
-import { useContext, useRef, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CameraContextProvider from '../context/CameraContext'
+import { CameraContext } from '../context/CameraContext'
+
+
 
 const Room = (props) => {
 	
 
-	const [endingCall, setEndingCall] = useState(false)
-	const [receivingCall, setReceivingCall] = useState(false)
-	const [calling, setCalling] = useState(false)
-
-	const { 
-		callerSignal,
-		setCallerSignal,
-		answerCall, 
-		callCancelled, 
+	const {
+		stateEndingCall, 
+		calling,
+		setCalling,
 		io, 
 		callUser, 
-		callEnded, 
-		callAccepted
-	 } = useCameraData()
+	} = useContext(CameraContext)
+
+	const [endingCall, setEndingCall] = stateEndingCall
+
 
   const [togleCamera, setTogleCamera] = useState(true);
   const params = useParams();
@@ -43,7 +42,6 @@ const Room = (props) => {
 	)
 
   return (
-		<CameraContextProvider>
 			<>
       <div>Room</div>
       <Stage
@@ -54,14 +52,11 @@ const Room = (props) => {
       />
 			{ calling &&
 				<Calling 
-					calling={calling}
-					setCalling={setCalling}
+				attendeeName={attendeeName}
 				/>
 			} 
 			{ endingCall &&
 				<Confirming 
-					endingCall={endingCall}
-					setEndingCall={setEndingCall}
 				/>
 			} 
       <Dropdown
@@ -81,7 +76,6 @@ const Room = (props) => {
         endingCall={endingCall}
         setEndingCall={setEndingCall}/>
     	</>
-		</CameraContextProvider>
 			
     
   );

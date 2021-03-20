@@ -1,17 +1,21 @@
 import { useState, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
+import { CameraContext } from '../context/CameraContext'
 
 
 import Button from "./Buttons/Button.jsx";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const ExtraCompsBar = ({ callAccepted, setCallAccepted, endingCall, setEndingCall }) => {
+const ExtraCompsBar = () => {
+
+const { stateCallAccepted, stateEndingCall } = useContext(CameraContext)
+
+const [callAccepted, setCallAccepted] = stateCallAccepted
+
+const [endingCall, setEndingCall] = stateEndingCall
 
 const [copyText, setCopyText] = useState('Copy');
-const { auth, setAuth } = useContext(AuthContext);
 
-const [leaveRoom, setLeaveRoom] = useState(true)
 const [hangUp, setHangUp] = useState(false)
 
 const location = useLocation()
@@ -21,8 +25,7 @@ const location = useLocation()
 	
   return (
 		<div key={callAccepted} className="extra-comps-bar">
-			<p>Auth is {auth ? "True" : "False"}</p>
-  	{auth &&
+  	
 			<CopyToClipboard 
 				text={window.location.href} 
 				style={{ marginBottom: '2rem' }}
@@ -32,7 +35,7 @@ const location = useLocation()
 					{copyText}
 				</Button>
 			</CopyToClipboard>
-		}
+		
 		
 			{ callAccepted && !hangUp ?
 				<Button

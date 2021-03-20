@@ -7,13 +7,15 @@ import CameraContextProvider from './context/CameraContext'
 function App() {
   // const { io, message, handle } = useCameraData(); 
   return (
-    <CameraContextProvider>
+    
       <div className='App'>
+        <CameraContextProvider>
         <Navigation />
         <h1>PARLAR</h1>
         <Footer />
+        </CameraContextProvider>
     </div>
-    </CameraContextProvider>
+    
   );
 }
 export default App;
