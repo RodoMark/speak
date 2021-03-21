@@ -2,13 +2,19 @@ import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import Videocall from '../Videocall';
 import axios from 'axios';
+import { CameraContext } from '../../context/CameraContext';
+import { useContext } from 'react';
 
 export default function Dropdowns(props) {
+  const { stateLoading } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
   const [list, setList] = useState([]);
   const { socket, roomId } = props;
 
   socket.on('refresh', (data) => {
+    setLoading(true);
     axios.get('/api/attendees').then((res) => {
+      setLoading(false);
       const nameList = res.data.filter((obj) => obj.room_id === Number(roomId));
       setList(nameList);
     });

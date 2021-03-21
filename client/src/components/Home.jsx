@@ -3,13 +3,18 @@ import RoomList from './RoomList/RoomList';
 import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { CameraContext } from '../context/CameraContext';
+import { useContext } from 'react';
 
 const Home = () => {
+  const { stateLoading } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
   const history = useHistory();
   const [roomList, setRoomList] = useState();
   useEffect(() => {
+    setLoading(true);
     axios.get('/api/rooms').then((res) => {
-      console.log(res.data);
+      setLoading(false);
       setRoomList(res.data);
     });
   }, []);

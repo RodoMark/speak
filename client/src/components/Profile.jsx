@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import { CameraContext } from '../context/CameraContext';
 
 const Profile = (props) => {
-  // const id = props.id;
-  // console.log(id);
+  const { stateLoading } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
   const [user, setUser] = useState('');
   useEffect(() => {
-    Promise.all([axios.get('./teachers/me')]).then((res) => {
+    setLoading(true);
+    axios.get('./teachers/me').then((res) => {
+      setLoading(false);
       setUser(res[0].data);
     });
   }, []);

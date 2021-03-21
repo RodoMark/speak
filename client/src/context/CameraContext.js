@@ -19,6 +19,7 @@ const CameraContextProvider = (props) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -149,6 +150,7 @@ const CameraContextProvider = (props) => {
     stateStream: [stream, setStream],
     stateReceivingCall: [receivingCall, setReceivingCall],
     stateError: [error, setError],
+    stateLoading: [loading, setLoading],
     MyVideo,
     UserVideo,
   };

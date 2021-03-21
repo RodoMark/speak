@@ -24,12 +24,14 @@ const AttendeeLogIn = (props) => {
     stateLeaveConfirm,
     stateCallAccepted,
     cancelCall,
+    stateLoading,
   } = useContext(CameraContext);
   const [receivingCall, setReceivingCall] = stateReceivingCall;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
   const [hangUp, setHangUp] = stateHangUp;
+  const [loading, setLoading] = stateLoading;
 
   const [me, setMe] = stateMe;
   const roomId = useParams();
@@ -43,8 +45,9 @@ const AttendeeLogIn = (props) => {
       userName: full,
       feedback: 'none',
     };
-
+    setLoading(true);
     axios.post('/api/attendees', data).then((res) => {
+      setLoading(false);
       io.emit('attendeejoin', { status: true });
       setAddName(true);
       setAttendeeId(res.data.id);
