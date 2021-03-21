@@ -26,7 +26,8 @@ const Login = (props) => {
       .post('/teachers/login', data)
       .then((res) => {
         setLoading(false);
-        if (res.data.user.email) {
+        console.log(res);
+        if (res.data.user) {
           setAuth(true);
           history.push('/');
         }
