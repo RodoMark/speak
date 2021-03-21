@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-import Button from "./Button"
+import Button from './Button';
 
 export default function CopyPaster() {
-
   const [copySuccess, setCopySuccess] = useState('');
   const textAreaRef = useRef(null);
 
@@ -12,7 +11,7 @@ export default function CopyPaster() {
     document.execCommand('copy');
     e.target.focus();
     setCopySuccess('Copied!');
-  };
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,24 +21,17 @@ export default function CopyPaster() {
   }, []);
 
   return (
-    <section id="copypaster">
-      {
-       document.queryCommandSupported('copy') &&
+    <section id='copypaster'>
+      {document.queryCommandSupported('copy') && (
         <>
-        <Button 
-          button 
-          id="copy-button"
-          onClick={copyToClipboard}
-        >Copy
-        </Button>
-        <div>{copySuccess}</div>
+          <Button button id='copy-button' onClick={copyToClipboard}>
+            Copy
+          </Button>
+          <div>{copySuccess}</div>
         </>
-      }
+      )}
       <form>
-        <textarea
-          ref={textAreaRef}
-          value='www.parlar.io'
-        />
+        <textarea ref={textAreaRef} value='www.parlar.io' />
       </form>
     </section>
   );

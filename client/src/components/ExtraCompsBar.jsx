@@ -1,31 +1,32 @@
-import { useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import { CameraContext } from '../context/CameraContext';
-
+import { useRef, useState } from 'react';
 import Button from './Buttons/Button.jsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const ExtraCompsBar = () => {
-  const { stateCallAccepted, stateEndingCall } = useContext(CameraContext);
+const ExtraCompsBar = (props) => {
+  const {
+    hangUp,
+    setHangUp,
+    setLeaveConfirm,
+    callAccepted,
+    setCallAccepted,
+  } = props;
 
-  const [callAccepted, setCallAccepted] = stateCallAccepted;
-
-  const [endingCall, setEndingCall] = stateEndingCall;
-
-  const [copyText, setCopyText] = useState('Copy');
-
-  const [hangUp, setHangUp] = useState(false);
-
-  ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
+  const [copy, setCopy] = useState(true);
 
   return (
     <div key={callAccepted} className='extra-comps-bar'>
       <CopyToClipboard
         text={window.location.href}
         style={{ marginBottom: '2rem' }}
-        // onClick={setCopyText('Copied')}
       >
-        <Button confirm>{copyText}</Button>
+        <Button
+          confirm
+          onClick={() => {
+            setCopy(!copy);
+          }}
+        >
+          {copy ? `Copy` : `Success!`}
+        </Button>
       </CopyToClipboard>
 
       {callAccepted && !hangUp ? (
@@ -42,8 +43,9 @@ const ExtraCompsBar = () => {
         <Button
           reject
           onClick={() => {
+            console.log(`close room clicked`);
             setHangUp(false);
-            setEndingCall(true);
+            setLeaveConfirm(true);
           }}
         >
           Close Room

@@ -6,11 +6,10 @@ import Button from './Buttons/Button.jsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBarAttendee = (props) => {
-  const { stateCallAccepted, stateEndingCall } = useContext(CameraContext);
+  const {callAccepted, setCallAccepted, endConfirm, setEndConfirm, }
 
   const [callAccepted, setCallAccepted] = stateCallAccepted;
-
-  const [endingCall, setEndingCall] = stateEndingCall;
+  const [endConfirm, setEndConfirm] = stateEndConfirm;
 
   const [hangUp, setHangUp] = useState(false);
 
@@ -18,7 +17,7 @@ const ExtraCompsBarAttendee = (props) => {
 
   return (
     <div key={callAccepted} className='extra-comps-bar'>
-      {!hangUp ? (
+       {callAccepted && !hangUp ? (
         <Button
           reject
           onClick={() => {
@@ -29,8 +28,14 @@ const ExtraCompsBarAttendee = (props) => {
           HangUp
         </Button>
       ) : (
-        <Button reject onClick={() => setEndingCall(true)}>
-          Leave
+        <Button
+          reject
+          onClick={() => {
+            setHangUp(false);
+            setLeaveConfirm(true);
+          }}
+        >
+          Leave Room
         </Button>
       )}
     </div>

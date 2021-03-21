@@ -6,7 +6,8 @@ export const CameraContext = createContext();
 const socket = io.connect();
 const CameraContextProvider = (props) => {
   const [auth, setAuth] = useState(true);
-  const [endingCall, setEndingCall] = useState(false);
+  const [endConfirm, setEndConfirm] = useState(false);
+  const [leaveConfirm, setLeaveConfirm] = useState(false);
   const [error, setError] = useState(false);
   const [me, setMe] = useState();
   const [stream, setStream] = useState();
@@ -97,7 +98,7 @@ const CameraContextProvider = (props) => {
     connectionRef.current = peer;
   };
 
-  const leaveCall = () => {
+  const leaveRoom = () => {
     setCallEnded(true);
     connectionRef.current.destroy();
   };
@@ -136,7 +137,7 @@ const CameraContextProvider = (props) => {
 
     //functions
     answerCall,
-    leaveCall,
+    leaveRoom,
     cancelCall,
     callCancelled,
     callUser,
@@ -148,7 +149,8 @@ const CameraContextProvider = (props) => {
     stateCaller: [caller, setCaller],
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
-    stateEndingCall: [endingCall, setEndingCall],
+    stateEndConfirm: [endConfirm, setEndConfirm],
+    stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
     stateIdToCall: [idToCall, setIdToCall],
     stateMe: [me, setMe],
     stateName: [name, setName],
