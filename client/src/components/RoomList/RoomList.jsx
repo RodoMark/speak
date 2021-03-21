@@ -6,7 +6,7 @@ export default function RoomList(props) {
   const list =
     rooms.length &&
     rooms.map((room, index) => {
-      return <RoomListItem key={index} room={room} setRoomList={setRoomList} />;
+      return <RoomListItem className="room-list" key={index} room={room} setRoomList={setRoomList} />;
     });
   return <ul>{list}</ul>;
 }
