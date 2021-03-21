@@ -1,26 +1,32 @@
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
-import Button from './Buttons/Button';
+import react, { useState } from 'react';
+import Button from '../components/Buttons/Button';
+import { useRef } from 'react';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router-dom';
 const CreateRoom = (props) => {
+  const techerId = Axios.get();
+  const params = useParams();
   const [title, setTitle] = useState(' ');
   const [description, setDescription] = useState(' ');
+  // const [link, setLink] = useState()
+  // const roomInfo = useRef("");
   const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Title and description', title, description);
     const link = `http://localhost:3000/Login/${title}`;
+    ///
     const roomInfo = { title, description, link };
+    // console.log("Room info from frontend +++>", roomInfo)
     Axios.post('api/rooms', roomInfo)
       .then((res) => {
-        const roomId = res.data.id;
-        history.push(`/Teacher/Room/${roomId}`);
+        console.log(res);
+        history.push(`/`);
       })
       .catch((err) => console.log(err));
+    // .
   };
-
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -41,12 +47,10 @@ const CreateRoom = (props) => {
           onChange={(e) => setDescription(e.target.value)}
         />
       </Form.Group>
-
       <Button variant='primary' type='submit' call confirm>
         +
       </Button>
     </Form>
   );
 };
-
 export default CreateRoom;

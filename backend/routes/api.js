@@ -5,11 +5,11 @@ module.exports = function (router, database) {
     database
       .getRooms(userId)
       .then((data) => {
-        if (!user) {
+        if (!data) {
           res.send({ error: 'error' });
           return;
         }
-        console.log(data);
+        console.log(`this is from route get rooms`, data);
         res.json(data);
       })
       .catch((e) => res.json(e));
@@ -33,14 +33,15 @@ module.exports = function (router, database) {
   // DELETE rooms route to delete room
   router.delete('/rooms', function (req, res) {
     const userId = req.session.userId;
-
+    console.log(req.body.roomId);
     database
-      .deleteRoom(userId)
+      .deleteRoom(userId, req.body.roomId)
       .then((data) => {
         if (!data) {
           res.send({ error: 'error' });
           return;
         }
+        console.log(`deleteRoom resolved`, data);
         res.json(data);
       })
       .catch((e) => res.json(e));
