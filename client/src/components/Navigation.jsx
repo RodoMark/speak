@@ -47,7 +47,7 @@ const Navigation = () => {
           <Home />
         </Route>
         <Route exact path='/Profile'>
-          <Profile id={1} />
+        <Profile id={1} />
         </Route>
         <Route exact path='/Register'>
           <Register setAuth={setAuth} />
