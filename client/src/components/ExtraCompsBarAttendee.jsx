@@ -6,10 +6,10 @@ import Button from './Buttons/Button.jsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBarAttendee = (props) => {
-  const {callAccepted, setCallAccepted, endConfirm, setEndConfirm, }
+  const {callAccepted, setCallAccepted, leaveConfirm, setLeaveConfirm } = props
 
-  const [callAccepted, setCallAccepted] = stateCallAccepted;
-  const [endConfirm, setEndConfirm] = stateEndConfirm;
+  // const [callAccepted, setCallAccepted] = stateCallAccepted;
+  // const [endConfirm, setEndConfirm] = stateEndConfirm;
 
   const [hangUp, setHangUp] = useState(false);
 

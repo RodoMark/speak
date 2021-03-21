@@ -1,12 +1,12 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import Peer from 'simple-peer';
 import io from 'socket.io-client';
-
 export const CameraContext = createContext();
 const socket = io.connect();
 const CameraContextProvider = (props) => {
   const [auth, setAuth] = useState(true);
   const [endConfirm, setEndConfirm] = useState(false);
+  const [hangUp, setHangUp] = useState(false);
   const [leaveConfirm, setLeaveConfirm] = useState(false);
   const [error, setError] = useState(false);
   const [me, setMe] = useState();
@@ -48,7 +48,6 @@ const CameraContextProvider = (props) => {
       setReceivingCall(true);
     });
   }, []);
-
   const callUser = (id) => {
     console.log(`call user clicked`);
     const peer = new Peer({
@@ -102,13 +101,9 @@ const CameraContextProvider = (props) => {
     setCallEnded(true);
     connectionRef.current.destroy();
   };
+
   const cancelCall = () => {
     setCallEnded(true);
-  };
-
-  const callCancelled = () => {
-    setCallEnded(true);
-    setReceivingCall(false);
   };
 
   let MyVideo;
@@ -123,7 +118,6 @@ const CameraContextProvider = (props) => {
       />
     );
   }
-
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
@@ -134,14 +128,11 @@ const CameraContextProvider = (props) => {
     //variables
     io,
     userVideo,
-
     //functions
     answerCall,
     leaveRoom,
     cancelCall,
-    callCancelled,
     callUser,
-
     //state
     stateAuth: [auth, setAuth],
     stateCallAccepted: [callAccepted, setCallAccepted],
@@ -150,6 +141,7 @@ const CameraContextProvider = (props) => {
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
     stateEndConfirm: [endConfirm, setEndConfirm],
+    stateHangUp: [hangUp, setHangUp],
     stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
     stateIdToCall: [idToCall, setIdToCall],
     stateMe: [me, setMe],
