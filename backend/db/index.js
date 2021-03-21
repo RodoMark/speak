@@ -97,6 +97,7 @@ const getRooms = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
+      console.log(res.rows);
       return res.rows[0];
     })
     .catch(() => null);

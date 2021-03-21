@@ -6,7 +6,14 @@ import Button from './Buttons/Button.jsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBarAttendee = (props) => {
-  const {callAccepted, setCallAccepted, leaveConfirm, setLeaveConfirm } = props
+  const {
+    callAccepted,
+    setCallAccepted,
+    leaveConfirm,
+    setLeaveConfirm,
+    endConfirm,
+    setEndConfirm,
+  } = props;
 
   // const [callAccepted, setCallAccepted] = stateCallAccepted;
   // const [endConfirm, setEndConfirm] = stateEndConfirm;
@@ -17,12 +24,12 @@ const ExtraCompsBarAttendee = (props) => {
 
   return (
     <div key={callAccepted} className='extra-comps-bar'>
-       {callAccepted && !hangUp ? (
+      {callAccepted && !hangUp ? (
         <Button
           reject
           onClick={() => {
             setHangUp(true);
-            setCallAccepted(false);
+            setEndConfirm(true);
           }}
         >
           HangUp
