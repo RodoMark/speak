@@ -7,7 +7,19 @@ import axios from 'axios';
 import RoomAttendee from './AttendeeRoom/RoomAttendee';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
+import EndConfirming from './Overlays/EndConfirming';
+import LeaveConfirm from './Overlays/LeaveConfirming';
+
 const AttendeeLogIn = (props) => {
+  const {
+    stateReceivingCall,
+    answerCall,
+    stateCallAccepted,
+    io,
+    callCancelled,
+    stateMe,
+  } = useContext(CameraContext);
+
   const [addName, setAddName] = useState(false);
   const [attendeeId, setAttendeeId] = useState();
   const [attendeeName, setAttendeeName] = useState();
@@ -53,6 +65,7 @@ const AttendeeLogIn = (props) => {
           </Button>
         </Form>
       )}
+
       <ExtraCompsBarAttendee />
     </>
   );

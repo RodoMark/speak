@@ -11,7 +11,7 @@ const ExtraCompsBar = (props) => {
     setCallAccepted,
   } = props;
 
-  const [copyText, setCopyText] = useState('Copy');
+  const [copy, setCopy] = useState(true);
 
   return (
     <div key={callAccepted} className='extra-comps-bar'>
@@ -19,8 +19,13 @@ const ExtraCompsBar = (props) => {
         text={window.location.href}
         style={{ marginBottom: '2rem' }}
       >
-        <Button confirm onClick={() => setCopyText('Success!')}>
-          {copyText}
+        <Button
+          confirm
+          onClick={() => {
+            setCopy(!copy);
+          }}
+        >
+          {copy ? `Copy` : `Success!`}
         </Button>
       </CopyToClipboard>
 
