@@ -102,7 +102,7 @@ export default function background(props) {
     <Canvas
       className='background'
       style={dimensions}
-      camera={{ position: [0, 0, 1], fov: 100 }}
+      camera={{ position: [0, 0, 0], fov: 40 }}
     >
       {/*<pointLight position={[10, 10, 10]} />*/}
       {/*<Thing />*/}
