@@ -24,7 +24,7 @@ const AttendeeLogIn = (props) => {
     stateEndConfirm,
     stateLeaveConfirm,
     stateCallAccepted,
-    leaveRoom,
+    cancelCall,
   } = useContext(CameraContext);
   const [receivingCall, setReceivingCall] = stateReceivingCall;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
@@ -64,7 +64,7 @@ const AttendeeLogIn = (props) => {
       }
       {leaveConfirm && (
         <LeaveConfirming 
-          setLeaveConfirm={setLeaveConfirm} leaveRoom={leaveRoom} />
+          setLeaveConfirm={setLeaveConfirm} cancelCall={cancelCall} />
         )
       }
 
