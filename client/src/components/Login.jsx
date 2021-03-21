@@ -8,7 +8,8 @@ import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 
 const Login = (props) => {
-  const { stateAuth } = useContext(CameraContext);
+  const { stateLoading, stateAuth } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
 
   const email = useRef();
@@ -20,10 +21,11 @@ const Login = (props) => {
       email: email.current.value,
       password: password.current.value,
     };
-
+    setLoading(true);
     axios
       .post('/teachers/login', data)
       .then((res) => {
+        setLoading(false);
         if (res.data.user.email) {
           setAuth(true);
           history.push('/');
