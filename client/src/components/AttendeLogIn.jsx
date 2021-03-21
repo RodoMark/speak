@@ -6,6 +6,7 @@ import { useRef, useContext, useState } from 'react';
 import axios from 'axios';
 import RoomAttendee from './AttendeeRoom/RoomAttendee';
 import { CameraContext } from '../context/CameraContext';
+import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
 const AttendeeLogIn = (props) => {
   const [addName, setAddName] = useState(false);
   const [attendeeId, setAttendeeId] = useState();
@@ -52,6 +53,7 @@ const AttendeeLogIn = (props) => {
           </Button>
         </Form>
       )}
+      <ExtraCompsBarAttendee />
     </>
   );
 };
