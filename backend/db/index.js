@@ -97,8 +97,8 @@ const getRooms = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows);
-      return res.rows[0];
+      // console.log(`this is from index getRooms`, res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };
@@ -121,16 +121,17 @@ const addRooms = function (id, data) {
 };
 exports.addRooms = addRooms;
 
-const deleteRoom = function (id) {
+const deleteRoom = function (id, roomId) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [id];
+  const queryValues = [roomId];
   const queryString = `DELETE FROM rooms WHERE id = $1`;
   return db
     .query(queryString, queryValues)
-    .then(() => {
-      return;
+    .then((res) => {
+      console.log(`inside deleteRoom index js`, res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };

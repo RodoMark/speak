@@ -60,7 +60,7 @@ const Navigation = () => {
         </Route>
         <Route path='/Teacher/Room/:title/' component={Room} />
         <Route path='/Login/:title/' component={AttendeLogIn} />
-        <Route path='/New/:teacherId' component={CreateRoom} />
+        <Route path='/New/' component={CreateRoom} />
         <Route path='/Profile/' component={Profile} />
       </Switch>
     </Router>
