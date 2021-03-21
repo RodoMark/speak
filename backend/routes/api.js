@@ -9,6 +9,7 @@ module.exports = function (router, database) {
           res.send({ error: 'error' });
           return;
         }
+        console.log(data);
         res.json(data);
       })
       .catch((e) => res.json(e));
