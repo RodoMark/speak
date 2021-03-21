@@ -19,13 +19,13 @@ const Room = () => {
     stateCallAccepted,
     cancelCall,
   } = useContext(CameraContext);
-  
+
   const [receivingCall, setReceivingCall] = stateReceivingCall;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
-  const [hangUp, setHangUp] = stateHangUp
-  
+  const [hangUp, setHangUp] = stateHangUp;
+
   const params = useParams();
   const roomId = params.title.split('&')[0];
   return (
@@ -37,8 +37,9 @@ const Room = () => {
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
       )}
       {leaveConfirm && (
-        <LeaveConfirm 
-          setLeaveConfirm={setLeaveConfirm} cancelCall={cancelCall} 
+        <LeaveConfirm
+          setLeaveConfirm={setLeaveConfirm}
+          cancelCall={cancelCall}
         />
       )}
 
