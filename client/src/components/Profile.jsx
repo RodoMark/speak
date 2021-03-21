@@ -9,7 +9,7 @@ const Profile = (props) => {
     Promise.all([axios.get('./teachers/me')]).then((res) => {
       setUser(res[0].data);
     });
-  }, [user]);
+  }, []);
   return <h2>This is profile page </h2>;
 };
 
