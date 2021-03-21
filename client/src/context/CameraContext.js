@@ -6,6 +6,7 @@ const socket = io.connect();
 const CameraContextProvider = (props) => {
   const [auth, setAuth] = useState(true);
   const [endConfirm, setEndConfirm] = useState(false);
+  const [hangUp, setHangUp] = useState(false);
   const [leaveConfirm, setLeaveConfirm] = useState(false);
   const [error, setError] = useState(false);
   const [me, setMe] = useState();
@@ -100,13 +101,11 @@ const CameraContextProvider = (props) => {
     setCallEnded(true);
     connectionRef.current.destroy();
   };
+
   const cancelCall = () => {
     setCallEnded(true);
   };
-  const callCancelled = () => {
-    setCallEnded(true);
-    setReceivingCall(false);
-  };
+
   let MyVideo;
   if (stream) {
     MyVideo = (
@@ -133,7 +132,6 @@ const CameraContextProvider = (props) => {
     answerCall,
     leaveRoom,
     cancelCall,
-    callCancelled,
     callUser,
     //state
     stateAuth: [auth, setAuth],
@@ -143,6 +141,7 @@ const CameraContextProvider = (props) => {
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
     stateEndConfirm: [endConfirm, setEndConfirm],
+    stateHangUp: [hangUp, setHangUp],
     stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
     stateIdToCall: [idToCall, setIdToCall],
     stateMe: [me, setMe],

@@ -12,17 +12,20 @@ import ExtraCompsBar from './ExtraCompsBar';
 const Room = () => {
   const {
     io,
+    stateHangUp,
     stateReceivingCall,
     stateEndConfirm,
     stateLeaveConfirm,
     stateCallAccepted,
-    leaveRoom,
+    cancelCall,
   } = useContext(CameraContext);
+  
   const [receivingCall, setReceivingCall] = stateReceivingCall;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
-  const [hangUp, setHangUp] = useState(false);
+  const [hangUp, setHangUp] = stateHangUp
+  
   const params = useParams();
   const roomId = params.title.split('&')[0];
   return (
@@ -34,7 +37,9 @@ const Room = () => {
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
       )}
       {leaveConfirm && (
-        <LeaveConfirm setLeaveConfirm={setLeaveConfirm} leaveRoom={leaveRoom} />
+        <LeaveConfirm 
+          setLeaveConfirm={setLeaveConfirm} cancelCall={cancelCall} 
+        />
       )}
 
       <Dropdown socket={io} roomId={roomId} />

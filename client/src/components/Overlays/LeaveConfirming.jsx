@@ -1,7 +1,7 @@
 import Button from '../Buttons/Button';
 import { useHistory } from 'react-router-dom';
-export default function Confirming(props) {
-  const { leaveRoom, setLeaveConfirm } = props;
+export default function LeaveConfirming(props) {
+  const { cancelCall, setLeaveConfirm } = props;
 
   const history = useHistory();
   return (
@@ -13,7 +13,7 @@ export default function Confirming(props) {
         confirm
         onClick={() => {
           setLeaveConfirm(false);
-          leaveRoom();
+          cancelCall();
           history.push('/');
         }}
       />

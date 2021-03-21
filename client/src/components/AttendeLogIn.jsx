@@ -8,22 +8,30 @@ import RoomAttendee from './AttendeeRoom/RoomAttendee';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
 import EndConfirming from './Overlays/EndConfirming';
-import LeaveConfirm from './Overlays/LeaveConfirming';
+import LeaveConfirming from './Overlays/LeaveConfirming';
 
 const AttendeeLogIn = (props) => {
-  const {
-    stateReceivingCall,
-    answerCall,
-    stateCallAccepted,
-    io,
-    callCancelled,
-    stateMe,
-  } = useContext(CameraContext);
-
+ 
   const [addName, setAddName] = useState(false);
   const [attendeeId, setAttendeeId] = useState();
   const [attendeeName, setAttendeeName] = useState();
-  const { io, stateMe } = useContext(CameraContext);
+  
+  const {
+    io,
+    stateHangUp,
+    stateMe,
+    stateReceivingCall,
+    stateEndConfirm,
+    stateLeaveConfirm,
+    stateCallAccepted,
+    leaveRoom,
+  } = useContext(CameraContext);
+  const [receivingCall, setReceivingCall] = stateReceivingCall;
+  const [endConfirm, setEndConfirm] = stateEndConfirm;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm
+  const [hangUp, setHangUp] = stateHangUp
+
   const [me, setMe] = stateMe;
   const roomId = useParams();
   const userName = useRef();
@@ -48,25 +56,45 @@ const AttendeeLogIn = (props) => {
     <>
       <h1>You have been invited to n_room</h1>
       <Stage />
+
+      {endConfirm && (
+        <EndConfirming 
+          setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
+        )
+      }
+      {leaveConfirm && (
+        <LeaveConfirming 
+          setLeaveConfirm={setLeaveConfirm} leaveRoom={leaveRoom} />
+        )
+      }
+
       {addName ? (
         <RoomAttendee
           attendeeId={attendeeId}
           attendeeName={attendeeName}
           roomId={roomId.title}
         />
-      ) : (
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId='formBasicText'>
-            <Form.Label>NickName</Form.Label>
-            <Form.Control ref={userName} type='text' placeholder='Nickname' />
-          </Form.Group>
-          <Button variant='primary' type='submit'>
-            Enter
-          </Button>
-        </Form>
-      )}
+        ) : (
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId='formBasicText'>
+              <Form.Label>NickName</Form.Label>
+              <Form.Control ref={userName} type='text' placeholder='Nickname' />
+            </Form.Group>
+            <Button variant='primary' type='submit'>
+              Enter
+            </Button>
+          </Form>
+        )
+      }
 
-      <ExtraCompsBarAttendee />
+      <ExtraCompsBarAttendee 
+        hangUp={hangUp}
+        setHangUp={setHangUp}
+        setLeaveConfirm={setLeaveConfirm}
+        callAccepted={callAccepted}
+        setCallAccepted={setCallAccepted}
+        leaveConfirm={leaveConfirm}
+      />
     </>
   );
 };
