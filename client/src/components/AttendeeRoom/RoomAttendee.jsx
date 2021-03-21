@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import Stage from '../Stage/Stage.jsx';
 import ExtraCompsBarAttendee from '../ExtraCompsBarAttendee';
 import Receiving from '../Overlays/Receiving';
-import Confirming from '../Overlays/Confirming';
+import Confirming from '../Overlays/EndConfirming';
 import MessageChat from '../Message/MessageChat';
 import { CameraContext } from '../../context/CameraContext';
 

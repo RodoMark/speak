@@ -1,6 +1,8 @@
 import Button from '../Buttons/Button';
 import { useHistory } from 'react-router-dom';
-export default function Confirming({ setEndingCall, callCancelled }) {
+export default function Confirming(props) {
+  const { leaveRoom, setLeaveConfirm } = props;
+
   const history = useHistory();
   return (
     <div className='overlay'>
@@ -10,12 +12,12 @@ export default function Confirming({ setEndingCall, callCancelled }) {
         call
         confirm
         onClick={() => {
-          setEndingCall(false);
-          callCancelled();
-          history.push('/New');
+          setLeaveConfirm(false);
+          leaveRoom();
+          history.push('/');
         }}
       />
-      <Button call reject onClick={() => setEndingCall(false)} />
+      <Button call reject onClick={() => setLeaveConfirm(false)} />
     </div>
   );
 }
