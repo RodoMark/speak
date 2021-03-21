@@ -50,9 +50,7 @@ const Navigation = () => {
         <Route exact path='/Login' component={Login}>
           <Login setAuth={setAuth} />
         </Route>
-        <Route exact path='/Logout' component={Logout}>
-          <Logout setAuth={setAuth} />
-        </Route>
+        
         <Route path='/Teacher/Room/:title/' component={Room} />
         <Route path='/Login/:title/' component={AttendeLogIn} />
         <Route path='/New/' component={CreateRoom} />

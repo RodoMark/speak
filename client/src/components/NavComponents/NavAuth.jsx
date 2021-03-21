@@ -1,8 +1,31 @@
 import { useContext } from 'react';
 import { NavItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
+import axios from 'axios';
+
+import { CameraContext } from '../../context/CameraContext';
 
 const NavAuth = () => {
+
+  const { stateLoading, stateAuth } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
+  const [auth, setAuth] = stateAuth;
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    axios
+      .post('/teachers/logout')
+      .then((res) => {
+        setLoading(false);
+        setAuth(false);
+        history.push('/');
+      })
+      .catch((err) => console.log(err));
+  };
  
 
   return (
@@ -13,8 +36,8 @@ const NavAuth = () => {
         </Link>
       </NavItem>
       <NavItem>
-        <Link className='nav-link' to='/Logout'>
-          Logout
+        <Link className="nav-link" onClick={handleSubmit}>
+        Logout
         </Link>
       </NavItem>
     </>
