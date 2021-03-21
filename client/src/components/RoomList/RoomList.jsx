@@ -4,7 +4,6 @@ export default function RoomList(props) {
   const { rooms, setRoomList } = props;
   console.log(rooms);
   const list =
-    rooms.length && rooms.isArray &&
     rooms.map((room, index) => {
       return <RoomListItem key={index} room={room} setRoomList={setRoomList} />;
     });

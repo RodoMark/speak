@@ -66,7 +66,7 @@ export default function background(props) {
           castShadow
           intensity={0.2}
           angle={Math.PI / 7}
-          position={[150, 150, 250]}
+          position={[150, 150, 150]}
           penumbra={1}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -98,11 +98,17 @@ export default function background(props) {
     );
   }
   const dimensions = { height: '100vh', width: '100vw', 'z-index': 0 };
+  
+ 
+  
   return (
+
     <Canvas
       className='background'
       style={dimensions}
-      camera={{ position: [0, 0, 1], fov: 100 }}
+      time = {(state) =>  state.clock.getElapsedTime()}
+      camera={{ position: [0, 0, 100], fov: 2 + Math.sin(1) }}
+    	
     >
       {/*<pointLight position={[10, 10, 10]} />*/}
       {/*<Thing />*/}
