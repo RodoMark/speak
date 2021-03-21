@@ -33,11 +33,6 @@ const Navigation = () => {
                 Home
               </Link>
             </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/Profile'>
-                Profile
-              </Link>
-            </NavItem>
             <Auth auth={auth} setAuth={setAuth} />
           </Nav>
         </Navbar.Collapse>

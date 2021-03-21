@@ -8,6 +8,11 @@ const NavAuth = () => {
   return (
     <>
       <NavItem>
+        <Link className='nav-link' to='/Profile'>
+          Profile
+        </Link>
+      </NavItem>
+      <NavItem>
         <Link className='nav-link' to='/Logout'>
           Logout
         </Link>
