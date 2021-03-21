@@ -147,6 +147,7 @@ const getAttendees = function (id) {
   SELECT * FROM attendees`
     )
     .then((res) => {
+      console.log(`inside getAttendees indexjs`, res.rows);
       return res.rows;
     })
     .catch(() => null);

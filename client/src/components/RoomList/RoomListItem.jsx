@@ -24,7 +24,11 @@ export default function RoomListItem(props) {
   };
   return (
     <div key={roomId}>
-      <h2>{room.room_name}</h2>
+      <Link className='nav-link' to={`/teacher/room/${roomId}`}>
+        <h2>{room.room_name}</h2>
+        <p>{roomId}</p>
+      </Link>
+
       <p>{room.room_description}</p>
       <Button onClick={(e) => handleDel(e)} reject>
         -

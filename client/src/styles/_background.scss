@@ -1,0 +1,38 @@
+@import './variables';
+.background {
+  /*  background: rgb(2,0,36);
+	background: linear-gradient(7deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 0%, rgba(0,212,255,1) 100%);*/
+  /*background: #23223d;*/
+  /*background: linear-gradient(0deg, rgba(8,8,8,1) 0%, rgba(40,37,37,1) 21%, rgba(54,54,54,1) 76%, rgba(68,68,68,1) 100%);*/
+  background: rgb(218, 98, 75);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(218, 98, 75, 1) 0%,
+    rgba(75, 219, 192, 1) 26%,
+    rgba(61, 155, 194, 1) 84%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(218, 98, 75, 1) 0%,
+    rgba(75, 219, 192, 1) 26%,
+    rgba(61, 155, 194, 1) 84%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(218, 98, 75, 1) 0%,
+    rgba(75, 219, 192, 1) 36%,
+    rgba(61, 155, 194, 1) 84%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#da624b",endColorstr="#3d9bc2",GradientType=1);
+  position: fixed;
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+.canvas {
+  position: fixed;
+}
