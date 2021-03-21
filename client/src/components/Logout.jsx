@@ -9,16 +9,18 @@ import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
 
 const Logout = (props) => {
-  const { stateAuth } = useContext(CameraContext);
-
+  const { stateLoading, stateAuth } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
 
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     axios
       .post('/teachers/logout')
       .then((res) => {
+        setLoading(false);
         setAuth(false);
         history.push('/');
       })
