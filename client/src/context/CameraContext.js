@@ -29,6 +29,8 @@ const CameraContextProvider = (props) => {
 
   const io = socket;
 
+  
+
   useEffect(() => {
     
     // if(CAMERA NOT ON) {
@@ -36,9 +38,7 @@ const CameraContextProvider = (props) => {
       // ELSE
       // NO EFFECT
     // }
-    console.log("OUTSIDE IF")
-      console.log("USE EFFECT REF", myVideo)
-      console.log("INSIDE IF")
+    
       navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((cameraData) => {

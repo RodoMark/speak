@@ -16,6 +16,7 @@ const Video = () => {
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded
   // debugger;
   console.log(MyVideo, me);
+  
   setCameraLoaded(true)
 
   return (
