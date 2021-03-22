@@ -26,7 +26,7 @@ const Home = () => {
   console.log(roomList);
   return (
     <div className="home">
-      <h1>Parlar</h1>
+      <h1>Speak.io</h1>
       <h3>ROOMS</h3>
       <Button confirm onClick={() => history.push('/New')}>
         new

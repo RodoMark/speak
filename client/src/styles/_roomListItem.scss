@@ -1,6 +1,17 @@
+.home{
+
+  display: flex;
+  overflow: scroll; 
+  flex-direction: column;
+  height: auto;
+}
+
+
 .room-list {
   display: flex;
   justify-content: center;
+  flex-flow: wrap;
+  overflow: scroll; 
 }
 
 .item-container {
@@ -36,7 +47,7 @@
     }
     & p {
       font-size: 1em;
-      color: #fff;
+      color: #000;
       font-weight: 300;
     }
     & a {

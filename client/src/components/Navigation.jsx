@@ -22,7 +22,7 @@ const Navigation = () => {
       <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
-            Parlar
+            Speak.io
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
