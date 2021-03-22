@@ -57,12 +57,19 @@ div {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   background-color: rbga(0, 0, 0, 0);
-  
+
 }
 .App-link {
   color: #61dafb;
 }
 .logo {
+
+  font-size: 1.5em;
+  font-weight: 900;
+  /*font-family: 'Montserrat Alternates', sans-serif;*/
+  font-family: 'Comfortaa', cursive;
+
+
 }
 @keyframes App-logo-spin {
   from {
