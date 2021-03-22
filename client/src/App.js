@@ -11,7 +11,6 @@ function App() {
       <div className='App'>
         <CameraContextProvider>
           <Navigation />
-          <h1>PARLAR</h1>
           <Ploading />
           <Footer />
         </CameraContextProvider>
