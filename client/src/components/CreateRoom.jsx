@@ -1,6 +1,4 @@
-import Form from 'react-bootstrap/Form';
-import react, { useState } from 'react';
-import Button from '../components/Buttons/Button';
+import { useRef } from 'react';
 import { useContext } from 'react';
 import Axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
@@ -11,17 +9,18 @@ const CreateRoom = (props) => {
   const [loading, setLoading] = stateLoading;
   const techerId = Axios.get();
   const params = useParams();
-  const [title, setTitle] = useState(' ');
-  const [description, setDescription] = useState(' ');
+  const titleRef = useRef();
+  const descriptionRef = useRef();
 
   const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
+    const title = titleRef.current.value;
+    const description = descriptionRef.current.value;
     console.log('Title and description', title, description);
     const link = `http://localhost:3000/Login/${title}`;
 
     const roomInfo = { title, description, link };
-
     setLoading(true);
     Axios.post('api/rooms', roomInfo)
       .then((res) => {
@@ -32,29 +31,35 @@ const CreateRoom = (props) => {
     // .
   };
   return (
-    <Form id="create-room" onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Room Title'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Room Description'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </Form.Group>
-      <Button variant='primary' type='submit' call confirm>
-        +
-      </Button>
-    </Form>
+    <div className='box'>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='container'>
+        <div className='form'>
+          <h2>Create New Room</h2>
+          <form action='' onSubmit={handleSubmit}>
+            <p className='forget'>Choose a title for the room</p>
+            <div className='inputBox'>
+              <input type='text' placeholder='Room Title' ref={titleRef} />
+            </div>
+            <p className='forget'>Choose a brief description for the room</p>
+            <div className='inputBox'>
+              <input
+                type='text'
+                placeholder='Room Description'
+                ref={descriptionRef}
+              />
+            </div>
+            <div className='inputBox'>
+              <input type='submit' value='+' />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 export default CreateRoom;

@@ -1,0 +1,96 @@
+@import "../variables";
+
+.room {
+  display: grid;
+  grid-template-rows: 2fr 1fr 0.5fr 0.5fr;
+  grid-template-columns: 1fr 0.5fr 1fr 1.5fr  ;
+  grid-template-areas:
+  "stag stag stag chat"
+  "stag stag stag chat"
+  "drop drop drop chat"
+  "hang hang hang hang";
+  
+  border: 3em solid $roomBlue;
+  width: 80%;
+  height: 90%;
+  margin: auto;
+  background: $glass;
+} 
+
+.stage {
+  grid-area: stag;
+  padding: 2em 1em 1em 1em;
+  background: $glass;
+  .video-container {
+    margin: 0 1em;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.dropdown{
+  grid-area: drop;
+}
+
+// chat log
+.chat-log {
+  background: transparent;
+  grid-area: chat;
+  .messages{
+    display: flex;
+    flex-direction: column-reverse;
+    background: $roomWhite;
+    height: 70%;
+    overflow: hidden;
+  }
+  .chat-input {
+    grid-area: send;
+    display: flex;
+    background: $glass;
+    width: 80%;
+    margin: auto;
+  }
+  background: $glass;
+  form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & input {
+    
+    margin-left: 1em;
+  }
+  & button {
+    padding: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    color: $mainWhite;
+    border-color: $mainTeal;
+    background-color: $mainTeal
+  }
+}
+
+// extra
+.extra-comps-bar {
+  grid-area: hang;
+  background-color: $roomWhite;
+  padding: 1em 0;
+  align-items: center;
+}
+
+@media only screen and (max-width: 876px) {  
+  .room {
+  	display: flex;
+    background: $roomBlue;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .extra-comps-bar {
+    grid-area: hang;
+    background-color: $roomWhite;
+    padding: 1em 0;
+    align-items: center;
+  }
+}
