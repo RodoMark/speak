@@ -4,13 +4,13 @@ import Message from './Message';
 export default function MessageChat(props) {
   const { socket, attendeeId, attendeeName } = props;
   return (
-    <>
+    <section class="chat-log">
       <Message socket={socket} />
       <ChatInput
         socket={socket}
         attendeeName={attendeeName}
         attendeeId={attendeeId}
       />
-    </>
+    </section>
   );
 }
