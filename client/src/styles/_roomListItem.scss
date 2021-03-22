@@ -1,10 +1,11 @@
 .home {
   display: flex;
-  overflow: scroll;
+  // overflow: auto;
+  // overflow-x: hidden;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  height: auto;
+  height: 100vh;
   padding-top: 12vh;
 }
 .new-room-btn {
@@ -14,7 +15,8 @@
   display: flex;
   justify-content: center;
   flex-flow: wrap;
-  overflow: scroll;
+  overflow: auto;
+  overflow-x: hidden;
 }
 .item-container {
   display: flex;
