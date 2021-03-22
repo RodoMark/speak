@@ -11,7 +11,6 @@ export default function RoomListItem(props) {
   const { room, setRoomList } = props;
   const roomId = room.id;
   const history = useHistory();
-  console.log(window.VanillaTilt);
   const handleDel = (event) => {
     event.preventDefault();
     console.log(`delete event triggered`);
@@ -31,18 +30,18 @@ export default function RoomListItem(props) {
       .catch((err) => console.log(err));
   };
   return (
-    <div className='item-container'>
-      <div className='room-list-item' key={roomId}>
+    <div className="item-container">
         <Link className='nav-link' to={`/teacher/room/${roomId}`}>
           <h2>{room.room_name}</h2>
           {/* <p>{roomId}</p> */}
         </Link>
-
-      <p>{room.room_description}</p>
+        <div className="room-list-item" key={roomId}>
+        {/*<h2>{room.room_name}</h2>*/}
+        <p>{room.room_description}</p>
         <Button onClick={(e) => handleDel(e)} reject>
-          -
+          Delete
         </Button>
       </div>
     </div>
-  );
+      );
 }
