@@ -1,19 +1,17 @@
 import { useContext } from 'react';
-import { NavItem } from 'react-bootstrap';
-import { useHistory, Link } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-
+import { NavItem } from 'react-bootstrap';
 import { CameraContext } from '../../context/CameraContext';
 
-const NavAuth = () => {
-
-  const { stateLoading, stateAuth } = useContext(CameraContext);
+const NavAuth = (props) => {
+  const { stateLoading, stateAuth, stateRoomList } = useContext(CameraContext);
   const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
-
+  const [roomList, setRoomList] = stateRoomList;
   const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -22,25 +20,19 @@ const NavAuth = () => {
       .then((res) => {
         setLoading(false);
         setAuth(false);
+        setRoomList([]);
         history.push('/');
       })
       .catch((err) => console.log(err));
   };
- 
-
   return (
-    <>
-      <NavItem>
-        <Link className='nav-link' to='/Profile'>
-          Profile
-        </Link>
-      </NavItem>
-      <NavItem>
-        <Link className="nav-link" onClick={handleSubmit}>
-        Logout
-        </Link>
-      </NavItem>
-    </>
+    <NavItem>
+      <Form onSubmit={handleSubmit}>
+        <Button variant='primary' type='submit'>
+          Logout
+        </Button>
+      </Form>
+    </NavItem>
   );
 };
 
