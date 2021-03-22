@@ -17,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
 }
 
 /*font-family: 'Comfortaa', cursive;*/
@@ -32,8 +33,10 @@ div {
   background-color: rbga(0, 0, 0, 0);
   width: 100vw;
   height: 100vh;
+  overflow:scroll;
   mix-blend-mode: normal;
   /*mix-blend-mode: multiply;*/
+
 }
 .App-logo {
   height: 40vmin;
@@ -54,6 +57,7 @@ div {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   background-color: rbga(0, 0, 0, 0);
+  
 }
 .App-link {
   color: #61dafb;

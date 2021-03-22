@@ -5,10 +5,13 @@
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.1)!important;
   overflow: hidden;
+  position: fixed;
   display: flex;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
+  z-index: 15;
 }

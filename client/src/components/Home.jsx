@@ -28,9 +28,11 @@ const Home = () => {
     <div className="home">
       <h1>Speak.io</h1>
       <h3>ROOMS</h3>
-      <Button confirm onClick={() => history.push('/New')}>
-        new
-      </Button>
+      <div  className='new-room-btn'>
+        <Button confirm onClick={() => history.push('/New')}>
+          new
+        </Button>
+      </div>
       {roomList && <RoomList rooms={roomList} setRoomList={setRoomList} />}
     </div>
   );

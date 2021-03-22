@@ -3,9 +3,15 @@
   display: flex;
   overflow: scroll; 
   flex-direction: column;
+  justify-content: center;
+  align-content: center;
   height: auto;
+  padding-top: 10vh;
 }
 
+.new-room-btn{
+  align-self: center;
+}
 
 .room-list {
   display: flex;
