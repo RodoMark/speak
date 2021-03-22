@@ -20,6 +20,7 @@ const CameraContextProvider = (props) => {
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [cameraLoaded, setCameraLoaded] = useState(false);
   const [roomList, setRoomList] = useState();
 
   const myVideo = useRef();
@@ -29,7 +30,16 @@ const CameraContextProvider = (props) => {
   const io = socket;
 
   useEffect(() => {
-    navigator.mediaDevices
+    
+    // if(CAMERA NOT ON) {
+      // DO EFFECT
+      // ELSE
+      // NO EFFECT
+    // }
+    console.log("OUTSIDE IF")
+      console.log("USE EFFECT REF", myVideo)
+      console.log("INSIDE IF")
+      navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((cameraData) => {
         setStream(cameraData);
@@ -49,7 +59,14 @@ const CameraContextProvider = (props) => {
       setCallerSignal(data.signal);
       setReceivingCall(true);
     });
-  }, []);
+  
+    }
+    , [cameraLoaded]);
+
+    useEffect(() => {
+      console.log("CAMERA LOADED STATE", cameraLoaded)
+    })
+
   const callUser = (id) => {
     console.log(`call user clicked`);
     const peer = new Peer({
@@ -109,7 +126,7 @@ const CameraContextProvider = (props) => {
   };
 
   let MyVideo;
-  if (stream) {
+  if (me) {
     MyVideo = (
       <video
         playsInline
@@ -138,6 +155,7 @@ const CameraContextProvider = (props) => {
     //state
     stateAuth: [auth, setAuth],
     stateCallAccepted: [callAccepted, setCallAccepted],
+    stateCameraLoaded: [cameraLoaded, setCameraLoaded],
     stateCallEnded: [callEnded, setCallEnded],
     stateCaller: [caller, setCaller],
     stateCallerSignal: [callerSignal, setCallerSignal],
