@@ -21,7 +21,7 @@ export default function background(props) {
     return {
       position: [100 - Math.random() * 200, 100 - Math.random() * 200, i * 1.5],
       color: colors[Math.round(Math.random() * (colors.length - 1))],
-      scale: [4 + r * 14, 5 + r * 14, 1],
+      scale: [1 + r * 14, 1 + r * 14, 1],
       rotation: [0, 0, THREE.Math.degToRad(Math.round(Math.random()) * 45)],
     };
   };
@@ -35,17 +35,13 @@ export default function background(props) {
     const [springs, set] = useSprings(number, (i) => ({
       from: random(i),
       ...random(i),
-      config: {
-        mass: 2000000000000,
-        tension: 200000000000000000,
-        friction: 200000,
-      },
+      config: { mass: 20, tension: 150, friction: 50 },
     }));
     useEffect(
       () =>
         void setInterval(
           () => set((i) => ({ ...random(i), delay: i * 40 })),
-          43000
+          3000
         ),
       []
     );
@@ -70,7 +66,7 @@ export default function background(props) {
           castShadow
           intensity={0.2}
           angle={Math.PI / 7}
-          position={[1509, 150, 250]}
+          position={[150, 150, 250]}
           penumbra={1}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
@@ -94,7 +90,7 @@ export default function background(props) {
         <meshBasicMaterial
           attach='material'
           color='white'
-          opacity={0.1}
+          opacity={0.5}
           transparent
         />
         {/*<Text />*/}
@@ -106,7 +102,7 @@ export default function background(props) {
     <Canvas
       className='background'
       style={dimensions}
-      camera={{ position: [1, 0, 1], fov: 50 }}
+      camera={{ position: [0, 0, 0], fov: 40 }}
     >
       {/*<pointLight position={[10, 10, 10]} />*/}
       {/*<Thing />*/}
