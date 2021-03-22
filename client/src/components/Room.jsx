@@ -30,7 +30,7 @@ const Room = () => {
   const roomId = params.title.split('&')[0];
   return (
     <>
-      <div id="room">
+      <div class="room room--teacher">
       <Stage />
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (

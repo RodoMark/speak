@@ -1,0 +1,14 @@
+@import "./variables";
+
+.room {
+  background-color: black;
+}
+
+.extra-comps-bar {
+  background-color: $mainGrey;
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+

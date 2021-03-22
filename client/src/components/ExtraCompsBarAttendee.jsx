@@ -23,7 +23,7 @@ const ExtraCompsBarAttendee = (props) => {
   ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
 
   return (
-    <div key={callAccepted} className='extra-comps-bar'>
+    <div key={callAccepted} className='extra-comps-bar extra-comps-bar--attendee'>
       {callAccepted && !hangUp ? (
         <Button
           reject
