@@ -54,7 +54,7 @@ const AttendeeLogIn = (props) => {
     });
   };
   return (
-    <>
+    <section className="room room--attendee">
       <h1>You have been invited to room number {`${roomId.title}`}</h1>
       <Stage />
 
@@ -95,7 +95,7 @@ const AttendeeLogIn = (props) => {
         setEndConfirm={setEndConfirm}
         leaveConfirm={leaveConfirm}
       />
-    </>
+    </section>
   );
 };
 export default AttendeeLogIn;
