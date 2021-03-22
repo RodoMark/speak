@@ -25,12 +25,15 @@ const Home = () => {
   }, []);
   console.log(roomList);
   return (
-    <div className="home">
-      <h1>Parlar</h1>
-      <h3>ROOMS</h3>
-      <Button confirm onClick={() => history.push('/New')}>
-        new
-      </Button>
+    <div className='home'>
+      <div className='newroom'>
+        <div className='newroomcontainer'>
+          <h3>ROOMS</h3>
+          <Button confirm onClick={() => history.push('/New')}>
+            new
+          </Button>
+        </div>
+      </div>
       {roomList && <RoomList rooms={roomList} setRoomList={setRoomList} />}
     </div>
   );
