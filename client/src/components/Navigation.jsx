@@ -38,9 +38,11 @@ const Navigation = () => {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
+        
         <Route exact path='/'>
           <Home />
         </Route>
+        
         <Route exact path='/Profile'>
         <Profile id={1} />
         </Route>
