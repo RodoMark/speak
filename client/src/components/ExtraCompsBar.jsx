@@ -14,7 +14,7 @@ const ExtraCompsBar = (props) => {
   const [copy, setCopy] = useState(true);
 
   return (
-    <div key={callAccepted} className='extra-comps-bar'>
+    <div key={callAccepted} className='extra-comps-bar extra-comps-bar--teacher'>
       <CopyToClipboard
         text={window.location.href}
         style={{ marginBottom: '2rem' }}
