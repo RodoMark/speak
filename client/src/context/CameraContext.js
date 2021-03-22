@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 export const CameraContext = createContext();
 const socket = io.connect();
 const CameraContextProvider = (props) => {
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
   const [endConfirm, setEndConfirm] = useState(false);
   const [hangUp, setHangUp] = useState(false);
   const [leaveConfirm, setLeaveConfirm] = useState(false);
@@ -19,6 +19,8 @@ const CameraContextProvider = (props) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [roomList, setRoomList] = useState();
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -149,6 +151,8 @@ const CameraContextProvider = (props) => {
     stateStream: [stream, setStream],
     stateReceivingCall: [receivingCall, setReceivingCall],
     stateError: [error, setError],
+    stateLoading: [loading, setLoading],
+    stateRoomList: [roomList, setRoomList],
     MyVideo,
     UserVideo,
   };

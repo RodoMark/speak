@@ -4,16 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { NavItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { CameraContext } from '../../context/CameraContext';
 
-import { CameraContext } from '../context/CameraContext';
-
-const Logout = (props) => {
+const NavAuth = (props) => {
   const { stateLoading, stateAuth, stateRoomList } = useContext(CameraContext);
   const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
   const [roomList, setRoomList] = stateRoomList;
-
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,4 +36,4 @@ const Logout = (props) => {
   );
 };
 
-export default Logout;
+export default NavAuth;

@@ -4,7 +4,7 @@ import EndConfirming from './Overlays/EndConfirming';
 import LeaveConfirm from './Overlays/LeaveConfirming';
 import Calling from '../components/Overlays/Calling';
 import MessageChat from './Message/MessageChat';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBar from './ExtraCompsBar';
@@ -30,7 +30,7 @@ const Room = () => {
   const roomId = params.title.split('&')[0];
   return (
     <>
-      <div>Room</div>
+      <div id="room">
       <Stage />
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (
@@ -42,7 +42,6 @@ const Room = () => {
           cancelCall={cancelCall}
         />
       )}
-
       <Dropdown socket={io} roomId={roomId} />
       <MessageChat socket={io} />
       <ExtraCompsBar
@@ -53,6 +52,7 @@ const Room = () => {
         setCallAccepted={setCallAccepted}
         leaveConfirm={leaveConfirm}
       />
+      </div>
     </>
   );
 };
