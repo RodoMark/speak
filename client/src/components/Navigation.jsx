@@ -19,7 +19,7 @@ const Navigation = () => {
 
   return (
     <Router>
-      <Navbar className='color-nav' bg='light' expand='lg'>
+      <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
             Parlar

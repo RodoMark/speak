@@ -1,7 +1,7 @@
 import Video from '../Video';
 export default function Stage(props) {
   return (
-    <div>
+    <div className="stage">
       <Video />
     </div>
   );
