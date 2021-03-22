@@ -37,7 +37,7 @@ export default function RoomListItem(props) {
           {/* <p>{roomId}</p> */}
         </Link>
 
-        <p>{room.room_description}</p>
+      <p>{room.room_description}</p>
         <Button onClick={(e) => handleDel(e)} reject>
           -
         </Button>

@@ -1,7 +1,21 @@
 @import "./variables";
 
 .room {
-  background-color: black;
+  padding: 3em;
+  width: 80%;
+  height: 90%;
+  margin: auto;
+  background: $roomBlue;
+}
+
+.stage {
+  background: $glass;
+  
+}
+
+.dropdown{
+  padding: 0;
+  background: $glass;
 }
 
 .extra-comps-bar {
