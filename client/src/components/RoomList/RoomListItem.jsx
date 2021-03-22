@@ -36,7 +36,7 @@ export default function RoomListItem(props) {
           {/* <p>{roomId}</p> */}
         </Link>
         <div className="room-list-item" key={roomId}>
-
+        {/*<h2>{room.room_name}</h2>*/}
         <p>{room.room_description}</p>
         <Button onClick={(e) => handleDel(e)} reject>
           Delete
