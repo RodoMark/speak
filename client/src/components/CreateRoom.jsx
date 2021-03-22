@@ -32,7 +32,7 @@ const CreateRoom = (props) => {
     // .
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form id="create-room" onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control

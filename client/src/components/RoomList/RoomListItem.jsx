@@ -30,16 +30,18 @@ export default function RoomListItem(props) {
       .catch((err) => console.log(err));
   };
   return (
-    <div key={roomId}>
-      <Link className='nav-link' to={`/teacher/room/${roomId}`}>
-        <h2>{room.room_name}</h2>
-        <p>{roomId}</p>
-      </Link>
+    <div className="item-container">
+        <div className="room-list-item" key={roomId}>
+        <Link className='nav-link' to={`/teacher/room/${roomId}`}>
+          <h2>{room.room_name}</h2>
+          {/* <p>{roomId}</p> */}
+        </Link>
 
-      <p>{room.room_description}</p>
-      <Button onClick={(e) => handleDel(e)} reject>
-        -
-      </Button>
+        <p>{room.room_description}</p>
+        <Button onClick={(e) => handleDel(e)} reject>
+          -
+        </Button>
+      </div>
     </div>
-  );
+      );
 }

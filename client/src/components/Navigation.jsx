@@ -19,7 +19,7 @@ const Navigation = () => {
 
   return (
     <Router>
-      <Navbar className='color-nav' bg='light' expand='lg'>
+      <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
             Parlar
@@ -31,11 +31,6 @@ const Navigation = () => {
             <NavItem>
               <Link className='nav-link' to='/'>
                 Home
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/Profile'>
-                Profile
               </Link>
             </NavItem>
             <Auth auth={auth} setAuth={setAuth} />
@@ -55,9 +50,7 @@ const Navigation = () => {
         <Route exact path='/Login' component={Login}>
           <Login setAuth={setAuth} />
         </Route>
-        <Route exact path='/Logout' component={Logout}>
-          <Logout setAuth={setAuth} />
-        </Route>
+        
         <Route path='/Teacher/Room/:title/' component={Room} />
         <Route path='/Login/:title/' component={AttendeLogIn} />
         <Route path='/New/' component={CreateRoom} />
