@@ -1,12 +1,13 @@
-@import "./variables";
+@import "../variables";
 
 .room {
   display: grid;
-  grid-auto-rows: 1fr;
+  grid-template-rows: 2fr 1fr 0.5fr 0.5fr;
+  grid-auto-columns: 1fr;
   grid-template-areas:
   "stag stag stag chat"
   "stag stag stag chat"
-  "drop drop drop mess"
+  "drop drop drop chat"
   "hang hang hang hang";
   
   padding: 3em;
@@ -30,8 +31,15 @@
 
 .chat-log {
   grid-area: chat;
+  .messages{
+    display: flex;
+    flex-direction: column-reverse;
+    background: $roomWhite;
+    height: 70%;
+    overflow: hidden;
+  }
   .chat-input {
-    grid-area: mess;
+    grid-area: send;
     display: flex;
     background: $mainTeal;
     width: 80%;
