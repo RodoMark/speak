@@ -35,7 +35,11 @@ export default function background(props) {
     const [springs, set] = useSprings(number, (i) => ({
       from: random(i),
       ...random(i),
-      config: { mass: 2000000000000, tension: 200000000000000000, friction: 200000 },
+      config: {
+        mass: 2000000000000,
+        tension: 200000000000000000,
+        friction: 200000,
+      },
     }));
     useEffect(
       () =>
@@ -108,7 +112,7 @@ export default function background(props) {
       {/*<Thing />*/}
       <Lights />
       {/*<Content/>*/}
-      <Boxes />
+      {/* <Boxes /> */}
     </Canvas>
   );
 }
