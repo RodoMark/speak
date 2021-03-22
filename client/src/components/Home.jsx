@@ -21,7 +21,7 @@ const Home = () => {
   }, []);
   console.log(roomList);
   return (
-    <div>
+    <div className="home">
       <h1>Parlar</h1>
       <h3>ROOMS</h3>
       <Button confirm onClick={() => history.push('/New')}>
