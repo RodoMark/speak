@@ -22,7 +22,7 @@ const Navigation = () => {
       <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
-            Parlar
+            Speak.io
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -38,9 +38,11 @@ const Navigation = () => {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
+        
         <Route exact path='/'>
           <Home />
         </Route>
+        
         <Route exact path='/Profile'>
         <Profile id={1} />
         </Route>
