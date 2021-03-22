@@ -7,7 +7,12 @@ import { NavItem } from 'react-bootstrap';
 import { CameraContext } from '../../context/CameraContext';
 
 const NavAuth = (props) => {
-  const { stateLoading, stateAuth, stateCameraLoaded, stateRoomList } = useContext(CameraContext);
+  const {
+    stateLoading,
+    stateAuth,
+    stateCameraLoaded,
+    stateRoomList,
+  } = useContext(CameraContext);
   const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded;
@@ -29,7 +34,11 @@ const NavAuth = (props) => {
   return (
     <NavItem>
       <Form onSubmit={handleSubmit}>
-        <Button onClick={()=>setCameraLoaded(false)} variant='primary' type='submit'>
+        <Button
+          onClick={() => setCameraLoaded(false)}
+          variant='primary'
+          type='submit'
+        >
           Logout
         </Button>
       </Form>
