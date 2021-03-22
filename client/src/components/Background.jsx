@@ -108,7 +108,7 @@ export default function background(props) {
       {/*<Thing />*/}
       <Lights />
       {/*<Content/>*/}
-      <Boxes />
+      {/* <Boxes /> */}
     </Canvas>
   );
 }
