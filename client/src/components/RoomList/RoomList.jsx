@@ -8,5 +8,6 @@ export default function RoomList(props) {
     rooms.map((room, index) => {
       return <RoomListItem key={index} room={room} setRoomList={setRoomList} />;
     });
-  return <ul>{list}</ul>;
+    
+  return <ul className="room-list">{list}</ul>;
 }

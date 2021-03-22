@@ -30,10 +30,10 @@ export default function RoomListItem(props) {
       .catch((err) => console.log(err));
   };
   return (
-    <div key={roomId}>
+    <div className="room-list-item" key={roomId}>
       <Link className='nav-link' to={`/teacher/room/${roomId}`}>
         <h2>{room.room_name}</h2>
-        <p>{roomId}</p>
+        {/* <p>{roomId}</p> */}
       </Link>
 
       <p>{room.room_description}</p>
