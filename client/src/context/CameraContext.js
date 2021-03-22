@@ -118,19 +118,21 @@ const CameraContextProvider = (props) => {
   let MyVideo;
   if (me) {
     MyVideo = (
-      <video
+      <video class="video--active"
         playsInline
         muted
         ref={myVideo}
         autoPlay
-        style={{ width: '300px' }}
       />
     );
   }
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
-      <video playsInline ref={userVideo} autoPlay style={{ width: '300px' }} />
+      <video 
+        class="video--active" 
+        playsInline ref={userVideo} autoPlay 
+      />
     );
   }
   const data = {

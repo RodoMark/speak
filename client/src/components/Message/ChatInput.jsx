@@ -26,6 +26,7 @@ export default function ChatInput(props) {
       .post('/api/messages', data)
       .then((res) => {
         setLoading(false);
+        message = ''
       })
       .catch((e) => console.log(e));
   };
