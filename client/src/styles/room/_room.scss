@@ -10,11 +10,11 @@
   "drop drop drop chat"
   "hang hang hang hang";
   
-  padding: 3em;
+  border: 3em solid $roomBlue;
   width: 80%;
   height: 90%;
   margin: auto;
-  background: $roomBlue;
+  background: $glass;
 } 
 
 .stage {
@@ -34,6 +34,7 @@
 
 // chat log
 .chat-log {
+  background: transparent;
   grid-area: chat;
   .messages{
     display: flex;
@@ -45,7 +46,7 @@
   .chat-input {
     grid-area: send;
     display: flex;
-    background: $mainTeal;
+    background: $glass;
     width: 80%;
     margin: auto;
   }
@@ -81,6 +82,15 @@
 @media only screen and (max-width: 876px) {  
   .room {
   	display: flex;
+    background: $roomBlue;
     flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .extra-comps-bar {
+    grid-area: hang;
+    background-color: $roomWhite;
+    padding: 1em 0;
+    align-items: center;
   }
 }

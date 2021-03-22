@@ -1,4 +1,8 @@
 @import './styles/variables';
+
+// mobile media
+@import './styles/room/room-mobile';
+
 @import './styles/navbar';
 @import './styles/button';
 @import './styles/overlay';
