@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // import niceColors from 'nice-color-palettes'
 import { useSprings, a } from 'react-spring/three';
 import Boxes from './Background/Boxes';
+// import { Lighs, content } from './Background/CubesTransition';
 // import Text from './Background/Text'
 export default function background(props) {
   const number = 35;
@@ -57,6 +58,7 @@ export default function background(props) {
       </a.mesh>
     ));
   }
+  
   function Lights() {
     return (
       <group>
@@ -108,7 +110,7 @@ export default function background(props) {
       {/*<Thing />*/}
       <Lights />
       {/*<Content/>*/}
-      {/* <Boxes /> */}
+       <Boxes /> 
     </Canvas>
   );
 }

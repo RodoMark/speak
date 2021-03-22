@@ -24,8 +24,8 @@ export default function Boxes() {
   useEffect(() => void (previous.current = hovered), [hovered]);
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    ref.current.rotation.x = Math.sin(time / 4);
-    ref.current.rotation.y = Math.sin(time / 2);
+    // ref.current.rotation.x = Math.sin(time / 40);
+    // ref.current.rotation.y = Math.sin(time / 20);
     let i = 0;
     for (let x = 0; x < 10; x++)
       for (let y = 0; y < 10; y++)

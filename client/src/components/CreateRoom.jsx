@@ -32,12 +32,12 @@ const CreateRoom = (props) => {
   };
   return (
     <div className='box'>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='container'>
+      <div className='square' id='red'></div>
+      <div className='square' id='green'></div>
+      <div className='square' id='blue' ></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='green'></div>
+      <div className='container' id='newroomcontainer'>
         <div className='form'>
           <h2>Create New Room</h2>
           <form action='' onSubmit={handleSubmit}>
