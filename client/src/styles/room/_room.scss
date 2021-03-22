@@ -3,7 +3,7 @@
 .room {
   display: grid;
   grid-template-rows: 2fr 1fr 0.5fr 0.5fr;
-  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 0.5fr 1fr 1.5fr  ;
   grid-template-areas:
   "stag stag stag chat"
   "stag stag stag chat"
@@ -15,20 +15,24 @@
   height: 90%;
   margin: auto;
   background: $roomBlue;
-}
+} 
 
 .stage {
   grid-area: stag;
+  padding: 2em 1em 1em 1em;
   background: $glass;
-  
+  .video-container {
+    margin: 0 1em;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 .dropdown{
   grid-area: drop;
-  padding: 0;
-  background: $glass;
 }
 
+// chat log
 .chat-log {
   grid-area: chat;
   .messages{
@@ -66,10 +70,17 @@
   }
 }
 
+// extra
 .extra-comps-bar {
   grid-area: hang;
-  background-color: $mainGrey;
+  background-color: $roomWhite;
   padding: 1em 0;
   align-items: center;
 }
 
+@media only screen and (max-width: 876px) {  
+  .room {
+  	display: flex;
+    flex-direction: column;
+  }
+}

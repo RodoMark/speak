@@ -29,9 +29,11 @@ const Room = () => {
   const params = useParams();
   const roomId = params.title.split('&')[0];
   return (
-    <>
-      <div class="room room--teacher">
+      <section class="room room--teacher">
+      <div className="stage">
       <Stage />
+      <Dropdown socket={io} roomId={roomId} />
+      </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
@@ -42,7 +44,7 @@ const Room = () => {
           cancelCall={cancelCall}
         />
       )}
-      <Dropdown socket={io} roomId={roomId} />
+      
       <MessageChat socket={io} />
       <ExtraCompsBar
         hangUp={hangUp}
@@ -52,8 +54,7 @@ const Room = () => {
         setCallAccepted={setCallAccepted}
         leaveConfirm={leaveConfirm}
       />
-      </div>
-    </>
+      </section>
   );
 };
 
