@@ -1,6 +1,14 @@
 @import "./variables";
 
 .room {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-areas:
+  "stag stag stag chat"
+  "stag stag stag chat"
+  "drop drop drop mess"
+  "hang hang hang hang";
+  
   padding: 3em;
   width: 80%;
   height: 90%;
@@ -9,20 +17,51 @@
 }
 
 .stage {
+  grid-area: stag;
   background: $glass;
   
 }
 
 .dropdown{
+  grid-area: drop;
   padding: 0;
   background: $glass;
 }
 
+.chat-log {
+  grid-area: chat;
+  .chat-input {
+    grid-area: mess;
+    display: flex;
+    background: $mainTeal;
+    width: 80%;
+    margin: auto;
+  }
+  background: $glass;
+  form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & input {
+    
+    margin-left: 1em;
+  }
+  & button {
+    padding: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    color: $mainWhite;
+    border-color: $mainTeal;
+    background-color: $mainTeal
+  }
+}
+
 .extra-comps-bar {
+  grid-area: hang;
   background-color: $mainGrey;
   padding: 1em 0;
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
 }
 

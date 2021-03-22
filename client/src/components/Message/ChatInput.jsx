@@ -30,16 +30,16 @@ export default function ChatInput(props) {
       .catch((e) => console.log(e));
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form class="chat-input" onSubmit={handleSubmit}>
       <Form.Group controlId='formBasicEmail'>
-        <Form.Label>MessageContent</Form.Label>
+        {/* <Form.Label>MessageContent</Form.Label> */}
         <Form.Control
           ref={message}
           type='text'
           placeholder='Enter your message'
         />
       </Form.Group>
-      <Button variant='primary' type='submit'>
+      <Button className="button button--submit" variant='primary' type='submit'>
         Send
       </Button>
     </Form>
