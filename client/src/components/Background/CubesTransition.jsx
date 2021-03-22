@@ -1,9 +1,10 @@
-import * as THREE from 'three';
-import { Canvas, useFrame, useLoader, useUpdate } from 'react-three-fiber';
-import React, { Suspense, useRef, useState, useMemo, useEffect } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
+  import * as THREE from 'three';
+  import { Canvas, useFrame, useLoader, useUpdate } from 'react-three-fiber';
+  import React, { Suspense, useRef, useState, useMemo, useEffect } from 'react';
+  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // import niceColors from 'nice-color-palettes'
-import { useSprings, a } from 'react-spring/three';
+  import { useSprings, a } from 'react-spring/three';
 // import Boxes from './Background/Boxes'; 
 
 
@@ -32,7 +33,7 @@ import { useSprings, a } from 'react-spring/three';
       args: [0.1 + Math.random() * 9, 0.1 + Math.random() * 9, 10],
     };
   });
-  function Content() {
+export default function Content() {
     const [springs, set] = useSprings(number, (i) => ({
       from: random(i),
       ...random(i),
@@ -61,22 +62,5 @@ import { useSprings, a } from 'react-spring/three';
 
  
 
-  function Lights() {
-    return (
-      <group>
-        <pointLight intensity={0.3} />
-        <ambientLight intensity={0.5} />
-        <spotLight
-          castShadow
-          intensity={0.2}
-          angle={Math.PI / 7}
-          position={[150, 150, 250]}
-          penumbra={1}
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
-        />
-      </group>
-    );
-  }
 
-module.exports = { Lights, Content }
+

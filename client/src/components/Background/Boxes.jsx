@@ -5,9 +5,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import niceColors from 'nice-color-palettes';
 const tempObject = new THREE.Object3D();
 const tempColor = new THREE.Color();
+
+
 const colors = new Array(1000)
   .fill()
   .map(() => niceColors[17][Math.floor(Math.random() * 5)]);
+
+
 export default function Boxes() {
   const [hovered, set] = useState();
   const colorArray = useMemo(
@@ -29,9 +33,9 @@ export default function Boxes() {
     let i = 0;
     for (let x = 0; x < 10; x++)
       for (let y = 0; y < 10; y++)
-        for (let z = 0; z < 10; z++) {
+        for (let z = 3; z < 13; z++) {
           const id = i++;
-          tempObject.position.set(5 - x, 5 - y, 0 - z);
+          tempObject.position.set(5 - x, 1 - y, 1.75 - z);
           tempObject.rotation.y =
             Math.sin(x / 4 + time) +
             Math.sin(y / 4 + time) +
@@ -57,20 +61,17 @@ export default function Boxes() {
       onPointerMove={(e) => set(e.instanceId)}
       onPointerOut={(e) => set(undefined)}
     >
-      <boxBufferGeometry attach='geometry' args={[0.3, 0.3, 0.3]}>
+      <boxBufferGeometry attach='geometry' args={[0.25, 0.25, 0.25]}>
         <instancedBufferAttribute
           attachObject={['attributes', 'color']}
           args={[colorArray, 5]}
         />
       </boxBufferGeometry>
       //{' '}
-      <meshPhongMaterial attach='material' vertexColors={THREE.VertexColors} />
-      <meshBasicMaterial
-        attach='material'
-        color='white'
-        opacity={0.5}
-        transparent
-      />
+      <meshPhongMaterial attach='material' wireframe />
+      {/*<meshBasicMaterial attach='material' color='white' opacity={0.5} transparent />*/}
     </instancedMesh>
   );
 }
+//to add to texture in order to display colors
+// vertexColors={THREE.VertexColors}
