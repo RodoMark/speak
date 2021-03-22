@@ -1,53 +1,86 @@
+@import './styles/variables';
 
+// mobile media
+@import './styles/room/room-mobile';
 
+@import './styles/navbar';
+@import './styles/button';
+@import './styles/overlay';
+@import './styles/room/room';
+@import './styles/roomListItem';
+@import './styles/footer';
+@import './styles/background';
+@import './styles/extraComps';
+@import './styles/background';
+@import './styles/homenewroom';
+@import './styles/roomListItem';
+@import './styles/login';
+@import './styles/register';
 
-@import "./styles/variables";
-@import "./styles/button";
-@import "./styles/footer";
-@import "./styles/overlay";
-
-/*font-family: 'Comfortaa', cursive;*/
-/*font-family: 'Montserrat Alternates', sans-serif;*/
-
-.App {
-  text-align: center;
-  font-family: 'Comfortaa', cursive;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 
 }
 
+/*font-family: 'Comfortaa', cursive;*/
+/*font-family: 'Montserrat Alternates', sans-serif;*/
+div {
+  background-color: transparent;
+}
+.App {
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  z-index: 1;
+  position: fixed;
+  background-color: rbga(0, 0, 0, 0);
+  width: 100vw;
+  height: 100vh;
+  overflow:scroll;
+  mix-blend-mode: normal;
+  /*mix-blend-mode: multiply;*/
+
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
   font-family: 'Comfortaa', cursive;
-
-
 }
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
-  background-color: #282c34;
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
+  background-color: rbga(0, 0, 0, 0);
 
+}
 .App-link {
   color: #61dafb;
 }
+.logo {
 
-.logo{
-  
+  font-size: 1.5em;
+  font-weight: 900;
+  /*font-family: 'Montserrat Alternates', sans-serif;*/
+  font-family: 'Comfortaa', cursive;
+
+
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

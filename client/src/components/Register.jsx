@@ -1,10 +1,16 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
 
+import { CameraContext } from '../context/CameraContext';
+
 const Register = (props) => {
+  const { stateLoading, stateAuth } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
+
+  const [auth, setAuth] = stateAuth;
+
   const firstName = useRef();
   const lastName = useRef();
   const email = useRef();
@@ -18,48 +24,49 @@ const Register = (props) => {
       email: email.current.value,
       password: password.current.value,
     };
-
+    setLoading(true);
     axios
       .post('/teachers/', data)
       .then((res) => {
-        console.log(res);
-        props.setAuth(true);
-        history.push('/');
+        setLoading(false);
+        if (res.data.user.email) {
+          setAuth(true);
+          history.push('/');
+        }
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>First Name</Form.Label>
-        <Form.Control
-          ref={firstName}
-          type='text'
-          placeholder='Enter first name'
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control
-          ref={lastName}
-          type='text'
-          placeholder='Enter last name'
-        />
-      </Form.Group>
-      <Form.Group controlId='formBasicEmail'>
-        <Form.Label>Email address</Form.Label>
-        <Form.Control ref={email} type='email' placeholder='Enter email' />
-      </Form.Group>
-      <Form.Group controlId='formBasicPassword'>
-        <Form.Label>Password</Form.Label>
-        <Form.Control ref={password} type='password' placeholder='Password' />
-      </Form.Group>
-
-      <Button variant='primary' type='submit'>
-        Submit
-      </Button>
-    </Form>
+    <div className='box'>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='container'>
+        <div className='form'>
+          <h2>Sign Up Form</h2>
+          <form action='' onSubmit={handleSubmit}>
+            <div class='inputBox'>
+              <input ref={firstName} type='text' placeholder='Firstname' />
+            </div>
+            <div class='inputBox'>
+              <input ref={lastName} type='text' placeholder='Lastname' />
+            </div>
+            <div className='inputBox'>
+              <input ref={email} ref={email} type='text' placeholder='Email' />
+            </div>
+            <div className='inputBox'>
+              <input ref={password} type='password' placeholder='Password' />
+            </div>
+            <div className='inputBox'>
+              <input type='submit' value='Sign Up' />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

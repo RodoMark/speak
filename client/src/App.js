@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-
 import './App.scss';
 import Navigation from './components/Navigation';
-import Stage from './components/Stage/Stage';
 import Footer from './components/Footer';
-function App() {
-  // const { io, message, handle } = useCameraData();
+import Background from './components/Background';
+import CameraContextProvider from './context/CameraContext';
+import Ploading from './components/Ploading';
 
+function App() {
   return (
-    <div className='App'>
-      <Navigation />
-      <h1>PARLAR</h1>
-      <Footer />
-    </div>
+    <>
+      <div className='App'>
+        <CameraContextProvider>
+          <Navigation />
+          <Ploading />
+          <Footer />
+        </CameraContextProvider>
+      </div>
+      <Background />
+    </>
   );
 }
-
 export default App;

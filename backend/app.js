@@ -51,23 +51,34 @@ const io = require('socket.io')(server, {
   },
 });
 
+const users = {};
 io.on('connection', (socket) => {
+  if (!users[socket.id]) {
+    users[socket.id] = socket.id;
+  }
   const request = socket.request;
   console.log('new client connected', socket.id);
   socket.emit('me', socket.id);
+  io.sockets.emit('allUsers', users);
   socket.on('chat', (data) => {
-    console.log(data);
     io.sockets.emit('chat', data);
   });
 
+  socket.on('attendeejoin', (data) => {
+    console.log(`new student join in`);
+    io.sockets.emit('refresh', data);
+  });
+
   socket.on('callUser', (data) => {
-    io.to(data.userToCall).emit('callUser', {
+    console.log(`call user heard from backend, emit to hey with caller signal`);
+    io.to(data.userToCall).emit('hey', {
       signal: data.signalData,
       from: data.from,
       name: data.name,
     });
   });
   socket.on('answerCall', (data) => {
+    console.log(`answercall heard emit peers data signal`);
     io.to(data.to).emit('callAccepted', data.signal);
   });
   socket.on('register', (data) => {
@@ -75,6 +86,7 @@ io.on('connection', (socket) => {
   });
   socket.on('disconnect', () => {
     socket.broadcast.emit('callEnded');
+    delete users[socket.id];
   });
 });
 

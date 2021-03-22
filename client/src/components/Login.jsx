@@ -1,10 +1,14 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useRef } from 'react';
 import axios from 'axios';
 
+import { CameraContext } from '../context/CameraContext';
+
 const Login = (props) => {
+  const { stateLoading, stateAuth } = useContext(CameraContext);
+  const [loading, setLoading] = stateLoading;
+  const [auth, setAuth] = stateAuth;
+
   const email = useRef();
   const password = useRef();
   const history = useHistory();
@@ -14,31 +18,49 @@ const Login = (props) => {
       email: email.current.value,
       password: password.current.value,
     };
-
+    setLoading(true);
     axios
       .post('/teachers/login', data)
       .then((res) => {
+        setLoading(false);
         console.log(res);
-        props.setAuth(true);
-        history.push('/');
+        if (res.data.user) {
+          setAuth(true);
+          history.push('/');
+        }
       })
       .catch((err) => console.log(err));
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='formBasicEmail'>
-        <Form.Label>Email address</Form.Label>
-        <Form.Control ref={email} type='email' placeholder='Enter email' />
-      </Form.Group>
-      <Form.Group controlId='formBasicPassword'>
-        <Form.Label>Password</Form.Label>
-        <Form.Control ref={password} type='password' placeholder='Password' />
-      </Form.Group>
-
-      <Button variant='primary' type='submit'>
-        Submit
-      </Button>
-    </Form>
+    <div className='box'>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='container'>
+        <div className='form'>
+          <h2>Login Form</h2>
+          <form action='' onSubmit={handleSubmit}>
+            <div className='inputBox'>
+              <input ref={email} type='text' placeholder='Email' />
+            </div>
+            <div className='inputBox'>
+              <input ref={password} type='password' placeholder='Password' />
+            </div>
+            <div className='inputBox'>
+              <input type='submit' value='Login' />
+            </div>
+            <p className='forget'>
+              Forgot Password? <a href='#'>Click Here</a>
+            </p>
+            <p className='forget'>
+              Don't have an account ? <a href='#'>Sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -12,7 +12,6 @@ console.log(`Connected to ${process.env.DB_NAME} on ${process.env.DB_HOST}`);
 
 // helper function for adding use to database
 const addUser = function (user) {
-  console.log(user.firstName);
   const queryValues = [
     user.firstName,
     user.lastName,
@@ -73,8 +72,6 @@ exports.getUserWithId = getUserWithId;
 
 //Helper function for retrieving user with email
 const getUserWithEmail = function (email) {
-  console.log(email);
-
   const queryValues = [email];
   const queryString = `
   SELECT *
@@ -84,7 +81,6 @@ const getUserWithEmail = function (email) {
   return db
     .query(queryString, queryValues)
     .then((user) => {
-      console.log(user.rows[0]);
       return user.rows[0];
     })
     .catch(() => null);
@@ -101,15 +97,14 @@ const getRooms = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
-      return res.rows[0];
+      // console.log(`this is from index getRooms`, res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };
 exports.getRooms = getRooms;
 
 const addRooms = function (id, data) {
-  console.log('Data from index.addRooms', data);
   if (!id) {
     throw new Error('User not logged in!');
   }
@@ -120,60 +115,54 @@ const addRooms = function (id, data) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      // console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => console.log('CATCHED ERR +++>', err));
 };
 exports.addRooms = addRooms;
 
-const deleteRoom = function (id) {
+const deleteRoom = function (id, roomId) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  const queryValues = [id];
+  const queryValues = [roomId];
   const queryString = `DELETE FROM rooms WHERE id = $1`;
   return db
     .query(queryString, queryValues)
-    .then(() => {
-      return;
+    .then((res) => {
+      console.log(`inside deleteRoom index js`, res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };
 exports.deleteRoom = deleteRoom;
 
-const getAttendees = function (id, info) {
+const getAttendees = function (id) {
   if (!id) {
     throw new Error('User not logged in!');
   }
-  console.log(`this is inside index getAttendes`, info);
-  const attendeeName = info.info.split('&')[0];
-  const roomId = info.info.split('&')[1];
-  const queryValues = [attendeeName, roomId];
-  const queryString = `
-  SELECT * FROM attendees
-  WHERE attendee_name = $1 AND room_id = $2 `;
   return db
-    .query(queryString, queryValues)
+    .query(
+      `
+  SELECT * FROM attendees`
+    )
     .then((res) => {
-      console.log(res.rows[0]);
-      return res.rows[0];
+      console.log(`inside getAttendees indexjs`, res.rows);
+      return res.rows;
     })
     .catch(() => null);
 };
 exports.getAttendees = getAttendees;
 
 const addAttendees = function (id, data) {
-  if (!id) {
-    throw new Error('User not logged in!');
-  }
-  console.log(`this is inside index addAttendees`, data);
+  // if (!id) {
+  //   throw new Error('User not logged in!');
+  // }
   const queryValues = [data.roomId, data.userName, data.feedback];
   const queryString = `INSERT INTO attendees (room_id, attendee_name, feedback) VALUES ($1, $2, $3) RETURNING *;`;
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => console.log(`catch in add attendee`, err));
@@ -195,7 +184,6 @@ const getMessages = function (id) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(() => null);
@@ -203,8 +191,16 @@ const getMessages = function (id) {
 exports.getMessages = getMessages;
 
 const addMessages = function (id, data) {
-  if (!id) {
-    throw new Error('User not logged in!');
+  if (id && !data.attendeeId) {
+    const queryValues = [`T${id}`, data.message];
+    const queryString = `INSERT INTO messages (attendee_id, message_content) VALUES ($1, $2) RETURNING *;`;
+
+    return db
+      .query(queryString, queryValues)
+      .then((res) => {
+        return res.rows[0];
+      })
+      .catch(() => null);
   }
   const queryValues = [data.attendeeId, data.message];
   const queryString = `INSERT INTO messages (attendee_id, message_content) VALUES ($1, $2) RETURNING *;`;
@@ -212,7 +208,6 @@ const addMessages = function (id, data) {
   return db
     .query(queryString, queryValues)
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(() => null);

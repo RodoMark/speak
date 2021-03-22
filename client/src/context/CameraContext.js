@@ -1,45 +1,160 @@
-import { createContext } from 'react';
-import userCameraData from '../hooks/useCameraData';
-
+import { createContext, useEffect, useRef, useState } from 'react';
+import Peer from 'simple-peer';
+import io from 'socket.io-client';
 export const CameraContext = createContext();
-
+const socket = io.connect();
 const CameraContextProvider = (props) => {
-  const {
-    stream,
-    callAccepted,
-    callEnded,
-    userVideo,
-    name,
-    me,
-    idToCall,
-    setName,
-    setIdToCall,
-    leaveCall,
-    callUser,
-    receivingCall,
-    answerCall,
-    io,
-    message,
-    handle,
-  } = userCameraData();
+  const [auth, setAuth] = useState(false);
+  const [endConfirm, setEndConfirm] = useState(false);
+  const [hangUp, setHangUp] = useState(false);
+  const [leaveConfirm, setLeaveConfirm] = useState(false);
+  const [error, setError] = useState(false);
+  const [me, setMe] = useState();
+  const [stream, setStream] = useState();
+  const [receivingCall, setReceivingCall] = useState(false);
+  const [caller, setCaller] = useState('');
+  const [idToCall, setIdToCall] = useState('');
+  const [callerSignal, setCallerSignal] = useState();
+  const [calling, setCalling] = useState(false);
+  const [callAccepted, setCallAccepted] = useState(false);
+  const [callEnded, setCallEnded] = useState(false);
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [roomList, setRoomList] = useState();
 
+  const myVideo = useRef();
+  const userVideo = useRef();
+  const connectionRef = useRef();
+
+  const io = socket;
+
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((cameraData) => {
+        setStream(cameraData);
+        if (myVideo.current) {
+          myVideo.current.srcObject = cameraData;
+        }
+      });
+
+    socket.on('me', (id) => {
+      setMe(id);
+    });
+
+    socket.on('hey', (data) => {
+      console.log(`set caller signal`);
+      setCaller(data.from);
+      setName(data.name);
+      setCallerSignal(data.signal);
+      setReceivingCall(true);
+    });
+  }, []);
+  const callUser = (id) => {
+    console.log(`call user clicked`);
+    const peer = new Peer({
+      initiator: true,
+      trickle: false,
+      stream: stream,
+    });
+    peer.on('signal', (data) => {
+      socket.emit('callUser', {
+        userToCall: id,
+        signalData: data,
+        from: me,
+        name: 'Teacher',
+      });
+    });
+    peer.on('stream', (stream) => {
+      if (userVideo.current) {
+        userVideo.current.srcObject = stream;
+      }
+    });
+    socket.on('callAccepted', (signal) => {
+      console.log(`heard call accepted`);
+      setCallAccepted(true);
+      peer.signal(signal);
+      setReceivingCall(false);
+    });
+
+    connectionRef.current = peer;
+  };
+
+  const answerCall = () => {
+    console.log(`answerCall clicked`);
+    setCallAccepted(true);
+    const peer = new Peer({
+      initiator: false,
+      trickle: false,
+      stream: stream,
+    });
+    peer.on('signal', (data) => {
+      socket.emit('answerCall', { signal: data, to: caller });
+    });
+    peer.on('stream', (stream) => {
+      userVideo.current.srcObject = stream;
+    });
+    callerSignal && peer.signal(callerSignal);
+
+    connectionRef.current = peer;
+  };
+
+  const leaveRoom = () => {
+    setCallEnded(true);
+    connectionRef.current.destroy();
+  };
+
+  const cancelCall = () => {
+    setCallEnded(true);
+  };
+
+  let MyVideo;
+  if (stream) {
+    MyVideo = (
+      <video
+        playsInline
+        muted
+        ref={myVideo}
+        autoPlay
+        style={{ width: '300px' }}
+      />
+    );
+  }
+  let UserVideo;
+  if (callAccepted) {
+    UserVideo = (
+      <video playsInline ref={userVideo} autoPlay style={{ width: '300px' }} />
+    );
+  }
   const data = {
-    stream,
-    callAccepted,
-    callEnded,
-    userVideo,
-    name,
-    me,
-    idToCall,
-    setName,
-    setIdToCall,
-    leaveCall,
-    callUser,
-    receivingCall,
-    answerCall,
+    //variables
     io,
-    message,
-    handle,
+    userVideo,
+    //functions
+    answerCall,
+    leaveRoom,
+    cancelCall,
+    callUser,
+    //state
+    stateAuth: [auth, setAuth],
+    stateCallAccepted: [callAccepted, setCallAccepted],
+    stateCallEnded: [callEnded, setCallEnded],
+    stateCaller: [caller, setCaller],
+    stateCallerSignal: [callerSignal, setCallerSignal],
+    stateCalling: [calling, setCalling],
+    stateEndConfirm: [endConfirm, setEndConfirm],
+    stateHangUp: [hangUp, setHangUp],
+    stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
+    stateIdToCall: [idToCall, setIdToCall],
+    stateMe: [me, setMe],
+    stateName: [name, setName],
+    stateStream: [stream, setStream],
+    stateReceivingCall: [receivingCall, setReceivingCall],
+    stateError: [error, setError],
+    stateLoading: [loading, setLoading],
+    stateRoomList: [roomList, setRoomList],
+    MyVideo,
+    UserVideo,
   };
   return (
     <CameraContext.Provider value={data}>

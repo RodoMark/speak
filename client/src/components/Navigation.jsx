@@ -1,6 +1,8 @@
+import { useState, useContext } from 'react';
+import { CameraContext } from '../context/CameraContext';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { useState } from 'react';
 import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
@@ -12,13 +14,15 @@ import CreateRoom from './CreateRoom';
 import AttendeLogIn from './AttendeLogIn';
 
 const Navigation = () => {
-  const [auth, setAuth] = useState(true);
+  const { stateAuth } = useContext(CameraContext);
+  const [auth, setAuth] = stateAuth;
+
   return (
     <Router>
-      <Navbar bg='light' expand='lg'>
+      <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
-            Parlar
+            Speak.io
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -29,21 +33,18 @@ const Navigation = () => {
                 Home
               </Link>
             </NavItem>
-            <NavItem>
-              <Link className='nav-link' to='/Profile'>
-                Profile
-              </Link>
-            </NavItem>
             <Auth auth={auth} setAuth={setAuth} />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
       <Switch>
+        
         <Route exact path='/'>
           <Home />
         </Route>
+        
         <Route exact path='/Profile'>
-          <Profile id={1} />
+        <Profile id={1} />
         </Route>
         <Route exact path='/Register'>
           <Register setAuth={setAuth} />
@@ -51,12 +52,11 @@ const Navigation = () => {
         <Route exact path='/Login' component={Login}>
           <Login setAuth={setAuth} />
         </Route>
-        <Route exact path='/Logout' component={Logout}>
-          <Logout setAuth={setAuth} />
-        </Route>
-        <Route path='/Room/:title/' component={Room} />
+        
+        <Route path='/Teacher/Room/:title/' component={Room} />
         <Route path='/Login/:title/' component={AttendeLogIn} />
         <Route path='/New/' component={CreateRoom} />
+        <Route path='/Profile/' component={Profile} />
       </Switch>
     </Router>
   );

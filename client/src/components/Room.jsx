@@ -1,37 +1,61 @@
-// import all mayor components
 import Stage from '../components/Stage/Stage.jsx';
-// import OverlayIndex from "../components/Overlays/OverlayIndex.jsx"
-import Dropdown from './Dropdown/Dropdown.jsx';
-import ExtraCompsBar from './ExtraCompsBar/ExtraCompsBar';
-import { useContext, useRef, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import Dropdown from './Dropdown/Dropdown';
+import EndConfirming from './Overlays/EndConfirming';
+import LeaveConfirm from './Overlays/LeaveConfirming';
+import Calling from '../components/Overlays/Calling';
 import MessageChat from './Message/MessageChat';
-import useCameraData from '../hooks/useCameraData';
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { CameraContext } from '../context/CameraContext';
+import ExtraCompsBar from './ExtraCompsBar';
 
-const Room = (props) => {
-  const [togleCamera, setTogleCamera] = useState(true);
+const Room = () => {
+  const {
+    io,
+    stateHangUp,
+    stateReceivingCall,
+    stateEndConfirm,
+    stateLeaveConfirm,
+    stateCallAccepted,
+    cancelCall,
+  } = useContext(CameraContext);
+
+  const [receivingCall, setReceivingCall] = stateReceivingCall;
+  const [endConfirm, setEndConfirm] = stateEndConfirm;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
+  const [hangUp, setHangUp] = stateHangUp;
+
   const params = useParams();
-  const { io } = useCameraData();
-  const attendeeName = params.title.split('&')[1];
   const roomId = params.title.split('&')[0];
-  const attendeeId = params.title.split('&')[2];
   return (
-    <>
-      <div>Room</div>
-      <Stage
-        togleCamera={togleCamera}
-        attendeeName={attendeeName}
-        roomId={roomId}
+      <section class="room room--teacher">
+      <div className="stage">
+      <Stage />
+      <Dropdown socket={io} roomId={roomId} />
+      </div>
+      {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
+      {endConfirm && (
+        <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
+      )}
+      {leaveConfirm && (
+        <LeaveConfirm
+          setLeaveConfirm={setLeaveConfirm}
+          cancelCall={cancelCall}
+        />
+      )}
+      
+      <MessageChat socket={io} />
+      <ExtraCompsBar
+        hangUp={hangUp}
+        setHangUp={setHangUp}
+        setLeaveConfirm={setLeaveConfirm}
+        callAccepted={callAccepted}
+        setCallAccepted={setCallAccepted}
+        leaveConfirm={leaveConfirm}
       />
-      <Dropdown attendeeName={attendeeName} roomId={roomId} />
-      <MessageChat
-        attendeeId={attendeeId}
-        attendeeName={attendeeName}
-        roomId={roomId}
-        io={io}
-      />
-      <ExtraCompsBar />
-    </>
+      </section>
   );
 };
+
 export default Room;

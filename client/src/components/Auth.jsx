@@ -1,28 +1,18 @@
+import { useContext } from 'react';
 import { NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+ import NavAuth from '../components/NavComponents/NavAuth'
+ import NavNoAuth from '../components/NavComponents/NavNoAuth'
 
-const Auth = (props) => {
-  return !props.auth ? (
-    <>
-      <NavItem>
-        <Link className='nav-link' to='/Register'>
-          Sign Up
-        </Link>
-      </NavItem>
-      <NavItem>
-        <Link className='nav-link' to='/Login'>
-          Login
-        </Link>
-      </NavItem>
-    </>
-  ) : (
-    <>
-      <NavItem>
-        <Link className='nav-link' to='/Logout'>
-          Logout
-        </Link>
-      </NavItem>
-    </>
+import { CameraContext } from '../context/CameraContext';
+
+const Auth = () => {
+  const { stateAuth } = useContext(CameraContext);
+
+  const [auth, setAuth] = stateAuth;
+
+  return (
+    auth ? <NavAuth /> : <NavNoAuth />
   );
 };
 
