@@ -1,7 +1,4 @@
 import { useContext } from 'react';
-
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
 import axios from 'axios';
@@ -41,36 +38,35 @@ const Register = (props) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>First Name</Form.Label>
-        <Form.Control
-          ref={firstName}
-          type='text'
-          placeholder='Enter first name'
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control
-          ref={lastName}
-          type='text'
-          placeholder='Enter last name'
-        />
-      </Form.Group>
-      <Form.Group controlId='formBasicEmail'>
-        <Form.Label>Email address</Form.Label>
-        <Form.Control ref={email} type='email' placeholder='Enter email' />
-      </Form.Group>
-      <Form.Group controlId='formBasicPassword'>
-        <Form.Label>Password</Form.Label>
-        <Form.Control ref={password} type='password' placeholder='Password' />
-      </Form.Group>
-
-      <Button variant='primary' type='submit'>
-        Submit
-      </Button>
-    </Form>
+    <div className='box'>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='square'></div>
+      <div className='container'>
+        <div className='form'>
+          <h2>Sign Up Form</h2>
+          <form action='' onSubmit={handleSubmit}>
+            <div class='inputBox'>
+              <input ref={firstName} type='text' placeholder='Firstname' />
+            </div>
+            <div class='inputBox'>
+              <input ref={lastName} type='text' placeholder='Lastname' />
+            </div>
+            <div className='inputBox'>
+              <input ref={email} ref={email} type='text' placeholder='Email' />
+            </div>
+            <div className='inputBox'>
+              <input ref={password} type='password' placeholder='Password' />
+            </div>
+            <div className='inputBox'>
+              <input type='submit' value='Sign Up' />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
