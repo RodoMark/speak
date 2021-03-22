@@ -5,6 +5,20 @@
 @import './styles/overlay';
 @import './styles/extraComps';
 @import './styles/background';
+@import './styles/roomListItem';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 /*font-family: 'Comfortaa', cursive;*/
 /*font-family: 'Montserrat Alternates', sans-serif;*/
 div {
