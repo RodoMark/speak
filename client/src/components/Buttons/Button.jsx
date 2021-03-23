@@ -10,7 +10,8 @@ export default function Button(props) {
      "button--reject": props.reject,
      "button--call": props.call,
      "button--invite": props.invite,
-     "button--send": props.send
+     "button--send": props.send,
+     "button--submit": props.submit
   })
 
   return (
