@@ -6,7 +6,7 @@
   width: 98vw;
   height: 86vh;
   margin: auto;
-  background-color: $glass;
+  /*background-color: $glass;*/
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: space-around;
@@ -50,7 +50,7 @@
   flex-grow: 3;
   align-content: space-around;
   justify-content: space-around;
-  height: 60vh;
+  height: 70vh;
   flex-grow: 2;
   flex-direction: column;
   margin-right:5vw;
@@ -75,6 +75,12 @@
   padding-bottom: 5px;
   align-self: flex-end;
 }
+
+#dropdown:clicked{
+  border-color:$mainBlack
+}
+
+
 
 // chat log
 .chat-log {
