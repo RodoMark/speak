@@ -4,6 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBar = (props) => {
   const {
+    io,
     hangUp,
     setHangUp,
     setLeaveConfirm,
@@ -12,6 +13,11 @@ const ExtraCompsBar = (props) => {
   } = props;
 
   const [copy, setCopy] = useState(true);
+
+  io.on('callEndedByStudent', (data) => {
+    console.log(`listening for back end to emit callEndedByStudent`, data);
+    setHangUp(true);
+  });
 
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--teacher'>
