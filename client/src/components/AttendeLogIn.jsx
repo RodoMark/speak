@@ -58,7 +58,7 @@ const AttendeeLogIn = (props) => {
   return (
     <section className="room room--attendee">
       
-      <Stage />
+      <Stage hangUp={hangUp}/>
 
       {endConfirm && (
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />

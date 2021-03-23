@@ -84,6 +84,10 @@ io.on('connection', (socket) => {
   socket.on('register', (data) => {
     console.log('register button heared from the back end', data);
   });
+  socket.on('callEnded', (data) => {
+    console.log(`callEnded by the student heard emit to teacher`);
+    io.sockets.emit('callEndedByStudent', data);
+  });
   socket.on('disconnect', () => {
     socket.broadcast.emit('callEnded');
     delete users[socket.id];

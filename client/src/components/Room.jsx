@@ -51,6 +51,7 @@ const Room = () => {
       <MessageChat socket={io} />
 
       <ExtraCompsBar
+        io={io}
         hangUp={hangUp}
         setHangUp={setHangUp}
         setLeaveConfirm={setLeaveConfirm}
