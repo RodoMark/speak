@@ -30,36 +30,36 @@
   display: flex;
   justify-content: space-around;
 
-  .video-container {
+  
+}
+
+.video-container {
     margin: 0em;
     display: flex;
     justify-content: center;
     align-items: center;
     mix-blend-mode: normal;
     object-fit: fill;
-    
+    /*object-fit: contain;*/
+  }
 
-    .video{
+.video{
       max-width:30vw;
       max-height: 30vw;
       overflow:hidden;
       object-fit: fill;
-
+      /*object-fit: contain;*/
       padding: 20px;
-    }
+}
 
-    .videoactive{
+.videoactive{
       max-width:auto;
       max-height: auto;
       overflow:hidden;
       object-fit: fill;
-
       padding: 20px;
-    }
-
-    
-  }
 }
+
 .wrapper {
   /*grid-area: stag;*/
   padding: 2em 1em 1em 1em;
@@ -102,8 +102,13 @@
   margin-top: 6vh;
   margin-left: 6vh;
   max-width: 40vw;
+  justify-content: flex-start;
 }
 
+.dropdown{
+  display: flex;
+  justify-content: flexs-tart
+}
 #dropdown{
   /*grid-area: drop;*/
   border-radius: 1rem;
@@ -119,7 +124,6 @@
   color: $mainBlack;
   background-color: $mainWhite;
   padding-bottom: 5px;
-  align-self: flex-end;
 
 }
 
@@ -128,7 +132,17 @@
   overflow: scroll;
 }
 
+.dropdown-menu{
+  width: 20vw;
+}
+.dropdown-item{
+  width: 20vw;
+}
 
+.call-button{
+
+  width: 20vw;
+}
 
 
 // chat log

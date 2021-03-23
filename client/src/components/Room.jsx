@@ -35,9 +35,9 @@ const Room = () => {
   return (
       <section className="room room--teacher">
       <div className="wrapper">
+      <Dropdown socket={io} roomId={roomId} />
       <Stage />
       {/* <RatingsArrayTeacher /> */}
-      <Dropdown socket={io} roomId={roomId} />
       </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (

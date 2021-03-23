@@ -22,11 +22,9 @@ const RoomAttendee = (props) => {
 
   console.log(me, attendeeId, attendeeName);
   return (
-    <div className= "wrapper">
-      
 
+    <div className= "none">
       {receivingCall && <Receiving /> }
-
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
