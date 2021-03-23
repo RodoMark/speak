@@ -8,23 +8,26 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBar from './ExtraCompsBar';
+import RatingsArray from '../components/Ratings/RatingsArray'
+
 
 const Room = () => {
   const {
     io,
+    cancelCall,
+    stateCallAccepted,
     stateHangUp,
-    stateReceivingCall,
     stateEndConfirm,
     stateLeaveConfirm,
-    stateCallAccepted,
-    cancelCall,
+    stateRating,
+    stateReceivingCall,
   } = useContext(CameraContext);
 
-  const [receivingCall, setReceivingCall] = stateReceivingCall;
-  const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
-  const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
+  const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [hangUp, setHangUp] = stateHangUp;
+  const [receivingCall, setReceivingCall] = stateReceivingCall;
+  const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;
 
   const params = useParams();
   const roomId = params.title.split('&')[0];
@@ -32,6 +35,7 @@ const Room = () => {
       <section className="room room--teacher">
       <div className="stage">
       <Stage />
+      <RatingsArray />
       <Dropdown socket={io} roomId={roomId} />
       </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
