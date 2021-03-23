@@ -95,6 +95,7 @@ const AttendeeLogIn = (props) => {
       )}
 
       <ExtraCompsBarAttendee
+        io={io}
         hangUp={hangUp}
         setHangUp={setHangUp}
         setLeaveConfirm={setLeaveConfirm}

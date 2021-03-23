@@ -20,6 +20,8 @@ const Video = () => {
   // debugger;  
   setCameraLoaded(true)
 
+  console.log("cameraLoaded", cameraLoaded)
+
   return (
     <>
       <div className='video-container'>

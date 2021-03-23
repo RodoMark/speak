@@ -20,8 +20,10 @@ const Room = () => {
     stateEndConfirm,
     stateLeaveConfirm,
     stateReceivingCall,
+    stateChosen,
   } = useContext(CameraContext);
 
+  const [chosen, setChosen] = stateChosen;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [hangUp, setHangUp] = stateHangUp;
@@ -57,6 +59,7 @@ const Room = () => {
         setLeaveConfirm={setLeaveConfirm}
         callAccepted={callAccepted}
         setCallAccepted={setCallAccepted}
+        setChosen={setChosen}
         leaveConfirm={leaveConfirm}
       />
       </section>
