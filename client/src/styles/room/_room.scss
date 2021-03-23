@@ -137,6 +137,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 75vh;
+  width: 20vw;
   border-radius: 10px;
   margin-top: 2vh;
   margin-left:0vw; 
@@ -169,18 +170,23 @@
   .inputbox{
     display: flex;
     flex-direction: row;
-
+    
   }
   .chat-input {
     grid-area: send;
     display: flex;
     background: $glass;
-    width: 100%;
+    width:100%;
     height: auto;
     max-height: 10vh;
     margin: auto;
     border-radius: 50% 50% 0% 0%;
-    padding: 2px;
+    padding: 20px;
+  }
+  #sendmsg{
+    height: 45px;
+    padding-left: 0px;
+
   }
   /*background: $glass;*/
   form{
