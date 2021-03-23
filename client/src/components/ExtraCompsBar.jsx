@@ -20,11 +20,8 @@ const ExtraCompsBar = (props) => {
   });
 
   const url = window.location.href.split('/')
-
-  console.log(url)
-
   const roomNumber = (url[url.length-1])
-
+  
   const copiedUrl = `http://${url[1]}${url[2]}/login/${roomNumber}`
 
   return (
