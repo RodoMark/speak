@@ -86,7 +86,7 @@ io.on('connection', (socket) => {
   });
   socket.on('callEnded', (data) => {
     console.log(`callEnded by the student heard emit to teacher`);
-    socket.emit('callEndedByStudent', data.signal);
+    socket.emit('callEndedByStudent', data);
   });
   socket.on('disconnect', () => {
     socket.broadcast.emit('callEnded');
