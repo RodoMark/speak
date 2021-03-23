@@ -16,7 +16,7 @@ export default function Receiving(props) {
   const [receivingCall, setReceivingCall] = stateReceivingCall;
 
   return (
-    <div className='overlay'>
+    <Overlay>
       <Button
         call
         confirm
@@ -28,6 +28,6 @@ export default function Receiving(props) {
       />
       <Button call reject onClick={() => setReceivingCall(false)} />
       <h2>Receiving Call</h2>
-    </div>
+    </Overlay>
   );
 }

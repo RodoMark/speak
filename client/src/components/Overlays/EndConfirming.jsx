@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+import Overlay from './Overlay'
 import Button from '../Buttons/Button';
 import { useContext } from 'react'
 import { CameraContext } from '../../context/CameraContext'
@@ -31,7 +31,7 @@ export default function EndConfirming(props) {
 
 
   return (
-    <div className='overlay'>
+    <Overlay>
       <h2>Are you sure?</h2>
       <br />
       <Button
@@ -43,6 +43,6 @@ export default function EndConfirming(props) {
         call 
         reject 
         onClick={() => setEndConfirm(false)} />
-    </div>
+    </Overlay>
   );
 }

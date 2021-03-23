@@ -5,7 +5,10 @@ const Overlay = (props) => {
 	return(
 		<article className="overlay">
 			{props.children}
+			<div className="transparency">
+    </div>
 		</article>
+		
 	)
 }
 

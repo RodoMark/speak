@@ -14,7 +14,7 @@ export default function LeaveConfirming(props) {
 
   const history = useHistory();
   return (
-    <div className='overlay'>
+    <Overlay>
       <h2>Are you sure?</h2>
       <br />
       <Button
@@ -28,6 +28,6 @@ export default function LeaveConfirming(props) {
         }}
       />
       <Button call reject onClick={() => setLeaveConfirm(false)} />
-    </div>
+    </Overlay>
   );
 }

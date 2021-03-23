@@ -1,10 +1,11 @@
+import Overlay from './Overlay'
 import Button from '../Buttons/Button';
 import { useHistory } from 'react-router-dom';
 
 export default function Confirming({ setEndingCall, callCancelled }) {
   const history = useHistory();
   return (
-    <div className='overlay'>
+    <Overlay>
       <h2>Are you sure?</h2>
       <br />
       <Button
@@ -17,6 +18,6 @@ export default function Confirming({ setEndingCall, callCancelled }) {
         }}
       />
       <Button call reject onClick={() => setEndingCall(false)} />
-    </div>
+    </Overlay>
   );
 }

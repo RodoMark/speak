@@ -1,8 +1,10 @@
+import Overlay from './Overlay'
 import Button from '../Buttons/Button';
+
 
 export default function Calling({ setReceivingCall }) {
   return (
-    <div>
+    <Overlay>
       <Button
         id='cancel-call'
         call
@@ -12,6 +14,6 @@ export default function Calling({ setReceivingCall }) {
       />
       <br />
       <h2>Calling...</h2>
-    </div>
+    </Overlay>
   );
 }
