@@ -19,10 +19,18 @@ const ExtraCompsBar = (props) => {
     setHangUp(true);
   });
 
+  const url = window.location.href.split('/')
+
+  console.log(url)
+
+  const roomNumber = (url[url.length-1])
+
+  const copiedUrl = `http://${url[1]}${url[2]}/login/${roomNumber}`
+
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--teacher'>
       <CopyToClipboard
-        text={window.location.href}
+        text={copiedUrl}
         style={{ marginBottom: '2rem' }}
       >
         <Button
