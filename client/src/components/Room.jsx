@@ -29,7 +29,7 @@ const Room = () => {
   const params = useParams();
   const roomId = params.title.split('&')[0];
   return (
-      <section class="room room--teacher">
+      <section className="room room--teacher">
       <div className="stage">
       <Stage />
       <Dropdown socket={io} roomId={roomId} />

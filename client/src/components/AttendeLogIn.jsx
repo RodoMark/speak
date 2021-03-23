@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useRef, useContext, useState } from 'react';
 import axios from 'axios';
 import RoomAttendee from './AttendeeRoom/RoomAttendee';
+import AttendeeInvite from './AttendeeRoom/AttendeeInvite';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBarAttendee from './ExtraCompsBarAttendee';
 import EndConfirming from './Overlays/EndConfirming';
@@ -55,9 +56,7 @@ const AttendeeLogIn = (props) => {
   };
   return (
     <section className="room room--attendee">
-      <h1>You have been invited to room number {`${roomId.title}`}</h1>
-      <Stage />
-
+      
       {endConfirm && (
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
       )}
@@ -74,17 +73,13 @@ const AttendeeLogIn = (props) => {
           attendeeName={attendeeName}
           roomId={roomId.title}
         />
-      ) : (
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId='formBasicText'>
-            <Form.Label>NickName</Form.Label>
-            <Form.Control ref={userName} type='text' placeholder='Nickname' />
-          </Form.Group>
-          <Button variant='primary' type='submit'>
-            Enter
-          </Button>
-        </Form>
-      )}
+      ) : <AttendeeInvite 
+            handleSubmit={handleSubmit}
+            userName={userName}
+            roomId={roomId}
+          /> 
+          
+      }
 
       <ExtraCompsBarAttendee
         hangUp={hangUp}

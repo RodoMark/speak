@@ -2,6 +2,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const AttendeeInvite = (props) => {
+  const {handleSubmit, userName, roomId} = props
+
   return (
     <>
     <h1>You have been invited to room number {`${roomId.title}`}</h1>
