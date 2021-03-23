@@ -10,13 +10,13 @@
   "stag stag stag chat"
   "hang hang hang hang";
   
-  border: 1.5em solid $roomBlue;
+  // border: 1.5em solid $roomBlue;
   border-bottom: none;
   width: 98.5%;
   height: 92%;
   margin: auto;
   margin-top: 71px;
-  background: $glass;
+  // background: $glass;
 } 
 
 .stage {
@@ -32,6 +32,7 @@
   }
   & .video--active {
     width: 400px;
+    background: $glass;
   }
   .dropdown {
     display: flex;
