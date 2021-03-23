@@ -20,11 +20,9 @@ const CameraContextProvider = (props) => {
   const [me, setMe] = useState();
   const [name, setName] = useState('');
   const [rating, setRating] = useState(
-    [
-      {ethical: false}, 
-      {persuasive: false}, 
-      {wellInformed: false}
-    ]
+    {ethical: false,
+    persuasive: false,
+    informed: false}
   )
   const [receivingCall, setReceivingCall] = useState(false);
   const [roomList, setRoomList] = useState([]);

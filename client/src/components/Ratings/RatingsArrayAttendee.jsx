@@ -14,10 +14,10 @@ const RatingsArray = () => {
   const [rating, setRating] = stateRating;
 
   return (
-    <section class="rating-array">
+    <section class="ratings-array">
     { rating.ethical ? <True text="Ethical" /> : <False text="Ethical" /> }
       { rating.persuasive ? <True text="Persuasive" /> : <False text="Persuasive" /> }
-      { rating.wellInformed ? <True text="Well Informed" /> : <False text="Well Informed" /> }
+      { rating.wellInformed ? <True text=" Informed" /> : <False text="Informed" /> }
     </section>
   )
 }

@@ -2,9 +2,10 @@ import CheckBoxOutlineBlankSharpIcon from '@material-ui/icons/CheckBoxOutlineBla
 
 const False = (props) => {
 
+
   return (
-      <article class="rating">
-        <h1 class="rating--text">{props.text}</h1>
+      <article onClick={props.onClick} className="rating">
+        <h1 className="rating--text">{props.text}</h1>
         <CheckBoxOutlineBlankSharpIcon />
       </article>
   );
