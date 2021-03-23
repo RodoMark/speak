@@ -1,4 +1,6 @@
-import { useState, useContext } from 'react';
+/* eslint-disable */
+
+import { useContext } from 'react';
 import { CameraContext } from '../context/CameraContext';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -7,7 +9,6 @@ import Home from './Home';
 import Profile from './Profile';
 import Register from './Register';
 import Login from './Login';
-import Logout from './Logout';
 import Auth from './Auth';
 import Room from './Room';
 import CreateRoom from './CreateRoom';

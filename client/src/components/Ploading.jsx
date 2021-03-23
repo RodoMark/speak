@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Loading from './Overlays/Loading';
 import { useContext } from 'react';
 import { CameraContext } from '../context/CameraContext';

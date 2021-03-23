@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
@@ -55,7 +57,7 @@ const Register = (props) => {
               <input ref={lastName} type='text' placeholder='Lastname' />
             </div>
             <div className='inputBox'>
-              <input ref={email} ref={email} type='text' placeholder='Email' />
+              <input ref={email} type='text' placeholder='Email' />
             </div>
             <div className='inputBox'>
               <input ref={password} type='password' placeholder='Password' />

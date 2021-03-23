@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import Videocall from '../Videocall';

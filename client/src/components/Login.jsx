@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -52,7 +54,7 @@ const Login = (props) => {
               <input type='submit' value='Login' />
             </div>
             <p className='forget'>
-              Forgot Password? <a href='#'>Click Here</a>
+              Forgot Password? <a>Click Here</a>
             </p>
             <p className='forget'>
               Don't have an account ? <a href='#'>Sign up</a>
