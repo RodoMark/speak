@@ -1,0 +1,33 @@
+.landingLogo{
+	color:#21271d99;
+	font-size: 10em;
+	/*width: 72vw;*/
+	text-decoration: none;
+
+}
+
+.landingLogoLink{
+ text-decoration: none;
+ /*pointer-events: none;*/
+ mix-blend-mode: soft-light;
+ width: 75vw;
+}
+
+.landingLogoLink:hover{
+	font-size: 1.01em;
+ text-decoration: none;
+ /*pointer-events: none;*/
+
+ mix-blend-mode: soft-light;
+ width: 75vw;
+}
+
+.loading{
+	z-index: 2;
+}
+
+#logoutbtn{
+	background-color: transparent;
+	border-style: none;
+	color: rgba(0,0,0,.5)
+}
