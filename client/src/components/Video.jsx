@@ -14,9 +14,7 @@ const Video = () => {
   const [callEnded, setCallEnded] = stateCallEnded;
   const [me, setMe] = stateMe;
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded
-  // debugger;
-  console.log(MyVideo, me);
-  
+  // debugger;  
   setCameraLoaded(true)
 
   return (

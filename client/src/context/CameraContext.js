@@ -31,14 +31,7 @@ const CameraContextProvider = (props) => {
 
   
 
-  useEffect(() => {
-    
-    // if(CAMERA NOT ON) {
-      // DO EFFECT
-      // ELSE
-      // NO EFFECT
-    // }
-    
+  useEffect(() => {    
       navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((cameraData) => {
@@ -63,9 +56,6 @@ const CameraContextProvider = (props) => {
     }
     , [cameraLoaded]);
 
-    useEffect(() => {
-      console.log("CAMERA LOADED STATE", cameraLoaded)
-    })
 
   const callUser = (id) => {
     console.log(`call user clicked`);

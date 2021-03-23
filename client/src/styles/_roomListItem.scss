@@ -1,29 +1,30 @@
-.home{
-
+.home {
   display: flex;
-  overflow: scroll; 
+  // overflow: auto;
+  // overflow-x: hidden;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+
   width: 100vw;
   height: 100vh;
   margin-top: 12vh;
   /*overflow: scroll;*/
-}
 
-.new-room-btn{
+}
+.new-room-btn {
   align-self: center;
 }
-
 .room-list {
   display: flex;
   justify-content: center;
   flex-flow: wrap;
+
   /*overflow: hidden;*/
   /*overflow: scroll;*/
  
-}
 
+}
 .item-container {
   display: flex;
   flex-direction: column;
@@ -42,13 +43,13 @@
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
   z-index: 1;
-  .room-list-item{
+  .room-list-item {
     padding: 20px;
     text-align: center;
     transform: translateY(100px);
     opacity: 0;
     transition: 0.5s;
-    & h2{
+    & h2 {
       position: absolute;
       top: -80px;
       right: 30px;
@@ -74,10 +75,8 @@
       box-shadow: 0 5px 15px rgb(0, 0, 0, 0.2);
     }
   }
-  
 }
-
-.item-container:hover .room-list-item{
+.item-container:hover .room-list-item {
   transform: translateY(0px);
   opacity: 1;
 }
