@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Stage from './Stage/Stage.jsx';
@@ -26,7 +28,7 @@ const AttendeeLogIn = (props) => {
     cancelCall,
     stateLoading,
   } = useContext(CameraContext);
-  const [receivingCall, setReceivingCall] = stateReceivingCall;
+
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [leaveConfirm, setLeaveConfirm] = stateLeaveConfirm;

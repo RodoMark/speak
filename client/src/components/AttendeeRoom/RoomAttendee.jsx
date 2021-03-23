@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useState, useContext } from 'react';
 import Receiving from '../Overlays/Receiving';
 import Confirming from '../Overlays/EndConfirming';
@@ -10,10 +12,8 @@ const RoomAttendee = (props) => {
   const { attendeeId, attendeeName, roomId } = props;
   const {
     stateReceivingCall,
-    answerCall,
     stateCallAccepted,
     io,
-    callCancelled,
     stateMe,
   } = useContext(CameraContext);
   const [receivingCall, setReceivingCall] = stateReceivingCall;

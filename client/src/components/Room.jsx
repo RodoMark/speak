@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CameraContext } from '../context/CameraContext';
 import ExtraCompsBar from './ExtraCompsBar';
-import RatingsArrayTeacher from './Ratings/RatingsArrayTeacher'
+// import RatingsArrayTeacher from './Ratings/RatingsArrayTeacher'
 
 
 const Room = () => {
@@ -19,7 +19,6 @@ const Room = () => {
     stateHangUp,
     stateEndConfirm,
     stateLeaveConfirm,
-    stateRating,
     stateReceivingCall,
   } = useContext(CameraContext);
 
@@ -35,7 +34,7 @@ const Room = () => {
       <section className="room room--teacher">
       <div className="stage">
       <Stage />
-      <RatingsArrayTeacher />
+      {/* <RatingsArrayTeacher /> */}
       <Dropdown socket={io} roomId={roomId} />
       </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}

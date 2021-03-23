@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 import { CameraContext } from '../context/CameraContext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 const Video = () => {
   const {

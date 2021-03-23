@@ -23,7 +23,7 @@ export default function Dropdowns(props) {
     <>
       <Dropdown>
         <Dropdown.Toggle variant='success' id='dropdown-basic'>
-          Dropdown Button
+          Call
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {list &&
@@ -35,6 +35,7 @@ export default function Dropdowns(props) {
             ))}
         </Dropdown.Menu>
       </Dropdown>
+      
     </>
   );
 }

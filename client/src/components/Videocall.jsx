@@ -1,9 +1,10 @@
+/* eslint-disable */
+
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
-import Calling from './Overlays/Calling';
 
 const Videocall = (props) => {
   const { stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(
