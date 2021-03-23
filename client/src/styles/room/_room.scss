@@ -1,50 +1,66 @@
 @import "../variables";
 
 .room {
- 
-  width: 90%;
-  height: 91%;
-  margin: auto;
-  background-color: $glass;
 
   display: flex;
-  margin-top: 12vh;
-  height: 88vh;
+  width: 98vw;
+  height: 86vh;
+  margin: auto;
+  background-color: $glass;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-around;
+  flex-direction: row;
 
-  border: .1em solid #21271d99;
+
+
+  margin-top: 12vh;
+  height: 70vh;
+
+  /*border: .1em solid #21271d99;*/
   /*box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
   border: 1px, solid rgba(200, 200, 200, 0.75);
   border-right: 1px solid rgba(200, 200, 200, 0.75);
   border-bottom: 1px solid rgba(200, 200, 200, 0.75);
   background: rgba(33, 39, 29, 0.0);*/
 } 
-
-.stage {
-  grid-area: stag;
-  padding: 2em 1em 1em 1em;
-  /*background: $glass;*/
-  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
-    border: 1px, solid rgba(200, 200, 200, 0.75);
-    border-right: 1px solid rgba(200, 200, 200, 0.75);
-    border-bottom: 1px solid rgba(200, 200, 200, 0.75);
-    background: rgba(33, 39, 29, 0.75);
-    border-radius: 10px;
+.stage{
 
   .video-container {
     margin: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    mix-blend-mode: normal;    
     
 
   }
+}
+.stagewrapper {
+  /*grid-area: stag;*/
+  padding: 2em 1em 1em 1em;
+  /*background: $glass;*/
+  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+  border-radius: 10px;
+  flex-grow: 3;
+  align-content: space-around;
+  justify-content: space-around;
+  height: 60vh;
+  flex-grow: 2;
+  flex-direction: column;
+  margin-right:5vw;
+  margin-top: 2vh; 
 
 }
 
 #dropdown{
   /*grid-area: drop;*/
   border-radius: 1rem;
-  border: 0;
   font-size: 1.5rem;
   height: 2rem;
   width: auto;
@@ -56,16 +72,19 @@
   border-color: $mainBlack;
   color: $mainBlack;
   background-color: $mainWhite;
+  padding-bottom: 5px;
+  align-self: flex-end;
 }
 
 // chat log
 .chat-log {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 30vh;
+  justify-content: space-between;
+  height: 75vh;
   border-radius: 10px;
-
+  margin-top: 2vh;
+  margin-left:0vw; 
 
   box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
   border: 1px, solid rgba(200, 200, 200, 0.75);
@@ -83,6 +102,7 @@
 
     margin: 10px;
     mix-blend-mode: lighten;
+    overflow: scroll;
 
   }
   .chat-input {
@@ -115,9 +135,9 @@
 
 // extra
 .extra-comps-bar {
-  grid-area: hang;
+  /*grid-area: hang;*/
   /*background-color: $roomWhite;*/
-  padding: 1em 0;
+  padding: 0.5em ;
   align-items: center;
 
   box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
@@ -126,6 +146,12 @@
   border-bottom: 1px solid rgba(200, 200, 200, 0.75);
   background: rgba(33, 39, 29, 0.75);
   border-radius: 10px;
+  align-self: flex-end;
+  flex: 1 0 100%;
+  margin-bottom: 2vh;
+  justify-content: space-around;
+  width: 50vw;
+
 }
 
 @media only screen and (max-width: 876px) {  
@@ -133,7 +159,13 @@
   	display: flex;
     background: transparent;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    padding-top: 15vh;
+    min-width: 400px
+  }
+
+  .satge{
+
   }
 
   .extra-comps-bar {
