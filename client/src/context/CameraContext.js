@@ -59,10 +59,20 @@ const CameraContextProvider = (props) => {
       setReceivingCall(true);
     });
     
-    socket.on('callEndedByStudent', (data) => {
-      console.log(`listening for back end to emit callEndedByStudent`, data);
+    socket.on('callEndedByStudentSide', (data) => {
+      console.log(`listening for back end to emit callEndedByStudentSide`, data);
       setCallEnded(true);
+      setCallAccepted(false)
+      setHangUp(true);
     });
+
+    socket.on('callEndedByTeacherSide', (data) => {
+      console.log(`listening for back end to emit callEndedByTeacherSide`, data);
+      setCallEnded(true);
+      setCallAccepted(false)
+      setHangUp(true);
+    });
+  
   
     }
     , [cameraLoaded]);

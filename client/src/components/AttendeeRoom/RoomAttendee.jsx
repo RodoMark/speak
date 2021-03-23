@@ -23,8 +23,6 @@ const RoomAttendee = (props) => {
   console.log(me, attendeeId, attendeeName);
   return (
   <>
-      
-      <Stage />
       {receivingCall && <Receiving /> }
       {endingCall && <Confirming />}
       <MessageChat

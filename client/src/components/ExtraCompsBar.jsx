@@ -15,8 +15,8 @@ const ExtraCompsBar = (props) => {
 
   const [copy, setCopy] = useState(true);
 
-  io.on('callEndedByStudent', (data) => {
-    console.log(`listening for back end to emit callEndedByStudent`, data);
+  io.on('callEndedByStudentSide', (data) => {
+    console.log(`listening for back end to emit callEndedByStudentSide`, data);
     setHangUp(true);
   });
 
@@ -54,6 +54,7 @@ const ExtraCompsBar = (props) => {
         </Button>
       ) : (
         <Button
+          style={{zIndex: '100'}}
           reject
           onClick={() => {
             console.log(`close room clicked`);
