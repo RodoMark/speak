@@ -9,6 +9,7 @@ export default function Dropdowns(props) {
   const [loading, setLoading] = stateLoading;
   const [list, setList] = useState([]);
   const { socket, roomId } = props;
+  
   socket.on('refresh', (data) => {
     setLoading(true);
     axios.get('/api/attendees').then((res) => {
@@ -25,24 +26,24 @@ export default function Dropdowns(props) {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>
+            <Videocall idToCall={`fdskalgfdsjklafjdksla`} />
             Alon
-            <Videocall idToCall={`fdskalgfdsjklafjdksla`} />
           </Dropdown.Item>
           <Dropdown.Item>
+            <Videocall idToCall={`fdskalgfdsjklafjdksla`} />
             Ed
-            <Videocall idToCall={`fdskalgfdsjklafjdksla`} />
           </Dropdown.Item>
           <Dropdown.Item>
-            Thomas
             <Videocall idToCall={`fdskalgfdsjklafjdksla`} />
+            Thomas
           </Dropdown.Item>
         </Dropdown.Menu>
         <Dropdown.Menu>
           {list &&
             list.map((obj) => (
               <Dropdown.Item key={obj.id}>
-                {obj.attendee_name.split('&')[0]}
                 <Videocall idToCall={obj.attendee_name.split('&')[1]} />
+                {obj.attendee_name.split('&')[0]}
               </Dropdown.Item>
             ))}
         </Dropdown.Menu>

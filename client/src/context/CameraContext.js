@@ -12,6 +12,7 @@ const CameraContextProvider = (props) => {
   const [callerSignal, setCallerSignal] = useState();
   const [calling, setCalling] = useState(false);
   const [cameraLoaded, setCameraLoaded] = useState(false);
+  const [chosen, setChosen] = useState()
   const [error, setError] = useState(false);
   const [hangUp, setHangUp] = useState(false);
   const [idToCall, setIdToCall] = useState('');
@@ -164,6 +165,7 @@ const CameraContextProvider = (props) => {
     stateCaller: [caller, setCaller],
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
+    stateChosen: [chosen, setChosen],
     stateEndConfirm: [endConfirm, setEndConfirm],
     stateError: [error, setError],
     stateHangUp: [hangUp, setHangUp],
