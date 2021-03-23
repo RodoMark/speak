@@ -55,7 +55,7 @@ const AttendeeLogIn = (props) => {
   };
   return (
     <section className="room room--attendee">
-      <h1>You have been invited to room number {`${roomId.title}`}</h1>
+      
       <Stage />
 
       {endConfirm && (
@@ -75,7 +75,8 @@ const AttendeeLogIn = (props) => {
           roomId={roomId.title}
         />
       ) : (
-        <Form onSubmit={handleSubmit} id='newroomcontainer'>
+        <Form onSubmit={handleSubmit}>
+          <h1>You have been invited to room number {`${roomId.title}`}</h1>
           <Form.Group controlId='formBasicText'>
             <Form.Label>NickName</Form.Label>
             <Form.Control ref={userName} type='text' placeholder='Nickname' />

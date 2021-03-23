@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import Receiving from '../Overlays/Receiving';
 import Confirming from '../Overlays/EndConfirming';
 import MessageChat from '../Message/MessageChat';
+import Stage from '../Stage/Stage'
 import { CameraContext } from '../../context/CameraContext';
 
 const RoomAttendee = (props) => {
@@ -21,8 +22,9 @@ const RoomAttendee = (props) => {
 
   console.log(me, attendeeId, attendeeName);
   return (
-    <>
-      <div>Room</div>
+  <>
+      
+      <Stage />
       {receivingCall ? <Receiving /> : null}
       {endingCall && <Confirming />}
       <MessageChat

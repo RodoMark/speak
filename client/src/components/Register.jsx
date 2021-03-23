@@ -48,10 +48,10 @@ const Register = (props) => {
         <div className='form'>
           <h2>Sign Up Form</h2>
           <form action='' onSubmit={handleSubmit}>
-            <div class='inputBox'>
+            <div className='inputBox'>
               <input ref={firstName} type='text' placeholder='Firstname' />
             </div>
-            <div class='inputBox'>
+            <div className='inputBox'>
               <input ref={lastName} type='text' placeholder='Lastname' />
             </div>
             <div className='inputBox'>
