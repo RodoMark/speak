@@ -5,8 +5,13 @@ import axios from 'axios';
 import { CameraContext } from '../../context/CameraContext';
 import { useContext } from 'react';
 export default function Dropdowns(props) {
-  const { stateLoading } = useContext(CameraContext);
+  const { stateIdToCall, stateLoading, stateChosen, stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(CameraContext);
+
+  const [chosen, setChosen] = stateChosen;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
+  const [callEnded, setCallEnded] = stateCallEnded;
   const [loading, setLoading] = stateLoading;
+  const [idToCall, setIdToCall] = stateIdToCall;
   const [list, setList] = useState([]);
   const { socket, roomId } = props;
   
@@ -39,13 +44,26 @@ export default function Dropdowns(props) {
           </Dropdown.Item>
         </Dropdown.Menu>
         <Dropdown.Menu>
-          {list &&
-            list.map((obj) => (
-              <Dropdown.Item key={obj.id}>
-                <Videocall idToCall={obj.attendee_name.split('&')[1]} />
-                {obj.attendee_name.split('&')[0]}
-              </Dropdown.Item>
-            ))}
+          {list.length &&
+            list.map((obj, index) => {
+              setIdToCall(obj.attendee_name.split('&')[1])
+              
+              return (
+                <Dropdown.Item 
+                  key={index}
+                  onClick={() => {
+                    callUser(idToCall);
+                    setChosen(idToCall);
+                    }
+                  }
+                >
+                <Videocall idToCall={idToCall} />
+                  {obj.attendee_name.split('&')[0]}
+                </Dropdown.Item>
+              )  
+            } 
+          )
+        }
         </Dropdown.Menu>
       </Dropdown>
     </>

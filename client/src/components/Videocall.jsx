@@ -24,11 +24,6 @@ const Videocall = (props) => {
             <IconButton
               color='primary'
               aria-label='call'
-              onClick={() => {
-                callUser(idToCall);
-                setChosen(idToCall);
-              }
-            }
             >
               <PhoneIcon fontSize='large' />
             </IconButton>

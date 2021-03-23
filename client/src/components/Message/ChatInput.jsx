@@ -34,7 +34,7 @@ export default function ChatInput(props) {
   };
   return (
     <>
-    <div className='form' >
+    <div className='form chat-form' >
           <form action='' onSubmit={handleSubmit}>
             <div className='inputBox'>
               <input className="chat-input" ref={message} type='text' placeholder='Enter a message' />

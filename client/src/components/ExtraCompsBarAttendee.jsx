@@ -5,17 +5,18 @@ import Button from './Buttons/Button.jsx';
 
 const ExtraCompsBarAttendee = (props) => {
   const {
+    io,
     callAccepted,
     setLeaveConfirm,
     setEndConfirm,
   } = props;
 
-  // const [callAccepted, setCallAccepted] = stateCallAccepted;
-  // const [endConfirm, setEndConfirm] = stateEndConfirm;
-
   const [hangUp, setHangUp] = useState(false);
 
-  ///states: closeRoom confirmation, LeaveRoom COnfirmation, accepStageInvite, AwaitAnswer
+  io.on('callEndedByStudent', (data) => {
+    console.log(`listening for back end to emit callEndedByStudent`, data);
+    setHangUp(true);
+  });
 
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--attendee'>
@@ -25,6 +26,7 @@ const ExtraCompsBarAttendee = (props) => {
           onClick={() => {
             setHangUp(true);
             setEndConfirm(true);
+            console.log("HANG UP")
           }}
         >
           HangUp
