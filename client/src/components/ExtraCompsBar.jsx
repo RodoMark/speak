@@ -10,6 +10,7 @@ const ExtraCompsBar = (props) => {
     setLeaveConfirm,
     callAccepted,
     setCallAccepted,
+    setChosen
   } = props;
 
   const [copy, setCopy] = useState(true);
@@ -45,6 +46,7 @@ const ExtraCompsBar = (props) => {
           reject
           onClick={() => {
             setHangUp(true);
+            setChosen();
             setCallAccepted(false);
           }}
         >
