@@ -25,7 +25,7 @@ const RoomAttendee = (props) => {
   <>
       
       <Stage />
-      {receivingCall ? <Receiving /> : null}
+      {receivingCall && <Receiving /> }
       {endingCall && <Confirming />}
       <MessageChat
         attendeeId={attendeeId}

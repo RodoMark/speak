@@ -5,7 +5,9 @@ import { useContext } from 'react'
 import { CameraContext } from '../../context/CameraContext'
 
 export default function EndConfirming(props) {
-  const { stateCameraLoaded } = useContext(CameraContext)
+  const { stateCameraLoaded, stateCallEnded } = useContext(CameraContext)
+
+  const [callEnded, setCallEnded] = stateCallEnded
 
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded
 
@@ -22,9 +24,13 @@ export default function EndConfirming(props) {
           setEndConfirm(false);
           setCameraLoaded(false);
           setHangUp(true);
+          setCallEnded(true)
         }}
       />
-      <Button call reject onClick={() => setEndConfirm(false)} />
+      <Button 
+        call 
+        reject 
+        onClick={() => setEndConfirm(false)} />
     </div>
   );
 }
