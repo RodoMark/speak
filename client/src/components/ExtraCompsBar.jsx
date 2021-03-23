@@ -4,6 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const ExtraCompsBar = (props) => {
   const {
+    io,
     hangUp,
     setHangUp,
     setLeaveConfirm,
@@ -13,10 +14,20 @@ const ExtraCompsBar = (props) => {
 
   const [copy, setCopy] = useState(true);
 
+  io.on('callEndedByStudent', (data) => {
+    console.log(`listening for back end to emit callEndedByStudent`, data);
+    setHangUp(true);
+  });
+
+  const url = window.location.href.split('/')
+  const roomNumber = (url[url.length-1])
+  
+  const copiedUrl = `http://${url[1]}${url[2]}/login/${roomNumber}`
+
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--teacher'>
       <CopyToClipboard
-        text={window.location.href}
+        text={copiedUrl}
         style={{ marginBottom: '2rem' }}
       >
         <Button

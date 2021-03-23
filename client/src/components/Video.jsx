@@ -10,6 +10,7 @@ const Video = () => {
     stateCallAccepted,
     stateCallEnded,
     stateMe,
+    stateHangUp,
     stateCameraLoaded
   } = useContext(CameraContext);
   const [callAccepted, setCallAccepted] = stateCallAccepted;

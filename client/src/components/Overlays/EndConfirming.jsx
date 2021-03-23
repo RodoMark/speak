@@ -5,11 +5,27 @@ import { useContext } from 'react'
 import { CameraContext } from '../../context/CameraContext'
 
 export default function EndConfirming(props) {
-  const { stateCameraLoaded } = useContext(CameraContext)
+
+ 
+
+  const { io, stateCameraLoaded, stateCallEnded } = useContext(CameraContext)
+
+  const [callEnded, setCallEnded] = stateCallEnded
 
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded
 
   const { setHangUp, setEndConfirm } = props;
+
+  const handleConfirm = () => {
+    io.emit('callEnded', {
+      callEnded: true
+    })
+    setEndConfirm(false);
+    setCameraLoaded(false);
+    setHangUp(true);
+    setCallEnded(true)
+  }
+
 
   return (
     <div className='overlay'>
@@ -18,13 +34,12 @@ export default function EndConfirming(props) {
       <Button
         call
         confirm
-        onClick={() => {
-          setEndConfirm(false);
-          setCameraLoaded(false);
-          setHangUp(true);
-        }}
+        onClick={() => handleConfirm()}
       />
-      <Button call reject onClick={() => setEndConfirm(false)} />
+      <Button 
+        call 
+        reject 
+        onClick={() => setEndConfirm(false)} />
     </div>
   );
 }
