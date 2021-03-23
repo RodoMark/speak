@@ -34,12 +34,10 @@ export default function ChatInput(props) {
   };
   return (
     <>
-    <div className='form chat-form' >
+    <div className='form chat-form' id='chat-form' >
           <form action='' onSubmit={handleSubmit}>
             <div className='inputBox'>
-              <input className="chat-input" ref={message} type='text' placeholder='Enter a message' />
-            </div>
-            <div className='inputBox'>
+              <input className="chat-input" ref={message} type='text' placeholder='Aa' />
               <button type="submit" call confirm  type='submit'>
                   Send
               </button>
