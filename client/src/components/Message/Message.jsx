@@ -15,5 +15,17 @@ export default function Message(props) {
   });
 
 
-  return <div className="messages">{msg.length ? msg.map((msg) => msg && <h4 className="message-text">{msg}</h4>) : null}</div>;
+  return (
+    <div className="messages">
+      <h4 className="message-text">Here's a message</h4>
+      <h4 className="message-text">And another one.</h4>
+      <h4 className="message-text">And another one!</h4>
+      <h4 className="message-text">such message</h4>
+      <h4 className="message-text">very txt</h4>
+      <h4 className="message-text">much words</h4>
+      <h4 className="message-text">Olay!</h4>
+    {msg.length ? msg.map((msg) => msg && <h4 className="message-text">{msg}</h4>) : null}
+    </div>
+  );
+    
 }
