@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import Button from './Buttons/Button';
 import Stage from './Stage/Stage.jsx';
 import { useParams } from 'react-router-dom';
 import { useRef, useContext, useState } from 'react';
@@ -56,9 +57,11 @@ const AttendeeLogIn = (props) => {
     });
   };
   return (
-    <section className="room room--attendee">
+    <section className="room room--attendee" id='room--attendee'>
       
-      <Stage hangUp={hangUp}/>
+      <div className = 'wrapper' id="stagewrapper">
+        <Stage className="stage" hangUp={hangUp}/>
+      </div>
 
       {endConfirm && (
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
@@ -77,16 +80,18 @@ const AttendeeLogIn = (props) => {
           roomId={roomId.title}
         />
       ) : (
-        <Form onSubmit={handleSubmit}>
-          <h1>You have been invited to room number {`${roomId.title}`}</h1>
+      <div className ='Random'>
+
+        <Form className="wrapper"  id='lattendeewrap' onSubmit={handleSubmit}>
+          <h2 className="wrapper-text">You have been invited to join {`${roomId.title}`}</h2>
           <Form.Group controlId='formBasicText'>
-            <Form.Label>NickName</Form.Label>
             <Form.Control ref={userName} type='text' placeholder='Nickname' />
           </Form.Group>
-          <Button variant='primary' type='submit'>
+          <Button className="formbtn" id="formbtn" type='submit'>
             Enter
           </Button>
         </Form>
+      </div>
       )}
 
       <ExtraCompsBarAttendee

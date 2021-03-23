@@ -128,23 +128,25 @@ const CameraContextProvider = (props) => {
   let MyVideo;
   if (me) {
     MyVideo = (
-      <video className="video--active"
+      <video className="videoactive"
         playsInline
         muted
         ref={myVideo}
         autoPlay
       />
     );
-  }
+  }else{MyVideo = <div></div>};
+
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
       <video 
-        className="video--active" 
+        className="videoactive" 
         playsInline ref={userVideo} autoPlay 
       />
     );
-  }
+  }else{UserVideo = <div></div>};
+  
   const data = {
     //variables
     io,

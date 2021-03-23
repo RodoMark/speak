@@ -32,7 +32,7 @@ const Room = () => {
   const roomId = params.title.split('&')[0];
   return (
       <section className="room room--teacher">
-      <div className="stagewrapper">
+      <div className="wrapper">
       <Stage />
       {/* <RatingsArrayTeacher /> */}
       <Dropdown socket={io} roomId={roomId} />

@@ -11,11 +11,9 @@
   justify-content: space-between;
   align-items: space-around;
   flex-direction: row;
-
-
-
   margin-top: 12vh;
   height: 70vh;
+  overflow: hidden;;
 
   /*border: .1em solid #21271d99;*/
   /*box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
@@ -24,20 +22,45 @@
   border-bottom: 1px solid rgba(200, 200, 200, 0.75);
   background: rgba(33, 39, 29, 0.0);*/
 } 
+
+#room--attendee{
+  flex-direction: row;
+}
 .stage{
+  display: flex;
+  justify-content: space-around;
 
   .video-container {
-    margin: 1em;
+    margin: 0em;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    mix-blend-mode: normal;    
+    mix-blend-mode: normal;
+    object-fit: fill;
     
 
+    .video{
+      max-width:30vw;
+      max-height: 30vw;
+      overflow:hidden;
+      object-fit: fill;
+
+      padding: 20px;
+    }
+
+    .videoactive{
+      max-width:auto;
+      max-height: auto;
+      overflow:hidden;
+      object-fit: fill;
+
+      padding: 20px;
+    }
+
+    
   }
 }
-.stagewrapper {
+.wrapper {
   /*grid-area: stag;*/
   padding: 2em 1em 1em 1em;
   /*background: $glass;*/
@@ -50,12 +73,35 @@
   flex-grow: 3;
   align-content: space-around;
   justify-content: space-around;
-  height: 70vh;
+  height: auto;
   flex-grow: 2;
   flex-direction: column;
   margin-right:5vw;
-  margin-top: 2vh; 
+  margin-top: 2vh;
+  color:white; 
 
+  .formbtn{
+    background: #fff;
+    color: #fff;
+    max-width: 100px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+}
+
+#lattendeewrap{
+  max-height: 30vh;
+  margin-top: 30vh;
+  max-width: 40vw;
+}
+
+#stagewrapper{
+  max-height: 60vh;
+  margin-top: 6vh;
+  margin-left: 6vh;
+  max-width: 40vw;
 }
 
 #dropdown{
@@ -74,11 +120,14 @@
   background-color: $mainWhite;
   padding-bottom: 5px;
   align-self: flex-end;
+
 }
 
 #dropdown:clicked{
-  border-color:$mainBlack
+  border-color:$mainBlack;
+  overflow: scroll;
 }
+
 
 
 
@@ -154,9 +203,15 @@
   border-radius: 10px;
   align-self: flex-end;
   flex: 1 0 100%;
-  margin-bottom: 2vh;
+  margin-bottom: 6vh;
   justify-content: space-around;
   width: 50vw;
+
+}
+
+.attendee-login{
+
+
 
 }
 

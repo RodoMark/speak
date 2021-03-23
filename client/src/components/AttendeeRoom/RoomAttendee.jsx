@@ -22,18 +22,18 @@ const RoomAttendee = (props) => {
 
   console.log(me, attendeeId, attendeeName);
   return (
-  <>
+    <div className= "wrapper">
       
-      <Stage />
+
       {receivingCall && <Receiving /> }
-      {endingCall && <Confirming />}
+
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
         socket={io}
       />
-    </>
+  </div>
   );
 };
 
