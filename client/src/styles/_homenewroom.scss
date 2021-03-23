@@ -4,13 +4,41 @@
   width: 100%;
   top: 20px;
   bottom: 40px;
-}
 
+}
+.box{
+  margin-top:12vh;
+}
 .square{
-  mix-blend-mode: color-dodge;
+  mix-blend-mode: difference;
+  
 }
 
 #red{
+ box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+}
+
+#green{
+ box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+}
+
+#blue{
+   box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+}
+
+/*#red{
   background: #DA624B55;
   box-shadow: 0 25px 45px #DA624B55;
   border: 1px, solid #DA624B55;
@@ -32,7 +60,7 @@
   border: 1px, solid #3D9BC255;
   border-right: 1px solid #3D9BC255;
   border-bottom: 1px solid #3D9BC255;
-}
+}*/
 
 #newroomcontainer {
   position: relative;

@@ -31,7 +31,7 @@ const CreateRoom = (props) => {
     // .
   };
   return (
-    <div className='box'>
+    <div className='box' >
       <div className='square' id='red'></div>
       <div className='square' id='green'></div>
       <div className='square' id='blue' ></div>

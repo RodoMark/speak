@@ -6,5 +6,5 @@ export default function Ploading() {
   const { stateLoading } = useContext(CameraContext);
   const [loading, setLoading] = stateLoading;
 
-  return <>{loading && <Loading />}</>;
+  return <>{loading && <Loading className='loading'/>}</>;
 }

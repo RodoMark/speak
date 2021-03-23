@@ -21,7 +21,7 @@ const CameraContextProvider = (props) => {
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const [cameraLoaded, setCameraLoaded] = useState(false);
-  const [roomList, setRoomList] = useState();
+  const [roomList, setRoomList] = useState([]);
 
   const myVideo = useRef();
   const userVideo = useRef();

@@ -75,7 +75,7 @@ const AttendeeLogIn = (props) => {
           roomId={roomId.title}
         />
       ) : (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} id='newroomcontainer'>
           <Form.Group controlId='formBasicText'>
             <Form.Label>NickName</Form.Label>
             <Form.Control ref={userName} type='text' placeholder='Nickname' />
