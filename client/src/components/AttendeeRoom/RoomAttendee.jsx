@@ -1,9 +1,10 @@
+/* eslint-disable */
+
 import { useState, useContext } from 'react';
-import Stage from '../Stage/Stage.jsx';
-import ExtraCompsBarAttendee from '../ExtraCompsBarAttendee';
 import Receiving from '../Overlays/Receiving';
 import Confirming from '../Overlays/EndConfirming';
 import MessageChat from '../Message/MessageChat';
+import Stage from '../Stage/Stage'
 import { CameraContext } from '../../context/CameraContext';
 
 const RoomAttendee = (props) => {
@@ -11,10 +12,8 @@ const RoomAttendee = (props) => {
   const { attendeeId, attendeeName, roomId } = props;
   const {
     stateReceivingCall,
-    answerCall,
     stateCallAccepted,
     io,
-    callCancelled,
     stateMe,
   } = useContext(CameraContext);
   const [receivingCall, setReceivingCall] = stateReceivingCall;
@@ -23,8 +22,9 @@ const RoomAttendee = (props) => {
 
   console.log(me, attendeeId, attendeeName);
   return (
-    <>
-      <div>Room</div>
+  <>
+      
+      <Stage />
       {receivingCall ? <Receiving /> : null}
       {endingCall && <Confirming />}
       <MessageChat

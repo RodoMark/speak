@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Button from '../Buttons/Button';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';

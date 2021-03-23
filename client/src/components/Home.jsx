@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Button from './Buttons/Button';
 import RoomList from './RoomList/RoomList';
 import { useHistory, Link } from 'react-router-dom';

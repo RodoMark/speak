@@ -6,22 +6,27 @@ const socket = io.connect();
 const CameraContextProvider = (props) => {
   const [auth, setAuth] = useState(false);
   const [endConfirm, setEndConfirm] = useState(false);
-  const [hangUp, setHangUp] = useState(false);
-  const [leaveConfirm, setLeaveConfirm] = useState(false);
-  const [error, setError] = useState(false);
-  const [me, setMe] = useState();
-  const [stream, setStream] = useState();
-  const [receivingCall, setReceivingCall] = useState(false);
   const [caller, setCaller] = useState('');
-  const [idToCall, setIdToCall] = useState('');
-  const [callerSignal, setCallerSignal] = useState();
-  const [calling, setCalling] = useState(false);
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
-  const [name, setName] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [callerSignal, setCallerSignal] = useState();
+  const [calling, setCalling] = useState(false);
   const [cameraLoaded, setCameraLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const [hangUp, setHangUp] = useState(false);
+  const [idToCall, setIdToCall] = useState('');
+  const [leaveConfirm, setLeaveConfirm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [me, setMe] = useState();
+  const [name, setName] = useState('');
+  const [rating, setRating] = useState(
+    {ethical: false,
+    persuasive: false,
+    informed: false}
+  )
+  const [receivingCall, setReceivingCall] = useState(false);
   const [roomList, setRoomList] = useState([]);
+  const [stream, setStream] = useState();
 
   const myVideo = useRef();
   const userVideo = useRef();
@@ -31,14 +36,7 @@ const CameraContextProvider = (props) => {
 
   
 
-  useEffect(() => {
-    
-    // if(CAMERA NOT ON) {
-      // DO EFFECT
-      // ELSE
-      // NO EFFECT
-    // }
-    
+  useEffect(() => {    
       navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((cameraData) => {
@@ -63,9 +61,6 @@ const CameraContextProvider = (props) => {
     }
     , [cameraLoaded]);
 
-    useEffect(() => {
-      console.log("CAMERA LOADED STATE", cameraLoaded)
-    })
 
   const callUser = (id) => {
     console.log(`call user clicked`);
@@ -128,25 +123,29 @@ const CameraContextProvider = (props) => {
   let MyVideo;
   if (me) {
     MyVideo = (
-      <video
+      <video className="video--active"
         playsInline
         muted
         ref={myVideo}
         autoPlay
-        style={{ width: '300px' }}
       />
     );
   }
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
-      <video playsInline ref={userVideo} autoPlay style={{ width: '300px' }} />
+      <video 
+        className="video--active" 
+        playsInline ref={userVideo} autoPlay 
+      />
     );
   }
   const data = {
     //variables
     io,
     userVideo,
+    MyVideo,
+    UserVideo,
     //functions
     answerCall,
     leaveRoom,
@@ -161,18 +160,17 @@ const CameraContextProvider = (props) => {
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
     stateEndConfirm: [endConfirm, setEndConfirm],
+    stateError: [error, setError],
     stateHangUp: [hangUp, setHangUp],
-    stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
     stateIdToCall: [idToCall, setIdToCall],
+    stateLeaveConfirm: [leaveConfirm, setLeaveConfirm],
+    stateLoading: [loading, setLoading],
     stateMe: [me, setMe],
     stateName: [name, setName],
     stateStream: [stream, setStream],
+    stateRating: [rating, setRating],
     stateReceivingCall: [receivingCall, setReceivingCall],
-    stateError: [error, setError],
-    stateLoading: [loading, setLoading],
     stateRoomList: [roomList, setRoomList],
-    MyVideo,
-    UserVideo,
   };
   return (
     <CameraContext.Provider value={data}>

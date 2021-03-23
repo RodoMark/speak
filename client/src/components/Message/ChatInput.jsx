@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
@@ -26,11 +28,12 @@ export default function ChatInput(props) {
       .post('/api/messages', data)
       .then((res) => {
         setLoading(false);
+        message = ''
       })
       .catch((e) => console.log(e));
   };
   return (
-    <Form class="chat-input" onSubmit={handleSubmit}>
+    <Form className="chat-input" onSubmit={handleSubmit}>
       <Form.Group controlId='formBasicEmail'>
         {/* <Form.Label>MessageContent</Form.Label> */}
         <Form.Control

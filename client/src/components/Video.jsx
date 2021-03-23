@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 import { CameraContext } from '../context/CameraContext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 const Video = () => {
   const {
@@ -14,9 +16,7 @@ const Video = () => {
   const [callEnded, setCallEnded] = stateCallEnded;
   const [me, setMe] = stateMe;
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded
-  // debugger;
-  console.log(MyVideo, me);
-  
+  // debugger;  
   setCameraLoaded(true)
 
   return (

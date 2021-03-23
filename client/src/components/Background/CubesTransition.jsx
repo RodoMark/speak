@@ -1,3 +1,4 @@
+/* eslint-disable */
 
   import * as THREE from 'three';
   import { Canvas, useFrame, useLoader, useUpdate } from 'react-three-fiber';
