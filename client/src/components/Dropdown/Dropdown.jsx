@@ -44,13 +44,12 @@ export default function Dropdowns(props) {
           </Dropdown.Item>
         </Dropdown.Menu>
         <Dropdown.Menu>
-          {list.length>0 &&
+          {list.length > 0 &&
             list.map((obj, index) => {
               setIdToCall(obj.attendee_name.split('&')[1])
               
               return (
                 <Dropdown.Item 
-                  className='dropdownitem'
                   key={index}
                   onClick={() => {
                     callUser(idToCall);

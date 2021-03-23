@@ -84,9 +84,13 @@ io.on('connection', (socket) => {
   socket.on('register', (data) => {
     console.log('register button heared from the back end', data);
   });
-  socket.on('callEnded', (data) => {
+  socket.on('callEndedByStudent', (data) => {
     console.log(`callEnded by the student heard emit to teacher`);
-    io.sockets.emit('callEndedByStudent', data);
+    io.sockets.emit('callEndedByStudentSide', data);
+  });
+  socket.on('callEndedByTeacher', (data) => {
+    console.log(`callEnded by the teacher heard emit to teacher`);
+    io.sockets.emit('callEndedByTeacherSide', data);
   });
   socket.on('disconnect', () => {
     socket.broadcast.emit('callEnded');
