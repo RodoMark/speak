@@ -6,8 +6,15 @@ const Checkbox = (props) => {
     [
       {ethical: false}, 
       {persuasive: false}, 
-      {wellInformed: false}]
+      {wellInformed: false}
+    ]
   )
+
+  return (
+      <article class="rating">
+        <DoneOutlineIcon />
+      </article>
+  );
 }
 
 export default Checkbox
