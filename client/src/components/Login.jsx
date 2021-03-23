@@ -33,13 +33,13 @@ const Login = (props) => {
   };
   return (
     <div className='box'>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='container'>
-        <div className='form'>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='container' id='newroomcontainer'>
+        <div className='form' >
           <h2>Login Form</h2>
           <form action='' onSubmit={handleSubmit}>
             <div className='inputBox'>

@@ -34,11 +34,9 @@ const NavAuth = (props) => {
   return (
     <NavItem>
       <Form onSubmit={handleSubmit}>
-        <Button
-          onClick={() => setCameraLoaded(false)}
-          variant='primary'
-          type='submit'
-        >
+
+        <Button id='logoutbtn' onClick={()=>setCameraLoaded(false)} variant='primary' type='submit'>
+
           Logout
         </Button>
       </Form>
