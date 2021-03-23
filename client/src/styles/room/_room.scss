@@ -1,59 +1,101 @@
 @import "../variables";
 
 .room {
-  display: grid;
-  grid-template-rows: 2fr 1fr 0.5fr 0.5fr;
-  grid-template-columns: 1fr 0.5fr 1fr 1.5fr  ;
-  grid-template-areas:
-  "stag stag stag chat"
-  "stag stag stag chat"
-  "drop drop drop chat"
-  "hang hang hang hang";
-  
-  border: 3em solid $roomBlue;
-  width: 80%;
-  height: 90%;
+ 
+  width: 90%;
+  height: 91%;
   margin: auto;
-  background: $glass;
+  background-color: $glass;
+
+  display: flex;
+  margin-top: 12vh;
+  height: 88vh;
+
+  border: .1em solid #21271d99;
+  /*box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.0);*/
 } 
 
 .stage {
   grid-area: stag;
   padding: 2em 1em 1em 1em;
-  background: $glass;
+  /*background: $glass;*/
+  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+    border: 1px, solid rgba(200, 200, 200, 0.75);
+    border-right: 1px solid rgba(200, 200, 200, 0.75);
+    border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+    background: rgba(33, 39, 29, 0.75);
+    border-radius: 10px;
+
   .video-container {
-    margin: 0 1em;
+    margin: 1em;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    
+
   }
+
 }
 
-.dropdown{
-  grid-area: drop;
+#dropdown{
+  /*grid-area: drop;*/
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 2rem;
+  width: auto;
+  line-height: 1.2rem;
+  margin-right: 1rem;
+  width: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $mainBlack;
+  color: $mainBlack;
+  background-color: $mainWhite;
 }
 
 // chat log
 .chat-log {
-  background: transparent;
-  grid-area: chat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 30vh;
+  border-radius: 10px;
+
+
+  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+  /*grid-area: chat;*/
   .messages{
     display: flex;
     flex-direction: column-reverse;
-    background: $roomWhite;
+    background: rgba(245, 245, 248, 0.9);
     height: 70%;
     overflow: hidden;
+    border-radius: 10px;
+
+    margin: 10px;
+    mix-blend-mode: lighten;
+
   }
   .chat-input {
     grid-area: send;
     display: flex;
     background: $glass;
-    width: 80%;
+    width: 100%;
     margin: auto;
   }
-  background: $glass;
+  /*background: $glass;*/
   form{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
   & input {
@@ -61,10 +103,10 @@
     margin-left: 1em;
   }
   & button {
-    padding: 0;
+    padding: 0px;
     width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
+    height: 3rem;
+    border-radius: 0 10%;
     color: $mainWhite;
     border-color: $mainTeal;
     background-color: $mainTeal
@@ -74,15 +116,22 @@
 // extra
 .extra-comps-bar {
   grid-area: hang;
-  background-color: $roomWhite;
+  /*background-color: $roomWhite;*/
   padding: 1em 0;
   align-items: center;
+
+  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px, solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 876px) {  
   .room {
   	display: flex;
-    background: $roomBlue;
+    background: transparent;
     flex-direction: column;
     justify-content: space-evenly;
   }
@@ -93,4 +142,5 @@
     padding: 1em 0;
     align-items: center;
   }
+
 }
