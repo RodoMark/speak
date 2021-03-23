@@ -38,7 +38,7 @@ const ExtraCompsBar = (props) => {
             setCopy(!copy);
           }}
         >
-          {copy ? `Copy` : `Success!`}
+          {copy ? `Link` : `Success!`}
         </Button>
       </CopyToClipboard>
 
@@ -62,7 +62,7 @@ const ExtraCompsBar = (props) => {
             setLeaveConfirm(true);
           }}
         >
-          Close Room
+          Close
         </Button>
       )}
     </div>

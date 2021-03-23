@@ -50,6 +50,7 @@ export default function Dropdowns(props) {
               
               return (
                 <Dropdown.Item 
+                  className='dropdownitem'
                   key={index}
                   onClick={() => {
                     callUser(idToCall);
