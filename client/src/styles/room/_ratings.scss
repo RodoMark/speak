@@ -1,0 +1,18 @@
+@import "../variables";
+
+.ratings-array{
+  display: flex;
+  justify-content: space-between;
+  .rating{
+    height: 200px;
+}
+  & h1 {
+    font-size: calc(2px + 4vw)
+  }
+}
+
+@media only screen and (max-width: $mobileWidth) {
+  .ratings-array .rating{
+    height: 100px;
+  }
+}
