@@ -31,7 +31,7 @@ const Logout = (props) => {
   return (
     <NavItem>
       <Form onSubmit={handleSubmit}>
-        <Button variant='primary' type='submit'>
+        <Button variant='primary' id='logoutbtn' type='submit'>
           Logout
         </Button>
       </Form>

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -7,9 +9,15 @@ import { NavItem } from 'react-bootstrap';
 import { CameraContext } from '../../context/CameraContext';
 
 const NavAuth = (props) => {
-  const { stateLoading, stateAuth, stateRoomList } = useContext(CameraContext);
+  const {
+    stateLoading,
+    stateAuth,
+    stateCameraLoaded,
+    stateRoomList,
+  } = useContext(CameraContext);
   const [loading, setLoading] = stateLoading;
   const [auth, setAuth] = stateAuth;
+  const [cameraLoaded, setCameraLoaded] = stateCameraLoaded;
   const [roomList, setRoomList] = stateRoomList;
   const history = useHistory();
   const handleSubmit = (e) => {
@@ -28,7 +36,9 @@ const NavAuth = (props) => {
   return (
     <NavItem>
       <Form onSubmit={handleSubmit}>
-        <Button variant='primary' type='submit'>
+
+        <Button id='logoutbtn' onClick={()=>setCameraLoaded(false)} variant='primary' type='submit'>
+
           Logout
         </Button>
       </Form>

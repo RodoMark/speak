@@ -1,51 +1,62 @@
 @import "../variables";
+@import "./ratings";
 
 .room {
   display: grid;
-  grid-template-rows: 2fr 1fr 0.5fr 0.5fr;
+  grid-template-rows: 2fr 1fr 0.5fr 0.25fr;
   grid-template-columns: 1fr 0.5fr 1fr 1.5fr  ;
   grid-template-areas:
   "stag stag stag chat"
   "stag stag stag chat"
-  "drop drop drop chat"
+  "stag stag stag chat"
   "hang hang hang hang";
   
-  border: 3em solid $roomBlue;
-  width: 80%;
-  height: 90%;
+  // border: 1.5em solid $roomBlue;
+  border-bottom: none;
+  width: 98.5%;
+  height: 92%;
   margin: auto;
-  background: $glass;
+  margin-top: 71px;
+  // background: $glass;
 } 
 
 .stage {
   grid-area: stag;
-  padding: 2em 1em 1em 1em;
+  padding: 1em 1.5em;
   background: $glass;
   .video-container {
-    margin: 0 1em;
+    margin-right: 1em;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  & .video--active {
+    width: 400px;
+    background: $glass;
+  }
+  .dropdown {
     display: flex;
     justify-content: flex-start;
   }
-}
-
-.dropdown{
-  grid-area: drop;
 }
 
 // chat log
 .chat-log {
   background: transparent;
   grid-area: chat;
+  padding-bottom: 1rem;
   .messages{
     display: flex;
     flex-direction: column-reverse;
     background: $roomWhite;
-    height: 70%;
+    height: 90%;
     overflow: hidden;
   }
   .chat-input {
     grid-area: send;
     display: flex;
+    align-items: center;
     background: $glass;
     width: 80%;
     margin: auto;
@@ -53,8 +64,8 @@
   background: $glass;
   form{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: baseline;
   }
   & input {
     
@@ -65,32 +76,51 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    color: $mainWhite;
-    border-color: $mainTeal;
-    background-color: $mainTeal
+    color: $mainTeal;
+    border-color: $mainBlue;
+    background-color: $mainBlue;
+  }
+  & #formBasicEmail {
+    margin: 0;
+    border: 0;
+    padding: 0.25em 0 0 0;
   }
 }
 
 // extra
 .extra-comps-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   grid-area: hang;
   background-color: $roomWhite;
   padding: 1em 0;
   align-items: center;
 }
 
-@media only screen and (max-width: 876px) {  
+@media only screen and (max-width: $mobileWidth) {  
   .room {
   	display: flex;
     background: $roomBlue;
     flex-direction: column;
     justify-content: space-evenly;
+    .stage {
+      .video-container{
+        justify-content: center;
+      }
+      & .video--active{
+        margin: 0;
+      }
+    }
+    .messages{
+      max-height: 6em;
+    }
   }
 
+  
+
   .extra-comps-bar {
-    grid-area: hang;
     background-color: $roomWhite;
     padding: 1em 0;
-    align-items: center;
   }
 }

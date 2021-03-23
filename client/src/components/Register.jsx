@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useRef } from 'react';
@@ -38,24 +40,24 @@ const Register = (props) => {
   };
 
   return (
-    <div className='box'>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='square'></div>
-      <div className='container'>
+    <div className='box' >
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='square' id='red'></div>
+      <div className='container' id='newroomcontainer'>
         <div className='form'>
           <h2>Sign Up Form</h2>
           <form action='' onSubmit={handleSubmit}>
-            <div class='inputBox'>
+            <div className='inputBox'>
               <input ref={firstName} type='text' placeholder='Firstname' />
             </div>
-            <div class='inputBox'>
+            <div className='inputBox'>
               <input ref={lastName} type='text' placeholder='Lastname' />
             </div>
             <div className='inputBox'>
-              <input ref={email} ref={email} type='text' placeholder='Email' />
+              <input ref={email} type='text' placeholder='Email' />
             </div>
             <div className='inputBox'>
               <input ref={password} type='password' placeholder='Password' />

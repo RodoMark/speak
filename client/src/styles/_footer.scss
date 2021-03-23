@@ -1,6 +1,8 @@
+@import './variables';
+
 footer {
   z-index: 10;
-  background: $mainGrey;
+  background: $glass;
   position: fixed;
   bottom: 0px;
   width: 100vw;
@@ -10,6 +12,6 @@ footer {
   padding: 0px;
   z-index: 1;
   h6 {
-    font-size: 0.5em;
+    font-size: 1em;
   }
 }

@@ -1,17 +1,12 @@
-import { useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import { CameraContext } from '../context/CameraContext';
+import { useState} from 'react';
 
 import Button from './Buttons/Button.jsx';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 const ExtraCompsBarAttendee = (props) => {
   const {
     callAccepted,
-    setCallAccepted,
-    leaveConfirm,
     setLeaveConfirm,
-    endConfirm,
     setEndConfirm,
   } = props;
 

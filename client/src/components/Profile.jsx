@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { CameraContext } from '../context/CameraContext';
