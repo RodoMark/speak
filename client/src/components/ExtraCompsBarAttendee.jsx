@@ -1,32 +1,32 @@
-import { useState} from 'react';
+import { useState, useContext } from 'react';
 
 import Button from './Buttons/Button.jsx';
+import { CameraContext } from '../context/CameraContext'
 
 
 const ExtraCompsBarAttendee = (props) => {
+  const { stateHangUp } = useContext(CameraContext)
+
   const {
     io,
     callAccepted,
+    setCallAccepted,
     setLeaveConfirm,
     setEndConfirm,
   } = props;
 
-  const [hangUp, setHangUp] = useState(false);
-
-  io.on('callEndedByStudent', (data) => {
-    console.log(`listening for back end to emit callEndedByStudent`, data);
-    setHangUp(true);
-  });
+  const [hangUp, setHangUp] = stateHangUp
 
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--attendee'>
       {callAccepted && !hangUp ? (
         <Button
+          style= {{zIndex: 4}}
           reject
           onClick={() => {
             setHangUp(true);
+            setCallAccepted(false)
             setEndConfirm(true);
-            console.log("HANG UP")
           }}
         >
           HangUp
@@ -39,7 +39,7 @@ const ExtraCompsBarAttendee = (props) => {
             setLeaveConfirm(true);
           }}
         >
-          Leave Room
+          Leave
         </Button>
       )}
     </div>
