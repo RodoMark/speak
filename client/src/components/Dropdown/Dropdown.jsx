@@ -44,7 +44,7 @@ export default function Dropdowns(props) {
           </Dropdown.Item>
         </Dropdown.Menu>
         <Dropdown.Menu>
-          {list.length &&
+          {list.length>0 &&
             list.map((obj, index) => {
               setIdToCall(obj.attendee_name.split('&')[1])
               
