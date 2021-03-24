@@ -26,6 +26,7 @@ export default function Receiving(props) {
         <div className="call-icons">
           <button>
             <Call
+              color="primary"
               onClick={() => {
                 answerCall();
                 setCallAccepted(true);
@@ -35,8 +36,9 @@ export default function Receiving(props) {
           </button>
           <button>
             <CallEnd 
-                onClick={() => setReceivingCall(false)} 
-              />
+              color="secondary"
+              onClick={() => setReceivingCall(false)} 
+            />
           </button>
            
         </div>

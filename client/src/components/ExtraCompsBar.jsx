@@ -5,11 +5,12 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 const ExtraCompsBar = (props) => {
   const {
     io,
+    callAccepted,
+    setCallAccepted,
+    setEndConfirm,
     hangUp,
     setHangUp,
     setLeaveConfirm,
-    callAccepted,
-    setCallAccepted,
     setChosen
   } = props;
 
@@ -46,9 +47,8 @@ const ExtraCompsBar = (props) => {
         <Button
           reject
           onClick={() => {
-            setHangUp(true);
+            setEndConfirm(true)
             setChosen();
-            setCallAccepted(false);
           }}
         >
           HangUp
@@ -59,7 +59,6 @@ const ExtraCompsBar = (props) => {
           reject
           onClick={() => {
             console.log(`close room clicked`);
-            setHangUp(false);
             setLeaveConfirm(true);
           }}
         >
