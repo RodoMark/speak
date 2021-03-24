@@ -24,7 +24,7 @@ const RoomAttendee = (props) => {
   return (
 
 
-  <div className= "none">
+  <>
 
       {receivingCall && <Receiving /> }
       <MessageChat
@@ -33,7 +33,7 @@ const RoomAttendee = (props) => {
         roomId={roomId}
         socket={io}
       />
-  </div>
+  </>
   );
 };
 
