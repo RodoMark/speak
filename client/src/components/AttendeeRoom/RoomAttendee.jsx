@@ -25,12 +25,12 @@ const RoomAttendee = (props) => {
   <>
       {receivingCall && <Receiving /> }
       {endingCall && <Confirming />}
-      {/* <MessageChat
+      <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
         socket={io}
-      /> */}
+      />
     </>
   );
 };

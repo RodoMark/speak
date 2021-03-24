@@ -50,7 +50,7 @@ const Room = () => {
         />
       )}
       
-      {/* <MessageChat socket={io} /> */}
+      <MessageChat socket={io} />
       <ExtraCompsBar
         io={io}
         hangUp={hangUp}

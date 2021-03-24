@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+import Overlay from './Overlay'
 import Button from '../Buttons/Button';
 import { CameraContext } from '../../context/CameraContext';
 import { useContext } from 'react';
