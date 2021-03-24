@@ -19,7 +19,7 @@ export default function Message(props) {
   return (
     <div className='messages'>
       {msg.length
-        ? msg.map((msg) => msg && <h4 className='message-text'>{msg}</h4>)
+        ? msg.map((msg) => msg && <h5 className='message-text'>{msg}</h5>)
         : null}
     </div>
   );

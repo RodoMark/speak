@@ -169,10 +169,20 @@
     height: 70vw;
     overflow: hidden;
     border-radius: 10px;
-
+    justify-content: flex-start;
+    align-items: flex-start;
     margin: 10px;
     mix-blend-mode: lighten;
     overflow: scroll;
+
+
+  }
+
+  .message-text{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
 
   }
   #chat-form{
