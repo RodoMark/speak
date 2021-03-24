@@ -5,9 +5,7 @@ import { Canvas, useFrame, useLoader, useUpdate } from 'react-three-fiber';
 import React, { Suspense, useRef, useState, useMemo, useEffect } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // import niceColors from 'nice-color-palettes'
-import { useSprings, a } from 'react-spring/three';
 import Boxes from './Background/Boxes';
-import Content from './Background/CubesTransition';
 // import Text from './Background/Text'
 
 export default function background(props) {

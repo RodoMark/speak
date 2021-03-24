@@ -22,19 +22,23 @@ export default function LeaveConfirming(props) {
     <Overlay>
       <h2>Are you sure?</h2>
       <div className="call-icons">
-        <button>
-        <Check
-            onClick={() => {
-              setLeaveConfirm(false);
-              setCameraLoaded(false);
-              cancelCall();
-              history.push('/');
-            }}
+        <button
+          onClick={() => {
+            setLeaveConfirm(false);
+            setCameraLoaded(false);
+            cancelCall();
+            history.push('/');
+          }}>
+          <Check
+            color="primary"
           />
         </button>
-        <button>
-          <Close  
-            onClick={() => setLeaveConfirm(false)} />
+        <button
+          onClick={() => setLeaveConfirm(false)} 
+        >
+          <Close
+            color="secondary"
+          />
         </button>  
       </div>
       

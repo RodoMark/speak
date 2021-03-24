@@ -31,7 +31,7 @@ const Home = () => {
 
       {roomList.length ? <h1></h1> : <Link className='landingLogoLink' to="/login"><h1 className='landingLogo'>Speak.io</h1></Link>}
       {roomList.length ? <h1 id="hometitle">ROOMS</h1> : <div/>}
-      {roomList.length ? <div  className='new-room-btn'> <Button confirm onClick={() => history.push('/New')}>new</Button> </div>: <div/>}
+      {auth ? <div  className='new-room-btn'> <Button confirm onClick={() => history.push('/New')}>new</Button> </div>: <div/>}
       
       {roomList.length ? <RoomList rooms={roomList} setRoomList={setRoomList} />: <div/>}
     </div>
