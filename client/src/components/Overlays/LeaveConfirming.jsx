@@ -16,7 +16,7 @@ export default function LeaveConfirming(props) {
   return (
     <Overlay>
       <h2>Are you sure?</h2>
-      <br />
+      
       <Button
         call
         confirm
