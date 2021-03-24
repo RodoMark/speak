@@ -24,10 +24,10 @@ const Navigation = () => {
       <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
           { auth ? 
-          <Link className='nav-link logo' to='/'>
+          <Link className='nav-link logo' to='/login'>
             Speak.io
           </Link> : 
-           <Link className='nav-link logo' to='/login'>
+           <Link className='nav-link logo' to='/'>
            Speak.io
          </Link>}
         </Navbar.Brand>
