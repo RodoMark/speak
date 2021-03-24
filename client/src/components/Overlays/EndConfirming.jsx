@@ -13,10 +13,11 @@ export default function EndConfirming(props) {
 
  
 
-  const { io, stateAuth, stateCameraLoaded, stateCallEnded } = useContext(CameraContext)
+  const { io, stateAuth, stateCallAccepted, stateCameraLoaded, stateCallEnded } = useContext(CameraContext)
 
   const [auth, setAuth] = stateAuth;
   const [callEnded, setCallEnded] = stateCallEnded;
+  const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [cameraLoaded, setCameraLoaded] = stateCameraLoaded;
 
   const { setHangUp, setEndConfirm } = props;
@@ -27,11 +28,11 @@ export default function EndConfirming(props) {
     })) : (io.emit('callEndedByStudent', {
       callEnded: true
     }))
-    
     setEndConfirm(false);
+    setCallAccepted(false);
     setCameraLoaded(false);
     setHangUp(true);
-    setCallEnded(true)
+    setCallEnded(true);
   }
 
 
@@ -45,7 +46,9 @@ export default function EndConfirming(props) {
             color="primary"
           />
         </button>
-        <button onClick={() => setEndConfirm(false)} >
+        <button onClick={() => {
+          setEndConfirm(false)
+          }} >
           <Close 
             className="icon call"
             color="secondary" 

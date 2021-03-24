@@ -61,6 +61,7 @@ const Room = () => {
         setCallAccepted={setCallAccepted}
         setChosen={setChosen}
         leaveConfirm={leaveConfirm}
+        setEndConfirm={setEndConfirm}
       />
       </section>
   );
