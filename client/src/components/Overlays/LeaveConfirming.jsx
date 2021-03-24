@@ -3,8 +3,8 @@
 import Button from '../Buttons/Button';
 import Overlay from './Overlay';
 
-import Call from '@material-ui/icons/Call';
-import CallEnd from '@material-ui/icons/CallEnd';
+import Check from '@material-ui/icons/Check';
+import Close from '@material-ui/icons/Close';
 
 import { useHistory } from 'react-router-dom';
 import { useContext } from 'react'
@@ -22,16 +22,20 @@ export default function LeaveConfirming(props) {
     <Overlay>
       <h2>Are you sure?</h2>
       <div className="call-icons">
-        <Call
-          onClick={() => {
-            setLeaveConfirm(false);
-            setCameraLoaded(false);
-            cancelCall();
-            history.push('/');
-          }}
-        />
-        <CallEnd  
-          onClick={() => setLeaveConfirm(false)} />
+        <button>
+        <Check
+            onClick={() => {
+              setLeaveConfirm(false);
+              setCameraLoaded(false);
+              cancelCall();
+              history.push('/');
+            }}
+          />
+        </button>
+        <button>
+          <Close  
+            onClick={() => setLeaveConfirm(false)} />
+        </button>  
       </div>
       
       

@@ -24,19 +24,22 @@ export default function Receiving(props) {
     <Overlay>
       <h2>Receiving Call</h2>
         <div className="call-icons">
-          <Call
-            onClick={() => {
-              answerCall();
-              setCallAccepted(true);
-              setReceivingCall(false);
-            }}
-          />
-          <CallEnd 
-            onClick={() => setReceivingCall(false)} 
-          />
+          <button>
+            <Call
+              onClick={() => {
+                answerCall();
+                setCallAccepted(true);
+                setReceivingCall(false);
+              }}
+            />
+          </button>
+          <button>
+            <CallEnd 
+                onClick={() => setReceivingCall(false)} 
+              />
+          </button>
+           
         </div>
-      
-      
     </Overlay>
   );
 }

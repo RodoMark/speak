@@ -3,7 +3,7 @@ import Overlay from './Overlay'
 import Button from '../Buttons/Button';
 
 import Call from '@material-ui/icons/Call';
-import CallEnd from '@material-ui/icons/CallEnd';
+import Close from '@material-ui/icons/Close';
 
 import { useContext } from 'react'
 import { CameraContext } from '../../context/CameraContext'
@@ -46,7 +46,7 @@ export default function EndConfirming(props) {
           />
         </button>
         <button onClick={() => setEndConfirm(false)} >
-          <CallEnd 
+          <Close 
             className="icon call"
             color="secondary" 
           />
