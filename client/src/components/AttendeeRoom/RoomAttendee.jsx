@@ -22,18 +22,18 @@ const RoomAttendee = (props) => {
 
   console.log(me, attendeeId, attendeeName);
   return (
-  <>
-      
-      <Stage />
-      {receivingCall ? <Receiving /> : null}
-      {endingCall && <Confirming />}
+
+
+    <div className= "none">
+
+      {receivingCall && <Receiving /> }
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
         socket={io}
       />
-    </>
+  </div>
   );
 };
 

@@ -12,6 +12,7 @@ const CameraContextProvider = (props) => {
   const [callerSignal, setCallerSignal] = useState();
   const [calling, setCalling] = useState(false);
   const [cameraLoaded, setCameraLoaded] = useState(false);
+  const [chosen, setChosen] = useState()
   const [error, setError] = useState(false);
   const [hangUp, setHangUp] = useState(false);
   const [idToCall, setIdToCall] = useState('');
@@ -57,6 +58,23 @@ const CameraContextProvider = (props) => {
       setCallerSignal(data.signal);
       setReceivingCall(true);
     });
+    
+    socket.on('callEndedByStudentSide', (data) => {
+      console.log(`listening for back end to emit callEndedByStudentSide`, data);
+      setCallEnded(true);
+      setCallAccepted(false)
+      setHangUp(true);
+
+    });
+
+    socket.on('callEndedByTeacherSide', (data) => {
+      console.log(`listening for back end to emit callEndedByTeacherSide`, data);
+      setCallEnded(true);
+      setCallAccepted(false)
+      setHangUp(true);
+    });
+  
+  
   
     }
     , [cameraLoaded]);
@@ -123,23 +141,25 @@ const CameraContextProvider = (props) => {
   let MyVideo;
   if (me) {
     MyVideo = (
-      <video className="video--active"
+      <video className="videoactive"
         playsInline
         muted
         ref={myVideo}
         autoPlay
       />
     );
-  }
+  }else{MyVideo = <div></div>};
+
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
       <video 
-        className="video--active" 
+        className="videoactive" 
         playsInline ref={userVideo} autoPlay 
       />
     );
-  }
+  }else{UserVideo = <div></div>};
+  
   const data = {
     //variables
     io,
@@ -159,6 +179,7 @@ const CameraContextProvider = (props) => {
     stateCaller: [caller, setCaller],
     stateCallerSignal: [callerSignal, setCallerSignal],
     stateCalling: [calling, setCalling],
+    stateChosen: [chosen, setChosen],
     stateEndConfirm: [endConfirm, setEndConfirm],
     stateError: [error, setError],
     stateHangUp: [hangUp, setHangUp],

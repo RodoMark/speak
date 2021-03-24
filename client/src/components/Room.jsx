@@ -20,8 +20,10 @@ const Room = () => {
     stateEndConfirm,
     stateLeaveConfirm,
     stateReceivingCall,
+    stateChosen,
   } = useContext(CameraContext);
 
+  const [chosen, setChosen] = stateChosen;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [endConfirm, setEndConfirm] = stateEndConfirm;
   const [hangUp, setHangUp] = stateHangUp;
@@ -32,10 +34,10 @@ const Room = () => {
   const roomId = params.title.split('&')[0];
   return (
       <section className="room room--teacher">
-      <div className="stage">
+      <div className="wrapper">
+      <Dropdown socket={io} roomId={roomId} />
       <Stage />
       {/* <RatingsArrayTeacher /> */}
-      <Dropdown socket={io} roomId={roomId} />
       </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (
@@ -49,13 +51,17 @@ const Room = () => {
       )}
       
       <MessageChat socket={io} />
+
       <ExtraCompsBar
+        io={io}
         hangUp={hangUp}
         setHangUp={setHangUp}
         setLeaveConfirm={setLeaveConfirm}
         callAccepted={callAccepted}
         setCallAccepted={setCallAccepted}
+        setChosen={setChosen}
         leaveConfirm={leaveConfirm}
+        setEndConfirm={setEndConfirm}
       />
       </section>
   );

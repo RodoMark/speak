@@ -7,30 +7,28 @@ import { CameraContext } from '../context/CameraContext';
 import { useContext } from 'react';
 
 const Videocall = (props) => {
-  const { stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(
+  const { stateChosen, stateCallAccepted, stateCallEnded, leaveCall, callUser } = useContext(
     CameraContext
   );
+
+  const [chosen, setChosen] = stateChosen;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [callEnded, setCallEnded] = stateCallEnded;
-  const { idToCall } = props;
+  const { nameToCall, idToCall } = props;
+
   return (
     <>
       <div className='myId'>
         <div className='call-button'>
-          {callAccepted && !callEnded ? (
-            <Button variant='contained' color='secondary' onClick={leaveCall}>
-              End Call
-            </Button>
-          ) : (
+          { (chosen === idToCall) && (callAccepted && !callEnded) ? <p className="call--confirm">On Call With: </p> : (
             <IconButton
               color='primary'
               aria-label='call'
-              onClick={() => callUser(idToCall)}
             >
               <PhoneIcon fontSize='large' />
             </IconButton>
           )}
-          {idToCall}
+          {nameToCall}
         </div>
       </div>
     </>

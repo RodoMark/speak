@@ -54,9 +54,6 @@ const Login = (props) => {
               <input type='submit' value='Login' />
             </div>
             <p className='forget'>
-              Forgot Password? <a>Click Here</a>
-            </p>
-            <p className='forget'>
               Don't have an account ? <a href='#'>Sign up</a>
             </p>
           </form>

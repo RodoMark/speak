@@ -31,7 +31,7 @@ const Register = (props) => {
       .post('/teachers/', data)
       .then((res) => {
         setLoading(false);
-        if (res.data.user.email) {
+        if (res.data.email) {
           setAuth(true);
           history.push('/');
         }

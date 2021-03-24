@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Button from '../Buttons/Button';
 import axios from 'axios';
 import { useRef } from 'react';
 import { CameraContext } from '../../context/CameraContext';
@@ -27,24 +27,20 @@ export default function ChatInput(props) {
     axios
       .post('/api/messages', data)
       .then((res) => {
+        message.current.value = ''
         setLoading(false);
-        message = ''
       })
       .catch((e) => console.log(e));
   };
   return (
-    <Form className="chat-input" onSubmit={handleSubmit}>
-      <Form.Group controlId='formBasicEmail'>
-        {/* <Form.Label>MessageContent</Form.Label> */}
-        <Form.Control
-          ref={message}
-          type='text'
-          placeholder='Enter your message'
-        />
-      </Form.Group>
-      <Button className="button button--submit" variant='primary' type='submit'>
-        Send
-      </Button>
-    </Form>
+    <>
+    <div className='form chat-form' id='chat-form' >
+          <form action='' onSubmit={handleSubmit}>
+            <div className='inputBox'>
+              <input className="chat-input" id="chatinput" ref={message} type='text' placeholder='Aa' />
+            </div>
+          </form>
+        </div>
+    </>
   );
 }

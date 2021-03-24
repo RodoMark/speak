@@ -10,8 +10,8 @@ export default function Error(props) {
 	const [error, setError] = stateError;
 
   return (
-    <div className="overlay">
+    <Overlay>
       <h2>ERROR</h2>
-    </div>
+    </Overlay>
   )
 }

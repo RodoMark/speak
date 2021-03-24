@@ -25,15 +25,18 @@ const Navigation = () => {
         <Navbar.Brand>
           <Link className='nav-link logo' to='/'>
             Speak.io
-          </Link>
+          </Link> 
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <NavItem>
-              <Link onClick={()=> setCameraLoaded(false)} className='nav-link' to='/'>
+              { auth ? <Link onClick={()=> setCameraLoaded(false)} className='nav-link' to='/'>
                 Home
-              </Link>
+              </Link> :
+              <Link onClick={()=> setCameraLoaded(false)} className='nav-link' to='/login'>
+              Home
+            </Link> }
             </NavItem>
             <Auth auth={auth} setAuth={setAuth} />
           </Nav>
