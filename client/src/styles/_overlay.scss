@@ -1,6 +1,7 @@
 @import './variables';
 
 article.wrapper {
+  position:fixed;
   box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
   border: 1px solid rgba(200, 200, 200, 0.75);
   border-right: 1px solid rgba(200, 200, 200, 0.75);
@@ -9,10 +10,8 @@ article.wrapper {
   border-radius: 1em;
   position: fixed;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  top: 50%;
-  left: 50%;
   z-index: 5;
   margin: auto auto;
   padding: 1em 2em;
@@ -23,25 +22,28 @@ article.wrapper {
   }
 }
 
-div .transparency {
+.overwrapper{
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 4;
   height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: $transparency;
 }
 
+
+
 .MuiSvgIcon-root {
-  font-size: 3.5rem!important;
+  font-size: 6em !important;
 }
 
 .MuiSvgIcon-colorPrimary {
-  color: $mainGreen!important;
+  /*color: $mainGreen!important;*/
+  color:rgba(75, 219, 192, 1) !important;
+
 }
 .MuiSvgIcon-colorSecondary {
-  color: $mainRed!important;
+  /*color: $mainRed!important;*/
+  color:#DA624B !important;
 }
