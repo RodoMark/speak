@@ -29,12 +29,16 @@ export default function LeaveConfirming(props) {
             cancelCall();
             history.push('/');
           }}>
-          <Check />
+          <Check
+            color="primary"
+          />
         </button>
         <button
           onClick={() => setLeaveConfirm(false)} 
         >
-          <Close />
+          <Close
+            color="secondary"
+          />
         </button>  
       </div>
       
