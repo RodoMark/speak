@@ -64,6 +64,7 @@ const CameraContextProvider = (props) => {
       setCallEnded(true);
       setCallAccepted(false)
       setHangUp(true);
+
     });
 
     socket.on('callEndedByTeacherSide', (data) => {
@@ -72,6 +73,7 @@ const CameraContextProvider = (props) => {
       setCallAccepted(false)
       setHangUp(true);
     });
+  
   
   
     }
