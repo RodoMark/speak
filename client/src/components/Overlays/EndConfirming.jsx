@@ -1,8 +1,13 @@
 /* eslint-disable */
-
+import Overlay from './Overlay'
 import Button from '../Buttons/Button';
+
+import Call from '@material-ui/icons/Call';
+import Close from '@material-ui/icons/Close';
+
 import { useContext } from 'react'
 import { CameraContext } from '../../context/CameraContext'
+
 
 export default function EndConfirming(props) {
 
@@ -31,18 +36,23 @@ export default function EndConfirming(props) {
 
 
   return (
-    <div className='overlay'>
-      <h2>Are you sure?</h2>
-      <br />
-      <Button
-        call
-        confirm
-        onClick={() => handleConfirm()}
-      />
-      <Button 
-        call 
-        reject 
-        onClick={() => setEndConfirm(false)} />
-    </div>
+    <Overlay>
+      <h2>Are you sure? End</h2>
+      <div className="call-icons">
+        <button onClick={() => handleConfirm()}>
+          <Call
+            className="icon call"
+            color="primary"
+          />
+        </button>
+        <button onClick={() => setEndConfirm(false)} >
+          <Close 
+            className="icon call"
+            color="secondary" 
+          />
+        </button>
+      </div>
+      
+    </Overlay>
   );
 }

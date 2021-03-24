@@ -23,6 +23,8 @@ export default function Dropdowns(props) {
       setList(nameList);
     });
   });
+
+  
   return (
     <>
       <Dropdown>
@@ -47,6 +49,8 @@ export default function Dropdowns(props) {
           {list.length > 0 &&
             list.map((obj, index) => {
               setIdToCall(obj.attendee_name.split('&')[1])
+
+              const attendeeName = obj.attendee_name.split('&')[0]
               
               return (
                 <Dropdown.Item 
@@ -57,8 +61,7 @@ export default function Dropdowns(props) {
                     }
                   }
                 >
-                <Videocall idToCall={idToCall} />
-                  {obj.attendee_name.split('&')[0]}
+                <Videocall nameToCall={attendeeName} idToCall={idToCall} />
                 </Dropdown.Item>
               )  
             } 
