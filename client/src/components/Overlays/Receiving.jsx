@@ -2,6 +2,10 @@
 
 import Overlay from './Overlay'
 import Button from '../Buttons/Button';
+
+import Call from '@material-ui/icons/Call';
+import CallEnd from '@material-ui/icons/CallEnd';
+
 import { CameraContext } from '../../context/CameraContext';
 import { useContext } from 'react';
 
@@ -18,17 +22,21 @@ export default function Receiving(props) {
 
   return (
     <Overlay>
-      <Button
-        call
-        confirm
-        onClick={() => {
-          answerCall();
-          setCallAccepted(true);
-          setReceivingCall(false);
-        }}
-      />
-      <Button call reject onClick={() => setReceivingCall(false)} />
       <h2>Receiving Call</h2>
+        <div className="call-icons">
+          <Call
+            onClick={() => {
+              answerCall();
+              setCallAccepted(true);
+              setReceivingCall(false);
+            }}
+          />
+          <CallEnd 
+            onClick={() => setReceivingCall(false)} 
+          />
+        </div>
+      
+      
     </Overlay>
   );
 }

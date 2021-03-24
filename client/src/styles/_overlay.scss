@@ -1,6 +1,12 @@
 @import './variables';
 
-div article.overlay {
+article.wrapper {
+  box-shadow: 0 25px 45px rgba(33, 39, 29, 0.75);
+  border: 1px solid rgba(200, 200, 200, 0.75);
+  border-right: 1px solid rgba(200, 200, 200, 0.75);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.75);
+  background: rgba(33, 39, 29, 0.75);
+  border-radius: 1em;
   position: fixed;
   display: flex;
   justify-content: space-evenly;
@@ -9,12 +15,12 @@ div article.overlay {
   left: 50%;
   z-index: 5;
   margin: auto auto;
-  display: flex;
-  justify-content: center;
-  background: $mainWhite;
   padding: 1em 2em;
-  border-radius: 1em;
- 
+  button {
+    padding: 1.5rem;
+    background: transparent;
+    border: none;
+  }
 }
 
 div .transparency {
@@ -27,4 +33,15 @@ div .transparency {
   bottom: 0;
   right: 0;
   background: $transparency;
+}
+
+.MuiSvgIcon-root {
+  font-size: 3.5rem!important;
+}
+
+.MuiSvgIcon-colorPrimary {
+  color: $mainGreen!important;
+}
+.MuiSvgIcon-colorSecondary {
+  color: $mainRed!important;
 }

@@ -4,7 +4,7 @@ const Overlay = (props) => {
 
 	return(
 		<section>
-			<article className="overlay">
+			<article className="overlay wrapper">
 				{props.children}
 			</article>
 			<div className="transparency">
