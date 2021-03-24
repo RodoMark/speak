@@ -1,8 +1,7 @@
 /* eslint-disable */
 
 import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import { useHistory, Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { NavItem } from 'react-bootstrap';
@@ -21,7 +20,6 @@ const NavAuth = (props) => {
   const [roomList, setRoomList] = stateRoomList;
   const history = useHistory();
   const handleSubmit = (e) => {
-    e.preventDefault();
     setLoading(true);
     axios
       .post('/teachers/logout')
@@ -35,13 +33,16 @@ const NavAuth = (props) => {
   };
   return (
     <NavItem>
-      <Form onSubmit={handleSubmit}>
-
-        <Button id='logoutbtn' onClick={()=>setCameraLoaded(false)} variant='primary' type='submit'>
-
-          Logout
-        </Button>
-      </Form>
+      <Link
+        className="nav-link" 
+        onClick={()=>{
+          handleSubmit()
+          setCameraLoaded(false)
+          }
+        }
+      >
+        Logout
+      </Link>
     </NavItem>
   );
 };

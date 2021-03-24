@@ -24,16 +24,19 @@ const RoomAttendee = (props) => {
   return (
 
 
-    <div className= "none">
+  <>
 
       {receivingCall && <Receiving /> }
+
+
+      
       <MessageChat
         attendeeId={attendeeId}
         attendeeName={attendeeName}
         roomId={roomId}
         socket={io}
       />
-  </div>
+  </>
   );
 };
 

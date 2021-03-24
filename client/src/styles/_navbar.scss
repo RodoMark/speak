@@ -18,3 +18,8 @@
 
 }
 
+div.nav-item a.nav-link:hover {
+  text-decoration: underline;
+  text-decoration-color: $mainBlack;
+}
+
