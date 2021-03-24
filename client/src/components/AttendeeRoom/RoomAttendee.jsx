@@ -24,7 +24,7 @@ const RoomAttendee = (props) => {
   return (
 
 
-    <div className= "none">
+  <div className= "none">
 
       {receivingCall && <Receiving /> }
       <MessageChat
