@@ -40,10 +40,12 @@ export default function EndConfirming(props) {
       <h2>Are you sure?</h2>
       
       <Call
+        className="icon call"
         color="primary"
         onClick={() => handleConfirm()}
       />
       <CallEnd 
+        className="icon call"
         color="secondary" 
         onClick={() => setEndConfirm(false)} />
     </Overlay>
