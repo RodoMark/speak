@@ -44,7 +44,7 @@
 
 .button--confirm:hover {
    color: $mainWhite;
-   background-color: $mainGreen;
+   background-color: rgba(100, 250, 200);
 }
 
 .button:focus {
@@ -61,4 +61,8 @@
 
 .call-button{
   width: auto;
+}
+
+#new-room-btn{
+  background-color: rgb(33, 39, 29)
 }

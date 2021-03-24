@@ -23,9 +23,13 @@ const Navigation = () => {
     <Router>
       <Navbar id="navbar" className='color-nav' bg='light' expand='lg'>
         <Navbar.Brand>
+          { auth ? 
           <Link className='nav-link logo' to='/'>
             Speak.io
-          </Link> 
+          </Link> : 
+           <Link className='nav-link logo' to='/'>
+           Speak.io
+         </Link>}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>

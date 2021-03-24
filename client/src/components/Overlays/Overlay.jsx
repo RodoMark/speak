@@ -3,12 +3,12 @@
 const Overlay = (props) => {
 
 	return(
-		<section>
+		<section className='overwrapper'>
 			<article className="overlay wrapper">
 				{props.children}
 			</article>
-			<div className="transparency">
-			</div>
+			{/*<div className="transparency">
+			</div>*/}
 		</section>
 		
 	)
