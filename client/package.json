@@ -26,7 +26,6 @@
     "react-postprocessing": "^1.4.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-spring": "^8.0.27",
     "react-three-fiber": "^5.3.19",
     "sass": "^1.32.8",
     "simple-peer": "^9.9.3",
@@ -66,6 +65,7 @@
     "@storybook/addon-links": "^6.1.21",
     "@storybook/node-logger": "^6.1.21",
     "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.1.21"
+    "@storybook/react": "^6.1.21",
+    "react-refresh": "^0.9.0"
   }
 }

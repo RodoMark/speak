@@ -20,7 +20,12 @@ article.wrapper {
     padding: 1.5rem;
     background: transparent;
     border: none;
+    border-radius: 4em;
   }
+}
+
+article.wrapper button:hover {
+  background-color: $mainWhite;
 }
 
 div .transparency {

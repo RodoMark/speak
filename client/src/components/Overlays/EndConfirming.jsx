@@ -37,7 +37,7 @@ export default function EndConfirming(props) {
 
   return (
     <Overlay>
-      <h2>Are you sure? End</h2>
+      <h2>Are you sure?</h2>
       <div className="call-icons">
         <button onClick={() => handleConfirm()}>
           <Call
