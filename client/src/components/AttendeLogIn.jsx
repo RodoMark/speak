@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 import Button from './Buttons/Button';
@@ -59,10 +58,14 @@ const AttendeeLogIn = (props) => {
   return (
     <section className="room room--attendee" id='room--attendee'>
       
+      {!addName  ?
       <div className = 'wrapper' id="stagewrapper">
-        <Stage className="stage" hangUp={hangUp}/>
+        <Stage className="stage"  hangUp={hangUp}/>
+      </div> : <div className="wrapper">
+      <Stage />
       </div>
 
+      }
       {endConfirm && (
         <EndConfirming setHangUp={setHangUp} setEndConfirm={setEndConfirm} />
       )}
@@ -78,6 +81,7 @@ const AttendeeLogIn = (props) => {
           attendeeId={attendeeId}
           attendeeName={attendeeName}
           roomId={roomId.title}
+          addName={addName}
         />
       ) : (
       <div className ='Random'>
