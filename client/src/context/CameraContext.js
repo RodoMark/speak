@@ -64,6 +64,7 @@ const CameraContextProvider = (props) => {
       setCallEnded(true);
       setCallAccepted(false)
       setHangUp(true);
+
     });
 
     socket.on('callEndedByTeacherSide', (data) => {
@@ -72,6 +73,7 @@ const CameraContextProvider = (props) => {
       setCallAccepted(false)
       setHangUp(true);
     });
+  
   
   
     }
@@ -139,23 +141,25 @@ const CameraContextProvider = (props) => {
   let MyVideo;
   if (me) {
     MyVideo = (
-      <video className="video--active"
+      <video className="videoactive"
         playsInline
         muted
         ref={myVideo}
         autoPlay
       />
     );
-  }
+  }else{MyVideo = <div></div>};
+
   let UserVideo;
   if (callAccepted) {
     UserVideo = (
       <video 
-        className="video--active" 
+        className="videoactive" 
         playsInline ref={userVideo} autoPlay 
       />
     );
-  }
+  }else{UserVideo = <div></div>};
+  
   const data = {
     //variables
     io,

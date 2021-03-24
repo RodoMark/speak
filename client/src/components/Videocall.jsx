@@ -28,7 +28,6 @@ const Videocall = (props) => {
               <PhoneIcon fontSize='large' />
             </IconButton>
           )}
-          {idToCall}
         </div>
       </div>
     </>

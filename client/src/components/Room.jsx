@@ -34,10 +34,10 @@ const Room = () => {
   const roomId = params.title.split('&')[0];
   return (
       <section className="room room--teacher">
-      <div className="stage">
+      <div className="wrapper">
+      <Dropdown socket={io} roomId={roomId} />
       <Stage />
       {/* <RatingsArrayTeacher /> */}
-      <Dropdown socket={io} roomId={roomId} />
       </div>
       {receivingCall && <Calling setReceivingCall={setReceivingCall} />}
       {endConfirm && (
@@ -51,6 +51,7 @@ const Room = () => {
       )}
       
       <MessageChat socket={io} />
+
       <ExtraCompsBar
         io={io}
         hangUp={hangUp}

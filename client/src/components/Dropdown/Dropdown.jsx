@@ -26,7 +26,7 @@ export default function Dropdowns(props) {
   return (
     <>
       <Dropdown>
-        <Dropdown.Toggle variant='success' id='dropdown-basic'>
+        <Dropdown.Toggle variant='info' id='dropdown'>
           Call
         </Dropdown.Toggle>
         <Dropdown.Menu>

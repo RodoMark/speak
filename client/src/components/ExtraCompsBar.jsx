@@ -27,6 +27,7 @@ const ExtraCompsBar = (props) => {
 
   return (
     <div key={callAccepted} className='extra-comps-bar extra-comps-bar--teacher'>
+    
       <CopyToClipboard
         text={copiedUrl}
         style={{ marginBottom: '2rem' }}
@@ -37,7 +38,7 @@ const ExtraCompsBar = (props) => {
             setCopy(!copy);
           }}
         >
-          {copy ? `Copy` : `Success!`}
+          {copy ? `Link` : `Success!`}
         </Button>
       </CopyToClipboard>
 
@@ -62,7 +63,7 @@ const ExtraCompsBar = (props) => {
             setLeaveConfirm(true);
           }}
         >
-          Close Room
+          Close
         </Button>
       )}
     </div>
