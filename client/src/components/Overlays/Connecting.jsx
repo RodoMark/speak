@@ -1,8 +1,9 @@
+import Overlay from './Overlay'
 
 export default function Calling(props) {
   return (
-    <div className="overlay">
+    <Overlay>
 			<h2>Connecting...</h2>
-		</div>
+		</Overlay>
   )
 }    

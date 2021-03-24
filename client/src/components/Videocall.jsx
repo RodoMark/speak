@@ -14,7 +14,7 @@ const Videocall = (props) => {
   const [chosen, setChosen] = stateChosen;
   const [callAccepted, setCallAccepted] = stateCallAccepted;
   const [callEnded, setCallEnded] = stateCallEnded;
-  const { idToCall } = props;
+  const { nameToCall, idToCall } = props;
 
   return (
     <>
@@ -28,6 +28,7 @@ const Videocall = (props) => {
               <PhoneIcon fontSize='large' />
             </IconButton>
           )}
+          {nameToCall}
         </div>
       </div>
     </>

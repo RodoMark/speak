@@ -3,9 +3,14 @@
 const Overlay = (props) => {
 
 	return(
-		<article className="overlay">
-			{props.children}
-		</article>
+		<section>
+			<article className="overlay wrapper">
+				{props.children}
+			</article>
+			<div className="transparency">
+			</div>
+		</section>
+		
 	)
 }
 
