@@ -15,6 +15,6 @@ Video and text chat app that makes heavy use of WebsocketRTC and React-three-fib
 ### Front-End: 
 #### React, React Three Fiber, ThreeJS, SocketIO, SimplePeerJS, 
 ### Back-End: 
-#### xpress, NodeJS, SocketIO
+#### Express, NodeJS, SocketIO
 ### Database: 
 #### PostgreSQL
