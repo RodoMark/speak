@@ -15,8 +15,6 @@ PostgreSQL
 
 !["Invite Someone To Chat"](https://github.com/RodoMark/speak/blob/master/client/public/ReceiveCall.PNG?raw=true)
 
-!["Leave Video Chat"](https://github.com/RodoMark/speak/blob/master/client/public/VideoChat.PNG?raw=true)
-
 
 
 
